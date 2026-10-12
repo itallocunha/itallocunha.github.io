@@ -1,0 +1,12 @@
+# Artes originais em alta (PNG pesados). O site usa as versões leves em assets/_web.
+assets/Ilustração/
+assets/Design Gráfico/
+assets/Jogos Protótipos JogosDigitais ArteParaJogos/
+assets/Pixel Art/
+assets/Modelagem 3D/
+assets/IA/
+assets/Ensino/
+__pycache__/
+.DS_Store
+Thumbs.db
+desktop.ini

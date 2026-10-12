@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itallo Cunha · Criador Multiclasse</title>
+<meta name="description" content="Design, jogos e conhecimento em constante criação. Game Designer, Designer Gráfico e Instrutor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Creepster&family=Gochi+Hand&family=Oswald:wght@500;600;700&family=Pixelify+Sans:wght@600;700&family=Rubik:wght@400;500;600&family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!--
+  ============================================================
+  IMAGENS: coloque os arquivos na pasta /assets com estes nomes.
+  Enquanto o arquivo não existir, aparece um espaço tracejado
+  com o nome esperado. Lista completa em assets/LEIA-ME.txt
+  ============================================================
+-->
+<style>
+:root{
+  --bg:#0d0915;
+  --bg2:#140d20;
+  --roxo:#8f4dff;
+  --roxo-claro:#b98bff;
+  --roxo-escuro:#3b1d6e;
+  --amarelo:#ffd23a;
+  --branco:#f4effb;
+  --texto:#cfc6dd;
+  --apagado:#8d82a0;
+  --papel:#e8e0d2;
+  --papel-escuro:#c9bfae;
+  --vermelho:#e3262c;
+  --wrap:1440px;
+  --f-pixel:"Pixelify Sans",system-ui,sans-serif;
+  --f-pixel2:"Silkscreen",monospace;
+  --f-cond:"Oswald",Impact,sans-serif;
+  --f-display:"Anton",Impact,sans-serif;
+  --f-mao:"Gochi Hand",cursive;
+  --f-corpo:"Rubik",system-ui,sans-serif;
+  --f-mono:"Space Mono",ui-monospace,monospace;
+  --f-terror:"Creepster",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:
+    radial-gradient(1200px 700px at 70% 8%,rgba(143,77,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 10% 40%,rgba(143,77,255,.08),transparent 60%),
+    radial-gradient(900px 700px at 90% 70%,rgba(143,77,255,.07),transparent 60%),
+    var(--bg);
+  color:var(--texto);
+  font-family:var(--f-corpo);
+  font-size:15px;line-height:1.55;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* grão de papel/filme por cima de tudo */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.11;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;position:relative;padding:0 48px}
+.svg-defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- utilitários ---------- */
+.rough{filter:url(#rough)}
+.rough-forte{filter:url(#rough-forte)}
+.mao{font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);line-height:1.12;font-size:20px;letter-spacing:.02em;position:absolute;pointer-events:none}
+.mao.amarela{color:var(--amarelo)}
+.rotulo{font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-claro)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;background:var(--amarelo);color:#16101f;
+  font-weight:600;font-size:15px;padding:10px 18px;border-radius:3px;
+  box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
+.btn svg,.link svg{width:15px;height:15px}
+.link{
+  display:inline-flex;align-items:center;gap:8px;color:var(--amarelo);font-weight:500;font-size:14px;
+  border-bottom:1.5px solid var(--amarelo);padding-bottom:2px;transition:gap .2s;
+}
+.link:hover{gap:13px}
+.star{position:absolute;width:26px;height:26px;color:var(--amarelo);pointer-events:none;animation:brilho 3.2s ease-in-out infinite}
+.star.p{width:14px;height:14px}
+.star.g{width:40px;height:40px}
+.star.roxa{color:var(--roxo-claro)}
+@keyframes brilho{0%,100%{opacity:1;transform:scale(1) rotate(0)}50%{opacity:.45;transform:scale(.78) rotate(20deg)}}
+.coroa{position:absolute;width:34px;color:var(--amarelo);pointer-events:none}
+
+/* trilha pontilhada amarela */
+.trilha{position:absolute;pointer-events:none;overflow:visible}
+.trilha path{fill:none;stroke:var(--amarelo);stroke-width:2;stroke-dasharray:2 7;stroke-linecap:round;vector-effect:non-scaling-stroke;animation:anda 22s linear infinite}
+.trilha.roxa path{stroke:var(--roxo)}
+@keyframes anda{to{stroke-dashoffset:-400}}
+
+/* ---------- espaços de imagem (slots) ---------- */
+.slot{position:relative}
+.slot img{width:100%;height:100%;object-fit:contain}
+.slot.empty{
+  border:2px dashed rgba(185,139,255,.45);border-radius:6px;
+  background:repeating-linear-gradient(45deg,rgba(143,77,255,.06) 0 10px,transparent 10px 20px);
+  display:flex;align-items:center;justify-content:center;
+}
+.slot.empty::after{
+  content:attr(data-label);font-family:var(--f-mono);font-size:12px;color:var(--roxo-claro);
+  background:rgba(13,9,21,.85);padding:4px 8px;border-radius:3px;text-align:center;max-width:90%;
+}
+.hero-fundo.empty,.copo-fundo.empty{border:0;background:none;align-items:flex-end;justify-content:flex-end;padding:10px}
+.hero-fundo.empty::after,.copo-fundo.empty::after{opacity:.7}
+.slot.icone.empty{border-radius:12px;border-width:1.5px}
+.slot.icone.empty::after{content:attr(data-sigla);font-family:var(--f-pixel2);font-size:13px;background:none;padding:0}
+
+/* papel rasgado */
+.papel{background:var(--papel);box-shadow:0 14px 30px rgba(0,0,0,.55)}
+.fita{position:absolute;width:70px;height:22px;background:rgba(232,214,160,.75);box-shadow:0 1px 2px rgba(0,0,0,.3);z-index:3}
+
+/* revelar ao rolar */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ============================================================
+   NAV
+============================================================ */
+.nav{position:relative;z-index:20;padding-top:22px}
+.nav .wrap{display:flex;align-items:flex-start;justify-content:space-between}
+.nav-l{display:flex;align-items:center;gap:48px}
+.logo{font-family:var(--f-pixel2);font-weight:700;font-size:28px;color:var(--roxo);line-height:1;letter-spacing:-1px}
+.nav-l ul{display:flex;gap:44px;list-style:none;font-size:15px;color:var(--texto)}
+.nav-l a:hover{color:var(--amarelo)}
+.coord{font-family:var(--f-mono);font-size:13px;line-height:1.5;color:var(--texto);position:relative;padding-right:10px}
+.coord b{display:block;color:var(--amarelo);font-weight:400;letter-spacing:.12em;margin-bottom:4px}
+.coord span{display:block;padding-left:4px}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero{position:relative;margin-top:-70px}
+.hero .wrap{height:clamp(640px,62vw,900px)}
+.hero-fundo{position:absolute;inset:0;z-index:0;opacity:.95}
+.hero-fundo.empty{inset:auto 48px 20px auto;opacity:1}
+.hero-fundo img{object-fit:cover}
+.lua{position:absolute;right:10.5%;top:16%;width:62px;height:62px;border-radius:50%;
+  box-shadow:inset -14px 6px 0 0 #a77bf2;transform:rotate(-20deg);opacity:.95;filter:drop-shadow(0 0 18px rgba(185,139,255,.6))}
+.titulo-italo{
+  position:absolute;left:10%;top:9%;z-index:1;
+  font-family:var(--f-pixel);font-weight:700;color:var(--roxo);
+  font-size:clamp(150px,22vw,330px);line-height:.8;letter-spacing:-.045em;
+  text-shadow:0 0 60px rgba(143,77,255,.35);
+}
+.hero-personagem{position:absolute;z-index:3;left:34%;top:4%;width:37%;height:78%}
+.hero-personagem img{object-position:bottom center}
+.cunha{
+  position:absolute;z-index:4;right:11%;top:38%;
+  font-family:var(--f-pixel);font-weight:700;color:var(--branco);
+  font-size:clamp(70px,10vw,150px);line-height:.85;letter-spacing:-.01em;
+  text-shadow:4px 4px 0 #000;
+}
+.player{
+  position:absolute;z-index:5;right:11%;top:30%;
+  background:var(--amarelo);color:#16101f;font-family:var(--f-pixel);font-weight:700;font-size:clamp(16px,1.6vw,23px);
+  padding:6px 12px;transform:rotate(-4deg);box-shadow:3px 3px 0 #000;
+}
+.hero-txt{position:absolute;z-index:6;left:48px;bottom:13%;max-width:420px}
+.hero-txt h1{font-family:var(--f-corpo);font-weight:600;font-size:clamp(18px,1.6vw,23px);line-height:1.25;color:var(--branco);margin-bottom:10px}
+.hero-txt p{font-size:15px;color:var(--apagado);margin-bottom:22px;letter-spacing:.01em}
+.hero .mao.n1{left:4.5%;top:16%;transform:rotate(-14deg);font-size:19px}
+.hero .mao.n2{right:2%;top:19%;transform:rotate(6deg);font-size:19px}
+.hero .coroa{left:4%;top:12%;transform:rotate(-12deg)}
+.hero .trilha{left:30%;bottom:6%;width:60%;height:18%}
+
+/* ============================================================
+   SOBRE
+============================================================ */
+.sobre{position:relative;padding:20px 0 30px}
+.sobre .wrap{display:grid;grid-template-columns:290px 330px 1fr 380px;gap:30px;align-items:center}
+.icones{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.ic-card{
+  aspect-ratio:1/0.92;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--f-pixel2);font-size:11px;color:#2a2036;letter-spacing:.05em;position:relative;
+  transition:transform .25s;
+}
+.ic-card:nth-child(1){transform:rotate(-3deg)}
+.ic-card:nth-child(2){transform:rotate(2deg);margin-top:16px}
+.ic-card:nth-child(3){transform:rotate(1.5deg)}
+.ic-card:nth-child(4){transform:rotate(-2deg);margin-top:16px}
+.ic-card:hover{transform:rotate(0) scale(1.06)}
+.ic-card svg{width:44px;height:44px;color:#3b2565}
+.ic-card::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(42,32,54,.25)}
+.ic-card .pino{position:absolute;width:7px;height:7px;border-radius:50%;background:#7a6f60;top:8px;left:8px}
+.ic-card .pino+.pino{left:auto;right:8px}
+.sobre-titulo{position:relative}
+.sobre-titulo .rotulo{display:block;margin-bottom:6px}
+.sobre-titulo h2{font-family:var(--f-display);text-transform:uppercase;line-height:.92;font-size:clamp(46px,4.6vw,68px);color:var(--branco);font-weight:400}
+.sobre-titulo h2 em{font-style:normal;color:var(--roxo)}
+.sobre-titulo .coroa{left:150px;top:-14px;width:30px}
+.sobre-txt .lead{color:var(--branco);font-size:17px;line-height:1.4;margin-bottom:18px;font-weight:500}
+.sobre-txt p{font-size:14px;color:var(--apagado)}
+.retrato{position:relative;width:230px;transform:rotate(3deg)}
+.retrato .slot{aspect-ratio:4/5;width:100%}
+.retrato .slot:not(.empty){background:var(--papel);padding:10px}
+.retrato .slot img{object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.sobre .mao.n3{left:250px;top:0;transform:rotate(-8deg);font-size:18px;white-space:nowrap}
+.sobre .trilha{left:0;top:-30px;width:100%;height:120px}
+
+/* ============================================================
+   PORTFÓLIO
+============================================================ */
+.port{position:relative;padding:40px 0 60px}
+.port-cab{position:relative;text-align:center;margin-bottom:30px}
+.port-cab .rotulo{position:absolute;left:48px;top:0}
+.titulo-pixel{
+  font-family:var(--f-pixel);font-weight:700;color:var(--roxo);line-height:.85;
+  font-size:clamp(84px,12vw,176px);letter-spacing:-.01em;text-shadow:0 0 50px rgba(143,77,255,.3);
+}
+.port-cab .mao{right:5%;top:30px;transform:rotate(-6deg);text-align:center}
+.port-cab .trilha{left:0;top:10px;width:100%;height:120px}
+
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:40px 60px;position:relative}
+.item{position:relative;display:grid;grid-template-columns:230px 1fr;gap:22px;align-items:center;min-height:330px}
+.item-txt .num{font-family:var(--f-pixel);font-weight:700;font-size:58px;color:var(--amarelo);line-height:.9;display:block}
+.item-txt h3{font-family:var(--f-cond);font-weight:600;text-transform:uppercase;color:var(--branco);font-size:27px;letter-spacing:.01em;line-height:1.1;margin:4px 0 10px}
+.item-txt h3 small{font-size:inherit}
+.item-txt p{font-size:13.5px;color:var(--texto);margin-bottom:18px;max-width:210px;line-height:1.45}
+.item .midia{height:330px;position:relative}
+.item .midia .slot{width:100%;height:100%}
+.item .midia .slot:not(.empty) img{filter:drop-shadow(0 18px 30px rgba(0,0,0,.6))}
+.item:hover .midia .slot:not(.empty){transform:rotate(-1deg) scale(1.02)}
+.item .midia .slot{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.item .mao{font-size:18px}
+.i01 .mao{left:40px;bottom:-30px;transform:rotate(-14deg)}
+.i02 .mao{right:-30px;bottom:-26px;transform:rotate(10deg)}
+.i03 .mao{left:20px;bottom:-24px;transform:rotate(-12deg)}
+.i04 .mao{right:-10px;bottom:-30px;transform:rotate(-12deg)}
+.i05 .mao{left:20px;bottom:-34px;transform:rotate(-10deg)}
+.i02,.i04,.i06{margin-top:60px}
+.eixos{position:absolute;left:-20px;bottom:10px;width:60px;height:60px;color:var(--texto);opacity:.7}
+.prompt{
+  position:absolute;left:-30px;bottom:-12px;z-index:4;width:220px;background:#0b0811;border:1.5px solid var(--roxo);
+  font-family:var(--f-mono);font-size:12px;color:var(--branco);box-shadow:5px 5px 0 rgba(0,0,0,.6);
+}
+.prompt .barra{background:var(--roxo);height:14px;display:flex;align-items:center;gap:4px;padding:0 6px}
+.prompt .barra i{width:5px;height:5px;background:#0b0811;display:block}
+.prompt pre{white-space:pre-wrap;padding:10px 12px;font-family:inherit;line-height:1.45}
+.prompt .cursor{display:inline-block;width:7px;height:12px;background:var(--amarelo);vertical-align:-1px;animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:0}}
+.checks{position:absolute;right:-40px;bottom:30px;list-style:none;font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);font-size:18px;line-height:1.35}
+.checks li::before{content:"\2611  ";color:var(--roxo-claro)}
+.mapa{
+  position:absolute;left:30%;bottom:-20px;width:150px;height:78px;border:1.5px solid var(--branco);background:#0b0811;
+  font-family:var(--f-mono);font-size:9px;color:var(--branco);padding:4px 6px;z-index:3;
+}
+.mapa svg{position:absolute;inset:16px 8px 6px;width:calc(100% - 16px);height:calc(100% - 22px)}
+
+/* item 07: largura total */
+.i07{grid-column:1/-1;grid-template-columns:230px 1fr 290px;min-height:300px;margin-top:20px}
+.i07 .rede-wrap{position:relative;height:220px}
+.balao{
+  position:absolute;left:0;top:4px;z-index:3;background:var(--amarelo);color:#16101f;
+  font-family:var(--f-cond);font-weight:600;font-size:20px;line-height:1.1;padding:10px 16px;transform:rotate(-4deg);
+  box-shadow:4px 4px 0 #000;
+}
+.balao::after{content:"";position:absolute;left:24px;bottom:-14px;border:8px solid transparent;border-top-color:var(--amarelo);border-left-color:var(--amarelo)}
+.i07 .rede{position:absolute;left:150px;right:0;top:0;bottom:0}
+.i07-dir{position:relative;height:260px}
+.nota-papel{
+  position:absolute;right:30px;top:-10px;width:170px;padding:22px 16px;transform:rotate(5deg);z-index:2;
+  font-family:var(--f-mao);text-transform:uppercase;font-size:19px;color:#2a2036;line-height:1.15;text-align:center;
+  background:repeating-linear-gradient(transparent 0 23px,rgba(60,80,140,.18) 23px 24px),var(--papel);
+}
+.nota-papel .fita{top:-10px;left:50px;transform:rotate(-6deg)}
+.i07-dir .slot{position:absolute;right:0;bottom:0;width:200px;height:170px}
+.i07 .trilha{left:-40px;top:-40px;width:100%;height:120%}
+
+/* rede de ferramentas */
+.rede svg.linhas{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rede svg.linhas line{stroke:var(--roxo);stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.85}
+.no{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--branco);white-space:nowrap;z-index:2;transition:transform .2s}
+.no:hover{transform:translate(-50%,-50%) scale(1.12)}
+.no .slot{width:40px;height:40px}
+.no .slot:not(.empty){filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+
+/* ============================================================
+   CONHECIMENTO EM MODO MULTIPLAYER
+============================================================ */
+.multi{position:relative;padding:40px 0 70px}
+.multi-titulo{position:relative;display:inline-block;margin-left:-6px}
+.multi-titulo .titulo-pixel{font-size:clamp(70px,10.4vw,150px)}
+.multi-titulo .em-modo{
+  position:absolute;left:30%;bottom:-18px;background:var(--branco);color:#16101f;font-family:var(--f-cond);font-weight:700;
+  font-size:22px;padding:4px 12px;transform:rotate(-7deg);box-shadow:3px 3px 0 #000;z-index:2;
+}
+.multi-titulo .mp{
+  position:absolute;left:46%;bottom:-46px;font-family:var(--f-pixel);font-weight:700;color:var(--amarelo);
+  font-size:clamp(34px,4.4vw,62px);line-height:1;transform:rotate(-2deg);text-shadow:3px 3px 0 #000;z-index:2;
+}
+.multi-corpo{display:grid;grid-template-columns:250px 1fr 340px;gap:30px;align-items:center;margin-top:70px}
+.multi-corpo > p{color:var(--branco);font-size:17px;line-height:1.4;font-weight:500;align-self:start}
+.multi .rede{position:relative;height:250px}
+.ia-box{position:relative;padding:28px 34px;text-align:center}
+.ia-box::before,.ia-box::after{
+  content:"";position:absolute;top:0;bottom:0;width:22px;border:5px solid var(--amarelo);
+}
+.ia-box::before{left:0;border-right:0}
+.ia-box::after{right:0;border-left:0}
+.ia-box h3{font-family:var(--f-cond);font-weight:600;color:var(--amarelo);font-size:clamp(30px,2.8vw,40px);line-height:1.05;text-transform:uppercase;margin-bottom:12px}
+.ia-box p{font-size:13px;color:var(--texto);line-height:1.6}
+.multi .mao.n4{left:3%;bottom:40px;transform:rotate(-10deg)}
+.multi .mao.n5{right:3%;top:20px;transform:rotate(-8deg);text-align:center}
+.globo{position:absolute;right:16%;top:40px;width:110px;color:var(--roxo);opacity:.9}
+.multi .trilha{left:15%;top:-10px;width:80%;height:120px}
+
+/* ============================================================
+   PROJETO EM DESTAQUE: O COPO NÃO PAROU
+============================================================ */
+.copo{position:relative;margin:30px 0;padding:110px 0 120px;background:#14070a;color:#e8d9cf;overflow:hidden}
+.copo-fundo{position:absolute;inset:0;z-index:0}
+.copo-fundo img{object-fit:cover;opacity:.75}
+.copo-fundo.empty{inset:auto 48px 40px auto}
+.copo::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(70% 90% at 20% 50%,rgba(120,8,14,.55),transparent 70%),radial-gradient(40% 70% at 95% 50%,rgba(180,10,20,.35),transparent 70%)}
+.copo .wrap{position:relative;z-index:2;display:grid;grid-template-columns:440px 1fr;gap:30px;align-items:center;min-height:380px}
+.selo{display:inline-block;border:1.5px solid #cfc3b8;padding:4px 10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:#e8d9cf;transform:rotate(-3deg);margin-bottom:16px}
+.copo h2{font-family:var(--f-terror);font-weight:400;color:var(--vermelho);font-size:clamp(58px,5.6vw,86px);line-height:.95;white-space:nowrap;text-shadow:0 0 30px rgba(227,38,44,.45);margin-bottom:16px}
+.copo h2 span{display:block;padding-left:.25em}
+.copo p{font-size:15px;margin-bottom:22px;max-width:240px}
+.copo-col{position:relative;height:420px}
+.copo-col .slot{width:100%;height:100%}
+.copo-col .nota-papel{right:60px;top:auto;bottom:10px;width:190px;transform:rotate(-6deg);font-size:18px;color:#3a1c18;
+  background:linear-gradient(#e2d4bd,#cdbb9c)}
+.olho{position:absolute;width:90px;height:90px;border-radius:50%;border:3px solid rgba(227,38,44,.7);z-index:1;filter:blur(.6px);
+  box-shadow:0 0 30px rgba(227,38,44,.45),inset 0 0 18px rgba(227,38,44,.6)}
+
+/* ============================================================
+   CONTATO
+============================================================ */
+.contato{position:relative;padding:60px 0 0}
+.contato .wrap{display:grid;grid-template-columns:1fr 440px;gap:40px}
+.bora{position:relative}
+.bora .titulo-pixel{font-size:clamp(70px,9.6vw,140px);line-height:.85}
+.bora .juntos{font-family:var(--f-pixel);font-weight:700;color:var(--branco);font-size:clamp(40px,5.2vw,74px);line-height:1;margin:2px 0 0 26%;text-shadow:4px 4px 0 #000;white-space:nowrap}
+.bora .party{position:relative;display:inline-block;font-size:28px;transform:rotate(-8deg);margin:-10px 0 0 2%}
+.cursor-px{position:absolute;width:30px;color:var(--amarelo)}
+.cena{position:relative;height:300px;margin-top:10px}
+.cena .slot{width:100%;height:100%}
+.cena .slot img{object-fit:cover;object-position:center 40%;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent)}
+.fala{
+  position:absolute;left:41%;top:36%;z-index:3;background:var(--branco);color:var(--roxo-escuro);
+  font-size:13px;font-weight:500;line-height:1.25;padding:10px 16px;border-radius:18px;text-align:center;box-shadow:3px 3px 0 #000;cursor:pointer;
+}
+.fala::after{content:"";position:absolute;left:-8px;bottom:6px;border:7px solid transparent;border-right-color:var(--branco);transform:rotate(30deg)}
+.form{align-self:start;margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.form input,.form textarea{
+  width:100%;background:rgba(13,9,21,.6);border:1px solid #4a3a66;border-radius:3px;color:var(--branco);
+  font-family:inherit;font-size:14px;padding:10px 12px;outline:none;transition:border-color .2s;
+}
+.form textarea{height:90px;resize:vertical}
+.form input::placeholder,.form textarea::placeholder{color:var(--texto)}
+.form input:focus,.form textarea:focus{border-color:var(--amarelo)}
+.form .btn{align-self:flex-start;border:0;cursor:pointer;font-family:inherit;margin-top:6px}
+.cv{display:inline-flex;align-items:center;gap:10px;color:var(--branco);font-size:15px;margin-top:22px;border-bottom:1px solid var(--branco);align-self:flex-start;padding-bottom:2px}
+.cv:hover{color:var(--amarelo);border-color:var(--amarelo)}
+.redes{display:flex;gap:40px;margin-top:30px}
+.redes a{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--branco);border-bottom:1px solid var(--branco);padding-bottom:2px}
+.redes a:hover{color:var(--amarelo);border-color:var(--amarelo)}
+.redes svg{width:20px;height:20px}
+.form-ok{font-family:var(--f-mono);font-size:13px;color:var(--amarelo);min-height:18px}
+
+/* ============================================================
+   RODAPÉ
+============================================================ */
+.rodape{position:relative;padding:26px 0 30px;border-top:1px solid rgba(143,77,255,.18)}
+.rodape .wrap{display:flex;align-items:center;gap:28px}
+.rodape .logo{font-size:26px;color:var(--branco)}
+.rodape .nome{color:var(--roxo-claro);font-weight:500}
+.rodape small{font-size:13px;color:var(--apagado)}
+.rodape .feito{margin-left:auto;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--texto)}
+.rodape .feito b{color:var(--roxo-claro);font-weight:400}
+
+/* ============================================================
+   RESPONSIVO
+============================================================ */
+@media (max-width:1100px){
+  .wrap{padding:0 28px}
+  .sobre .wrap{grid-template-columns:1fr 1fr;row-gap:40px}
+  .retrato{justify-self:center}
+  .grade{grid-template-columns:1fr}
+  .i02,.i04,.i06{margin-top:0}
+  .i07{grid-template-columns:230px 1fr}
+  .i07-dir{grid-column:1/-1}
+  .multi-corpo{grid-template-columns:1fr}
+  .multi .rede{height:260px}
+  .contato .wrap{grid-template-columns:1fr}
+  .checks{right:0}
+}
+@media (max-width:720px){
+  body{font-size:14px}
+  .wrap{padding:0 16px}
+  .nav-l{gap:22px}.nav-l ul{gap:18px;font-size:14px}
+  .coord{display:none}
+  .hero{margin-top:0}
+  .hero .wrap{height:auto;display:flex;flex-direction:column;padding-top:20px;padding-bottom:40px}
+  .titulo-italo{position:relative;left:0;top:0;font-size:25vw}
+  .port .titulo-pixel{font-size:16vw}
+  .i07 .trilha{display:none}
+  .bora .party{margin-top:14px;font-size:24px}
+  .hero-personagem{position:relative;left:0;top:0;width:100%;height:380px;margin-top:-60px}
+  .hero .hero-fundo{display:none!important}
+  .player{position:relative;right:auto;top:auto;align-self:flex-end;margin-top:-30px}
+  .cunha{position:relative;right:auto;top:auto;align-self:flex-end;font-size:19vw;margin-top:6px}
+  .hero-txt{position:relative;left:0;bottom:auto;margin-top:28px}
+  .hero .mao,.hero .coroa,.hero .trilha,.lua{display:none}
+  .sobre .wrap{grid-template-columns:1fr}
+  .icones{max-width:300px}
+  .sobre .mao.n3{display:none}
+  .port-cab .rotulo{position:static;display:block;text-align:left;margin-bottom:10px}
+  .port-cab .mao{display:none}
+  .item,.i07{grid-template-columns:1fr;min-height:0}
+  .item .midia{height:280px}
+  .item .mao,.checks,.eixos{display:none}
+  .prompt{left:0;bottom:-30px}
+  .mapa{display:none}
+  .i07 .rede-wrap{height:auto;display:flex;flex-direction:column;gap:20px}
+  .balao{position:relative;align-self:flex-start}
+  .i07 .rede,.multi .rede{position:relative;left:0;height:240px}
+  .i07-dir{height:300px}
+  .multi-titulo{margin-left:0}
+  .multi-titulo .titulo-pixel{font-size:13vw}
+  .multi-titulo .mp{font-size:8vw;bottom:-36px;left:34%}
+  .multi-titulo .em-modo{font-size:16px;left:12%}
+  .multi .mao,.globo{display:none}
+  .no{font-size:11px}.no .slot{width:32px;height:32px}
+  .copo .wrap{grid-template-columns:1fr}
+  .copo-col{height:320px}
+  .bora .juntos{margin-left:0;white-space:normal;font-size:12vw}
+  .bora .titulo-pixel{font-size:18vw}
+  .fala{left:auto;right:6%}
+  .redes{gap:20px;flex-wrap:wrap}
+  .rodape .wrap{flex-wrap:wrap;gap:10px 20px}
+  .rodape .feito{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ---------- MULTIPLAYER v2: título em imagem, textos e cards ---------- */
+.multi{padding:30px 0 90px}
+.mt-titulo{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.mt-titulo img{width:100%;height:auto;filter:drop-shadow(0 10px 30px rgba(143,77,255,.35));animation:flutua 6s ease-in-out infinite}
+@keyframes flutua{50%{transform:translateY(-8px) rotate(-.4deg)}}
+.mt-intro{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;margin:40px 0 70px;padding-right:150px}
+.mt-txt .rotulo{display:block;margin-bottom:10px}
+.mt-txt .lead{color:var(--branco);font-size:20px;line-height:1.4;font-weight:500;margin-bottom:16px}
+.mt-txt p{font-size:15px;color:var(--texto);margin-bottom:12px;max-width:560px}
+.mt-passos{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-self:center}
+.mt-passos li{display:flex;gap:12px;padding:14px 16px;border:1.5px solid rgba(143,77,255,.5);background:rgba(20,13,32,.7);position:relative;transition:border-color .2s,transform .2s}
+.mt-passos li:hover{border-color:var(--amarelo);transform:translateY(-3px)}
+.mt-passos li::before,.mt-passos li::after{content:"";position:absolute;width:8px;height:8px;background:var(--amarelo)}
+.mt-passos li::before{left:-4px;top:-4px}.mt-passos li::after{right:-4px;bottom:-4px}
+.mt-passos b{font-family:var(--f-pixel);font-size:28px;color:var(--amarelo);line-height:1}
+.mt-passos h4{font-family:var(--f-cond);text-transform:uppercase;letter-spacing:.03em;font-size:19px;color:var(--branco);font-weight:700;margin-bottom:2px}
+.mt-passos p{font-size:13px;color:var(--texto);line-height:1.4}
+.mt-intro .mao.n5{right:0;top:0;left:auto}
+.inv-cab{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;border-bottom:1px dashed rgba(143,77,255,.4);padding-bottom:10px}
+.inv-dica{font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--amarelo);font-size:16px;animation:pisca 1.4s steps(1) infinite}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 26px;perspective:900px}
+.cards.duplas{grid-template-columns:repeat(2,1fr);margin-top:22px}
+.cards.ia{grid-template-columns:1fr;margin-top:22px;max-width:1100px;margin-left:auto;margin-right:auto}
+.card{
+  all:unset;cursor:pointer;position:relative;display:block;border-radius:8px;
+  transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;
+  --rx:0deg;--ry:0deg;transform:rotateX(var(--rx)) rotateY(var(--ry));
+  opacity:0;translate:0 40px;scale:.92;
+}
+.card.in{opacity:1;translate:0 0;scale:1;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s,opacity .6s,translate .7s cubic-bezier(.2,1.4,.4,1),scale .7s cubic-bezier(.2,1.4,.4,1)}
+.card img{width:100%;height:auto;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.card::after{ /* brilho que passa por cima */
+  content:"";position:absolute;inset:3%;pointer-events:none;border-radius:6px;opacity:0;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 45%,rgba(255,210,58,.18) 52%,transparent 65%);
+  background-size:250% 100%;background-position:120% 0;
+}
+.card:hover,.card:focus-visible{filter:drop-shadow(0 0 18px rgba(143,77,255,.65)) drop-shadow(0 16px 24px rgba(0,0,0,.6));z-index:2}
+.card:hover::after,.card:focus-visible::after{opacity:1;animation:reflexo 1.1s ease forwards}
+@keyframes reflexo{to{background-position:-60% 0}}
+.card:focus-visible{outline:2px dashed var(--amarelo);outline-offset:6px}
+.card.toque{animation:coleta .55s cubic-bezier(.2,1.6,.4,1)}
+@keyframes coleta{0%{scale:1}25%{scale:.94}60%{scale:1.05}100%{scale:1}}
+.card.toque::after{opacity:1;animation:reflexo .7s ease forwards}
+.px{position:absolute;width:10px;height:10px;pointer-events:none;z-index:5;animation:explode .7s cubic-bezier(.1,.8,.3,1) forwards}
+@keyframes explode{to{transform:translate(var(--dx),var(--dy)) rotate(90deg);opacity:0}}
+.xp{position:absolute;z-index:6;pointer-events:none;font-family:var(--f-pixel);font-weight:700;font-size:20px;color:var(--amarelo);text-shadow:2px 2px 0 #000;animation:sobe .9s ease-out forwards;white-space:nowrap}
+@keyframes sobe{from{transform:translate(-50%,0)}to{transform:translate(-50%,-60px);opacity:0}}
+.multi .mao.n4{left:0;bottom:120px;width:150px}
+@media (max-width:1560px){.multi .mao.n4{display:none}}
+
+@media (max-width:1100px){
+  .mt-intro{grid-template-columns:1fr;padding-right:0;gap:30px}
+  .mt-intro .mao.n5{display:none}
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .cards,.cards.duplas{grid-template-columns:1fr;gap:16px}
+  .mt-passos{grid-template-columns:1fr}
+  .mt-txt .lead{font-size:18px}
+  .inv-dica{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){.card{opacity:1;translate:none;scale:none}}
+</style>
+</head>
+<body>
+
+<!-- ======================= SVG: filtros e ícones reutilizáveis ======================= -->
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter>
+    <filter id="rough-forte"><feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+    <symbol id="star" viewBox="0 0 40 40"><path fill="currentColor" d="M20 0c1.2 10.5 4.5 15.4 20 20-15.5 4.6-18.8 9.5-20 20-1.2-10.5-4.5-15.4-20-20C15.5 15.4 18.8 10.5 20 0z"/></symbol>
+    <symbol id="coroa" viewBox="0 0 40 28"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M3 24 6 5l9 10 5-12 5 12 9-10 3 19z"/></symbol>
+    <symbol id="seta" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 12 12 4M5 4h7v7"/></symbol>
+  </defs>
+</svg>
+
+<!-- ======================= NAV ======================= -->
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-l">
+      <a href="#topo" class="logo">IC</a>
+      <ul>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="coord">
+      <svg class="star" style="left:-46px;top:4px"><use href="#star"/></svg>
+      <b>CRIADOR MULTICLASSE</b>
+      <span>-26.9906° S</span>
+      <span>-48.6348° W</span>
+      <svg class="star" style="right:-40px;top:36px;animation-delay:-1.4s"><use href="#star"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="topo">
+  <div class="wrap">
+    <!-- fundo: cidade/noite (opcional) -->
+    <div class="slot hero-fundo" data-label="assets/hero-fundo.jpg  (cidade à noite)"><img src="assets/hero-fundo.jpg" alt=""></div>
+    <div class="lua"></div>
+
+    <h2 class="titulo-italo rough" aria-hidden="true">ITALLO</h2>
+
+    <!-- personagem sentado (PNG com fundo transparente) -->
+    <div class="slot hero-personagem" data-label="assets/hero-personagem.png  (personagem + gatos, fundo transparente)"><img src="assets/hero-personagem.png" alt="Ilustração de Itallo sentado sobre um muro, com fones de ouvido e dois gatos pretos"></div>
+
+    <span class="player">PLAYER 01</span>
+    <div class="cunha">CUNHA</div>
+
+    <div class="hero-txt">
+      <h1>Design, jogos e conhecimento<br>em constante criação.</h1>
+      <p>Game Designer · Designer Gráfico · Instrutor</p>
+      <a href="#portfolio" class="btn">Explorar meu universo <svg><use href="#seta"/></svg></a>
+    </div>
+
+    <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
+    <p class="mao n1">Arte<br>jogos<br>ideias<br>pessoas<br>sempre</p>
+    <p class="mao n2">Aqui<br>também<br>se cria<br>o amanhã<br>☺</p>
+
+    <svg class="star" style="left:48%;top:6%"><use href="#star"/></svg>
+    <svg class="star p" style="left:56%;top:18%;animation-delay:-.8s"><use href="#star"/></svg>
+    <svg class="star p roxa" style="right:6%;top:24%;animation-delay:-2s"><use href="#star"/></svg>
+    <svg class="star" style="right:20%;bottom:32%;animation-delay:-1.2s"><use href="#star"/></svg>
+    <svg class="trilha" viewBox="0 0 800 120" preserveAspectRatio="none"><path d="M0 110 C120 60 200 100 300 70 S480 60 560 40 S700 20 800 0"/></svg>
+  </div>
+</section>
+
+<!-- ======================= SOBRE ======================= -->
+<section class="sobre" id="sobre">
+  <svg class="trilha" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M560 60 C700 10 900 40 1050 20"/><path d="M0 115 C200 110 300 90 420 112 S700 120 900 100"/></svg>
+  <div class="wrap">
+    <div class="icones rv">
+      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M10 38l3-11L33 7l8 8-20 20-11 3z"/><path d="M29 11l8 8M13 27l8 8"/></svg>DESENHO</div>
+      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14 5 24l10 10M33 14l10 10-10 10M28 9l-8 30"/></svg>CÓDIGO</div>
+      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M14 14h20c6 0 9 6 10 14s-1 10-4 10c-4 0-6-6-9-6H17c-3 0-5 6-9 6-3 0-5-2-4-10s4-14 10-14z" fill="#b98bff" fill-opacity=".55"/><path d="M14 21v8M10 25h8" stroke-linecap="round"/><circle cx="32" cy="23" r="1.6" fill="currentColor"/><circle cx="36" cy="27" r="1.6" fill="currentColor"/></svg>JOGOS</div>
+      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M24 5 41 14v20L24 43 7 34V14z"/><path d="M7 14l17 9 17-9M24 23v20"/></svg>IDEIAS</div>
+    </div>
+
+    <div class="sobre-titulo rv">
+      <span class="rotulo">Sobre</span>
+      <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
+      <h2 class="rough-forte"><em>Ideias</em> em<br>movimento</h2>
+    </div>
+
+    <div class="sobre-txt rv">
+      <p class="lead">Conecto arte, tecnologia e ensino para criar experiências visuais e interativas.</p>
+      <p>Sou Itallo Cunha, um criativo movido por jogos, design e pelo desejo de compartilhar conhecimento. Aqui você encontra um pouco da minha jornada e tudo o que gosto de criar, explorar e ensinar.</p>
+    </div>
+
+    <div class="retrato rv">
+      <div class="slot torn" data-label="assets/sobre-retrato.png  (retrato P&amp;B)"><img src="assets/sobre-retrato.png" alt="Retrato de Itallo Cunha"></div>
+      <p class="mao n3">Mesma<br>curiosidade<br>de sempre<br>só que<br>mais longe</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PORTFÓLIO ======================= -->
+<section class="port" id="portfolio">
+  <div class="wrap">
+    <div class="port-cab">
+      <span class="rotulo">Portfólio</span>
+      <svg class="trilha" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 70 C120 80 200 60 300 64"/><path d="M1180 70 C1260 40 1340 30 1440 10"/></svg>
+      <svg class="star" style="left:9%;top:58px"><use href="#star"/></svg>
+      <svg class="star p" style="left:12%;top:100px;animation-delay:-1s"><use href="#star"/></svg>
+      <h2 class="titulo-pixel rough">PORTFÓLIO</h2>
+      <p class="mao">Diferentes<br>disciplinas<br>um mesmo<br>universo</p>
+    </div>
+
+    <div class="grade">
+      <!-- 01 -->
+      <article class="item i01 rv">
+        <div class="item-txt">
+          <span class="num">01</span>
+          <h3>Ilustração</h3>
+          <p>Personagens, conceitos e mundos que ganham vida no papel e no digital.</p>
+          <a href="ilustracao.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia"><div class="slot" data-label="assets/port-01-ilustracao.png"><img src="assets/port-01-ilustracao.png" alt="Ilustrações de personagens"></div></div>
+        <p class="mao">Personagens<br>contam<br>histórias</p>
+      </article>
+
+      <!-- 02 -->
+      <article class="item i02 rv">
+        <div class="item-txt">
+          <span class="num">02</span>
+          <h3>Design gráfico</h3>
+          <p>Identidade visual, cartazes, editoriais e projetos criativos para diferentes contextos.</p>
+          <a href="design-grafico.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia"><div class="slot" data-label="assets/port-02-design.png"><img src="assets/port-02-design.png" alt="Cartazes e peças de design gráfico"></div></div>
+        <p class="mao">Conceito<br>tipografia<br>cor<br>comunicação</p>
+      </article>
+
+      <!-- 03 -->
+      <article class="item i03 rv">
+        <div class="item-txt">
+          <span class="num">03</span>
+          <h3>Pixel art</h3>
+          <p>Cenários, personagens e animações em estilo retrô.</p>
+          <a href="pixel-art.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia"><div class="slot" data-label="assets/port-03-pixelart.png"><img src="assets/port-03-pixelart.png" alt="Ilha flutuante e personagens em pixel art" style="image-rendering:pixelated"></div></div>
+        <p class="mao">Pequenos<br>pixels<br>grandes<br>aventuras</p>
+      </article>
+
+      <!-- 04 -->
+      <article class="item i04 rv">
+        <div class="item-txt">
+          <span class="num">04</span>
+          <h3>Modelagem 3D</h3>
+          <p>Objetos, cenários e personagens para jogos e projetos visuais.</p>
+          <a href="modelagem-3d.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia">
+          <svg class="eixos" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 40V8M20 40l30 8M20 40 6 52"/><text x="16" y="6" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Y</text><text x="52" y="52" font-size="8" fill="currentColor" stroke="none" font-family="monospace">X</text><text x="2" y="58" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Z</text></svg>
+          <div class="slot" data-label="assets/port-04-3d.png"><img src="assets/port-04-3d.png" alt="Baú modelado em 3D e wireframe"></div>
+        </div>
+        <p class="mao">Do<br>conceito<br>ao modelo</p>
+      </article>
+
+      <!-- 05 -->
+      <article class="item i05 rv">
+        <div class="item-txt">
+          <span class="num">05</span>
+          <h3>IA</h3>
+          <p>Exploração criativa com inteligência artificial para imagens, vídeos, sons e mais.</p>
+          <a href="ia.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia">
+          <div class="slot" data-label="assets/port-05-ia.png"><img src="assets/port-05-ia.png" alt="Colagem surrealista feita com IA"></div>
+          <div class="prompt"><div class="barra"><i></i><i></i><i></i></div><pre>// prompt:
+um mundo imaginário
+em estilo colagem
+surrealista, com tons
+roxo e amarelo
+--ar 16:9 --v 6 <span class="cursor"></span></pre></div>
+        </div>
+        <p class="mao">Mais<br>ferramentas<br>mais<br>possibilidades</p>
+      </article>
+
+      <!-- 06 -->
+      <article class="item i06 rv">
+        <div class="item-txt">
+          <span class="num">06</span>
+          <h3>Projeto de jogos</h3>
+          <p>Do conceito ao protótipo, explorando mecânicas, narrativas e experiências interativas.</p>
+          <a href="jogos.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="midia">
+          <div class="slot" data-label="assets/port-06-jogos.png"><img src="assets/port-06-jogos.png" alt="Cena de jogo em pixel art" style="image-rendering:pixelated"></div>
+          <div class="mapa">MAPA DO NÍVEL
+            <svg viewBox="0 0 130 50" fill="none" stroke="#f4effb" stroke-width="1.2"><path d="M4 8h30v14h20V6h30v20h-18v18H40V30H4zM84 26h20v-16h20v34H66"/></svg>
+          </div>
+        </div>
+        <ul class="checks"><li>Explorar</li><li>Resolver</li><li>Descobrir</li><li>Evoluir</li></ul>
+      </article>
+
+      <!-- 07 -->
+      <article class="item i07 rv">
+        <svg class="trilha" viewBox="0 0 1000 300" preserveAspectRatio="none"><path d="M40 0 C0 80 20 200 120 250 S400 290 520 240"/></svg>
+        <div class="item-txt">
+          <span class="num">07</span>
+          <h3>Ensino</h3>
+          <p>Compartilho conhecimento para ajudar novas pessoas a criarem seus próprios mundos.</p>
+          <a href="ensino.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
+        </div>
+        <div class="rede-wrap">
+          <div class="balao">Aprender.<br>Criar.<br>Compartilhar.</div>
+          <div class="rede" data-rede="ensino"></div>
+        </div>
+        <div class="i07-dir">
+          <div class="nota-papel papel"><span class="fita"></span>Criatividade<br>também<br>se ensina</div>
+          <div class="slot" data-label="assets/port-07-ensino.png"><img src="assets/port-07-ensino.png" alt="Personagem lendo um livro"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONHECIMENTO EM MODO MULTIPLAYER ======================= -->
+<section class="multi" id="aulas">
+  <svg class="trilha" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M0 4 C200 20 400 40 600 60 S900 110 1000 100"/></svg>
+  <div class="wrap">
+    <h2 class="mt-titulo rv"><img src="assets/titulo-multiplayer.png" alt="Conhecimento em modo multiplayer" width="1600" height="380"></h2>
+
+    <svg class="star" style="left:2%;top:120px"><use href="#star"/></svg>
+    <svg class="star p" style="left:5%;top:170px;animation-delay:-.7s"><use href="#star"/></svg>
+    <svg class="star" style="right:4%;top:60px;animation-delay:-1.6s"><use href="#star"/></svg>
+    <svg class="coroa" viewBox="0 0 40 28" style="right:4%;top:470px"><use href="#coroa"/></svg>
+
+    <div class="mt-intro">
+      <div class="mt-txt rv">
+        <span class="rotulo">Minhas aulas</span>
+        <p class="lead">Nas aulas que conduzo, conecto programação, arte e criação de jogos para que cada aluno saia do papel de jogador e vire criador.</p>
+        <p>Ensino crianças, adolescentes e iniciantes a transformar ideias em projetos de verdade. A gente começa jogando, entende como as coisas funcionam por dentro e fecha cada etapa com algo feito pelo próprio aluno: um personagem, uma fase, um jogo inteiro.</p>
+        <p>Cada ferramenta entra quando faz sentido. Blocos para quem está começando, código para quem quer ir mais fundo, engines para quem já pensa em fases e mecânicas, e IA como apoio criativo, nunca como atalho.</p>
+      </div>
+      <ol class="mt-passos rv">
+        <li><b>01</b><div><h4>Jogar</h4><p>Analisamos um jogo e descobrimos o que faz ele ser divertido.</p></div></li>
+        <li><b>02</b><div><h4>Entender</h4><p>Lógica, arte e design explicados com exemplos práticos.</p></div></li>
+        <li><b>03</b><div><h4>Criar</h4><p>Cada aluno constrói a sua própria versão, do jeito dele.</p></div></li>
+        <li><b>04</b><div><h4>Compartilhar</h4><p>Apresentamos, testamos o jogo dos colegas e melhoramos juntos.</p></div></li>
+      </ol>
+      <p class="mao n5">Aprender<br>criar<br>colaborar<br>evoluir<br>sempre</p>
+    </div>
+
+    <div class="inv-cab rv">
+      <span class="rotulo">Inventário de ferramentas</span>
+      <span class="inv-dica">toque em um card ▸</span>
+    </div>
+
+    <div class="cards">
+      <button class="card" type="button" data-tipo="python"><img src="assets/cards/python.png" width="637" height="359" alt="Python: fundamentos da programação com exemplos práticos. Variáveis, condições e laços, lógica." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="pixel"><img src="assets/cards/pixel.png" width="599" height="359" alt="Pixel Art: criação de imagens em pixels. Paletas, personagens, cenários." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="level"><img src="assets/cards/level.png" width="636" height="359" alt="Level Design: construir fases e organizar desafios. Fluxo de jogo, progressão, desafios." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="gdevelop"><img src="assets/cards/gdevelop.png" width="637" height="371" alt="GDevelop: jogos com eventos e lógica visual. Eventos, interações, prototipagem." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="unity"><img src="assets/cards/unity.png" width="599" height="370" alt="Unity: criação de jogos, cenas, objetos e comportamentos. Cenas, objetos, mecânicas." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="godot"><img src="assets/cards/godot.png" width="636" height="370" alt="Godot: jogos com cenas e nós. Cenas e nós, lógica, interações." loading="lazy"></button>
+    </div>
+    <div class="cards duplas">
+      <button class="card" type="button" data-tipo="scratch"><img src="assets/cards/scratch.png" width="820" height="355" alt="Scratch: programação em blocos com jogos, animações e projetos interativos." loading="lazy"></button>
+      <button class="card" type="button" data-tipo="canva"><img src="assets/cards/canva.png" width="820" height="353" alt="Canva: artes gráficas e comunicação visual. Composição, apresentações, materiais gráficos." loading="lazy"></button>
+    </div>
+    <div class="cards ia">
+      <button class="card" type="button" data-tipo="ia"><img src="assets/cards/ia.png" width="1600" height="569" alt="Inteligência Artificial: criação assistida por IA. Engenharia de prompt, vídeos e personagens, sites, aplicativos, sons e músicas." loading="lazy"></button>
+    </div>
+
+    <p class="mao n4">Ideias<br>ganham<br>mais sentido<br>quando<br>compartilhadas.</p>
+  </div>
+</section>
+
+<!-- ======================= PROJETO EM DESTAQUE ======================= -->
+<section class="copo torn-y" id="projeto">
+  <div class="slot copo-fundo" data-label="assets/copo-fundo.jpg  (fundo sombrio, opcional)"><img src="assets/copo-fundo.jpg" alt=""></div>
+  <span class="olho" style="left:31%;top:150px"></span>
+  <div class="wrap">
+    <div class="rv">
+      <span class="selo">PROJETO EM DESTAQUE</span>
+      <h2 class="rough">O Copo<span>Não Parou</span></h2>
+      <p>Jogo físico de investigação e terror sobrenatural.</p>
+      <a href="#" class="btn">Conhecer o projeto <svg><use href="#seta"/></svg></a>
+    </div>
+    <div class="copo-col rv">
+      <div class="slot" data-label="assets/copo-colagem.png  (caixa, fichas, fotos, relatório)"><img src="assets/copo-colagem.png" alt="Componentes do jogo O Copo Não Parou"></div>
+      <div class="nota-papel">Algumas<br>verdades<br>não deveriam<br>ser descobertas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTATO ======================= -->
+<section class="contato" id="contato">
+  <div class="wrap">
+    <div class="bora rv">
+      <h2 class="titulo-pixel rough">BORA CRIAR</h2>
+      <p class="juntos">ALGO JUNTOS?</p>
+      <p class="mao amarela party">Vamos formar<br>uma party?</p>
+      <svg class="cursor-px" viewBox="0 0 16 20" style="left:22%;top:calc(100% - 320px)"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
+      <svg class="cursor-px" viewBox="0 0 16 20" style="right:4%;top:110px;width:26px"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
+      <div class="cena">
+        <div class="slot" data-label="assets/contato-cena.png  (personagem no pôr do sol)"><img src="assets/contato-cena.png" alt="Itallo sentado observando a cidade ao entardecer"></div>
+        <a href="#contato-form" class="fala">Pergunte<br>sobre o Itallo :)</a>
+      </div>
+    </div>
+
+    <form class="form rv" id="contato-form" action="mailto:itallocunha19999@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+      <button class="btn" type="submit">Enviar mensagem <svg><use href="#seta"/></svg></button>
+      <span class="form-ok" aria-live="polite"></span>
+      <a class="cv" href="assets/curriculo-itallo-cunha.pdf" download>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
+        Baixar currículo</a>
+      <div class="redes">
+        <a href="https://linkedin.com/in/itallo-cunha" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3zm4 7v8h2.5v-8zm1.25-4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8zM11 10v8h2.5v-4.2c0-1.1.6-1.8 1.5-1.8s1.4.6 1.4 1.8V18H19v-4.8c0-2.4-1.2-3.4-3-3.4-1.2 0-2 .6-2.5 1.2V10z"/></svg>LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3zm3 5v8h4.2c1.8 0 2.8-.9 2.8-2.3 0-1-.6-1.7-1.4-1.9.6-.3 1-.9 1-1.6C12.6 8.8 11.7 8 10 8zm1.8 1.4h1.9c.7 0 1 .3 1 .9s-.4.9-1 .9H7.8zm0 3.1h2.1c.8 0 1.2.4 1.2 1s-.4 1-1.2 1H7.8zM14 9v1h4V9zm2.1 2c-1.7 0-2.6 1.2-2.6 2.6 0 1.6 1 2.6 2.7 2.6 1.3 0 2.1-.6 2.4-1.6h-1.4c-.2.4-.5.6-1 .6-.7 0-1.1-.4-1.2-1.2h3.7c.2-1.8-.8-3-2.6-3zm0 1.1c.6 0 1 .4 1 1h-2.1c.1-.6.5-1 1.1-1z"/></svg>Behance</a>
+        <a href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <span class="logo">IC</span>
+    <span class="nome">Itallo Cunha</span>
+    <small>Design, jogos e conhecimento em constante criação.</small>
+    <span class="feito">FEITO COM PIXELS, IDEIAS E CAFÉ <b>&lt;3</b></span>
+  </div>
+</footer>
+
+<script>
+/* ---------- 1. Espaços de imagem: mostra o placeholder se o arquivo ainda não existe ---------- */
+function prepararSlot(slot){
+  const img = slot.querySelector('img');
+  if(!img){ slot.classList.add('empty'); return; }
+  const vazio = () => { slot.classList.add('empty'); img.remove(); };
+  if(img.complete && img.naturalWidth === 0) vazio();
+  else img.addEventListener('error', vazio);
+}
+
+/* ---------- 2. Rede de ferramentas (usada no item 07 e na seção multiplayer) ---------- */
+const FERRAMENTAS = {
+  python:  {nome:'Python',       sigla:'Py'},
+  pixel:   {nome:'Pixel Art',    sigla:'PX'},
+  level:   {nome:'Level Design', sigla:'LD'},
+  gdevelop:{nome:'GDevelop',     sigla:'GD'},
+  unity:   {nome:'Unity',        sigla:'U'},
+  godot:   {nome:'Godot',        sigla:'Gd'},
+  scratch: {nome:'Scratch',      sigla:'Sc'},
+  canva:   {nome:'Canva',        sigla:'Cv'}
+};
+const REDES = {
+  ensino: {
+    nos: {python:[18,22], pixel:[50,18], level:[80,20], gdevelop:[5,72], unity:[28,75], godot:[45,85], scratch:[66,80], canva:[88,76]},
+    linhas: [['python','pixel'],['pixel','level'],['python','godot'],['pixel','unity'],['pixel','scratch'],['level','canva'],['python','gdevelop'],['unity','godot'],['level','scratch']]
+  },
+  multi: {
+    nos: {python:[22,30], pixel:[48,26], level:[76,30], gdevelop:[6,78], unity:[26,80], godot:[45,82], scratch:[66,84], canva:[88,82]},
+    linhas: [['python','pixel'],['pixel','level'],['python','godot'],['python','scratch'],['pixel','unity'],['pixel','gdevelop'],['level','scratch'],['level','canva'],['gdevelop','python'],['godot','level'],['canva','ia']],
+    extra: {ia:[106,60]}
+  }
+};
+function montarRede(el){
+  const cfg = REDES[el.dataset.rede];
+  const pos = Object.assign({}, cfg.nos, cfg.extra || {});
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns,'svg');
+  svg.setAttribute('class','linhas'); svg.setAttribute('viewBox','0 0 100 100'); svg.setAttribute('preserveAspectRatio','none');
+  cfg.linhas.forEach(([a,b])=>{
+    const l = document.createElementNS(ns,'line');
+    l.setAttribute('x1',pos[a][0]); l.setAttribute('y1',pos[a][1]);
+    l.setAttribute('x2',pos[b][0]); l.setAttribute('y2',pos[b][1]);
+    svg.appendChild(l);
+  });
+  el.appendChild(svg);
+  Object.entries(cfg.nos).forEach(([id,[x,y]])=>{
+    const f = FERRAMENTAS[id];
+    const no = document.createElement('div');
+    no.className = 'no'; no.style.left = x+'%'; no.style.top = y+'%';
+    no.innerHTML = `<div class="slot icone" data-sigla="${f.sigla}"><img src="assets/icones/${id}.png" alt=""></div><span>${f.nome}</span>`;
+    el.appendChild(no);
+  });
+}
+document.querySelectorAll('[data-rede]').forEach(montarRede);
+document.querySelectorAll('.slot').forEach(prepararSlot);
+
+/* ---------- 3. Papel rasgado (bordas irregulares geradas) ---------- */
+function rasgar(el, lados = 'tlbr', amp = 7){
+  const pts = [], passo = 2.5, j = () => (Math.random()*amp).toFixed(1);
+  for(let x=0;x<=100;x+=passo) pts.push(lados.includes('t') ? `${x}% ${j()}px` : `${x}% 0`);
+  for(let y=0;y<=100;y+=passo) pts.push(lados.includes('r') ? `calc(100% - ${j()}px) ${y}%` : `100% ${y}%`);
+  for(let x=100;x>=0;x-=passo) pts.push(lados.includes('b') ? `${x}% calc(100% - ${j()}px)` : `${x}% 100%`);
+  for(let y=100;y>=0;y-=passo) pts.push(lados.includes('l') ? `${j()}px ${y}%` : `0 ${y}%`);
+  el.style.clipPath = `polygon(${pts.join(',')})`;
+}
+document.querySelectorAll('.torn').forEach(el=>rasgar(el));
+document.querySelectorAll('.papel').forEach(el=>rasgar(el,'tlbr',3));
+document.querySelectorAll('.torn-y').forEach(el=>rasgar(el,'tb',28));
+
+/* ---------- 4. Revelar ao rolar ---------- */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---------- 5. Parallax leve no hero ---------- */
+const personagem = document.querySelector('.hero-personagem'), titulo = document.querySelector('.titulo-italo');
+if(matchMedia('(min-width:721px) and (prefers-reduced-motion:no-preference)').matches){
+  addEventListener('mousemove', e=>{
+    const dx = (e.clientX/innerWidth - .5), dy = (e.clientY/innerHeight - .5);
+    personagem.style.transform = `translate(${dx*-14}px,${dy*-8}px)`;
+    titulo.style.transform = `translate(${dx*10}px,${dy*6}px)`;
+  });
+}
+
+/* ---------- 6. Formulário (abre o e-mail com a mensagem) ---------- */
+document.getElementById('contato-form').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f = e.target, assunto = encodeURIComponent('Contato pelo portfólio: ' + f.nome.value);
+  const corpo = encodeURIComponent(`${f.mensagem.value}\n\n${f.nome.value} · ${f.email.value}`);
+  location.href = `mailto:itallocunha19999@gmail.com?subject=${assunto}&body=${corpo}`;
+  f.querySelector('.form-ok').textContent = '> mensagem pronta no seu e-mail. Party formada!';
+});
+
+/* ---------- 7. Cards do inventário: entrada, inclinação 3D e "coleta" ao tocar ---------- */
+const XP = {python:'+1 LÓGICA',pixel:'+1 ARTE',level:'+1 DESIGN',gdevelop:'+1 EVENTOS',unity:'+1 ENGINE',godot:'+1 NÓS',scratch:'+1 BLOCOS',canva:'+1 VISUAL',ia:'+1 CRIATIVIDADE'};
+const ioCards = new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  const irmaos=[...e.target.parentNode.children]; 
+  setTimeout(()=>e.target.classList.add('in'), irmaos.indexOf(e.target)*110);
+  ioCards.unobserve(e.target);
+}),{threshold:.2});
+document.querySelectorAll('.card').forEach(card=>{
+  ioCards.observe(card);
+  if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      card.style.setProperty('--ry',(x*12)+'deg'); card.style.setProperty('--rx',(-y*10)+'deg');
+    });
+    card.addEventListener('pointerleave',()=>{card.style.setProperty('--ry','0deg');card.style.setProperty('--rx','0deg')});
+  }
+  card.addEventListener('click',e=>{
+    card.classList.remove('toque'); void card.offsetWidth; card.classList.add('toque');
+    const r=card.getBoundingClientRect();
+    const cx=(e.clientX||r.left+r.width/2)-r.left, cy=(e.clientY||r.top+r.height/2)-r.top;
+    for(let i=0;i<14;i++){
+      const p=document.createElement('i'); p.className='px';
+      const ang=Math.random()*Math.PI*2, d=40+Math.random()*70;
+      p.style.left=cx+'px'; p.style.top=cy+'px';
+      p.style.background=i%3?'var(--amarelo)':'var(--roxo)';
+      p.style.setProperty('--dx',Math.cos(ang)*d+'px'); p.style.setProperty('--dy',Math.sin(ang)*d+'px');
+      card.appendChild(p); setTimeout(()=>p.remove(),750);
+    }
+    const t=document.createElement('span'); t.className='xp'; t.textContent=XP[card.dataset.tipo]||'+1 XP';
+    t.style.left=cx+'px'; t.style.top=(cy-20)+'px'; card.appendChild(t); setTimeout(()=>t.remove(),950);
+  });
+});
+</script>
+</body>
+</html>

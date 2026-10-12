@@ -1,0 +1,37 @@
+IMAGENS DO SITE · coloque os arquivos nesta pasta com exatamente estes nomes.
+Enquanto um arquivo não existir, o site mostra um espaço tracejado com o nome esperado.
+PNG com fundo transparente funciona melhor nas imagens recortadas.
+
+HERO
+  hero-personagem.png   personagem sentado no muro + gatos (fundo transparente)
+  hero-fundo.jpg        cidade à noite atrás do título (opcional)
+
+SOBRE
+  sobre-retrato.png     retrato P&B (a borda rasgada é aplicada pelo código)
+
+PORTFÓLIO
+  port-01-ilustracao.png
+  port-02-design.png
+  port-03-pixelart.png
+  port-04-3d.png
+  port-05-ia.png
+  port-06-jogos.png
+  port-07-ensino.png    personagem lendo (canto direito do item 07)
+
+PROJETO EM DESTAQUE
+  copo-colagem.png      caixa, fichas, fotos, relatório (fundo transparente)
+  copo-fundo.jpg        fundo sombrio vermelho (opcional)
+
+CONTATO
+  contato-cena.png      personagem observando a cidade no pôr do sol
+  curriculo-itallo-cunha.pdf
+
+ÍCONES DAS FERRAMENTAS (pasta assets/icones/, quadrados, ~128x128)
+  python.png  pixel.png  level.png  gdevelop.png
+  unity.png   godot.png  scratch.png  canva.png
+
+JÁ INCLUÍDOS (seção Conhecimento em modo multiplayer)
+  titulo-multiplayer.png
+  cards/python.png  cards/pixel.png  cards/level.png
+  cards/gdevelop.png  cards/unity.png  cards/godot.png
+  cards/scratch.png  cards/canva.png  cards/ia.png

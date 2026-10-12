@@ -1,0 +1,136 @@
+{
+  "areas": [
+    {
+      "slug": "ilustracao",
+      "num": "01",
+      "pasta": "Ilustração",
+      "titulo": "Ilustração",
+      "pagina": "ilustracao.html",
+      "resumo": "Personagens, conceitos e mundos que ganham vida no papel e no digital.",
+      "intro": "Aqui está o caminho que percorri na ilustração: estudos de valor, silhueta, textura e cor que viraram base para criar personagens com personalidade. Cada atividade mostra o processo, do primeiro rascunho à arte final.",
+      "nota": "Personagens contam histórias",
+      "ordem": ["Criação de personagem", "Estudo de silhueta", "Grayscale ATV", "Texturas madeira e metal"],
+      "atividades": {
+        "Criação de personagem": {
+          "titulo": "Criação de personagem",
+          "descricao": "Do esboço à finalização. Releitura de personagem, criação de personagens originais e um retrato híbrido, explorando forma, cor e personalidade em cada etapa.",
+          "tags": ["Esboço", "Line art", "Cor", "Personalidade"]
+        },
+        "Estudo de silhueta": {
+          "titulo": "Estudo de silhuetas",
+          "descricao": "A silhueta como ponto de partida: variações de forma para encontrar a leitura mais forte de uma criatura antes de detalhar e pintar.",
+          "tags": ["Forma", "Variações", "Leitura visual"]
+        },
+        "Grayscale ATV": {
+          "titulo": "Grayscale e cor",
+          "descricao": "Valores de cinza, luz e sombra em objetos simples. Passei pelas técnicas chapado, esfumado e painterly até chegar à cor e a novas formas.",
+          "tags": ["Valor", "Luz e sombra", "Painterly", "Cor"]
+        },
+        "Texturas madeira e metal": {
+          "titulo": "Texturas: madeira e metal",
+          "descricao": "Estudo de materiais, luz e cor aplicado a poções, armas e armaduras, pensando em como cada superfície reage à luz dentro de um jogo.",
+          "tags": ["Materiais", "Metal", "Madeira", "Itens de jogo"]
+        }
+      }
+    },
+    {
+      "slug": "design-grafico",
+      "num": "02",
+      "pasta": "Design Gráfico",
+      "titulo": "Design gráfico",
+      "pagina": "design-grafico.html",
+      "resumo": "Identidade visual, cartazes, editoriais e projetos criativos para diferentes contextos.",
+      "intro": "Projetos de identidade visual e peças gráficas onde conceito, tipografia e cor trabalham juntos para comunicar uma ideia com personalidade.",
+      "nota": "Conceito, tipografia, cor, comunicação",
+      "atividades": {
+        "_raiz": {
+          "titulo": "BRAZA · Identidade visual",
+          "descricao": "Identidade visual para uma label de eventos noturnos. Do traço feito à mão ao logotipo final, com textura, contraste e movimento aplicados em peças digitais e impressas.",
+          "tags": ["Branding", "Lettering", "Logotipo", "Aplicações"]
+        }
+      }
+    },
+    {
+      "slug": "pixel-art",
+      "num": "03",
+      "pasta": "Pixel Art",
+      "titulo": "Pixel art",
+      "pagina": "pixel-art.html",
+      "resumo": "Cenários, personagens e animações em estilo retrô.",
+      "intro": "Cenários, personagens e animações pixel a pixel.",
+      "nota": "Pequenos pixels, grandes aventuras",
+      "atividades": {}
+    },
+    {
+      "slug": "modelagem-3d",
+      "num": "04",
+      "pasta": "Modelagem 3D",
+      "titulo": "Modelagem 3D",
+      "pagina": "modelagem-3d.html",
+      "resumo": "Objetos, cenários e personagens para jogos e projetos visuais.",
+      "intro": "Objetos, cenários e personagens modelados para jogos.",
+      "nota": "Do conceito ao modelo",
+      "atividades": {}
+    },
+    {
+      "slug": "ia",
+      "num": "05",
+      "pasta": "IA",
+      "titulo": "IA",
+      "pagina": "ia.html",
+      "resumo": "Exploração criativa com inteligência artificial para imagens, vídeos, sons e mais.",
+      "intro": "Experimentos criativos com inteligência artificial.",
+      "nota": "Mais ferramentas, mais possibilidades",
+      "atividades": {}
+    },
+    {
+      "slug": "jogos",
+      "num": "06",
+      "pasta": "Jogos Protótipos JogosDigitais ArteParaJogos",
+      "titulo": "Projeto de jogos",
+      "pagina": "jogos.html",
+      "resumo": "Do conceito ao protótipo, explorando mecânicas, narrativas e experiências interativas.",
+      "intro": "Jogos digitais, card games, interfaces e arte para jogos. Cada projeto passou por ideia, protótipo, teste e ajuste, e aqui mostro esse caminho.",
+      "nota": "Explorar, resolver, descobrir, evoluir",
+      "ordem": ["Chocotopia", "Deuses em guerra CARD GAME", "o terror nas bordas", "Interface para jogos", "Primeiros jogos"],
+      "atividades": {
+        "Chocotopia": {
+          "titulo": "Chocotopia",
+          "descricao": "Jogo de estratégia em que pequenos guardiões defendem o mundo de Chocotopia. Do protótipo em blocos ao universo visual, com personagens, elementos, interface e telas de vitória e derrota.",
+          "tags": ["Estratégia", "Protótipo", "Personagens", "UI"]
+        },
+        "Deuses em guerra CARD GAME": {
+          "titulo": "Deuses em Guerra",
+          "descricao": "Card game de batalha entre deuses. Regras, reformulação de mecânicas, identidade dos personagens e design das cartas, testado e ajustado a cada rodada.",
+          "tags": ["Card game", "Regras", "Design de cartas", "Playtest"]
+        },
+        "o terror nas bordas": {
+          "titulo": "O Terror nas Bordas",
+          "descricao": "Estudo de molduras, ornamentos e composição. A borda da carta como parte da narrativa.",
+          "tags": ["Molduras", "Ornamentos", "Composição"]
+        },
+        "Interface para jogos": {
+          "titulo": "Interface para jogos",
+          "descricao": "Interface completa para um jogo fictício em estilo graffiti: menus, inventário, loja, mapa, ícones de habilidades e barras de status.",
+          "tags": ["UI", "Menus", "Inventário", "Ícones"]
+        },
+        "Primeiros jogos": {
+          "titulo": "Primeiros jogos",
+          "descricao": "Os primeiros protótipos 2D: composição de fases, personagens animados, cenários, itens, ataques e estados do jogador, além de estudos de arte vetorial.",
+          "tags": ["2D", "Animação", "Level design", "Vetor"]
+        }
+      }
+    },
+    {
+      "slug": "ensino",
+      "num": "07",
+      "pasta": "Ensino",
+      "titulo": "Ensino",
+      "pagina": "ensino.html",
+      "resumo": "Compartilho conhecimento para ajudar novas pessoas a criarem seus próprios mundos.",
+      "intro": "Materiais, aulas e projetos de alunos.",
+      "nota": "Criatividade também se ensina",
+      "atividades": {}
+    }
+  ]
+}
