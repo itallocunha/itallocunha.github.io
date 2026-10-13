@@ -210,6 +210,16 @@ function swipe(el, fn){
   });
 }
 
+/* ---------- título da área: letras em onda + glitch de tempos em tempos ---------- */
+const h1=document.querySelector('.hero h1');
+if(h1){
+  const txt=h1.textContent; h1.setAttribute('aria-label',area.titulo); h1.textContent='';
+  [...txt].forEach((c,i)=>{ const s=document.createElement('span'); s.className='l'; s.textContent=c===' '?' ':c; s.style.setProperty('--i',i); s.setAttribute('aria-hidden','true'); h1.appendChild(s); });
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    (function prox(){ setTimeout(()=>{ h1.classList.add('glitch'); setTimeout(()=>h1.classList.remove('glitch'),460); prox(); },5000+Math.random()*5000); })();
+  }
+}
+
 /* ---------- revelar ao rolar ---------- */
 const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));

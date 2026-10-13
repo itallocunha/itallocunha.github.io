@@ -155,6 +155,17 @@ svg.ico{width:16px;height:16px;flex:none}
 .rodape .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .rodape b{color:var(--roxo-claro);font-weight:400}
 
+/* títulos animados */
+.hero h1 .l{display:inline-block;animation:cai .9s cubic-bezier(.3,1.5,.5,1) both,onda 3.4s 1.4s ease-in-out infinite;animation-delay:calc(var(--i)*65ms),calc(1.2s + var(--i)*110ms)}
+@keyframes cai{0%{transform:translateY(-140%) rotate(-14deg);opacity:0}60%{opacity:1}}
+@keyframes onda{0%,100%{translate:0 0}50%{translate:0 -7%}}
+.hero h1.glitch .l{animation:onda 3.4s ease-in-out infinite,glitchL .45s steps(3) 1;animation-delay:calc(var(--i)*110ms),0s}
+@keyframes glitchL{0%{text-shadow:3px 0 0 #ff2e88,-3px 0 0 #2ee6ff;transform:translate(2px,-1px) skewX(-8deg)}33%{text-shadow:-4px 0 0 #ff2e88,4px 0 0 #2ee6ff;transform:translate(-3px,1px)}66%{text-shadow:2px 2px 0 #ffd23a,-2px -2px 0 #8f4dff;transform:translate(1px,0) skewX(6deg)}100%{text-shadow:none;transform:none}}
+.ativ-cab.in h2{animation:varre .9s .15s cubic-bezier(.6,0,.2,1) both}
+@keyframes varre{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.ativ-num{animation:numero 3s steps(1) infinite}
+@keyframes numero{0%,92%{opacity:1}93%,96%{opacity:.25}97%{opacity:1}}
+
 @media (max-width:900px){
   .wrap{padding:0 18px}
   .topo .wrap{gap:14px}
@@ -175,4 +186,4 @@ svg.ico{width:16px;height:16px;flex:none}
   .prox-areas{grid-template-columns:1fr}
   .prox-areas a.dir{text-align:left}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero h1 .l{opacity:1}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
