@@ -507,6 +507,97 @@ a{color:inherit;text-decoration:none}
   .inv-dica{font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){.card{opacity:1;translate:none;scale:none}}
+
+/* ============================================================
+   UNIVERSO, AVATAR E TÍTULOS DINÂMICOS
+============================================================ */
+#universo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+.universo-dica{position:fixed;left:18px;bottom:16px;z-index:30;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--roxo-claro);opacity:.75;pointer-events:none;transition:opacity .8s}
+.universo-dica::before{content:"✦ ";color:var(--amarelo)}
+.universo-dica.some{opacity:0}
+
+/* avatar do hero */
+.hero-personagem.avatar{left:27%;top:2%;width:35%;height:82%;cursor:pointer;perspective:900px;outline:none;-webkit-tap-highlight-color:transparent}
+.avatar-aura{position:absolute;left:50%;top:55%;width:85%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(143,77,255,.55),rgba(143,77,255,.15) 45%,transparent 70%);filter:blur(10px);
+  animation:aura 4s ease-in-out infinite;transition:opacity .4s;pointer-events:none}
+@keyframes aura{50%{transform:translate(-50%,-50%) scale(1.12);opacity:.75}}
+.avatar:hover .avatar-aura,.avatar:focus-visible .avatar-aura{background:radial-gradient(circle,rgba(185,139,255,.75),rgba(255,210,58,.18) 45%,transparent 70%)}
+.avatar-tilt{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out;
+  transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) translate3d(var(--tx,0px),var(--ty,0px),0)}
+.avatar-float{position:absolute;inset:0;animation:flutuaAvatar 5.5s ease-in-out infinite}
+@keyframes flutuaAvatar{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.pose{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom center;opacity:0;
+  transform:scale(.86) translateY(30px);filter:brightness(4) saturate(0) blur(4px);
+  transition:opacity .35s ease,transform .6s cubic-bezier(.3,1.6,.5,1),filter .5s ease;pointer-events:none;user-select:none}
+.pose.ativa{opacity:1;transform:none;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55)) drop-shadow(0 0 0 transparent)}
+.avatar:hover .pose.ativa{filter:drop-shadow(0 24px 30px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(185,139,255,.7))}
+.avatar.troca .avatar-float{animation:squash .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes squash{0%{transform:scale(1)}30%{transform:scale(1.08,.9)}60%{transform:scale(.95,1.06) translateY(-14px)}100%{transform:scale(1)}}
+.avatar-sombra{position:absolute;left:50%;bottom:-6px;width:55%;height:26px;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);animation:sombra 5.5s ease-in-out infinite;pointer-events:none}
+@keyframes sombra{50%{transform:translateX(-50%) scale(.85);opacity:.7}}
+.avatar-fala{position:absolute;left:58%;top:2%;z-index:6;background:var(--branco);color:var(--roxo-escuro);font-weight:600;font-size:14px;
+  padding:9px 14px;border-radius:16px;box-shadow:3px 3px 0 #000;white-space:nowrap;pointer-events:none;
+  opacity:0;transform:scale(.6) translateY(10px);transform-origin:left bottom;transition:opacity .2s,transform .35s cubic-bezier(.3,1.7,.5,1)}
+.avatar-fala::after{content:"";position:absolute;left:14px;bottom:-9px;border:6px solid transparent;border-top-color:var(--branco);border-left-color:var(--branco)}
+.avatar-fala.on{opacity:1;transform:none}
+.avatar-dica{position:absolute;right:4%;bottom:16%;z-index:6;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:#16101f;background:var(--amarelo);padding:4px 8px;box-shadow:2px 2px 0 #000;animation:pisca 1.2s steps(1) infinite;pointer-events:none;transition:opacity .4s}
+.avatar.usado .avatar-dica{opacity:0;animation:none}
+
+/* retrato do sobre */
+.retrato{transform:none;width:260px}
+.retrato-fig{position:relative;height:430px;cursor:pointer}
+.retrato-fig img{height:100%;width:auto;margin:0 auto;transform:scaleX(-1);transform-origin:center;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:flutuaEsp 6s ease-in-out infinite;transition:filter .3s}
+@keyframes flutuaEsp{0%,100%{transform:scaleX(-1) translateY(0)}50%{transform:scaleX(-1) translateY(-12px)}}
+.retrato-fig:hover img{filter:drop-shadow(0 18px 24px rgba(0,0,0,.55)) drop-shadow(0 0 16px rgba(185,139,255,.7))}
+.retrato-fig.pula img{animation:pulinho .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pulinho{40%{transform:scaleX(-1) translateY(-26px) rotate(-4deg)}}
+.retrato-fala{position:absolute;left:-30px;top:6%;background:var(--amarelo);color:#16101f;font-family:var(--f-cond);font-weight:600;font-size:18px;
+  padding:6px 12px;box-shadow:3px 3px 0 #000;transform:rotate(-5deg) scale(0);transform-origin:right bottom;transition:transform .35s cubic-bezier(.3,1.7,.5,1);white-space:nowrap}
+.retrato-fig:hover .retrato-fala,.retrato-fig.pula .retrato-fala{transform:rotate(-5deg) scale(1)}
+.sobre .mao.n3{left:240px}
+
+/* títulos dinâmicos */
+.dyn-letras{cursor:default;user-select:none}
+.dyn-letras .l{display:inline-block;transform:translateY(var(--sobe,0px)) rotate(var(--gira,0deg));
+  transition:transform .22s cubic-bezier(.3,1.6,.5,1),color .25s;will-change:transform}
+.dyn-letras .l.perto{color:var(--roxo-claro)}
+.dyn-letras .l.quente{color:var(--amarelo)}
+.dyn-letras.entra .l{animation:cai .9s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--i)*65ms)}
+@keyframes cai{0%{transform:translateY(-140%) rotate(-14deg);opacity:0}60%{opacity:1}}
+.dyn-letras .l.salta{animation:salta .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes salta{0%{transform:none}35%{transform:translateY(-38%) rotate(-12deg) scale(1.15)}70%{transform:translateY(6%) scale(.95,1.05)}100%{transform:none}}
+.dyn-letras .l.sp{width:.3em}
+.dyn-scramble{cursor:default}
+.dyn-palavras em,.dyn-palavras span{display:inline-block;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.sobre-titulo.in .dyn-palavras em{animation:entraEsq .8s cubic-bezier(.3,1.4,.5,1) both}
+.sobre-titulo.in .dyn-palavras span:first-of-type{animation:entraDir .8s .12s cubic-bezier(.3,1.4,.5,1) both}
+.sobre-titulo.in .dyn-palavras span:last-of-type{animation:entraEsq .8s .24s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes entraEsq{from{transform:translateX(-60px) skewX(-12deg);opacity:0}}
+@keyframes entraDir{from{transform:translateX(60px) skewX(12deg);opacity:0}}
+.dyn-palavras:hover em{transform:rotate(-4deg) translateY(-4px)}
+.dyn-palavras:hover span:first-of-type{transform:rotate(5deg) translateY(-6px)}
+.dyn-palavras:hover span:last-of-type{transform:skewX(-8deg) translateX(8px)}
+.player{transition:background .2s}
+.player.start{background:var(--roxo);color:#fff}
+
+@media (max-width:720px){
+  .hero-personagem.avatar{position:relative;left:0;top:0;width:100%;height:420px;margin-top:-50px}
+  .avatar-dica{right:6%;bottom:10%}
+  .avatar-fala{left:auto;right:4%;top:0;font-size:12px;transform-origin:right bottom}
+  .avatar-fala::after{left:auto;right:14px;border-left-color:transparent;border-right-color:var(--branco)}
+  .universo-dica{display:none}
+  .retrato{width:100%}
+  .retrato-fig{height:380px}
+  .retrato-fala{left:4%}
+}
+@media (prefers-reduced-motion:reduce){
+  .avatar-float,.avatar-aura,.avatar-sombra,.retrato-fig img{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -521,6 +612,9 @@ a{color:inherit;text-decoration:none}
     <symbol id="seta" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 12 12 4M5 4h7v7"/></symbol>
   </defs>
 </svg>
+
+<canvas id="universo" aria-hidden="true"></canvas>
+<div class="universo-dica" aria-hidden="true">mova o mouse · clique no céu</div>
 
 <!-- ======================= NAV ======================= -->
 <header class="nav">
@@ -547,16 +641,24 @@ a{color:inherit;text-decoration:none}
 <section class="hero" id="topo">
   <div class="wrap">
     <!-- fundo: cidade/noite (opcional) -->
-    <div class="slot hero-fundo" data-label="assets/hero-fundo.jpg  (cidade à noite)"><img src="assets/hero-fundo.jpg" alt=""></div>
     <div class="lua"></div>
 
-    <h2 class="titulo-italo rough" aria-hidden="true">ITALLO</h2>
+    <h2 class="titulo-italo rough dyn-letras" aria-label="Itallo">ITALLO</h2>
 
     <!-- personagem sentado (PNG com fundo transparente) -->
-    <div class="slot hero-personagem" data-label="assets/hero-personagem.png  (personagem + gatos, fundo transparente)"><img src="assets/hero-personagem.png" alt="Ilustração de Itallo sentado sobre um muro, com fones de ouvido e dois gatos pretos"></div>
+    <div class="hero-personagem avatar" id="avatar" tabindex="0" role="button" aria-label="Itallo Cunha. Clique para trocar de pose">
+      <div class="avatar-aura"></div>
+      <div class="avatar-tilt"><div class="avatar-float">
+        <img class="pose ativa" src="assets/itallo-sentado.webp" alt="Ilustração de Itallo Cunha sentado" width="724" height="1100">
+        <img class="pose" src="assets/itallo-apresentando.webp" alt="" width="529" height="1100">
+      </div></div>
+      <div class="avatar-sombra"></div>
+      <span class="avatar-fala" aria-live="polite"></span>
+      <span class="avatar-dica">▸ clique em mim</span>
+    </div>
 
-    <span class="player">PLAYER 01</span>
-    <div class="cunha">CUNHA</div>
+    <span class="player" id="player">PLAYER 01</span>
+    <div class="cunha dyn-scramble">CUNHA</div>
 
     <div class="hero-txt">
       <h1>Design, jogos e conhecimento<br>em constante criação.</h1>
@@ -594,7 +696,7 @@ a{color:inherit;text-decoration:none}
     <div class="sobre-titulo rv">
       <span class="rotulo">Sobre</span>
       <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
-      <h2 class="rough-forte"><em>Ideias</em> em<br>movimento</h2>
+      <h2 class="rough-forte dyn-palavras"><em>Ideias</em> <span>em</span><br><span>movimento</span></h2>
     </div>
 
     <div class="sobre-txt rv">
@@ -603,7 +705,10 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <div class="retrato rv">
-      <div class="slot torn" data-label="assets/sobre-retrato.png  (retrato P&amp;B)"><img src="assets/sobre-retrato.png" alt="Retrato de Itallo Cunha"></div>
+      <div class="retrato-fig" id="retrato">
+        <img src="assets/itallo-apresentando.webp" alt="Ilustração de Itallo Cunha apontando para o texto" width="529" height="1100" loading="lazy">
+        <span class="retrato-fala">Prazer, Itallo!</span>
+      </div>
       <p class="mao n3">Mesma<br>curiosidade<br>de sempre<br>só que<br>mais longe</p>
     </div>
   </div>
@@ -617,7 +722,7 @@ a{color:inherit;text-decoration:none}
       <svg class="trilha" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 70 C120 80 200 60 300 64"/><path d="M1180 70 C1260 40 1340 30 1440 10"/></svg>
       <svg class="star" style="left:9%;top:58px"><use href="#star"/></svg>
       <svg class="star p" style="left:12%;top:100px;animation-delay:-1s"><use href="#star"/></svg>
-      <h2 class="titulo-pixel rough">PORTFÓLIO</h2>
+      <h2 class="titulo-pixel rough dyn-letras" aria-label="Portfólio">PORTFÓLIO</h2>
       <p class="mao">Diferentes<br>disciplinas<br>um mesmo<br>universo</p>
     </div>
 
@@ -806,8 +911,8 @@ roxo e amarelo
 <section class="contato" id="contato">
   <div class="wrap">
     <div class="bora rv">
-      <h2 class="titulo-pixel rough">BORA CRIAR</h2>
-      <p class="juntos">ALGO JUNTOS?</p>
+      <h2 class="titulo-pixel rough dyn-letras" aria-label="Bora criar">BORA CRIAR</h2>
+      <p class="juntos dyn-scramble">ALGO JUNTOS?</p>
       <p class="mao amarela party">Vamos formar<br>uma party?</p>
       <svg class="cursor-px" viewBox="0 0 16 20" style="left:22%;top:calc(100% - 320px)"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
       <svg class="cursor-px" viewBox="0 0 16 20" style="right:4%;top:110px;width:26px"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
@@ -920,15 +1025,258 @@ document.querySelectorAll('.torn-y').forEach(el=>rasgar(el,'tb',28));
 const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{threshold:.15});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-/* ---------- 5. Parallax leve no hero ---------- */
-const personagem = document.querySelector('.hero-personagem'), titulo = document.querySelector('.titulo-italo');
-if(matchMedia('(min-width:721px) and (prefers-reduced-motion:no-preference)').matches){
-  addEventListener('mousemove', e=>{
-    const dx = (e.clientX/innerWidth - .5), dy = (e.clientY/innerHeight - .5);
-    personagem.style.transform = `translate(${dx*-14}px,${dy*-8}px)`;
-    titulo.style.transform = `translate(${dx*10}px,${dy*6}px)`;
+
+/* ============================================================
+   UNIVERSO DE ESTRELAS INTERATIVO
+   mover o mouse: as estrelas se afastam e formam constelações
+   clicar no céu: explosão de poeira estelar e uma estrela nova
+   segurar o clique: as estrelas são puxadas (buraco negro)
+============================================================ */
+(function(){
+  const cv = document.getElementById('universo'), ctx = cv.getContext('2d');
+  const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const CORES = ['255,255,255','255,255,255','255,255,255','185,139,255','143,77,255','255,210,58'];
+  let W=0,H=0,DPR=1, estrelas=[], poeira=[], cadentes=[], ondas=[];
+  const mouse={x:-9999,y:-9999,sx:0,sy:0,ativo:false,segurando:false};
+  let rolagem=0, proxCadente=performance.now()+3000;
+
+  function criaEstrela(x,y,nova){
+    const prof = nova ? 1 : [0.25,0.5,1][Math.floor(Math.random()*3)];
+    return {x:x??Math.random()*W, y:y??Math.random()*H, ox:0, oy:0, vx:0, vy:0,
+      r:(Math.random()*1.3+0.3)*(prof===1?1.4:prof===0.5?1:0.7)*(nova?1.8:1),
+      prof, cor: nova?'255,210,58':CORES[Math.floor(Math.random()*CORES.length)],
+      fase:Math.random()*6.28, vel:0.6+Math.random()*1.8, nova:!!nova, idade:0};
+  }
+  function tamanho(){
+    DPR = Math.min(devicePixelRatio||1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W*DPR; cv.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    const n = Math.min(420, Math.round(W*H/4200));
+    const novas = estrelas.filter(e=>e.nova);
+    estrelas = Array.from({length:n},()=>criaEstrela()).concat(novas);
+  }
+  tamanho(); addEventListener('resize', tamanho);
+  addEventListener('scroll', ()=>{ rolagem = scrollY; }, {passive:true});
+
+  function pos(e){ const t=e.touches?e.touches[0]:e; mouse.x=t.clientX; mouse.y=t.clientY; mouse.ativo=true; }
+  addEventListener('pointermove', pos, {passive:true});
+  addEventListener('pointerleave', ()=>{ mouse.ativo=false; mouse.x=mouse.y=-9999; });
+  const interativo = el => el.closest('a,button,input,textarea,select,label,.card,.avatar,.dyn-letras,.prancha,.retrato-fig,.ic-card,.no,form,.copo');
+  let timerSegura=null;
+  addEventListener('pointerdown', e=>{
+    if(interativo(e.target)) return;
+    pos(e);
+    timerSegura = setTimeout(()=>{ mouse.segurando=true; }, 220);
   });
-}
+  addEventListener('pointerup', e=>{
+    clearTimeout(timerSegura);
+    const segurou = mouse.segurando; mouse.segurando=false;
+    if(interativo(e.target) || segurou) return;
+    explode(e.clientX, e.clientY);
+    document.querySelector('.universo-dica')?.classList.add('some');
+  });
+
+  function explode(x,y){
+    for(let i=0;i<26;i++){
+      const a=Math.random()*6.28, v=1+Math.random()*4;
+      poeira.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,vida:1,r:Math.random()*2+0.6,cor:Math.random()<.5?'255,210,58':'185,139,255'});
+    }
+    ondas.push({x,y,r:0,vida:1});
+    const e = criaEstrela(x, y + rolagem*0, true); e.prof=1; estrelas.push(e);
+    if(estrelas.filter(s=>s.nova).length>40){ const i=estrelas.findIndex(s=>s.nova); estrelas.splice(i,1); }
+  }
+
+  function quadro(t){
+    ctx.clearRect(0,0,W,H);
+    mouse.sx += ((mouse.ativo?(mouse.x/W-.5):0) - mouse.sx)*0.05;
+    mouse.sy += ((mouse.ativo?(mouse.y/H-.5):0) - mouse.sy)*0.05;
+
+    // ondas de choque
+    for(let i=ondas.length-1;i>=0;i--){
+      const o=ondas[i]; o.r+=7; o.vida-=0.025;
+      if(o.vida<=0){ ondas.splice(i,1); continue; }
+      ctx.strokeStyle=`rgba(255,210,58,${o.vida*0.5})`; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,6.283); ctx.stroke();
+    }
+
+    const perto=[];
+    for(const e of estrelas){
+      // posição com paralaxe (mouse + rolagem) e rolagem infinita na vertical
+      const px = e.x + mouse.sx*-40*e.prof;
+      let py = (e.y - rolagem*0.12*e.prof + mouse.sy*-30*e.prof) % H; if(py<0) py+=H;
+      // força do cursor
+      const dx = px + e.ox - mouse.x, dy = py + e.oy - mouse.y, d2 = dx*dx+dy*dy;
+      if(mouse.ativo && d2 < 150*150){
+        const d = Math.sqrt(d2)||1;
+        if(mouse.segurando){ e.vx -= dx/d*0.9*e.prof; e.vy -= dy/d*0.9*e.prof; }
+        else { const f=(150-d)/150*1.6*e.prof; e.vx += dx/d*f; e.vy += dy/d*f; }
+        if(d<170) perto.push({x:px+e.ox,y:py+e.oy,d});
+      }
+      // mola de volta ao lugar
+      e.vx += -e.ox*0.02; e.vy += -e.oy*0.02; e.vx*=0.88; e.vy*=0.88;
+      e.ox += e.vx; e.oy += e.vy;
+      if(mouse.segurando && d2<40*40){ e.ox*=0.9; e.oy*=0.9; }
+      // brilho piscante
+      const b = calmo ? 0.8 : 0.45 + 0.55*Math.abs(Math.sin(t/1000*e.vel + e.fase));
+      const x = px+e.ox, y = py+e.oy;
+      ctx.fillStyle = `rgba(${e.cor},${b})`;
+      if(e.r > 1.6){
+        // estrelas maiores ganham cruz de brilho
+        ctx.globalAlpha = b*0.5; ctx.fillRect(x-e.r*3, y-0.4, e.r*6, 0.8); ctx.fillRect(x-0.4, y-e.r*3, 0.8, e.r*6); ctx.globalAlpha=1;
+      }
+      ctx.beginPath(); ctx.arc(x,y,e.r,0,6.283); ctx.fill();
+    }
+
+    // constelação ligando o cursor às estrelas mais próximas
+    if(perto.length){
+      perto.sort((a,b)=>a.d-b.d);
+      const lig = perto.slice(0,7);
+      ctx.lineWidth=1;
+      lig.forEach((p,i)=>{
+        ctx.strokeStyle=`rgba(185,139,255,${(1-p.d/170)*0.55})`;
+        ctx.beginPath(); ctx.moveTo(mouse.x,mouse.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+        const q=lig[i+1]; if(q){ ctx.strokeStyle=`rgba(255,210,58,${(1-q.d/170)*0.25})`; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+      });
+    }
+    // buraco negro ao segurar
+    if(mouse.segurando){
+      const g=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,60);
+      g.addColorStop(0,'rgba(0,0,0,.9)'); g.addColorStop(.35,'rgba(59,29,110,.6)'); g.addColorStop(1,'rgba(143,77,255,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(mouse.x,mouse.y,60,0,6.283); ctx.fill();
+    }
+
+    // poeira estelar
+    for(let i=poeira.length-1;i>=0;i--){
+      const p=poeira[i]; p.x+=p.vx; p.y+=p.vy; p.vx*=0.96; p.vy*=0.96; p.vida-=0.018;
+      if(p.vida<=0){ poeira.splice(i,1); continue; }
+      ctx.fillStyle=`rgba(${p.cor},${p.vida})`; ctx.fillRect(p.x,p.y,p.r*1.6,p.r*1.6);
+    }
+
+    // estrelas cadentes
+    if(!calmo && t>proxCadente){
+      proxCadente = t + 4000 + Math.random()*6000;
+      cadentes.push({x:Math.random()*W*0.8+W*0.2, y:Math.random()*H*0.4, vx:-(6+Math.random()*4), vy:3+Math.random()*2, vida:1});
+    }
+    for(let i=cadentes.length-1;i>=0;i--){
+      const c=cadentes[i]; c.x+=c.vx; c.y+=c.vy; c.vida-=0.012;
+      if(c.vida<=0){ cadentes.splice(i,1); continue; }
+      const g=ctx.createLinearGradient(c.x,c.y,c.x-c.vx*14,c.y-c.vy*14);
+      g.addColorStop(0,`rgba(255,240,200,${c.vida})`); g.addColorStop(1,'rgba(255,210,58,0)');
+      ctx.strokeStyle=g; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(c.x,c.y); ctx.lineTo(c.x-c.vx*14,c.y-c.vy*14); ctx.stroke();
+    }
+    if(!calmo) requestAnimationFrame(quadro);
+  }
+  requestAnimationFrame(quadro);
+  if(calmo) addEventListener('scroll',()=>requestAnimationFrame(quadro),{passive:true});
+})();
+
+/* ============================================================
+   AVATAR DO HERO: inclina com o mouse, troca de pose no clique
+============================================================ */
+(function(){
+  const av = document.getElementById('avatar'); if(!av) return;
+  const tilt = av.querySelector('.avatar-tilt'), poses=[...av.querySelectorAll('.pose')], fala=av.querySelector('.avatar-fala');
+  const FALAS = ['Bora criar?','Skin trocada!','+1 XP de criatividade','Player 01 pronto!','Partiu game jam?','Ideia nova desbloqueada'];
+  let pose=0, f=0, timerFala;
+  if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+    addEventListener('pointermove', e=>{
+      const r=av.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+      const dx=(e.clientX-cx)/innerWidth, dy=(e.clientY-cy)/innerHeight;
+      tilt.style.setProperty('--ry', (dx*22).toFixed(2)+'deg');
+      tilt.style.setProperty('--rx', (-dy*14).toFixed(2)+'deg');
+      tilt.style.setProperty('--tx', (dx*-18).toFixed(1)+'px');
+      tilt.style.setProperty('--ty', (dy*-10).toFixed(1)+'px');
+    }, {passive:true});
+  }
+  function falar(txt){
+    fala.textContent=txt; fala.classList.add('on');
+    clearTimeout(timerFala); timerFala=setTimeout(()=>fala.classList.remove('on'),1800);
+  }
+  function trocar(e){
+    av.classList.add('usado');
+    poses[pose].classList.remove('ativa'); pose=(pose+1)%poses.length; poses[pose].classList.add('ativa');
+    av.classList.remove('troca'); void av.offsetWidth; av.classList.add('troca');
+    falar(FALAS[f++ % FALAS.length]);
+    const r=av.getBoundingClientRect();
+    const cx = e && e.clientX ? e.clientX-r.left : r.width/2, cy = e && e.clientY ? e.clientY-r.top : r.height/2;
+    for(let i=0;i<22;i++){
+      const p=document.createElement('i'); p.className='px';
+      const a=Math.random()*6.28, d=50+Math.random()*110;
+      p.style.cssText=`left:${cx}px;top:${cy}px;background:${i%3?'var(--amarelo)':'var(--roxo-claro)'};--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px`;
+      av.appendChild(p); setTimeout(()=>p.remove(),750);
+    }
+  }
+  av.addEventListener('click', trocar);
+  av.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); trocar(); } });
+  av.addEventListener('mouseenter', ()=>{ if(!fala.classList.contains('on')) falar('Oi! Clica aqui'); });
+  setTimeout(()=>falar('Bem-vindo ao meu universo!'), 1600);
+
+  const ret = document.getElementById('retrato');
+  if(ret) ret.addEventListener('click', ()=>{
+    const frases=['Prazer, Itallo!','Professor e criador','Bora formar uma party?','Arte + código + jogos'];
+    const b=ret.querySelector('.retrato-fala'); b.textContent=frases[(frases.indexOf(b.textContent)+1)%frases.length];
+    ret.classList.remove('pula'); void ret.offsetWidth; ret.classList.add('pula');
+    setTimeout(()=>ret.classList.remove('pula'),1600);
+  });
+})();
+
+/* ============================================================
+   TÍTULOS DINÂMICOS
+   letras: caem ao aparecer, sobem perto do cursor, pulam no clique
+   scramble: o texto "decodifica" ao aparecer e ao passar o mouse
+============================================================ */
+(function(){
+  const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  document.querySelectorAll('.dyn-letras').forEach(t=>{
+    const txt = t.textContent; t.textContent='';
+    [...txt].forEach((ch,i)=>{
+      const s=document.createElement('span'); s.className='l'+(ch===' '?' sp':''); s.textContent=ch===' '?' ':ch;
+      s.style.setProperty('--i',i); s.setAttribute('aria-hidden','true'); t.appendChild(s);
+      s.addEventListener('click',()=>{ s.classList.remove('salta'); void s.offsetWidth; s.classList.add('salta'); });
+      s.addEventListener('animationend',e=>{ if(e.animationName==='salta') s.classList.remove('salta'); });
+    });
+    const letras=[...t.querySelectorAll('.l')];
+    // entrada
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting && !calmo){ t.classList.add('entra'); setTimeout(()=>t.classList.remove('entra'), 900+letras.length*65); io.unobserve(t);} }),{threshold:.3});
+    io.observe(t);
+    // ímã: letras sobem conforme o cursor chega perto
+    if(!calmo) addEventListener('pointermove', e=>{
+      const r=t.getBoundingClientRect();
+      if(e.clientY < r.top-120 || e.clientY > r.bottom+120){ letras.forEach(l=>{ l.style.setProperty('--sobe','0px'); l.style.setProperty('--gira','0deg'); l.classList.remove('perto','quente'); }); return; }
+      letras.forEach(l=>{
+        const b=l.getBoundingClientRect(), cx=b.left+b.width/2, cy=b.top+b.height/2;
+        const d=Math.hypot(e.clientX-cx, e.clientY-cy), alcance=Math.max(140,b.height*1.4);
+        const k=Math.max(0,1-d/alcance);
+        l.style.setProperty('--sobe', (-k*b.height*0.22).toFixed(1)+'px');
+        l.style.setProperty('--gira', ((e.clientX<cx?1:-1)*k*8).toFixed(1)+'deg');
+        l.classList.toggle('quente', k>.6); l.classList.toggle('perto', k>.25 && k<=.6);
+      });
+    }, {passive:true});
+  });
+
+  const GLIFOS='█▓▒░#@$%&*+<>/\\01';
+  function embaralha(el){
+    if(el._rodando) return; el._rodando=true;
+    const final=el.dataset.final||el.textContent; el.dataset.final=final;
+    let quadro=0; const total=final.length*3+8;
+    const id=setInterval(()=>{
+      quadro++;
+      el.textContent=[...final].map((c,i)=> c===' '||quadro>i*3+8 ? c : GLIFOS[Math.floor(Math.random()*GLIFOS.length)]).join('');
+      if(quadro>=total){ clearInterval(id); el.textContent=final; el._rodando=false; }
+    },35);
+  }
+  document.querySelectorAll('.dyn-scramble').forEach(el=>{
+    el.setAttribute('aria-label', el.textContent);
+    if(calmo) return;
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ embaralha(el); io.unobserve(el);} }),{threshold:.4});
+    io.observe(el);
+    el.addEventListener('mouseenter',()=>embaralha(el));
+  });
+
+  // etiqueta PLAYER 01 alterna com PRESS START
+  const pl=document.getElementById('player');
+  if(pl && !calmo){ let a=false; setInterval(()=>{ a=!a; pl.textContent=a?'PRESS START':'PLAYER 01'; pl.classList.toggle('start',a); },2600); }
+})();
 
 /* ---------- 6. Formulário (abre o e-mail com a mensagem) ---------- */
 document.getElementById('contato-form').addEventListener('submit', e=>{

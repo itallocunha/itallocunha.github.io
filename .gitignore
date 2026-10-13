@@ -10,4 +10,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
-portifolio-itallo/
+portifolio-itallo
+configurar-remoto.bat
+remoto-ok.txt
