@@ -9,29 +9,54 @@
       "resumo": "Personagens, conceitos e mundos que ganham vida no papel e no digital.",
       "intro": "Aqui está o caminho que percorri na ilustração: estudos de valor, silhueta, textura e cor que viraram base para criar personagens com personalidade. Cada atividade mostra o processo, do primeiro rascunho à arte final.",
       "nota": "Personagens contam histórias",
-      "ordem": ["Criação de personagem", "Estudo de silhueta", "Grayscale ATV", "Texturas madeira e metal"],
+      "ordem": [
+        "Criação de personagem",
+        "Estudo de silhueta",
+        "Grayscale ATV",
+        "Texturas madeira e metal"
+      ],
       "atividades": {
         "Criação de personagem": {
           "titulo": "Criação de personagem",
           "descricao": "Do esboço à finalização. Releitura de personagem, criação de personagens originais e um retrato híbrido, explorando forma, cor e personalidade em cada etapa.",
-          "tags": ["Esboço", "Line art", "Cor", "Personalidade"]
+          "tags": [
+            "Esboço",
+            "Line art",
+            "Cor",
+            "Personalidade"
+          ]
         },
         "Estudo de silhueta": {
           "titulo": "Estudo de silhuetas",
           "descricao": "A silhueta como ponto de partida: variações de forma para encontrar a leitura mais forte de uma criatura antes de detalhar e pintar.",
-          "tags": ["Forma", "Variações", "Leitura visual"]
+          "tags": [
+            "Forma",
+            "Variações",
+            "Leitura visual"
+          ]
         },
         "Grayscale ATV": {
           "titulo": "Grayscale e cor",
           "descricao": "Valores de cinza, luz e sombra em objetos simples. Passei pelas técnicas chapado, esfumado e painterly até chegar à cor e a novas formas.",
-          "tags": ["Valor", "Luz e sombra", "Painterly", "Cor"]
+          "tags": [
+            "Valor",
+            "Luz e sombra",
+            "Painterly",
+            "Cor"
+          ]
         },
         "Texturas madeira e metal": {
           "titulo": "Texturas: madeira e metal",
           "descricao": "Estudo de materiais, luz e cor aplicado a poções, armas e armaduras, pensando em como cada superfície reage à luz dentro de um jogo.",
-          "tags": ["Materiais", "Metal", "Madeira", "Itens de jogo"]
+          "tags": [
+            "Materiais",
+            "Metal",
+            "Madeira",
+            "Itens de jogo"
+          ]
         }
-      }
+      },
+      "capa": "arte colagem ilustração 1.1.png"
     },
     {
       "slug": "design-grafico",
@@ -40,15 +65,78 @@
       "titulo": "Design gráfico",
       "pagina": "design-grafico.html",
       "resumo": "Identidade visual, cartazes, editoriais e projetos criativos para diferentes contextos.",
-      "intro": "Projetos de identidade visual e peças gráficas onde conceito, tipografia e cor trabalham juntos para comunicar uma ideia com personalidade.",
+      "intro": "Marcas, identidades visuais, materiais editoriais e interfaces. Em cada projeto mostro o conceito, as escolhas de cor e tipografia e como a identidade se espalha pelas peças.",
       "nota": "Conceito, tipografia, cor, comunicação",
       "atividades": {
-        "_raiz": {
+        "ART RYIT MARCA": {
+          "titulo": "ART RYIT · Games e streetwear",
+          "descricao": "Marca autoral que liga desenvolvimento de jogos e cultura streetwear. Os mesmos símbolos, grafismos e personagens aparecem nas telas dos jogos e nas estampas das roupas, formando um universo só.",
+          "tags": [
+            "Branding",
+            "Streetwear",
+            "Games",
+            "Grafismos"
+          ]
+        },
+        "BRAZA MARCA": {
           "titulo": "BRAZA · Identidade visual",
           "descricao": "Identidade visual para uma label de eventos noturnos. Do traço feito à mão ao logotipo final, com textura, contraste e movimento aplicados em peças digitais e impressas.",
-          "tags": ["Branding", "Lettering", "Logotipo", "Aplicações"]
+          "tags": [
+            "Branding",
+            "Lettering",
+            "Logotipo",
+            "Aplicações"
+          ]
+        },
+        "KAIA MARCA": {
+          "titulo": "KAIA · Agência de design",
+          "descricao": "Identidade para uma agência de design com energia solar: cores quentes, formas orgânicas e ilustrações que saem do símbolo e viram um sistema visual completo, do cartão de visita às redes sociais.",
+          "tags": [
+            "Branding",
+            "Sistema visual",
+            "Ilustração",
+            "Cartão de visita"
+          ]
+        },
+        "LAPIDAR NUTRI": {
+          "titulo": "Método Lapidar · Nutrição",
+          "descricao": "Peças para um método de nutrição focado em hábitos e constância. Visual limpo, tons suaves e um monograma elegante para passar confiança sem cara de dieta da moda.",
+          "tags": [
+            "Redes sociais",
+            "Monograma",
+            "Saúde",
+            "Editorial"
+          ]
+        },
+        "Livreto EMPREGO E CARREIRA": {
+          "titulo": "Livreto Emprego e Carreira",
+          "descricao": "Livreto sobre habilidades, networking e portfólio para entrar no mercado de trabalho. Diagramação vibrante, com tipografia forte e elementos gráficos que deixam a leitura leve.",
+          "tags": [
+            "Editorial",
+            "Diagramação",
+            "Livreto",
+            "Tipografia"
+          ]
+        },
+        "UI prototipagem de aplicativo": {
+          "titulo": "Now Info · Interface de aplicativo",
+          "descricao": "Minha primeira interface de aplicativo, feita na faculdade de Ciência da Computação. Mostro a primeira versão e a remodelagem: lojas, mapa, promoções e chat com uma linguagem visual mais clara.",
+          "tags": [
+            "UI",
+            "Protótipo",
+            "Mobile",
+            "Redesign"
+          ]
         }
-      }
+      },
+      "ordem": [
+        "ART RYIT MARCA",
+        "BRAZA MARCA",
+        "KAIA MARCA",
+        "LAPIDAR NUTRI",
+        "Livreto EMPREGO E CARREIRA",
+        "UI prototipagem de aplicativo"
+      ]
     },
     {
       "slug": "pixel-art",
@@ -64,13 +152,147 @@
     {
       "slug": "modelagem-3d",
       "num": "04",
-      "pasta": "Modelagem 3D",
+      "pasta": "Modelos 3D",
       "titulo": "Modelagem 3D",
       "pagina": "modelagem-3d.html",
       "resumo": "Objetos, cenários e personagens para jogos e projetos visuais.",
-      "intro": "Objetos, cenários e personagens modelados para jogos.",
+      "intro": "Objetos sci-fi, naves, um controle clássico e uma criatura, todos modelados e texturizados no Blender. Cada modelo tem a prancha de apresentação e, logo abaixo, as capturas do processo.",
       "nota": "Do conceito ao modelo",
-      "atividades": {}
+      "atividades": {
+        "caixa 1": {
+          "titulo": "Axioma · Núcleo do Amanhã",
+          "descricao": "Objeto tecnológico cúbico feito a partir de referência. Painéis, relevos e marcações luminosas em ciano criam contraste entre superfícies e volumes.",
+          "tags": [
+            "Sci-fi",
+            "Hard surface",
+            "Emissão"
+          ]
+        },
+        "caixa 2": {
+          "titulo": "Ferron · Relíquia Incandescente",
+          "descricao": "A mesma estrutura cúbica com acabamentos diferentes. Texturas de oxidação, painéis alaranjados e detalhes luminosos mudam a leitura do objeto.",
+          "tags": [
+            "Sci-fi",
+            "Materiais",
+            "Desgaste"
+          ]
+        },
+        "caixa 3": {
+          "titulo": "Nexór · Cápsula do Horizonte",
+          "descricao": "Cápsula com acabamento preto e laranja. O elemento circular em azul vira o ponto de destaque e guia o olhar para o centro da peça.",
+          "tags": [
+            "Sci-fi",
+            "Textura",
+            "Contraste"
+          ]
+        },
+        "caixa 4": {
+          "titulo": "Nexór · Edição Obsidiana",
+          "descricao": "Variação da cápsula com acabamento escuro e padrões dourados. O vidro reflexivo contrasta com a superfície geométrica.",
+          "tags": [
+            "Sci-fi",
+            "Variação",
+            "Texturização"
+          ]
+        },
+        "caixa 5": {
+          "titulo": "Aurion · Cofre da Aurora",
+          "descricao": "Módulo de ficção científica com painéis metálicos, detalhes alaranjados e linhas luminosas douradas. Vistas frontal, lateral, superior e inferior.",
+          "tags": [
+            "Sci-fi",
+            "Hard surface",
+            "Vistas"
+          ]
+        },
+        "caixa 6": {
+          "titulo": "Rúptor · Núcleo de Contenção",
+          "descricao": "Caixa de contenção avermelhada, com painéis escuros e luzes que dão um ar industrial ao objeto.",
+          "tags": [
+            "Sci-fi",
+            "Materiais",
+            "Iluminação"
+          ]
+        },
+        "nave 1": {
+          "titulo": "Nave Cone Duplo · Gold",
+          "descricao": "Nave espacial dourada feita nas disciplinas de Modelagem 3D. Superfícies metálicas, formas circulares e luzes que reforçam a identidade da nave.",
+          "tags": [
+            "Nave",
+            "Blender",
+            "Metal"
+          ]
+        },
+        "nave 2": {
+          "titulo": "Víbora VX-01",
+          "descricao": "Nave com metal desgastado e luzes verdes. As marcas de uso contrastam com os elementos luminosos e dão personalidade ao modelo.",
+          "tags": [
+            "Nave",
+            "Texturização",
+            "Emissão"
+          ]
+        },
+        "nave 3": {
+          "titulo": "Rubra · Arauto do Eclipse",
+          "descricao": "Da referência à primeira versão: estudo de volumes, modelo sem textura e aplicação inicial de materiais a partir de um concept art.",
+          "tags": [
+            "Nave",
+            "Processo",
+            "Referência"
+          ]
+        },
+        "nave 4": {
+          "titulo": "Ignarok · A Forja do Sol",
+          "descricao": "Nave em tons de bronze com painéis prateados e luzes amarelas que destacam os volumes e os detalhes mecânicos.",
+          "tags": [
+            "Nave",
+            "Materiais",
+            "Hard surface"
+          ]
+        },
+        "nave 5": {
+          "titulo": "Oblivion · O Último Horizonte",
+          "descricao": "Superfícies escuras, metais refletivos e propulsores em âmbar. Um estudo de contraste entre sombra e energia.",
+          "tags": [
+            "Nave",
+            "Iluminação",
+            "Metal"
+          ]
+        },
+        "controle 1": {
+          "titulo": "Memória 16-bit",
+          "descricao": "Controle clássico em três dimensões, inspirado no Super Nintendo. Volumes arredondados, botões em relevo e contraste de materiais.",
+          "tags": [
+            "Objeto",
+            "Retrô",
+            "Modelagem"
+          ]
+        },
+        "demonio 1": {
+          "titulo": "Varkhor · Guardião da Centelha",
+          "descricao": "Criatura com escultura digital e texturização no Blender. Chifres, volumes robustos e o núcleo verde luminoso definem a silhueta.",
+          "tags": [
+            "Personagem",
+            "Escultura",
+            "Texturização"
+          ]
+        }
+      },
+      "pares": true,
+      "ordem": [
+        "caixa 1",
+        "caixa 2",
+        "caixa 3",
+        "caixa 4",
+        "caixa 5",
+        "caixa 6",
+        "nave 1",
+        "nave 2",
+        "nave 3",
+        "nave 4",
+        "nave 5",
+        "controle 1",
+        "demonio 1"
+      ]
     },
     {
       "slug": "ia",
@@ -92,32 +314,94 @@
       "resumo": "Do conceito ao protótipo, explorando mecânicas, narrativas e experiências interativas.",
       "intro": "Jogos digitais, card games, interfaces e arte para jogos. Cada projeto passou por ideia, protótipo, teste e ajuste, e aqui mostro esse caminho.",
       "nota": "Explorar, resolver, descobrir, evoluir",
-      "ordem": ["Chocotopia", "Deuses em guerra CARD GAME", "o terror nas bordas", "Interface para jogos", "Primeiros jogos"],
+      "ordem": [
+        "Chocotopia",
+        "Deuses em guerra CARD GAME",
+        "Seed Game",
+        "Interiore Vero",
+        "Sitio da Cuca Game",
+        "TERROR CARD",
+        "Interface para jogos",
+        "Flapy bird game"
+      ],
       "atividades": {
         "Chocotopia": {
           "titulo": "Chocotopia",
           "descricao": "Jogo de estratégia em que pequenos guardiões defendem o mundo de Chocotopia. Do protótipo em blocos ao universo visual, com personagens, elementos, interface e telas de vitória e derrota.",
-          "tags": ["Estratégia", "Protótipo", "Personagens", "UI"]
+          "tags": [
+            "Estratégia",
+            "Protótipo",
+            "Personagens",
+            "UI"
+          ]
         },
         "Deuses em guerra CARD GAME": {
           "titulo": "Deuses em Guerra",
           "descricao": "Card game de batalha entre deuses. Regras, reformulação de mecânicas, identidade dos personagens e design das cartas, testado e ajustado a cada rodada.",
-          "tags": ["Card game", "Regras", "Design de cartas", "Playtest"]
-        },
-        "o terror nas bordas": {
-          "titulo": "O Terror nas Bordas",
-          "descricao": "Estudo de molduras, ornamentos e composição. A borda da carta como parte da narrativa.",
-          "tags": ["Molduras", "Ornamentos", "Composição"]
+          "tags": [
+            "Card game",
+            "Regras",
+            "Design de cartas",
+            "Playtest"
+          ]
         },
         "Interface para jogos": {
           "titulo": "Interface para jogos",
           "descricao": "Interface completa para um jogo fictício em estilo graffiti: menus, inventário, loja, mapa, ícones de habilidades e barras de status.",
-          "tags": ["UI", "Menus", "Inventário", "Ícones"]
+          "tags": [
+            "UI",
+            "Menus",
+            "Inventário",
+            "Ícones"
+          ]
         },
-        "Primeiros jogos": {
-          "titulo": "Primeiros jogos",
-          "descricao": "Os primeiros protótipos 2D: composição de fases, personagens animados, cenários, itens, ataques e estados do jogador, além de estudos de arte vetorial.",
-          "tags": ["2D", "Animação", "Level design", "Vetor"]
+        "Sitio da Cuca Game": {
+          "titulo": "Sítio da Cuca",
+          "descricao": "Meu primeiro protótipo 2D, inspirado no folclore do Sítio do Picapau Amarelo. Composição de fases, personagens animados, cenários, itens, o golpe da Cuca e os estados de vida do jogador.",
+          "tags": [
+            "2D",
+            "Animação",
+            "Level design",
+            "Vetor"
+          ]
+        },
+        "TERROR CARD": {
+          "titulo": "Terror Card",
+          "descricao": "Estudo de molduras, ornamentos e composição. A borda da carta como parte da narrativa.",
+          "tags": [
+            "Molduras",
+            "Ornamentos",
+            "Composição"
+          ]
+        },
+        "Seed Game": {
+          "titulo": "SEED",
+          "descricao": "Feito na minha primeira Game Jam da UNIVALI, com o tema grande e pequeno. Uma sementinha em pixel art, com expressões, cenários em camadas, elementos de menu e artes de vitória e derrota.",
+          "tags": [
+            "Game Jam",
+            "Pixel art",
+            "Personagem",
+            "UI"
+          ]
+        },
+        "Interiore Vero": {
+          "titulo": "Interiore Vero",
+          "descricao": "Jogo de terror psicológico para Game Jam, ambientado na Londres de 1887. Pixel art em clima vitoriano gótico, com concept art, tileset, sprites e logo.",
+          "tags": [
+            "Game Jam",
+            "Terror",
+            "Pixel art",
+            "Concept art"
+          ]
+        },
+        "Flapy bird game": {
+          "titulo": "Flappy Bird · Arte vetorial",
+          "descricao": "Estudo de arte vetorial em cima de uma mecânica conhecida, pensando em personagem, cenário e obstáculos.",
+          "tags": [
+            "Vetor",
+            "2D",
+            "Estudo"
+          ]
         }
       }
     },

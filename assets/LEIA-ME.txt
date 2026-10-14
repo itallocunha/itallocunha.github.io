@@ -10,7 +10,8 @@ SOBRE
   sobre-retrato.png     retrato P&B (a borda rasgada é aplicada pelo código)
 
 PORTFÓLIO
-  port-01-ilustracao.png
+  01 Ilustração: já usa "Ilustração/arte colagem ilustração 1.1.png" (campo "capa"
+     em textos-portfolio.json). O script gera assets/_web/capas/ilustracao.webp.
   port-02-design.png
   port-03-pixelart.png
   port-04-3d.png

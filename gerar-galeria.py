@@ -14,6 +14,9 @@ Regras das pastas:
   assets/<Pasta da área>/<Atividade>/            artes de apresentação (em ordem)
   assets/<Pasta da área>/<Atividade>/ARTE/       artes em alta para o carrossel
   Imagens soltas na pasta da área viram uma atividade própria.
+  "capa" no json: arquivo solto da área usado como imagem da área na página inicial.
+  "pares": true no json: cada imagem solta ("nave 1.png") vira a apresentação e a
+  pasta com o mesmo nome ("NAVE 1/") vira o carrossel dessa atividade.
 
 Ordem: os arquivos seguem a ordem "natural" do nome (2 vem antes de 10).
 Para forçar uma ordem, comece o nome com número: "1 - capa.png", "2 - ...".
@@ -28,6 +31,9 @@ SAIDA = os.path.abspath(sys.argv[2]) if len(sys.argv) > 2 else os.path.join(AQUI
 TEXTOS = os.path.join(AQUI, "textos-portfolio.json")
 EXT = (".png", ".jpg", ".jpeg", ".webp", ".gif")
 PASTAS_ARTE = ("ARTE", "ARTES")
+
+def nfc(s):
+    return unicodedata.normalize("NFC", s)
 
 def slug(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
@@ -46,17 +52,22 @@ def legenda(nome):
 
 def imagens(pasta):
     if not os.path.isdir(pasta): return []
-    return sorted([f for f in os.listdir(pasta) if f.lower().endswith(EXT)], key=natural)
+    return sorted([f for f in os.listdir(pasta) if f.lower().endswith(EXT)], key=lambda f: natural(nfc(f)))
 
 def otimizar(origem, destino, lado_max, qualidade):
     if os.path.exists(destino) and os.path.getmtime(destino) >= os.path.getmtime(origem):
-        with Image.open(destino) as im: return im.size
+        try:
+            with Image.open(destino) as im: return im.size
+        except Exception:
+            pass                                       # arquivo quebrado: gera de novo
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     with Image.open(origem) as im:
         im = ImageOps.exif_transpose(im)
         if im.mode not in ("RGB", "RGBA"): im = im.convert("RGBA")
         im.thumbnail((lado_max, lado_max), Image.LANCZOS)
-        im.save(destino, "WEBP", quality=qualidade, method=6)
+        tmp = destino + ".tmp"
+        im.save(tmp, "WEBP", quality=qualidade, method=4)
+        os.replace(tmp, destino)
         return im.size
 
 def rel(p):  # caminho relativo ao site, sempre com "/"
@@ -87,28 +98,46 @@ def main():
     manifesto = {"areas": []}
     for area in textos["areas"]:
         pasta_area = os.path.join(ASSETS, area["pasta"])
-        dados = {k: v for k, v in area.items() if k != "atividades"}
+        dados = {k: v for k, v in area.items() if k not in ("atividades", "capa", "pares", "ordem")}
         dados["atividades"] = []
-        cfg_ativ = area.get("atividades", {})
+        cfg_ativ = {nfc(k): v for k, v in area.get("atividades", {}).items()}
         if os.path.isdir(pasta_area):
             grupos = []
             soltas = imagens(pasta_area)
+            capa = area.get("capa")
+            if capa:
+                achou = next((f for f in soltas if nfc(f) == nfc(capa)), None)
+                if achou:
+                    soltas.remove(achou)
+                    destino = os.path.join(SAIDA, "_web", "capas", area["slug"] + ".webp")
+                    w, h = otimizar(os.path.join(pasta_area, achou), destino, 1600, 88)
+                    dados["capa"] = {"src": rel(destino), "w": w, "h": h}
+                    print(f"  {area['titulo']}: capa {achou}")
+            subpastas = [d for d in sorted(os.listdir(pasta_area), key=lambda d: natural(nfc(d)))
+                         if os.path.isdir(os.path.join(pasta_area, d)) and d.upper() not in PASTAS_ARTE and not d.startswith("_")]
+            usadas = set()
             arte_raiz = next((os.path.join(pasta_area, d) for d in os.listdir(pasta_area)
                               if d.upper() in PASTAS_ARTE and os.path.isdir(os.path.join(pasta_area, d))), None)
-            if soltas or arte_raiz:
+            if area.get("pares"):
+                for f in soltas:
+                    st = nfc(os.path.splitext(f)[0])
+                    par = next((d for d in subpastas if nfc(d).casefold() == st.casefold()), None)
+                    if par: usadas.add(par)
+                    grupos.append((st, pasta_area, [f], os.path.join(pasta_area, par) if par else None))
+            elif soltas or arte_raiz:
                 # imagens soltas: se houver texto "_raiz" no json vira uma atividade; senão cada arquivo solto vira uma
                 if "_raiz" in cfg_ativ:
                     grupos.append(("_raiz", pasta_area, soltas, arte_raiz))
                 else:
                     for f in soltas:
-                        grupos.append((os.path.splitext(f)[0], pasta_area, [f], None))
-            for d in sorted(os.listdir(pasta_area), key=natural):
+                        grupos.append((nfc(os.path.splitext(f)[0]), pasta_area, [f], None))
+            for d in subpastas:
+                if d in usadas: continue
                 p = os.path.join(pasta_area, d)
-                if not os.path.isdir(p) or d.upper() in PASTAS_ARTE or d.startswith("_"): continue
                 arte = next((os.path.join(p, x) for x in os.listdir(p)
                              if x.upper() in PASTAS_ARTE and os.path.isdir(os.path.join(p, x))), None)
-                grupos.append((d, p, imagens(p), arte))
-            ordem = area.get("ordem", [])
+                grupos.append((nfc(d), p, imagens(p), arte))
+            ordem = [nfc(o) for o in area.get("ordem", [])]
             grupos.sort(key=lambda g: (ordem.index(g[0]) if g[0] in ordem else len(ordem), natural(g[0])))
             for nome, pasta, soltas, arte in grupos:
                 c = cfg_ativ.get(nome, {})

@@ -90,7 +90,7 @@ ativs.forEach((a,i)=>{
       <div class="car-info"><span class="legenda"></span>
         <div class="car-acoes"><button class="abrir-cheia" type="button">${ICO.cheia} Tela cheia</button><a class="orig" target="_blank" rel="noopener">Arquivo original ${ICO.seta}</a></div></div>
       <div class="miniaturas" role="tablist">
-        ${a.artes.map((r,j)=>`<button role="tab" aria-label="Arte ${j+1}" data-i="${j}"><img src="${url(r.mini)}" alt="" loading="lazy"></button>`).join('')}
+        ${a.artes.map((r,j)=>`<button role="tab" aria-label="Arte ${j+1}" data-i="${j}"><img src="${url(r.mini)}" alt="" loading="lazy"${Math.max(r.w,r.h)<320?' class="pixel"':''}></button>`).join('')}
       </div>
     </div>`:''}
   </div></section>`;
@@ -108,6 +108,13 @@ app.innerHTML = html;
 const GRUPOS = {};
 ativs.forEach((a,i)=>{ GRUPOS['apr-'+i] = a.apresentacao; GRUPOS['art-'+i] = a.artes; });
 const legendaDe = (it,j) => it.legenda || `Arte ${dois(j+1)}`;
+/* sprites pequenos (pixel art) crescem sem borrar */
+function pixelar(im, it, alvo){
+  im.classList.remove('pixel'); im.style.width = '';
+  if(!it.w || Math.max(it.w,it.h) >= 320) return;
+  const k = Math.max(2, Math.floor(alvo / Math.max(it.w,it.h)));
+  im.classList.add('pixel'); im.style.width = (it.w*k)+'px';
+}
 
 /* ---------- tela cheia ---------- */
 const lb = document.createElement('div');
@@ -123,7 +130,7 @@ let lbGrupo = null, lbI = 0, aoFechar = null;
 function lbMostrar(){
   const lista = GRUPOS[lbGrupo], it = lista[lbI];
   lbPalco.classList.remove('zoom'); lbImg.style.transform = '';
-  lbImg.src = url(it.src); lbImg.alt = legendaDe(it,lbI);
+  lbImg.src = url(it.src); lbImg.alt = legendaDe(it,lbI); pixelar(lbImg, it, 640);
   lb.querySelector('.legenda').textContent = legendaDe(it,lbI);
   lb.querySelector('.contador').textContent = `${dois(lbI+1)} / ${dois(lista.length)}`;
   lb.querySelector('.orig').href = url(it.original);
@@ -174,6 +181,7 @@ document.querySelectorAll('.carrossel').forEach(car=>{
     const s = slides[i]; if(!s || s.firstChild) return;
     const im = new Image(); im.decoding='async'; im.src = url(lista[i].src); im.alt = legendaDe(lista[i],i);
     im.addEventListener('click',()=>lbAbrir(car.dataset.grupo, atual, j=>ir(j)));
+    pixelar(im, lista[i], 480);
     s.appendChild(im);
   }
   function ir(i){

@@ -4,6 +4,7 @@ assets/Design Gráfico/
 assets/Jogos Protótipos JogosDigitais ArteParaJogos/
 assets/Pixel Art/
 assets/Modelagem 3D/
+assets/Modelos 3D/
 assets/IA/
 assets/Ensino/
 __pycache__/
@@ -13,3 +14,4 @@ desktop.ini
 portifolio-itallo
 configurar-remoto.bat
 remoto-ok.txt
+*.tmp
