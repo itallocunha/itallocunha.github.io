@@ -323,7 +323,7 @@ a{color:inherit;text-decoration:none}
 .selo{display:inline-block;border:1.5px solid #cfc3b8;padding:4px 10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:#e8d9cf;transform:rotate(-3deg);margin-bottom:16px}
 .copo h2{font-family:var(--f-terror);font-weight:400;color:var(--vermelho);font-size:clamp(58px,5.6vw,86px);line-height:.95;white-space:nowrap;text-shadow:0 0 30px rgba(227,38,44,.45);margin-bottom:16px}
 .copo h2 span{display:block;padding-left:.25em}
-.copo p{font-size:15px;margin-bottom:22px;max-width:240px}
+.copo p{font-size:15px;margin-bottom:22px;max-width:320px}
 .copo-col{position:relative;height:420px}
 .copo-col .slot{width:100%;height:100%}
 .copo-col .nota-papel{right:60px;top:auto;bottom:10px;width:190px;transform:rotate(-6deg);font-size:18px;color:#3a1c18;
@@ -638,6 +638,112 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){
   .dyn-letras.vivo .l,.cunha.dyn-scramble,.juntos.dyn-scramble,.item-txt .num,.copo h2,.mt-titulo img{animation:none!important}
 }
+
+/* ============================================================
+   MEU MAIOR PROJETO: ALTHEA
+============================================================ */
+.althea{position:relative;padding:120px 0 110px;overflow:hidden;isolation:isolate}
+.althea::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 70% at 72% 40%,rgba(143,77,255,.28),transparent 70%),
+             radial-gradient(40% 50% at 15% 80%,rgba(255,210,58,.08),transparent 70%),
+             linear-gradient(180deg,transparent,rgba(20,13,32,.85) 18%,rgba(20,13,32,.85) 82%,transparent)}
+.althea-video{position:absolute;right:0;top:0;height:100%;width:62%;object-fit:cover;opacity:.32;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 45%),linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 45%),linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);mask-composite:intersect}
+@media (max-width:1100px){.althea-video{width:100%;opacity:.18}}
+.althea .topo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
+.selo-ouro{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--amarelo);color:var(--amarelo);padding:5px 12px;
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;transform:rotate(-2deg);margin-bottom:18px}
+.selo-ouro i{width:8px;height:8px;background:var(--amarelo);border-radius:50%;box-shadow:0 0 10px var(--amarelo);animation:pisca 1.6s infinite}
+.althea h2{font-family:var(--f-pixel);font-weight:700;color:var(--branco);font-size:clamp(64px,8vw,128px);line-height:.9;letter-spacing:.04em;
+  text-shadow:0 0 34px rgba(143,77,255,.75),4px 4px 0 var(--roxo-escuro);margin-bottom:6px}
+.althea h2 b{color:var(--amarelo);font-weight:700}
+.althea .sub{font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);font-size:24px;letter-spacing:.04em;margin-bottom:22px}
+.althea .lead{font-size:18px;color:var(--branco);max-width:520px;margin-bottom:14px}
+.althea .txt{max-width:520px;margin-bottom:26px}
+.althea-stats{display:grid;grid-template-columns:repeat(4,auto);gap:10px 28px;justify-content:start;margin-bottom:30px}
+.althea-stats div{display:flex;flex-direction:column}
+.althea-stats b{font-family:var(--f-display);font-weight:400;font-size:44px;line-height:1;color:var(--amarelo);text-shadow:0 0 18px rgba(255,210,58,.35)}
+.althea-stats span{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--apagado);margin-top:6px}
+.althea-acoes{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.status{font-family:var(--f-mono);font-size:12px;color:var(--roxo-claro);letter-spacing:.06em}
+.status::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#5dff9b;box-shadow:0 0 8px #5dff9b;margin-right:8px;vertical-align:1px;animation:pisca 2.4s infinite}
+
+/* mapa das Orbes */
+.orbes-mapa{position:relative;aspect-ratio:1/0.82;width:100%}
+.orbes-mapa svg.trilha-orbes{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.orbes-mapa .rota{fill:none;stroke:rgba(185,139,255,.45);stroke-width:2;stroke-dasharray:2 10;stroke-linecap:round;animation:marcha 18s linear infinite}
+.orbes-mapa .rota-feita{fill:none;stroke:var(--amarelo);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,210,58,.7));transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.2,1)}
+@keyframes marcha{to{stroke-dashoffset:-240}}
+.orbe{position:absolute;width:var(--t,92px);aspect-ratio:1;translate:-50% -50%;border:0;border-radius:50%;cursor:pointer;background:none;padding:0;
+  animation:flutua-orbe 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+.orbe .esfera{position:absolute;inset:-14%;border-radius:50%;
+  filter:drop-shadow(0 0 18px hsl(var(--h) 100% 60% / .55));
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.orbe .esfera::after{content:"";position:absolute;inset:4%;border-radius:50%;border:1.5px dashed hsl(var(--h) 100% 75% / .55);animation:gira 14s linear infinite}
+.orbe .num{position:absolute;left:50%;top:-16px;translate:-50% 0;font-family:var(--f-pixel2);font-size:11px;color:var(--amarelo);opacity:.8;pointer-events:none}
+.orbe .nome{position:absolute;left:50%;top:calc(100% + 14px);translate:-50% 0;white-space:nowrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  color:var(--apagado);transition:color .3s}
+.orbe:hover .esfera,.orbe:focus-visible .esfera{transform:scale(1.1)}
+.orbe .esfera img{width:100%;height:100%;object-fit:contain;display:block}
+.orbe.ativa .esfera{transform:scale(1.16);filter:drop-shadow(0 0 26px hsl(var(--h) 100% 62% / .95)) drop-shadow(0 0 60px hsl(var(--h) 100% 60% / .45))}
+.orbe.ativa .nome{color:var(--amarelo)}
+.orbe:focus-visible{outline:2px solid var(--amarelo);outline-offset:10px}
+@keyframes flutua-orbe{50%{translate:-50% calc(-50% - 10px)}}
+@keyframes gira{to{transform:rotate(360deg)}}
+.faisca{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--amarelo);box-shadow:0 0 8px var(--amarelo);pointer-events:none;
+  animation:faisca 1s ease-out forwards}
+@keyframes faisca{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+
+/* ficha da Orbe selecionada */
+.mapa-wrap{position:relative}
+.ficha-orbe{position:absolute;right:0;bottom:-10px;width:min(260px,62%);background:rgba(13,9,21,.88);border:1.5px solid var(--roxo);padding:16px 18px 18px;
+  box-shadow:6px 6px 0 rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.ficha-orbe::before,.ficha-orbe::after{content:"";position:absolute;width:8px;height:8px;background:var(--amarelo)}
+.ficha-orbe::before{left:-4px;top:-4px}.ficha-orbe::after{right:-4px;bottom:-4px}
+.ficha-cena{display:block;width:calc(100% + 36px);max-width:none;height:auto;margin:-16px -18px 14px;aspect-ratio:2/1;object-fit:cover;border-bottom:1.5px solid var(--roxo)}
+.ficha-orbe small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--roxo-claro);margin-bottom:4px}
+.ficha-orbe strong{display:block;font-family:var(--f-pixel);font-size:19px;line-height:1.2;color:var(--branco);margin-bottom:8px}
+.ficha-orbe p{font-size:13px;margin-bottom:12px;min-height:3.1em}
+.barra-xp{height:10px;background:#1c1530;border:1px solid var(--roxo-escuro);position:relative;overflow:hidden}
+.barra-xp i{position:absolute;inset:0 auto 0 0;width:20%;background:repeating-linear-gradient(90deg,var(--amarelo) 0 8px,#e3b520 8px 10px);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.barra-legenda{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--apagado);margin-top:6px}
+
+/* cartas de recurso */
+.althea-cartas{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:70px}
+.carta-a{position:relative;background:linear-gradient(160deg,#1d1330,#120c1d);border:1.5px solid rgba(143,77,255,.55);padding:22px 20px 22px;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.carta-a:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--amarelo);box-shadow:0 18px 40px rgba(143,77,255,.25)}
+.carta-a .ico{width:46px;height:46px;display:grid;place-items:center;border:1.5px solid var(--amarelo);color:var(--amarelo);margin-bottom:16px;transform:rotate(45deg)}
+.carta-a .ico svg{width:24px;height:24px;transform:rotate(-45deg)}
+.carta-a h3{font-family:var(--f-cond);font-weight:600;font-size:21px;text-transform:uppercase;color:var(--branco);letter-spacing:.02em;margin-bottom:8px}
+.carta-a p{font-size:14px}
+.carta-a .canto{position:absolute;right:12px;top:10px;font-family:var(--f-pixel2);font-size:11px;color:var(--roxo-claro)}
+
+/* projeto secundário logo depois */
+.copo{margin-top:0}
+.copo-kit img{object-fit:cover!important;border:1.5px solid rgba(227,38,44,.35);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.copo-fundo img{opacity:.35!important}
+.copo .selo{color:#e8d9cf}
+
+@media (max-width:1100px){
+  .althea .topo{grid-template-columns:1fr}
+  .orbes-mapa{max-width:640px;margin:0 auto;width:100%}
+  .althea-cartas{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .althea{padding:80px 0 70px}
+  .althea-stats{grid-template-columns:repeat(2,auto)}
+  .althea-stats b{font-size:32px}
+  .orbes-mapa{aspect-ratio:1/1.05}
+  .orbe{--t:64px!important}
+  .ficha-orbe{position:relative;width:100%;margin-top:12px}
+  .mapa-wrap{display:flex;flex-direction:column}
+  .althea-cartas{grid-template-columns:1fr;margin-top:46px}
+}
+@media (prefers-reduced-motion:reduce){
+  .orbe,.orbe .esfera::after,.orbes-mapa .rota,.selo-ouro i,.status::before{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -662,6 +768,7 @@ a{color:inherit;text-decoration:none}
     <div class="nav-l">
       <a href="#topo" class="logo">IC</a>
       <ul>
+        <li><a href="#althea">Projetos</a></li>
         <li><a href="#portfolio">Portfólio</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -750,6 +857,96 @@ a{color:inherit;text-decoration:none}
         <span class="retrato-fala">Prazer, Itallo!</span>
       </div>
       <p class="mao n3">Mesma<br>curiosidade<br>de sempre<br>só que<br>mais longe</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MEU MAIOR PROJETO: ALTHEA ======================= -->
+<section class="althea" id="althea">
+  <video class="althea-video" muted loop playsinline preload="none" poster="Althea%20site/hero-poster.jpg" aria-hidden="true"></video>
+  <div class="wrap">
+    <div class="topo">
+      <div class="rv">
+        <span class="selo-ouro"><i></i>MEU MAIOR PROJETO</span>
+        <h2>ALTH<b>E</b>A</h2>
+        <p class="sub">A jornada das Orbes</p>
+        <p class="lead">Um RPG de autoconhecimento. Em vez de derrotar monstros, você encara desafios sobre si mesmo, e o seu personagem cresce junto com você.</p>
+        <p class="txt">Cada Orbe é uma região do mundo de ALTHEA, com dez desafios para completar. Ao terminar uma Orbe, sua ficha sobe de nível, você distribui pontos de atributo e ganha itens, cartas e medalhas para a sua coleção.</p>
+        <div class="althea-stats">
+          <div><b data-conta="5">5</b><span>Orbes</span></div>
+          <div><b data-conta="50">50</b><span>Desafios</span></div>
+          <div><b data-conta="8">8</b><span>Atributos</span></div>
+          <div><b>1→5</b><span>Níveis</span></div>
+        </div>
+        <div class="althea-acoes">
+          <a href="Althea%20site/index.html" class="btn">Conhecer a ALTHEA <svg><use href="#seta"/></svg></a>
+          <a href="#contato" class="link">Quero acompanhar <svg><use href="#seta"/></svg></a>
+          <span class="status">Em desenvolvimento</span>
+        </div>
+      </div>
+
+      <div class="mapa-wrap rv">
+        <div class="orbes-mapa" id="mapaOrbes">
+          <svg class="trilha-orbes" viewBox="0 0 100 82" preserveAspectRatio="none" aria-hidden="true">
+            <path class="rota" d="M12 66 C 22 44, 30 40, 34 46 S 46 66, 54 54 S 62 22, 70 30 S 86 20, 88 12" vector-effect="non-scaling-stroke"/>
+            <path class="rota-feita" id="rotaFeita" d="M12 66 C 22 44, 30 40, 34 46 S 46 66, 54 54 S 62 22, 70 30 S 86 20, 88 12" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <button class="orbe ativa" style="left:10%;top:80%;--h:45;--t:84px" data-i="0" aria-label="Orbe Dourada"><span class="esfera"><img src="Althea%20site/orb-gold.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">I</span><span class="nome">DOURADA</span></button>
+          <button class="orbe" style="left:28%;top:52%;--h:210;--t:88px;--d:-1s" data-i="1" aria-label="Orbe Azul"><span class="esfera"><img src="Althea%20site/orb-blue.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">II</span><span class="nome">AZUL</span></button>
+          <button class="orbe" style="left:45%;top:72%;--h:8;--t:92px;--d:-2s" data-i="2" aria-label="Orbe Vermelha"><span class="esfera"><img src="Althea%20site/orb-red.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">III</span><span class="nome">VERMELHA</span></button>
+          <button class="orbe" style="left:56%;top:30%;--h:130;--t:96px;--d:-3s" data-i="3" aria-label="Orbe Verde"><span class="esfera"><img src="Althea%20site/orb-green.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">IV</span><span class="nome">VERDE</span></button>
+          <button class="orbe" style="left:84%;top:12%;--h:275;--t:104px;--d:-4s" data-i="4" aria-label="Orbe Violeta"><span class="esfera"><img src="Althea%20site/orb-purple.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">V</span><span class="nome">VIOLETA</span></button>
+        </div>
+        <div class="ficha-orbe" aria-live="polite">
+          <img class="ficha-cena" id="fichaCena" src="Althea%20site/scene-gold.jpg" alt="" width="1000" height="562" loading="lazy">
+          <small id="fichaRotulo">ORBE I · DOURADA</small>
+          <strong id="fichaTitulo">O começo da trilha</strong>
+          <p id="fichaTexto">Os primeiros dez desafios. Aqui o viajante cria a ficha e descobre por onde quer começar.</p>
+          <div class="barra-xp"><i id="fichaBarra"></i></div>
+          <div class="barra-legenda"><span>Desafios</span><span id="fichaConta">10 / 50</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="althea-cartas">
+      <article class="carta-a rv"><span class="canto">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+        <h3>Ficha de personagem</h3>
+        <p>Vai do nível 1 ao 5, um nível por Orbe. A cada nível você distribui pontos entre oito atributos.</p>
+      </article>
+      <article class="carta-a rv"><span class="canto">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M7 9h1M16 9h1"/></svg></div>
+        <h3>Inventário e grimório</h3>
+        <p>Itens e cartas de habilidade colecionados como um álbum de figurinhas, junto com uma medalha para cada desafio concluído.</p>
+      </article>
+      <article class="carta-a rv"><span class="canto">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9M15 9l2-5 3 3-5 2M20 20 9 9M9 9 7 4 4 7l5 2"/></svg></div>
+        <h3>Duelo Arcano</h3>
+        <p>As cartas de habilidade viram combate. Cada uma tem um valor de dano e as partidas acontecem em três tipos de arena.</p>
+      </article>
+      <article class="carta-a rv"><span class="canto">04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4z"/><path d="M5 16a4 4 0 0 1 4-4h10"/></svg></div>
+        <h3>A Identidade do Viajante</h3>
+        <p>O livro que acompanha o jogo, com o Teste das Orbes, raças, classes e o Sistema de Afinidade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= OUTRO PROJETO: O COPO ======================= -->
+<section class="copo torn-y" id="projeto">
+  <div class="slot copo-fundo" data-label="O%20copo%20n%C3%A3o%20parou/img/corredor.webp"><img src="O%20copo%20n%C3%A3o%20parou/img/corredor.webp" alt="" loading="lazy"></div>
+  <span class="olho" style="left:31%;top:150px"></span>
+  <div class="wrap">
+    <div class="rv">
+      <span class="selo">PROJETO AUTORAL</span>
+      <h2 class="rough">O Copo<span>Não Parou</span></h2>
+      <p>Jogo físico de investigação e terror sobrenatural. Uma investigação paranormal em cinco envelopes, com documentos, provas e arquivos digitais para o grupo desvendar junto.</p>
+      <a href="O%20copo%20n%C3%A3o%20parou/index.html" class="btn">Conhecer o projeto <svg><use href="#seta"/></svg></a>
+    </div>
+    <div class="copo-col rv">
+      <div class="slot copo-kit" data-label="O%20copo%20n%C3%A3o%20parou/img/kit.webp"><img src="O%20copo%20n%C3%A3o%20parou/img/kit.webp" alt="Kit do jogo O Copo Não Parou: caixa, envelopes, documentos e arquivos digitais" loading="lazy" width="1312" height="1001"></div>
+      <div class="nota-papel">Algumas<br>verdades<br>não deveriam<br>ser descobertas.</div>
     </div>
   </div>
 </section>
@@ -926,24 +1123,6 @@ roxo e amarelo
     </div>
 
     <p class="mao n4">Ideias<br>ganham<br>mais sentido<br>quando<br>compartilhadas.</p>
-  </div>
-</section>
-
-<!-- ======================= PROJETO EM DESTAQUE ======================= -->
-<section class="copo torn-y" id="projeto">
-  <div class="slot copo-fundo" data-label="assets/copo-fundo.jpg  (fundo sombrio, opcional)"><img src="assets/copo-fundo.jpg" alt=""></div>
-  <span class="olho" style="left:31%;top:150px"></span>
-  <div class="wrap">
-    <div class="rv">
-      <span class="selo">PROJETO EM DESTAQUE</span>
-      <h2 class="rough">O Copo<span>Não Parou</span></h2>
-      <p>Jogo físico de investigação e terror sobrenatural.</p>
-      <a href="#" class="btn">Conhecer o projeto <svg><use href="#seta"/></svg></a>
-    </div>
-    <div class="copo-col rv">
-      <div class="slot" data-label="assets/copo-colagem.png  (caixa, fichas, fotos, relatório)"><img src="assets/copo-colagem.png" alt="Componentes do jogo O Copo Não Parou"></div>
-      <div class="nota-papel">Algumas<br>verdades<br>não deveriam<br>ser descobertas.</div>
-    </div>
   </div>
 </section>
 
@@ -1394,6 +1573,89 @@ document.querySelectorAll('.card').forEach(card=>{
     t.style.left=cx+'px'; t.style.top=(cy-20)+'px'; card.appendChild(t); setTimeout(()=>t.remove(),950);
   });
 });
+</script>
+<script>
+/* ===== ALTHEA: mapa das Orbes ===== */
+(()=>{
+  const mapa=document.getElementById('mapaOrbes'); if(!mapa) return;
+  const orbes=[...mapa.querySelectorAll('.orbe')];
+  const rota=document.getElementById('rotaFeita');
+  const info=[
+    ['O começo da trilha','Os primeiros dez desafios. Aqui o viajante cria a ficha e descobre por onde quer começar.'],
+    ['Segunda parada','Novos desafios, novos itens no inventário e o primeiro aumento real nos atributos.'],
+    ['Metade do caminho','A ficha já tem a cara de quem joga. O grimório começa a ganhar cartas para o Duelo Arcano.'],
+    ['Quase no topo','Desafios mais profundos e cartas mais fortes. O álbum de medalhas fica perto de completo.'],
+    ['A última Orbe','Os dez desafios finais. O personagem chega ao nível 5, junto com quem jogou.']
+  ];
+  const romano=['I','II','III','IV','V'];
+  const cores=['Dourada','Azul','Vermelha','Verde','Violeta'];
+  const cenas=['gold','blue','red','green','purple'];
+  cenas.forEach(c=>{const im=new Image(); im.src=`Althea%20site/scene-${c}.jpg`;});
+  // vídeo de fundo: versão leve no celular, só toca quando a seção aparece
+  const vid=document.querySelector('.althea-video');
+  if(vid && !calmoV()){ vid.src=`Althea%20site/hero-${innerWidth<720?640:1280}.mp4`;
+    new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?vid.play().catch(()=>{}):vid.pause();}),{threshold:.1}).observe(vid); }
+  function calmoV(){return matchMedia('(prefers-reduced-motion:reduce)').matches;}
+  // desenha a trilha passando pelo centro de cada Orbe
+  const pts=orbes.map(o=>[parseFloat(o.style.left),parseFloat(o.style.top)*0.82]);
+  let d=`M${pts[0][0]} ${pts[0][1]}`;
+  for(let k=0;k<pts.length-1;k++){
+    const p0=pts[k-1]||pts[k],p1=pts[k],p2=pts[k+1],p3=pts[k+2]||p2;
+    const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+    d+=` C${c1[0]} ${c1[1]}, ${c2[0]} ${c2[1]}, ${p2[0]} ${p2[1]}`;
+  }
+  mapa.querySelectorAll('.rota,.rota-feita').forEach(el=>el.setAttribute('d',d));
+  let len=0; try{ len=rota.getTotalLength(); }catch(e){}
+  const calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  // proporção do caminho onde cada orbe fica (aproximada pelo ponto mais próximo)
+  const pos=orbes.map(o=>{
+    if(!len) return 0;
+    const ox=parseFloat(o.style.left), oy=parseFloat(o.style.top)*0.82;
+    let melhor=0,dist=1e9;
+    for(let t=0;t<=len;t+=len/200){const p=rota.getPointAtLength(t);const d=(p.x-ox)**2+(p.y-oy)**2;if(d<dist){dist=d;melhor=t;}}
+    return melhor;
+  });
+  if(len){rota.style.strokeDasharray=len; rota.style.strokeDashoffset=len;}
+  function faiscas(o){
+    if(calmo) return;
+    const r=o.getBoundingClientRect(), m=mapa.getBoundingClientRect();
+    for(let k=0;k<12;k++){
+      const f=document.createElement('span'); f.className='faisca';
+      const a=Math.random()*Math.PI*2, d=40+Math.random()*50;
+      f.style.left=(r.left-m.left+r.width/2)+'px'; f.style.top=(r.top-m.top+r.height/2)+'px';
+      f.style.setProperty('--x',Math.cos(a)*d+'px'); f.style.setProperty('--y',Math.sin(a)*d+'px');
+      mapa.appendChild(f); setTimeout(()=>f.remove(),1000);
+    }
+  }
+  function ativar(i,comFaisca){
+    orbes.forEach((o,j)=>o.classList.toggle('ativa',j===i));
+    document.getElementById('fichaRotulo').textContent=`ORBE ${romano[i]} · ${cores[i].toUpperCase()} · NÍVEL ${i+1}`;
+    document.getElementById('fichaCena').src=`Althea%20site/scene-${cenas[i]}.jpg`;
+    document.getElementById('fichaTitulo').textContent=info[i][0];
+    document.getElementById('fichaTexto').textContent=info[i][1];
+    document.getElementById('fichaConta').textContent=`${(i+1)*10} / 50`;
+    document.getElementById('fichaBarra').style.width=((i+1)*20)+'%';
+    if(len) rota.style.strokeDashoffset=len-pos[i];
+    if(comFaisca) faiscas(orbes[i]);
+  }
+  orbes.forEach((o,i)=>{
+    o.addEventListener('click',()=>{atual=-1; ativar(i,true); parar();});
+    o.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){atual=-1; ativar(i,false); parar();}});
+  });
+  // percorre a trilha sozinho até a pessoa interagir
+  let auto=null, atual=0;
+  function parar(){ if(auto){clearInterval(auto); auto=null;} }
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting && !auto && !calmo && atual!==-1){
+        auto=setInterval(()=>{atual=(atual+1)%5; ativar(atual,true);},2600);
+      } else if(!e.isIntersecting) parar();
+    });
+  },{threshold:.4});
+  io.observe(mapa);
+  mapa.addEventListener('pointerdown',()=>{atual=-1;});
+  ativar(0,false);
+})();
 </script>
 </body>
 </html>

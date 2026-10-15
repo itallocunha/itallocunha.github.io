@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ALTHEA: uma aventura de autoconhecimento gamificado. Amostra por R$5 e Orbe 1 completa.">
+<title>ALTHEA: Jornada Interior</title>
+<style>
+  :root{
+    --bg:#0e0b17;
+    --bg-2:#171229;
+    --bg-3:#221a3a;
+    --ink:#08060f;
+    --line:rgba(243,234,217,.12);
+    --line-strong:rgba(243,234,217,.24);
+    --text:#f3ead9;
+    --text-muted:#b7abd1;
+    --gold:#d9a441;
+    --gold-2:#f4d68c;
+    --gold-soft:rgba(217,164,65,.16);
+    --violet:#8c6ef2;
+    --violet-soft:rgba(140,110,242,.18);
+    --radius:14px;
+    --radius-lg:22px;
+    --space-1:8px;
+    --space-2:16px;
+    --space-3:24px;
+    --space-4:40px;
+    --space-5:64px;
+    --space-6:96px;
+    --ease-out:cubic-bezier(.16,.84,.34,1);
+    --ease-soft:cubic-bezier(.4,0,.2,1);
+    --font-display:"Grenze Gotisch","Cinzel",Georgia,serif;
+    --font-label:"Cinzel",Georgia,serif;
+    --font-body:"Spectral","Iowan Old Style",Georgia,serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{overflow-x:clip;}
+  body{
+    margin:0; overflow-x:clip;
+    background:var(--bg); color:var(--text);
+    font-family:var(--font-body);
+    font-size:17.5px; line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.orb-panel__title{font-family:var(--font-display);}
+  .eyebrow,.chapter-pill,.offer-badge,.portal-label,.stat__label,.ticker__item,
+  .orb-btn,.radar-lvl,.sheet__head span,.cta{font-family:var(--font-label);}
+  h1,h2{text-wrap:balance; font-weight:700; letter-spacing:.004em; margin:0 0 var(--space-2);}
+  h1{font-size:clamp(34px,6.6vw,64px); line-height:1.04;}
+  h2{font-size:clamp(28px,4.8vw,44px); line-height:1.08;}
+  h3{font-weight:700; letter-spacing:.01em;}
+  p{margin:0 0 var(--space-2);}
+  a{color:var(--gold);}
+  img{max-width:100%;}
+  .num{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
+  .h-grad{
+    background:linear-gradient(100deg,#f8e6bb 0%,#e8bc63 32%,#c98f2c 58%,#f6dfa6 100%);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent; -webkit-text-fill-color:transparent;
+  }
+
+  .wrap{max-width:720px; margin-inline:auto; padding-inline:20px;}
+  .wrap--wide{max-width:1080px;}
+  .band{padding-block:var(--space-5);}
+
+  /* ---------- camadas de ambiente ---------- */
+  .bg-fx{
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(600px 400px at 15% 8%, var(--violet-soft), transparent 60%),
+      radial-gradient(500px 380px at 85% 30%, var(--gold-soft), transparent 60%),
+      radial-gradient(700px 500px at 50% 90%, rgba(140,110,242,.10), transparent 60%);
+  }
+  .grain{
+    position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    background-size:180px; mix-blend-mode:overlay;
+  }
+  .aura{
+    position:fixed; width:420px; height:420px; left:0; top:0; z-index:55;
+    margin:-210px 0 0 -210px; pointer-events:none; opacity:0;
+    background:radial-gradient(circle, rgba(217,164,65,.14), rgba(140,110,242,.08) 45%, transparent 70%);
+    mix-blend-mode:screen; transition:opacity .4s var(--ease-soft);
+  }
+  body.has-aura .aura{opacity:1;}
+  .progress{
+    position:fixed; top:0; left:0; height:2px; width:0%; z-index:70;
+    background:linear-gradient(90deg, var(--violet), var(--gold));
+    box-shadow:0 0 12px rgba(217,164,65,.6);
+  }
+
+  /* ---------- nav ---------- */
+  .chapter-nav{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    display:flex; justify-content:center; padding:14px 20px;
+    transition:opacity .45s var(--ease-soft), transform .45s var(--ease-soft);
+  }
+  body.js-nav .chapter-nav{opacity:0; transform:translateY(-12px); pointer-events:none;}
+  body.js-nav .chapter-nav.is-visible{opacity:1; transform:none; pointer-events:auto;}
+  .chapter-nav__inner{
+    display:flex; align-items:center; gap:var(--space-3);
+    background:rgba(14,11,23,.8); border:1px solid var(--line);
+    border-radius:999px; padding:6px 8px 6px 18px; backdrop-filter:blur(10px); max-width:100%;
+  }
+  .chapter-nav__brand{height:18px; width:auto; display:block; flex-shrink:0; opacity:.9;}
+  .chapter-nav__chapters{display:flex; gap:6px;}
+  .chapter-pill{
+    font-size:12px; letter-spacing:.04em; text-decoration:none; color:var(--text-muted);
+    padding:8px 12px; border-radius:999px; white-space:nowrap;
+    transition:background .25s var(--ease-out), color .25s var(--ease-out);
+  }
+  .chapter-pill.active{background:var(--gold-soft); color:var(--gold);}
+  .chapter-pill:hover{color:var(--text);}
+  .chapter-pill:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+
+  .eyebrow{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:var(--space-2);}
+  .accent{color:var(--gold-2); text-shadow:0 0 26px rgba(217,164,65,.45), 0 2px 18px rgba(8,6,15,.8);}
+  .lead{font-size:19px; color:var(--text-muted); max-width:56ch;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:100vh; min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-block:calc(var(--space-6) + 20px) var(--space-5); text-align:center;
+  }
+  .hero__bg{position:absolute; inset:0; z-index:-2; background:var(--ink); overflow:hidden;}
+  .hero__video{width:100%; height:100%; object-fit:cover; object-position:center 42%; display:block; transform:scale(1.06);}
+  .hero__scrim{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(70% 60% at 50% 42%, rgba(8,6,15,.30) 0%, rgba(8,6,15,.76) 100%),
+      linear-gradient(180deg, rgba(8,6,15,.82) 0%, rgba(8,6,15,.40) 30%, rgba(14,11,23,.9) 78%, var(--bg) 100%);
+  }
+  .hero__embers{position:absolute; inset:0; z-index:-1; width:100%; height:100%; pointer-events:none;}
+  .hero__content{display:flex; flex-direction:column; align-items:center; position:relative; z-index:1;}
+  .hero__logo{
+    width:min(76vw,400px); height:auto; display:block; margin-bottom:var(--space-3);
+    filter:drop-shadow(0 8px 34px rgba(217,164,65,.42));
+    animation:logoIn 1.1s var(--ease-out) both;
+  }
+  .hero h1{max-width:24ch; margin-inline:auto; text-shadow:0 2px 24px rgba(8,6,15,.8);}
+  .hero .lead{margin-inline:auto; text-shadow:0 2px 18px rgba(8,6,15,.85); animation:riseIn .9s var(--ease-out) .5s both;}
+  .hero .eyebrow{animation:riseIn .9s var(--ease-out) .12s both;}
+  .hero .cta{animation:riseIn .9s var(--ease-out) .62s both;}
+  .word{display:inline-block; animation:wordIn .8s var(--ease-out) both; animation-delay:calc(.22s + var(--w,0) * .055s);}
+  @keyframes logoIn{from{opacity:0; transform:translateY(18px) scale(.95); filter:blur(8px);} to{opacity:1; transform:none; filter:blur(0);}}
+  @keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  @keyframes wordIn{from{opacity:0; transform:translateY(16px) rotate(1.5deg);} to{opacity:1; transform:none;}}
+
+  .scroll-cue{
+    margin-top:var(--space-4); font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:10px;
+    animation:riseIn .9s var(--ease-out) .8s both;
+  }
+  .scroll-cue__line{width:1px; height:46px; background:linear-gradient(var(--gold), transparent); position:relative; overflow:hidden;}
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    position:relative; overflow:hidden; padding-block:18px;
+    background:
+      linear-gradient(180deg, rgba(14,11,23,.9), rgba(36,28,61,.85) 45%, rgba(14,11,23,.9)),
+      radial-gradient(60% 140% at 50% 50%, rgba(140,110,242,.16), transparent 70%);
+    box-shadow:inset 0 14px 22px -20px #000, inset 0 -14px 22px -20px #000;
+  }
+  .ticker::before,.ticker::after{
+    content:""; position:absolute; left:0; right:0; height:1px; z-index:2;
+    background:linear-gradient(90deg, transparent, rgba(217,164,65,.55) 22%, rgba(140,110,242,.45) 50%, rgba(217,164,65,.55) 78%, transparent);
+  }
+  .ticker::before{top:0;} .ticker::after{bottom:0;}
+  .ticker__mask{
+    overflow:hidden; margin-right:46px;
+    mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  }
+  .ticker__track{display:flex; width:max-content; align-items:center;}
+  .ticker__item{
+    display:flex; align-items:center; gap:12px; flex-shrink:0;
+    font-size:14px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--text); white-space:nowrap; text-shadow:0 1px 10px rgba(8,6,15,.8);
+  }
+  .ticker__item:nth-child(4n+1){color:var(--gold-2);}
+  .ticker__orb{
+    width:38px; height:38px; flex-shrink:0; display:grid; place-items:center; border-radius:50%;
+    background:radial-gradient(circle at 50% 42%, rgba(217,164,65,.28), rgba(140,110,242,.12) 60%, transparent 72%);
+    box-shadow:0 0 20px -5px rgba(217,164,65,.6), inset 0 0 0 1px rgba(243,234,217,.14);
+  }
+  .ticker__orb img{width:26px; height:26px; object-fit:contain; display:block;}
+  .ticker__sep{
+    flex-shrink:0; color:var(--gold); opacity:.45; font-size:9px;
+    margin-inline:var(--space-3); letter-spacing:.4em;
+  }
+  .ticker__sheen{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(104deg, transparent 42%, rgba(248,230,187,.12) 50%, transparent 58%);
+    transform:translateX(-60%);
+  }
+
+  /* ---------- stats ---------- */
+  .stats__grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-2); text-align:center;}
+  .stat{
+    padding:var(--space-3) var(--space-1); border:1px solid var(--line); border-radius:var(--radius);
+    background:linear-gradient(160deg, rgba(34,26,58,.7), rgba(23,18,41,.4));
+  }
+  .stat__num{display:block; font-size:clamp(28px,6vw,40px); color:var(--gold); font-weight:700; line-height:1.1;}
+  .stat__label{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-muted); margin-top:6px;}
+
+  .check-list{list-style:none; padding:0; margin:0; display:grid; gap:var(--space-2);}
+  .check-list li{position:relative; padding-left:34px; color:var(--text-muted); font-size:16px;}
+  .check-list li::before{content:"✦"; position:absolute; left:0; top:1px; color:var(--gold); font-size:15px;}
+
+  /* ---------- split ---------- */
+  .split{display:grid; gap:var(--space-4); align-items:center;}
+  @media (min-width:860px){
+    .split{grid-template-columns:1.05fr .95fr;}
+    .split--flip .split__media{order:-1;}
+  }
+  .split__media{
+    margin:0; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line);
+    position:relative; box-shadow:0 30px 80px -50px rgba(0,0,0,.95);
+  }
+  .split__media img{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:16/10;}
+  .split__media::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(200deg, transparent 40%, rgba(14,11,23,.55));
+  }
+
+  /* ---------- feature full-bleed ---------- */
+  .feature{position:relative; overflow:hidden; isolation:isolate; padding-block:var(--space-6);}
+  .feature__bg{position:absolute; inset:-14% 0; z-index:-2; background-size:cover; background-position:center; will-change:transform;}
+  .feature__scrim{
+    position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, var(--bg) 0%, rgba(14,11,23,.84) 22%, rgba(14,11,23,.8) 78%, var(--bg) 100%);
+  }
+
+  /* ---------- CAMARA DAS ORBES (WebGL) ---------- */
+  .chamber{
+    position:relative; isolation:isolate; overflow:hidden;
+    padding-block:var(--space-5) var(--space-4);
+    background:radial-gradient(90% 70% at 50% 40%, #120e20, var(--bg) 78%);
+    border-block:1px solid var(--line);
+  }
+  .chamber__head{text-align:center; margin-bottom:var(--space-3);}
+  .chamber__stage{
+    position:relative; width:100%; height:min(56vh, 460px); min-height:320px;
+    border-radius:var(--radius-lg); overflow:hidden;
+    max-width:1180px; margin-inline:auto;
+  }
+  #orbCanvas{width:100%; height:100%; display:block; cursor:grab; touch-action:pan-y;}
+  #orbChamber.no-webgl #orbCanvas{display:none;}
+  .chamber__fallback{display:none; padding:var(--space-4) 0;}
+  #orbChamber.no-webgl .chamber__fallback{display:block;}
+  #orbChamber.no-webgl .chamber__stage{height:auto; min-height:0;}
+  .fallback-grid{display:flex; justify-content:center; gap:var(--space-2); flex-wrap:wrap;}
+  .fallback-grid img{width:84px; height:84px; object-fit:contain;}
+  .chamber__hint{
+    position:absolute; left:50%; bottom:12px; transform:translateX(-50%);
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-muted);
+    background:rgba(8,6,15,.55); border:1px solid var(--line); border-radius:999px;
+    padding:6px 14px; pointer-events:none; backdrop-filter:blur(6px);
+  }
+  #orbChamber.no-webgl .chamber__hint{display:none;}
+
+  @media (min-width:760px){ .chamber__stage{height:min(64vh, 580px);} }
+  .orb-bar{
+    display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+    margin:var(--space-3) auto 0; max-width:900px; padding-inline:20px;
+  }
+  .orb-btn{
+    display:flex; align-items:center; gap:9px; cursor:pointer;
+    background:rgba(23,18,41,.7); border:1px solid var(--line); color:var(--text-muted);
+    border-radius:999px; padding:8px 15px 8px 9px; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; transition:border-color .3s var(--ease-out), color .3s var(--ease-out), transform .3s var(--ease-out), background .3s var(--ease-out);
+  }
+  .orb-btn img{width:24px; height:24px; object-fit:contain;}
+  .orb-btn:hover{transform:translateY(-2px); color:var(--text); border-color:var(--line-strong);}
+  .orb-btn.is-active{border-color:var(--gold); color:var(--gold); background:var(--gold-soft);}
+  .orb-btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .orb-panel{
+    display:grid; gap:var(--space-3); align-items:center;
+    max-width:900px; margin:var(--space-4) auto 0; padding-inline:20px;
+  }
+  @media (min-width:760px){ .orb-panel{grid-template-columns:260px 1fr;} }
+  .orb-panel__art{
+    margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    background:var(--bg-2); aspect-ratio:16/10;
+  }
+  .orb-panel__art img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    opacity:0; transform:scale(1.05); transition:opacity .6s var(--ease-soft), transform 1s var(--ease-out);
+  }
+  .orb-panel__art img.is-in{opacity:1; transform:none;}
+  .orb-panel__num{font-size:12px; letter-spacing:.16em; color:var(--gold);}
+  .orb-panel__title{font-size:22px; margin:4px 0 8px;}
+  .orb-panel__text{color:var(--text-muted); margin:0;}
+  .orb-note{font-size:12.5px; color:var(--text-muted); font-style:italic; text-align:center; margin:var(--space-3) auto 0; max-width:60ch; padding-inline:20px;}
+
+  /* ---------- mecanicas ---------- */
+  .mechanic-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-2); margin-top:var(--space-3);}
+  @media (max-width:560px){.mechanic-grid{grid-template-columns:1fr;}}
+  .mechanic-card{
+    background:linear-gradient(160deg, rgba(34,26,58,.78), rgba(23,18,41,.55));
+    border:1px solid var(--line); border-radius:var(--radius); padding:var(--space-3);
+    position:relative; overflow:hidden;
+    transition:border-color .3s var(--ease-out), transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+  }
+  .mechanic-card:hover{border-color:var(--gold); transform:translateY(-4px); box-shadow:0 22px 50px -32px rgba(217,164,65,.6);}
+  .mechanic-card__icon{
+    width:44px; height:44px; margin-bottom:var(--space-1); display:block; object-fit:contain;
+    filter:drop-shadow(0 0 12px rgba(217,164,65,.35)); transition:transform .4s var(--ease-out);
+  }
+  .mechanic-card:hover .mechanic-card__icon{transform:scale(1.1) rotate(-5deg);}
+  .mechanic-card h3{font-size:16px; margin:0 0 6px; letter-spacing:.02em;}
+  .mechanic-card p{font-size:14.5px; color:var(--text-muted); margin:0;}
+
+  /* ---------- ficha + radar ---------- */
+  .sheet{
+    margin-top:var(--space-4); background:linear-gradient(160deg, rgba(34,26,58,.8), rgba(23,18,41,.6));
+    border:1px solid var(--line); border-radius:var(--radius-lg); padding:var(--space-3);
+  }
+  .sheet__head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-2);}
+  .sheet__head span{font-size:12px; color:var(--text-muted); letter-spacing:.1em;}
+  .sheet__head .radar-lvl{color:var(--gold);}
+  .radar-wrap{display:grid; gap:var(--space-2); justify-items:center;}
+  .radar{width:min(100%,430px); height:auto; overflow:visible;}
+  .radar-grid{fill:none; stroke:var(--line); stroke-width:1;}
+  .radar-axis{stroke:var(--line); stroke-width:1;}
+  .radar-area{fill:url(#radarFill); stroke:var(--gold); stroke-width:2; stroke-linejoin:round;}
+  .radar-dot{fill:var(--gold-2); stroke:var(--bg-2); stroke-width:2;}
+  .radar-label{font-family:"JetBrains Mono",monospace; font-size:10.5px; fill:var(--text-muted); letter-spacing:.06em;}
+  .radar-val{font-family:"JetBrains Mono",monospace; font-size:10px; fill:var(--gold);}
+  .sheet-note{font-size:12.5px; color:var(--text-muted); margin-top:var(--space-2); font-style:italic;}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    display:inline-block; text-decoration:none; font-family:"Cinzel",serif;
+    font-size:14px; letter-spacing:.06em; text-transform:uppercase;
+    padding:16px 30px; border-radius:10px; position:relative; overflow:hidden;
+    transition:transform .25s var(--ease-out), box-shadow .3s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out), border-color .3s var(--ease-out);
+  }
+  .cta--primary{
+    background:linear-gradient(120deg, var(--gold), var(--gold-2) 55%, var(--gold));
+    color:#1a1408; font-weight:700; box-shadow:0 12px 34px -14px rgba(217,164,65,.75);
+  }
+  .cta--primary::after{
+    content:""; position:absolute; top:0; bottom:0; left:-60%; width:45%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+    transform:skewX(-18deg); opacity:0;
+  }
+  .cta--primary:hover{box-shadow:0 18px 42px -12px rgba(217,164,65,.85);}
+  .cta--primary:focus-visible{outline:2px solid var(--text); outline-offset:3px;}
+  .cta--ghost{border:1px solid var(--line-strong); color:var(--text);}
+  .cta--ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* ---------- ladder ---------- */
+  .ladder{display:grid; gap:var(--space-2); margin-top:var(--space-3);}
+  .rung{
+    display:flex; align-items:center; gap:var(--space-2);
+    background:rgba(23,18,41,.7); border:1px solid var(--line); border-radius:var(--radius);
+    padding:var(--space-2) var(--space-3); position:relative; overflow:hidden;
+    transition:border-color .3s var(--ease-out), transform .3s var(--ease-out);
+  }
+  .rung::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(var(--violet), var(--gold)); opacity:.5;}
+  .rung:hover{transform:translateX(4px); border-color:var(--line-strong);}
+  .rung.is-current{border-color:var(--gold); background:var(--gold-soft);}
+  .rung.is-current::before{opacity:1;}
+  .rung.is-locked{opacity:.72;}
+  .rung__step{
+    font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--text-muted);
+    width:28px; height:28px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .rung.is-current .rung__step{border-color:var(--gold); color:var(--gold);}
+  .rung__emblem{width:30px; height:30px; object-fit:contain; flex-shrink:0; opacity:.85;}
+  .rung__body{flex:1;}
+  .rung__title{font-size:15px; margin-bottom:2px;}
+  .rung__sub{font-size:13px; color:var(--text-muted);}
+  .rung__price{font-family:"JetBrains Mono",monospace; font-size:16px; color:var(--gold); white-space:nowrap;}
+  .rung__price.strike{color:var(--text-muted); text-decoration:line-through; font-size:14px;}
+
+  /* ---------- oferta ---------- */
+  .offer-card{
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, var(--bg-3), var(--bg-2));
+    border:1px solid var(--gold); border-radius:var(--radius-lg);
+    padding:var(--space-4) var(--space-3); text-align:center;
+    box-shadow:0 30px 80px -40px rgba(217,164,65,.6);
+  }
+  .offer-card__orb{width:64px; height:64px; object-fit:contain; display:block; margin:0 auto var(--space-2); filter:drop-shadow(0 0 18px rgba(217,164,65,.5));}
+  .offer-badge{
+    display:inline-block; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold); border-radius:999px; padding:6px 14px; margin-bottom:var(--space-2);
+  }
+  .price-num{font-family:"JetBrains Mono",monospace; font-size:clamp(40px,10vw,56px); color:var(--gold); font-weight:700; margin:0;}
+  .offer-list{list-style:none; padding:0; margin:var(--space-3) auto; text-align:left; display:grid; gap:10px; max-width:340px;}
+  .offer-list li{font-size:15px; color:var(--text-muted); padding-left:26px; position:relative;}
+  .offer-list li::before{content:"◆"; position:absolute; left:0; color:var(--violet); font-size:11px; top:5px;}
+  .guarantee{font-size:13px; color:var(--text-muted); margin-top:var(--space-2);}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line); padding-block:var(--space-2);}
+  .faq-item summary{
+    cursor:pointer; list-style:none; font-family:"Cinzel",serif; font-size:15.5px;
+    display:flex; justify-content:space-between; align-items:center; gap:var(--space-2);
+    transition:color .25s var(--ease-out);
+  }
+  .faq-item summary:hover{color:var(--gold);}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+"; color:var(--gold); font-size:20px; flex-shrink:0; transition:transform .3s var(--ease-out);}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{color:var(--text-muted); font-size:15px; margin-top:var(--space-2);}
+
+  /* ---------- closer / portal / banner ---------- */
+  .closer{position:relative; overflow:hidden; isolation:isolate; padding-block:var(--space-6); text-align:center;}
+  .closer__bg{position:absolute; inset:-14% 0; z-index:-2; background-size:cover; background-position:center 40%; will-change:transform;}
+  .closer__scrim{position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, var(--bg), rgba(14,11,23,.88) 30%, rgba(14,11,23,.9) 70%, var(--bg));}
+  .closer .lead{margin-inline:auto;}
+
+  .portal{position:relative; overflow:hidden; isolation:isolate; text-align:center; padding-block:var(--space-6);}
+  .portal__bg{position:absolute; inset:0; z-index:-2; background:var(--ink);}
+  .portal__bg video{width:100%; height:100%; object-fit:cover; display:block; opacity:.55;}
+  .portal__scrim{
+    position:absolute; inset:0; z-index:-1;
+    background:
+      radial-gradient(50% 55% at 50% 45%, var(--violet-soft), transparent 70%),
+      linear-gradient(180deg, var(--bg), rgba(14,11,23,.62) 35%, rgba(14,11,23,.62) 65%, var(--bg));
+  }
+  .portal-ring{
+    width:116px; height:116px; margin:0 auto var(--space-3); border-radius:50%;
+    background:conic-gradient(from 0deg, var(--gold), var(--violet), var(--gold));
+    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+    mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .portal-label{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:var(--space-1);}
+  .portal h2{max-width:22ch; margin-inline:auto;}
+
+  .banner{position:relative; overflow:hidden; isolation:isolate; padding-block:var(--space-6) var(--space-5);}
+  .banner__bg{position:absolute; inset:-12% 0; z-index:-2; background-size:cover; background-position:center; will-change:transform;}
+  .banner__scrim{position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, var(--bg) 4%, rgba(14,11,23,.72) 40%, var(--bg) 96%);}
+
+  /* ---------- rodape com a vinheta da logo ---------- */
+  .site-footer{
+    position:relative; isolation:isolate; overflow:hidden;
+    min-height:min(64vh, 520px);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding-block:var(--space-6) var(--space-3); text-align:center;
+  }
+  .site-footer__bg{position:absolute; inset:0; z-index:-2; background:var(--ink); overflow:hidden;}
+  .site-footer__bg video{width:100%; height:100%; object-fit:cover; display:block;}
+  .site-footer__scrim{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, var(--bg) 0%, rgba(14,11,23,.42) 24%, rgba(14,11,23,.34) 52%, rgba(14,11,23,.9) 86%, var(--bg) 100%);
+  }
+  .site-footer__content{position:relative; z-index:1; font-size:12.5px; color:var(--text-muted);}
+  .site-footer__content p{margin:0;}
+  @media (max-width:759px){
+    .site-footer{min-height:min(52vh,430px); padding-block:var(--space-5) var(--space-3);}
+    .site-footer__bg video{object-fit:contain; object-position:center 44%;}
+    .site-footer__scrim{
+      background:linear-gradient(180deg, var(--bg) 0%, rgba(14,11,23,.3) 26%, rgba(14,11,23,.3) 60%, rgba(14,11,23,.9) 88%, var(--bg) 100%);
+    }
+  }
+
+  /* ==========================================================
+     MOVIMENTO ESSENCIAL: roda sempre, inclusive com o sistema
+     em "reduzir movimento". A esteira e os brilhos das orbes
+     sao conteudo, nao enfeite. Quem precisa parar, passa o
+     mouse por cima ou usa o botao de pausa da esteira.
+     ========================================================== */
+  .ticker__track{animation:marquee 24s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  .ticker:hover .ticker__track,
+  .ticker.is-paused .ticker__track{animation-play-state:paused;}
+  .ticker__sheen{animation:sheenSweep 7s var(--ease-soft) infinite;}
+  @keyframes sheenSweep{0%{transform:translateX(-60%);} 55%,100%{transform:translateX(160%);}}
+  .ticker__orb{animation:orbBreath 3.4s var(--ease-soft) infinite;}
+  .ticker__item:nth-child(4n+1) .ticker__orb{animation-delay:-.4s;}
+  .ticker__item:nth-child(4n+3) .ticker__orb{animation-delay:-1.7s;}
+  @keyframes orbBreath{
+    50%{transform:scale(1.1); box-shadow:0 0 30px -4px rgba(217,164,65,.85), inset 0 0 0 1px rgba(243,234,217,.26);}
+  }
+  .ticker__orb img{animation:orbTurn 16s linear infinite;}
+  @keyframes orbTurn{to{transform:rotate(360deg);}}
+  .ticker__sep{animation:sepFade 3.4s var(--ease-soft) infinite;}
+  @keyframes sepFade{50%{opacity:.9; transform:scale(1.15);}}
+  .portal-ring{animation:spin 14s linear infinite;}
+  .scroll-cue__line::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(var(--gold-2), transparent);
+    animation:cueTravel 2.2s var(--ease-soft) infinite;
+  }
+  @keyframes cueTravel{0%{transform:translateY(-100%);} 60%,100%{transform:translateY(100%);}}
+  @keyframes shimmer{from{left:-60%;} to{left:120%;}}
+  .cta--primary:hover::after{opacity:1; animation:shimmer .9s var(--ease-soft);}
+  .offer-card::before{
+    content:""; position:absolute; inset:-40%; z-index:0; pointer-events:none;
+    background:conic-gradient(from 0deg, transparent 0 78%, rgba(244,214,140,.16) 88%, transparent 100%);
+    animation:spin 9s linear infinite;
+  }
+  .offer-card > *{position:relative; z-index:1;}
+
+  /* ---------- reveals e parallax: esses sim respeitam a preferencia ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    body.js-reveal .r{
+      opacity:0; transition:opacity .75s var(--ease-out), transform .75s var(--ease-out);
+      transition-delay:calc(var(--i,0) * 90ms);
+    }
+    body.js-reveal .r-up{transform:translateY(28px);}
+    body.js-reveal .r-left{transform:translateX(-30px);}
+    body.js-reveal .r-right{transform:translateX(30px);}
+    body.js-reveal .r-scale{transform:scale(.94);}
+    body.js-reveal .r.is-in{opacity:1; transform:none;}
+    @media (max-width:700px){
+      body.js-reveal .r-left, body.js-reveal .r-right{transform:translateY(24px);}
+    }
+    .hero__video{animation:heroDrift 28s var(--ease-soft) infinite alternate;}
+    @keyframes heroDrift{from{transform:scale(1.04);} to{transform:scale(1.14);}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero__logo,.hero h1,.hero .eyebrow,.hero .lead,.hero .cta,.scroll-cue,.word{animation:none;}
+    .hero__video{transform:scale(1.06);}
+  }
+
+  /* ---------- botao de pausa da esteira ---------- */
+  .ticker__pause{
+    position:absolute; right:10px; top:50%; transform:translateY(-50%); z-index:3;
+    width:30px; height:30px; border-radius:50%; cursor:pointer;
+    border:1px solid var(--line); background:rgba(14,11,23,.7); color:var(--text-muted);
+    display:grid; place-items:center; font-size:11px; line-height:1;
+    transition:color .25s var(--ease-out), border-color .25s var(--ease-out), opacity .25s var(--ease-out);
+    opacity:.45;
+  }
+  .ticker__pause:hover{opacity:1; color:var(--gold); border-color:var(--gold);}
+  .ticker__pause:focus-visible{outline:2px solid var(--gold); outline-offset:2px; opacity:1;}
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700;900&family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+</head>
+<body>
+<div class="bg-fx" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="aura" id="aura" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="chapter-nav" id="chapterNav">
+  <div class="chapter-nav__inner">
+    <img class="chapter-nav__brand" src="wordmark.png" alt="ALTHEA">
+    <nav class="chapter-nav__chapters">
+      <a href="#pagina-1" class="chapter-pill active" data-chapter="pagina-1">Cap. 1 · Amostra</a>
+      <a href="#pagina-2" class="chapter-pill" data-chapter="pagina-2">Cap. 2 · Orbe 1</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PAGINA 1 · AMOSTRA (R$5) ============ -->
+<div class="page" id="pagina-1">
+
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+        <source src="hero-1280.mp4" type="video/mp4" media="(min-width:760px)">
+        <source src="hero-640.mp4" type="video/mp4">
+      </video>
+      <div class="hero__scrim"></div>
+    </div>
+    <canvas class="hero__embers" id="embers" aria-hidden="true"></canvas>
+    <div class="hero__content wrap">
+      <img class="hero__logo" src="wordmark.png" alt="ALTHEA, uma aventura de autoconhecimento">
+      <p class="eyebrow">Teste das Orbes · Capítulo 1</p>
+      <h1 data-kinetic>Você já fez uns 20 testes de personalidade. <span class="accent">Nenhum te fez virar o personagem.</span></h1>
+      <p class="lead">ALTHEA é a primeira jornada de autoconhecimento que você <em>joga</em>, não que você preenche. Cinco Orbes, um mundo cada, e uma ficha de personagem que evolui junto com o que você descobre sobre si.</p>
+      <a class="cta cta--primary" href="#oferta-amostra" data-magnetic>Começar minha jornada por R$5</a>
+      <div class="scroll-cue"><span class="scroll-cue__line"></span>role para descobrir</div>
+    </div>
+  </section>
+
+  <div class="ticker" id="ticker">
+    <div class="ticker__mask" aria-hidden="true">
+      <div class="ticker__track" id="tickerTrack">
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-gold.png" alt=""></span>5 Orbes</span>
+        <span class="ticker__sep">◆</span>
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-blue.png" alt=""></span>50 desafios</span>
+        <span class="ticker__sep">◆</span>
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-purple.png" alt=""></span>Grimório</span>
+        <span class="ticker__sep">◆</span>
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-green.png" alt=""></span>Duelo Arcano</span>
+        <span class="ticker__sep">◆</span>
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-red.png" alt=""></span>Álbum de medalhas</span>
+        <span class="ticker__sep">◆</span>
+        <span class="ticker__item"><span class="ticker__orb"><img src="orb-gold.png" alt=""></span>Ficha viva</span>
+        <span class="ticker__sep">◆</span>
+      </div>
+    </div>
+    <div class="ticker__sheen"></div>
+    <button type="button" class="ticker__pause" id="tickerPause" aria-label="Pausar a esteira">❚❚</button>
+  </div>
+
+  <section style="padding-block:var(--space-4)">
+    <div class="wrap stats__grid">
+      <div class="stat r r-up" style="--i:0"><span class="stat__num num" data-count="5">0</span><span class="stat__label">Orbes</span></div>
+      <div class="stat r r-up" style="--i:1"><span class="stat__num num" data-count="50">0</span><span class="stat__label">Desafios</span></div>
+      <div class="stat r r-up" style="--i:2"><span class="stat__num num" data-count="8">0</span><span class="stat__label">Atributos</span></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap wrap--wide split split--flip">
+      <div class="split__text r r-right">
+        <h2>Se algo aqui soa familiar...</h2>
+        <ul class="check-list">
+          <li>Você já fez teste de personalidade e esqueceu o resultado no dia seguinte.</li>
+          <li>Autoconhecimento sempre pareceu tarefa de terapia, nunca descoberta.</li>
+          <li>Você curte RPG, quiz, qualquer coisa que te dê um resultado com a sua cara.</li>
+          <li>Quer se entender melhor, sem aquele clima de "trabalho emocional".</li>
+        </ul>
+      </div>
+      <figure class="split__media r r-left">
+        <img src="scene-ember.jpg" alt="Personagem de ALTHEA empunhando um cajado em chamas, arte oficial" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="feature__bg" data-parallax="0.16" style="background-image:url('scene-wide.jpg')" aria-hidden="true"></div>
+    <div class="feature__scrim" aria-hidden="true"></div>
+    <div class="wrap r r-up">
+      <p class="eyebrow">A proposta</p>
+      <h2 class="h-grad">E se autoconhecimento fosse uma jornada, não uma lista de adjetivos?</h2>
+      <p>ALTHEA transforma o processo de se conhecer numa expedição por 5 Orbes, cinco mundos narrativos com identidade própria. Cada desafio que você completa não te dá um rótulo pronto: te dá uma escolha real, e sua ficha de personagem evolui de acordo com o que você escolhe de verdade, não com o que soa melhor.</p>
+      <p>Não existe caminho errado. A narrativa é linear, mas cada Orbe guarda escolhas cosméticas que são só suas, pequenas marcas de quem passou por ali do seu jeito.</p>
+    </div>
+  </section>
+
+  <!-- ============ CAMARA DAS ORBES ============ -->
+  <section class="chamber" id="orbChamber">
+    <div class="wrap chamber__head r r-up">
+      <p class="eyebrow">A Câmara das Orbes</p>
+      <h2 class="h-grad">Cinco mundos. Gire, escolha, entre.</h2>
+    </div>
+
+    <div class="chamber__stage r r-scale">
+      <canvas id="orbCanvas"></canvas>
+      <p class="chamber__hint">arraste para girar · toque numa orbe</p>
+      <div class="chamber__fallback">
+        <div class="fallback-grid">
+          <img src="orb-gold.png" alt="Orbe dourada"><img src="orb-blue.png" alt="Orbe azul"><img src="orb-red.png" alt="Orbe vermelha"><img src="orb-green.png" alt="Orbe verde"><img src="orb-purple.png" alt="Orbe violeta">
+        </div>
+      </div>
+    </div>
+
+    <div class="orb-bar">
+      <button type="button" class="orb-btn is-active" data-orb aria-pressed="true"
+        data-num="01" data-title="Orbe Dourada" data-art="scene-gold.jpg"
+        data-text="Cada Orbe abre com um convite, não com um questionário. Você entra no mundo, entende o que ele quer de você e escolhe como atravessar.">
+        <img src="orb-gold.png" alt="">Dourada</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="02" data-title="Orbe Azul" data-art="scene-blue.jpg"
+        data-text="São 10 desafios por Orbe. Nenhum deles tem resposta certa, e todos têm consequência na sua ficha.">
+        <img src="orb-blue.png" alt="">Azul</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="03" data-title="Orbe Vermelha" data-art="scene-red.jpg"
+        data-text="As escolhas que você faz sob pressão pesam diferente das que você faz com calma. O jogo registra as duas.">
+        <img src="orb-red.png" alt="">Vermelha</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="04" data-title="Orbe Verde" data-art="scene-green.jpg"
+        data-text="No fim de cada Orbe sua ficha muda de verdade: atributos sobem, cartas novas entram no grimório, medalhas entram no álbum.">
+        <img src="orb-green.png" alt="">Verde</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="05" data-title="Orbe Violeta" data-art="scene-purple.jpg"
+        data-text="Cinco Orbes, 50 desafios. No fim, o personagem que ficou registrado na ficha é uma leitura sua, construída por você.">
+        <img src="orb-purple.png" alt="">Violeta</button>
+    </div>
+
+    <div class="orb-panel">
+      <figure class="orb-panel__art"><img id="orbArt" src="scene-gold.jpg" alt="Arte oficial da Orbe selecionada"></figure>
+      <div>
+        <span class="orb-panel__num num" id="orbNum">01</span>
+        <h3 class="orb-panel__title" id="orbTitle">Orbe Dourada</h3>
+        <p class="orb-panel__text" id="orbText">Cada Orbe abre com um convite, não com um questionário. Você entra no mundo, entende o que ele quer de você e escolhe como atravessar.</p>
+      </div>
+    </div>
+    <p class="orb-note">Os nomes por cor são uma referência de exemplo. A identidade final de cada Orbe entra na versão completa.</p>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow r r-up">As mecânicas</p>
+      <h2 class="r r-up" style="--i:1">Como funciona</h2>
+      <div class="mechanic-grid">
+        <div class="mechanic-card r r-up" style="--i:0">
+          <img class="mechanic-card__icon" src="orb-gold.png" alt="">
+          <h3>Ficha de Personagem</h3>
+          <p>8 atributos que sobem de nível conforme você avança pelas Orbes, do nível 1 ao 5.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:1">
+          <img class="mechanic-card__icon" src="orb-blue.png" alt="">
+          <h3>5 Orbes</h3>
+          <p>Cinco mundos, 10 desafios cada, 50 no total. Cada Orbe é um fragmento da sua própria história.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:2">
+          <img class="mechanic-card__icon" src="orb-purple.png" alt="">
+          <h3>Grimório</h3>
+          <p>Cartas de habilidade que você desbloqueia e usa no Duelo Arcano, em três tipos de arena.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:3">
+          <img class="mechanic-card__icon" src="orb-green.png" alt="">
+          <h3>Medalhas</h3>
+          <p>Um álbum de figurinhas com o registro visual de cada desafio que você completa.</p>
+        </div>
+      </div>
+
+      <div class="sheet r r-scale" id="sheet">
+        <div class="sheet__head">
+          <span>FICHA DE PERSONAGEM</span>
+          <span class="radar-lvl">NÍVEL 1</span>
+        </div>
+        <div class="radar-wrap">
+          <svg class="radar" id="radar" viewBox="0 0 360 320" role="img" aria-label="Ficha de personagem com 8 atributos de exemplo, todos em nível inicial">
+            <defs>
+              <radialGradient id="radarFill" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f4d68c" stop-opacity=".45"/>
+                <stop offset="100%" stop-color="#8c6ef2" stop-opacity=".22"/>
+              </radialGradient>
+            </defs>
+            <g id="radarGrid"></g>
+            <polygon id="radarArea" class="radar-area" points=""/>
+            <g id="radarDots"></g>
+            <g id="radarLabels"></g>
+          </svg>
+        </div>
+        <p class="sheet-note">Exemplo ilustrativo dos 8 atributos no nível 1. Troque pelos nomes reais do seu sistema unificado antes de publicar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap wrap--wide split">
+      <div class="split__text r r-left">
+        <p class="eyebrow">Fase de fundadores</p>
+        <h2>Por que R$5 agora</h2>
+        <p>ALTHEA já passou por uma reestruturação completa: sistema de atributos unificado, inconsistências mecânicas corrigidas, conteúdo da versão gratuita reescrito do zero. Mas a versão que você vai jogar ainda é uma versão viva.</p>
+        <p>R$5 é um valor simbólico, não é o preço do produto pronto: é o preço de entrar agora, ajudar a moldar o jogo com o seu olhar, e travar um valor que não volta quando o lançamento completo acontecer.</p>
+      </div>
+      <figure class="split__media r r-right">
+        <img src="scene-purple.jpg" alt="Personagem de ALTHEA conjurando uma orbe violeta, arte oficial" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="r r-up">O que vem depois</h2>
+      <div class="ladder">
+        <div class="rung is-current r r-up" style="--i:0">
+          <span class="rung__step num">01</span>
+          <div class="rung__body">
+            <div class="rung__title">Amostra</div>
+            <div class="rung__sub">Você está aqui. Primeiro fragmento da Orbe 1.</div>
+          </div>
+          <span class="rung__price num">R$5</span>
+        </div>
+        <div class="rung is-locked r r-up" style="--i:1">
+          <span class="rung__step num">02</span>
+          <div class="rung__body">
+            <div class="rung__title">Orbe 1 completa</div>
+            <div class="rung__sub">10 desafios, evolução pro nível 2, novas cartas.</div>
+          </div>
+          <span class="rung__price num">R$33</span>
+        </div>
+        <div class="rung is-locked r r-up" style="--i:2">
+          <img class="rung__emblem" src="badge.png" alt="">
+          <div class="rung__body">
+            <div class="rung__title">Coleção completa (5 Orbes)</div>
+            <div class="rung__sub">Chegando depois da fase de fundadores.</div>
+          </div>
+          <span class="rung__price num strike">R$97</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap r r-up">
+      <h2>Não é a primeira versão. É a mais honesta.</h2>
+      <p>Versões anteriores de ALTHEA já passaram por críticas construtivas de quem jogou antes: apontaram duplicidade em medalhas, atributos que não faziam sentido entre si, coisas que só aparecem quando alguém de fora testa de verdade. Cada uma dessas críticas virou ajuste real na versão atual.</p>
+      <p>Eu conduzo o projeto como Diretor Criativo, com uma equipe de arte se formando junto. Comprar agora não é apoiar uma ideia no papel: é entrar numa jornada que já andou, e que vai continuar andando com quem topar vir junto.</p>
+    </div>
+  </section>
+
+  <section class="band" id="oferta-amostra">
+    <div class="wrap">
+      <div class="offer-card r r-scale">
+        <img class="offer-card__orb" src="orb-blue.png" alt="">
+        <span class="offer-badge">Fase de Fundadores</span>
+        <h2 class="h-grad">Amostra ALTHEA</h2>
+        <p class="price-num">R$5</p>
+        <ul class="offer-list">
+          <li>Fragmento jogável da Orbe 1</li>
+          <li>Ficha de personagem inicial</li>
+          <li>Teste das Orbes, seu primeiro resultado</li>
+          <li>Primeira carta do grimório</li>
+        </ul>
+        <a class="cta cta--primary" href="#" data-magnetic>Quero minha Amostra por R$5</a>
+        <p class="guarantee">Sem letra miúda: se não curtir, você não precisa seguir a jornada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap r r-up">
+      <h2>Perguntas antes de começar</h2>
+      <details class="faq-item">
+        <summary>Preciso já ter jogado RPG antes?</summary>
+        <p>Não. ALTHEA foi pensado pra quem nunca encostou num RPG de mesa. Cada passo é guiado, você só precisa responder com sinceridade.</p>
+      </details>
+      <details class="faq-item">
+        <summary>É digital ou impresso?</summary>
+        <p>É um material digital, pensado pra você preencher na tela ou imprimir, do jeito que preferir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo leva a amostra?</summary>
+        <p>Entre 15 e 20 minutos pro primeiro fragmento da Orbe 1, no seu ritmo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O que acontece depois que eu terminar?</summary>
+        <p>Você vai poder seguir direto pra Orbe 1 completa, com um preço especial só pra quem já está na jornada.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="closer">
+    <div class="closer__bg" data-parallax="0.12" style="background-image:url('scene-gold.jpg')" aria-hidden="true"></div>
+    <div class="closer__scrim" aria-hidden="true"></div>
+    <div class="wrap r r-up">
+      <h2 class="h-grad">A fase de fundadores não dura pra sempre</h2>
+      <p class="lead">O preço de R$5 vale enquanto ALTHEA estiver reunindo feedback pra virar a versão completa. Quando o jogo fechar, esse valor não volta.</p>
+      <a class="cta cta--primary" href="#oferta-amostra" data-magnetic>Começar agora por R$5</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ PORTAL ============ -->
+<section class="portal">
+  <div class="portal__bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="portal-poster.jpg">
+      <source src="portal-960.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="portal__scrim" aria-hidden="true"></div>
+  <div class="wrap r r-scale">
+    <div class="portal-ring" aria-hidden="true"></div>
+    <p class="portal-label">Capítulo 2 desbloqueado</p>
+    <h2 class="h-grad">A Orbe 1 está esperando.</h2>
+  </div>
+</section>
+
+<!-- ============ PAGINA 2 · ORBE 1 ============ -->
+<div class="page" id="pagina-2">
+
+  <section class="banner">
+    <div class="banner__bg" data-parallax="0.14" style="background-image:url('scene-wide.jpg')" aria-hidden="true"></div>
+    <div class="banner__scrim" aria-hidden="true"></div>
+    <div class="wrap r r-up">
+      <p class="eyebrow">Mostrada logo após a compra da Amostra</p>
+      <h2>Primeiro passo dado. A Orbe 1 está esperando.</h2>
+      <p class="lead">Você acabou de dar o tipo de passo que a maioria só pensa em dar. A Amostra foi só um fragmento, um convite. O que vem agora é a Orbe 1 inteira.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap wrap--wide split split--flip">
+      <div class="split__text r r-right">
+        <h2>Você viu 1 fragmento. Faltam 5 Orbes.</h2>
+        <p>A Amostra te mostrou o começo de uma história que ainda não tem fim, de propósito. A Orbe 1 completa fecha esse primeiro mundo: os 10 desafios, a evolução da sua ficha pro nível 2, e as primeiras cartas de verdade do seu grimório.</p>
+      </div>
+      <figure class="split__media r r-left">
+        <img src="scene-blue.jpg" alt="Personagem de ALTHEA conjurando uma orbe azul, arte oficial" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="r r-up">O que está incluso na Orbe 1</h2>
+      <div class="mechanic-grid">
+        <div class="mechanic-card r r-up" style="--i:0">
+          <img class="mechanic-card__icon" src="orb-blue.png" alt="">
+          <h3>10 desafios completos</h3>
+          <p>A Orbe 1 inteira, do primeiro ao último desafio, sem cortes.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:1">
+          <img class="mechanic-card__icon" src="orb-gold.png" alt="">
+          <h3>Evolução pro Nível 2</h3>
+          <p>Seus 8 atributos sobem de acordo com as escolhas que você fizer nos 10 desafios.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:2">
+          <img class="mechanic-card__icon" src="orb-purple.png" alt="">
+          <h3>Novas cartas de habilidade</h3>
+          <p>Mais páginas do grimório, prontas pro Duelo Arcano.</p>
+        </div>
+        <div class="mechanic-card r r-up" style="--i:3">
+          <img class="mechanic-card__icon" src="orb-green.png" alt="">
+          <h3>Medalhas da Orbe 1</h3>
+          <p>Um conjunto novo pro seu álbum, um por desafio concluído.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="r r-up">Uma fração do que vem por aí</h2>
+      <div class="ladder">
+        <div class="rung r r-up" style="--i:0">
+          <span class="rung__step num">01</span>
+          <div class="rung__body"><div class="rung__title">Amostra</div><div class="rung__sub">Concluída.</div></div>
+          <span class="rung__price num">R$5</span>
+        </div>
+        <div class="rung is-current r r-up" style="--i:1">
+          <span class="rung__step num">02</span>
+          <div class="rung__body"><div class="rung__title">Orbe 1 completa</div><div class="rung__sub">Preço de fundador, só nesta fase.</div></div>
+          <span class="rung__price num">R$33</span>
+        </div>
+        <div class="rung is-locked r r-up" style="--i:2">
+          <img class="rung__emblem" src="badge.png" alt="">
+          <div class="rung__body"><div class="rung__title">Coleção completa (5 Orbes)</div><div class="rung__sub">Valor de referência do lançamento oficial.</div></div>
+          <span class="rung__price num strike">R$97</span>
+        </div>
+      </div>
+      <p class="sheet-note">R$33 é menos de um terço do valor de referência da coleção completa, e esse preço não se repete depois da fase de fundadores.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap r r-up">
+      <h2>Vagas de fundador, não estoque</h2>
+      <p>Esse preço não é sobre quantidade limitada, é sobre tempo: ele existe enquanto ALTHEA estiver na fase de reunir feedback antes do lançamento completo. Quem entra agora ajuda a decidir o rumo dos próximos mundos.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="offer-card r r-scale">
+        <img class="offer-card__orb" src="orb-gold.png" alt="">
+        <span class="offer-badge">Preço de Fundador</span>
+        <h2 class="h-grad">Orbe 1 completa</h2>
+        <p class="price-num">R$33</p>
+        <ul class="offer-list">
+          <li>Os 10 desafios completos da Orbe 1</li>
+          <li>Evolução da ficha pro Nível 2</li>
+          <li>Novas cartas de habilidade do grimório</li>
+          <li>Medalhas exclusivas da Orbe 1</li>
+        </ul>
+        <a class="cta cta--primary" href="#" data-magnetic>Desbloquear a Orbe 1 por R$33</a>
+        <p class="guarantee">Você não precisa seguir até a coleção completa depois disso. Cada etapa é sua escolha.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closer">
+    <div class="closer__bg" data-parallax="0.12" style="background-image:url('scene-green.jpg')" aria-hidden="true"></div>
+    <div class="closer__scrim" aria-hidden="true"></div>
+    <div class="wrap r r-up">
+      <h2>O que vem depois da Orbe 1</h2>
+      <p class="lead">A coleção completa, com as 5 Orbes, chega depois que eu juntar feedback suficiente de quem jogou até aqui. Quem já é Amostra + Orbe 1 recebe o convite antes de todo mundo.</p>
+      <a class="cta cta--ghost" href="#" data-magnetic>Quero ser avisado no lançamento completo</a>
+    </div>
+  </section>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="footer-poster.jpg">
+      <source src="footer-1280.mp4" type="video/mp4" media="(min-width:760px)">
+      <source src="footer-640.mp4" type="video/mp4">
+    </video>
+    <div class="site-footer__scrim"></div>
+  </div>
+  <div class="site-footer__content wrap">
+    <p>ALTHEA · uma jornada de autoconhecimento gamificado · criado por Itallo Cunha</p>
+  </div>
+</footer>
+
+<script src="orb-chamber.js"></script>
+<script>
+(function(){
+  try{
+    var reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var fine = !!(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
+    document.body.classList.add('js-reveal','js-nav');
+    var hasIO = 'IntersectionObserver' in window;
+
+    /* ---- videos: tocam sempre, inclusive com "reduzir movimento" no sistema ----
+       Alguns navegadores (modo de economia de bateria, iOS em low power) bloqueiam
+       o autoplay. Aqui a gente insiste: tenta na carga, tenta quando entra na tela,
+       e tenta de novo no primeiro toque ou clique da pessoa. */
+    var videos = Array.prototype.slice.call(document.querySelectorAll('video'));
+    function tryPlay(v){
+      if(!v) return;
+      v.muted = true;
+      v.setAttribute('muted','');
+      v.playsInline = true;
+      var pr = v.play();
+      if(pr && pr.catch) pr.catch(function(){});
+    }
+    function playAll(){ videos.forEach(tryPlay); }
+    playAll();
+    ['pointerdown','touchstart','keydown'].forEach(function(evt){
+      window.addEventListener(evt, playAll, {once:true, passive:true});
+    });
+    if('IntersectionObserver' in window){
+      var ioV = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting) tryPlay(e.target); });
+      }, {rootMargin:'300px 0px'});
+      videos.forEach(function(v){ ioV.observe(v); });
+    }
+
+    /* ---- titulo cinetico: uma palavra de cada vez ---- */
+    document.querySelectorAll('[data-kinetic]').forEach(function(h){
+      var idx = 0;
+      function wrap(node){
+        var kids = Array.prototype.slice.call(node.childNodes);
+        kids.forEach(function(n){
+          if(n.nodeType === 3){
+            var frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(function(tk){
+              if(!tk) return;
+              if(/^\s+$/.test(tk)){ frag.appendChild(document.createTextNode(tk)); return; }
+              var s = document.createElement('span');
+              s.className = 'word';
+              s.style.setProperty('--w', idx++);
+              s.textContent = tk;
+              frag.appendChild(s);
+            });
+            node.replaceChild(frag, n);
+          } else if(n.nodeType === 1){ wrap(n); }
+        });
+      }
+      wrap(h);
+    });
+
+    /* ---- reveals ---- */
+    var revealEls = document.querySelectorAll('.r');
+    if(hasIO){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('is-in'); });
+    }
+
+    /* ---- esteira: duplica o conteudo e fixa a velocidade em px/s ----
+       A duracao sai da largura real, entao a esteira anda no mesmo ritmo
+       em qualquer tela, e o loop nao tem emenda. */
+    var track = document.getElementById('tickerTrack');
+    var tickerEl = document.getElementById('ticker');
+    if(track){
+      track.innerHTML += track.innerHTML;
+      var setSpeed = function(){
+        var half = track.scrollWidth / 2;
+        if(half > 0) track.style.animationDuration = Math.max(12, half / 68).toFixed(1) + 's';
+      };
+      setSpeed();
+      window.addEventListener('resize', setSpeed, {passive:true});
+      if(document.fonts && document.fonts.ready && document.fonts.ready.then){
+        document.fonts.ready.then(setSpeed).catch(function(){});
+      }
+      window.addEventListener('load', setSpeed);
+    }
+    var pauseBtn = document.getElementById('tickerPause');
+    if(pauseBtn && tickerEl){
+      pauseBtn.addEventListener('click', function(){
+        var paused = tickerEl.classList.toggle('is-paused');
+        pauseBtn.textContent = paused ? '▶' : '❚❚';
+        pauseBtn.setAttribute('aria-label', paused ? 'Retomar a esteira' : 'Pausar a esteira');
+      });
+    }
+
+    /* ---- contadores ---- */
+    function countUp(el){
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var start = null, dur = 1300;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('[data-count]');
+    if(hasIO){
+      var ioC = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); ioC.unobserve(e.target); } });
+      }, {threshold:.6});
+      counters.forEach(function(el){ ioC.observe(el); });
+    } else { counters.forEach(countUp); }
+
+    /* ---- radar da ficha de personagem ---- */
+    var ATTRS = [
+      {n:'CORAGEM', v:35}, {n:'EMPATIA', v:60}, {n:'INTUIÇÃO', v:45}, {n:'DISCIPLINA', v:50},
+      {n:'CURIOSIDADE', v:65}, {n:'RESILIÊNCIA', v:40}, {n:'CRIATIVIDADE', v:55}, {n:'CLAREZA', v:42}
+    ];
+    var svg = document.getElementById('radar');
+    if(svg){
+      var CX = 180, CY = 158, R = 104, N = ATTRS.length;
+      function pt(i, rad){
+        var a = (i / N) * Math.PI * 2 - Math.PI / 2;
+        return [CX + Math.cos(a) * rad, CY + Math.sin(a) * rad];
+      }
+      function poly(rad){
+        var out = [];
+        for(var i=0;i<N;i++){ var p = pt(i, rad); out.push(p[0].toFixed(1) + ',' + p[1].toFixed(1)); }
+        return out.join(' ');
+      }
+      var gridG = document.getElementById('radarGrid');
+      [0.25, 0.5, 0.75, 1].forEach(function(f){
+        var pg = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+        pg.setAttribute('class','radar-grid');
+        pg.setAttribute('points', poly(R * f));
+        gridG.appendChild(pg);
+      });
+      for(var i=0;i<N;i++){
+        var e = pt(i, R);
+        var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+        ln.setAttribute('class','radar-axis');
+        ln.setAttribute('x1', CX); ln.setAttribute('y1', CY);
+        ln.setAttribute('x2', e[0].toFixed(1)); ln.setAttribute('y2', e[1].toFixed(1));
+        gridG.appendChild(ln);
+      }
+      var labelsG = document.getElementById('radarLabels');
+      var dotsG = document.getElementById('radarDots');
+      ATTRS.forEach(function(a, i){
+        var lp = pt(i, R + 26);
+        var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+        t.setAttribute('class','radar-label');
+        t.setAttribute('x', lp[0].toFixed(1));
+        t.setAttribute('y', lp[1].toFixed(1));
+        t.setAttribute('text-anchor', lp[0] > CX + 6 ? 'start' : (lp[0] < CX - 6 ? 'end' : 'middle'));
+        t.setAttribute('dominant-baseline','middle');
+        t.textContent = a.n;
+        labelsG.appendChild(t);
+        var v = document.createElementNS('http://www.w3.org/2000/svg','text');
+        v.setAttribute('class','radar-val');
+        v.setAttribute('x', lp[0].toFixed(1));
+        v.setAttribute('y', (lp[1] + 12).toFixed(1));
+        v.setAttribute('text-anchor', t.getAttribute('text-anchor'));
+        v.setAttribute('dominant-baseline','middle');
+        v.textContent = a.v;
+        labelsG.appendChild(v);
+        var d = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        d.setAttribute('class','radar-dot');
+        d.setAttribute('r', 4);
+        d.setAttribute('cx', CX); d.setAttribute('cy', CY);
+        dotsG.appendChild(d);
+      });
+      var area = document.getElementById('radarArea');
+      function drawRadar(k){
+        var pts = [], dots = dotsG.childNodes;
+        for(var i=0;i<N;i++){
+          var rad = R * (ATTRS[i].v / 100) * k;
+          var p = pt(i, rad);
+          pts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1));
+          if(dots[i]){ dots[i].setAttribute('cx', p[0].toFixed(1)); dots[i].setAttribute('cy', p[1].toFixed(1)); }
+        }
+        area.setAttribute('points', pts.join(' '));
+      }
+      drawRadar(0);
+      var played = false;
+      function playRadar(){
+        if(played) return; played = true;
+        var st = null;
+        function step(ts){
+          if(!st) st = ts;
+          var p = Math.min((ts - st) / 1100, 1);
+          drawRadar(1 - Math.pow(1 - p, 3));
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var sheetEl = document.getElementById('sheet');
+      if(hasIO && sheetEl){
+        var ioR = new IntersectionObserver(function(es){
+          es.forEach(function(e){ if(e.isIntersecting){ playRadar(); ioR.disconnect(); } });
+        }, {threshold:.35});
+        ioR.observe(sheetEl);
+      } else { playRadar(); }
+    }
+
+    /* ---- brasas no hero ---- */
+    var ember = document.getElementById('embers');
+    if(ember){
+      var ectx = ember.getContext('2d');
+      var parts = [], eW = 0, eH = 0, eOn = true;
+      function eResize(){
+        var r = ember.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        eW = r.width; eH = r.height;
+        ember.width = Math.round(eW * dpr); ember.height = Math.round(eH * dpr);
+        ectx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      eResize();
+      window.addEventListener('resize', eResize, {passive:true});
+      var COUNT = eW < 620 ? 34 : 64;
+      for(var e0=0;e0<COUNT;e0++){
+        parts.push({
+          x: Math.random() * eW, y: Math.random() * eH,
+          r: 0.6 + Math.random() * 1.7, s: 8 + Math.random() * 26,
+          d: Math.random() * 6.28, o: 0.2 + Math.random() * 0.6
+        });
+      }
+      if(hasIO){
+        new IntersectionObserver(function(es){ es.forEach(function(en){ eOn = en.isIntersecting; }); }, {threshold:.02}).observe(ember);
+      }
+      var eLast = performance.now();
+      (function eLoop(now){
+        requestAnimationFrame(eLoop);
+        var dt = Math.min((now - eLast) / 1000, .05); eLast = now;
+        if(!eOn) return;
+        ectx.clearRect(0, 0, eW, eH);
+        for(var i=0;i<parts.length;i++){
+          var p = parts[i];
+          p.y -= p.s * dt;
+          p.d += dt * 0.7;
+          p.x += Math.sin(p.d) * 8 * dt;
+          if(p.y < -8){ p.y = eH + 8; p.x = Math.random() * eW; }
+          var fade = p.o * (0.35 + 0.65 * Math.sin(p.d * 1.3) * 0.5 + 0.5);
+          ectx.beginPath();
+          ectx.arc(p.x, p.y, p.r, 0, 6.2832);
+          ectx.fillStyle = 'rgba(244,' + (190 + ((i % 5) * 8)) + ',120,' + fade.toFixed(3) + ')';
+          ectx.shadowBlur = 8; ectx.shadowColor = 'rgba(244,190,110,.8)';
+          ectx.fill();
+        }
+        ectx.shadowBlur = 0;
+      })(performance.now());
+    }
+
+    /* ---- aura do cursor ---- */
+    var aura = document.getElementById('aura');
+    if(aura && fine && !reduced){
+      var ax = window.innerWidth / 2, ay = window.innerHeight / 2, tx = ax, ty = ay;
+      document.body.classList.add('has-aura');
+      window.addEventListener('pointermove', function(e){ tx = e.clientX; ty = e.clientY; }, {passive:true});
+      (function aLoop(){
+        requestAnimationFrame(aLoop);
+        ax += (tx - ax) * 0.08; ay += (ty - ay) * 0.08;
+        aura.style.transform = 'translate3d(' + ax.toFixed(1) + 'px,' + ay.toFixed(1) + 'px,0)';
+      })();
+    }
+
+    /* ---- botoes magneticos ---- */
+    if(fine && !reduced){
+      document.querySelectorAll('[data-magnetic]').forEach(function(btn){
+        btn.addEventListener('pointermove', function(e){
+          var r = btn.getBoundingClientRect();
+          var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+          var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+          btn.style.transform = 'translate(' + (dx * 10).toFixed(1) + 'px,' + (dy * 8 - 2).toFixed(1) + 'px)';
+        });
+        btn.addEventListener('pointerleave', function(){ btn.style.transform = ''; });
+      });
+    }
+
+    /* ---- parallax, barra de progresso e nav ---- */
+    var pxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    var navEl = document.getElementById('chapterNav');
+    var heroEl = document.getElementById('hero');
+    var bar = document.getElementById('progress');
+    var ticking = false;
+    function onFrame(){
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      if(!reduced){
+        pxEls.forEach(function(el){
+          var r = el.parentElement.getBoundingClientRect();
+          if(r.bottom < -200 || r.top > vh + 200) return;
+          var amount = parseFloat(el.getAttribute('data-parallax')) || .12;
+          var off = (r.top + r.height / 2 - vh / 2) * amount;
+          el.style.transform = 'translate3d(0,' + (-off).toFixed(1) + 'px,0)';
+        });
+      }
+      if(bar){
+        var max = document.body.scrollHeight - vh;
+        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0).toFixed(2) + '%';
+      }
+      if(navEl && heroEl){
+        navEl.classList.toggle('is-visible', window.scrollY > heroEl.getBoundingClientRect().height * .65);
+      }
+      ticking = false;
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(onFrame); } }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll, {passive:true});
+    onFrame();
+
+    /* ---- capitulo ativo ---- */
+    var pages = [document.getElementById('pagina-1'), document.getElementById('pagina-2')];
+    var pills = document.querySelectorAll('.chapter-pill');
+    if(hasIO){
+      var ioP = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){
+            pills.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-chapter') === e.target.id); });
+          }
+        });
+      }, {threshold:.3});
+      pages.forEach(function(p){ if(p) ioP.observe(p); });
+    }
+
+    /* ---- ancoras ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href').slice(1);
+        var t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'}); }
+      });
+    });
+  }catch(e){ /* falha em silencio: a pagina continua legivel */ }
+})();
+</script>
+
+</body>
+</html>

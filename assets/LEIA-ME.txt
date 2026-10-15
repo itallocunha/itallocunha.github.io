@@ -19,7 +19,10 @@ PORTFÓLIO
   port-06-jogos.png
   port-07-ensino.png    personagem lendo (canto direito do item 07)
 
-PROJETO EM DESTAQUE
+ALTHEA (meu maior projeto)
+  althea-arte.png       arte de fundo da seção ALTHEA (opcional, aparece suave à direita)
+
+O COPO NÃO PAROU
   copo-colagem.png      caixa, fichas, fotos, relatório (fundo transparente)
   copo-fundo.jpg        fundo sombrio vermelho (opcional)
 
