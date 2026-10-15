@@ -40,7 +40,7 @@
   --f-terror:"Creepster",cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:70px}
 body{
   background:
     radial-gradient(1200px 700px at 70% 8%,rgba(143,77,255,.16),transparent 60%),
@@ -821,6 +821,134 @@ a{color:inherit;text-decoration:none}
   .mural .rabiscos path,.sobre-titulo .sublinha path{stroke-dashoffset:0;transition:none}
   .polaroid,.postit{transition:none}
 }
+
+/* ===== HERO vivo ===== */
+.trilha{display:none!important}
+.hero{overflow:visible}
+[data-prof]{translate:var(--px,0) var(--py,0);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+.orbita{position:absolute;left:27%;top:2%;width:35%;height:82%;pointer-events:none}
+.orb-item{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:#1a1030;border:2px solid var(--amarelo);color:var(--amarelo);box-shadow:0 0 0 4px rgba(255,210,58,.12),0 8px 20px rgba(0,0,0,.5);pointer-events:auto;cursor:default;will-change:transform}
+.orb-item.roxo{border-color:var(--roxo-claro);color:var(--roxo-claro);box-shadow:0 0 0 4px rgba(143,77,255,.18),0 8px 20px rgba(0,0,0,.5)}
+.orb-item svg{width:22px;height:22px}
+.orb-item::after{content:attr(data-nome);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.8);opacity:0;white-space:nowrap;
+  background:var(--amarelo);color:#16101f;font-family:var(--f-pixel2);font-size:10px;padding:4px 7px;transition:.2s;pointer-events:none}
+.orb-item:hover::after{opacity:1;transform:translateX(-50%) scale(1)}
+.orb-item:hover{background:var(--amarelo);color:#16101f}
+.orb-item.roxo:hover{background:var(--roxo);color:#fff}
+.selo-giro{position:absolute;right:5%;bottom:13%;width:140px;height:140px;z-index:5}
+.selo-giro svg{width:100%;height:100%;animation:giraSelo 16s linear infinite;overflow:visible}
+.selo-giro text{font-family:var(--f-pixel2);font-size:11.5px;letter-spacing:.14em;fill:var(--amarelo);text-transform:uppercase}
+.selo-giro-centro{position:absolute;inset:38px;border-radius:50%;background:var(--roxo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 0 30px rgba(143,77,255,.7);animation:pulsaSelo 2.4s ease-in-out infinite}
+@keyframes giraSelo{to{transform:rotate(360deg)}}
+@keyframes pulsaSelo{50%{transform:scale(1.1)}}
+.rabisco-hero{position:absolute;fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:2}
+.rabisco-hero path{stroke-dasharray:200;stroke-dashoffset:200;animation:rabiscaHero 6s ease-in-out infinite}
+.rabisco-hero.r1{left:20%;top:44%;width:120px;stroke:var(--roxo-claro);stroke-width:3}
+.rabisco-hero.r2{left:63%;top:3%;width:44px;stroke:var(--amarelo);stroke-width:3}
+.rabisco-hero.r2 path{animation-delay:1.5s}
+@keyframes rabiscaHero{0%{stroke-dashoffset:200}35%,70%{stroke-dashoffset:0}100%{stroke-dashoffset:-200}}
+.faixas{position:relative;height:96px;margin-top:-70px;z-index:7;pointer-events:none;overflow:hidden}
+.faixa{position:absolute;left:-2%;width:104%;padding:9px 0;white-space:nowrap;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.faixa-trilho{display:inline-flex;animation:faixaAnda 38s linear infinite}
+.faixa span{font-family:var(--f-pixel);font-weight:700;font-size:20px;letter-spacing:.06em;padding-right:0}
+.f-ouro{top:30px;background:var(--amarelo);color:#16101f;transform:rotate(-1.6deg)}
+.f-roxa{top:30px;background:var(--roxo);color:#fff;transform:rotate(1.4deg);opacity:.9}
+.f-roxa .faixa-trilho{animation-direction:reverse;animation-duration:46s}
+@keyframes faixaAnda{to{transform:translateX(-50%)}}
+
+/* ===== trilha do mundo ===== */
+.trilha-mundo{position:absolute;left:0;top:0;width:100%;height:10px;z-index:1;pointer-events:none;overflow:visible}
+.trilha-mundo path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tm-base{stroke:rgba(255,210,58,.22);stroke-width:2;stroke-dasharray:2 9}
+.tm-viva{stroke:var(--amarelo);stroke-width:3;stroke-dasharray:3 9;animation:tmAnda 1.6s linear infinite;filter:drop-shadow(0 0 4px rgba(255,210,58,.7))}
+@keyframes tmAnda{to{stroke-dashoffset:-24}}
+.tm-viajante{transition:opacity .3s}
+.tm-estrela{fill:#fff;stroke:var(--amarelo);stroke-width:1.5;animation:tmGira 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes tmGira{to{transform:rotate(360deg)}}
+.tm-marco rect{fill:#120b20;stroke:rgba(185,139,255,.6);stroke-width:2;transition:fill .4s,stroke .4s}
+.tm-marco text{font-family:var(--f-pixel2);font-size:11px;letter-spacing:.12em;fill:rgba(185,139,255,.55);transition:fill .4s}
+.tm-marco.ok rect{fill:var(--amarelo);stroke:var(--amarelo)}
+.tm-marco.ok text{fill:var(--amarelo)}
+.tm-marco.ok .tm-anel{animation:tmAnel 1s ease-out 1}
+.tm-anel{fill:none;stroke:var(--amarelo);stroke-width:2;opacity:0}
+@keyframes tmAnel{0%{opacity:.9;r:8}100%{opacity:0;r:34}}
+@media (max-width:1000px){ .tm-marco text{display:none} }
+@media (max-width:860px){
+  .orbita,.selo-giro,.rabisco-hero{display:none}
+  .faixas{margin-top:-10px;height:80px}
+  .faixa span{font-size:15px}
+  .tm-base,.tm-viva{stroke-width:1.6}
+}
+@media (prefers-reduced-motion:reduce){
+  .faixa-trilho,.selo-giro svg,.rabisco-hero path,.tm-viva,.tm-estrela{animation:none!important}
+  .rabisco-hero path{stroke-dashoffset:0}
+}
+
+/* ===== HEADER HUD ===== */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;padding:18px 0 14px;transition:padding .35s,background .35s,box-shadow .35s;background:linear-gradient(rgba(10,6,20,.55),transparent)}
+.hero{margin-top:0;padding-top:24px}
+@media (max-width:900px){.hero{padding-top:0}}
+.nav .wrap{align-items:center}
+.nav.rolou{padding:9px 0 8px;background:rgba(14,9,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.nav.rolou::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--roxo),var(--amarelo),var(--roxo),transparent);background-size:200% 100%;animation:navLuz 4s linear infinite}
+@keyframes navLuz{to{background-position:-200% 0}}
+.logo{position:relative;display:inline-block;font-size:30px}
+.logo-txt{position:relative;display:inline-block;animation:logoPulo 4.5s ease-in-out infinite}
+.logo-txt::before,.logo-txt::after{content:attr(data-t);position:absolute;inset:0;opacity:0}
+.logo-txt::before{color:var(--amarelo);animation:glitchA 4.5s steps(1) infinite}
+.logo-txt::after{color:#3ee0ff;animation:glitchB 4.5s steps(1) infinite}
+.logo:hover .logo-txt::before{animation-duration:.5s}.logo:hover .logo-txt::after{animation-duration:.5s}
+@keyframes logoPulo{0%,86%,100%{transform:none}90%{transform:translateY(-5px) rotate(-6deg)}94%{transform:translateY(0) rotate(3deg)}}
+@keyframes glitchA{0%,88%{opacity:0;transform:none}89%{opacity:.85;transform:translate(-3px,1px)}91%{opacity:.85;transform:translate(2px,-2px)}93%{opacity:0}}
+@keyframes glitchB{0%,88%{opacity:0;transform:none}89%{opacity:.7;transform:translate(3px,-1px)}91%{opacity:.7;transform:translate(-2px,2px)}93%{opacity:0}}
+.logo-estrela{position:absolute;right:-14px;top:-8px;width:14px;height:14px;color:var(--amarelo);animation:tmGira 3s linear infinite}
+.menu-rpg{position:relative}
+.menu-rpg ul{display:flex;gap:34px;list-style:none;font-size:15px}
+.menu-rpg a{position:relative;display:inline-flex;align-items:center;padding:6px 2px;color:var(--texto);transition:color .2s,transform .2s}
+.menu-rpg .cursor{position:absolute;left:-16px;font-size:10px;color:var(--amarelo);opacity:0;transform:translateX(-6px);transition:.2s}
+.menu-rpg a:hover,.menu-rpg a.ativo{color:var(--branco)}
+.menu-rpg a:hover{transform:translateY(-2px)}
+.menu-rpg a:hover .cursor,.menu-rpg a.ativo .cursor{opacity:1;transform:none;animation:piscaCursor .8s steps(1) infinite}
+@keyframes piscaCursor{50%{opacity:0}}
+.menu-marca{position:absolute;left:0;bottom:-4px;height:4px;width:0;background:var(--amarelo);box-shadow:0 0 10px rgba(255,210,58,.8);
+  transition:left .45s cubic-bezier(.3,1.4,.5,1),width .45s cubic-bezier(.3,1.4,.5,1),opacity .3s;opacity:0;
+  background-image:repeating-linear-gradient(90deg,var(--amarelo) 0 6px,#ffb800 6px 8px)}
+.menu-marca.on{opacity:1}
+.hud{position:relative;width:260px;font-family:var(--f-mono)}
+.hud-topo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.hud-topo b{font-weight:400;font-size:12px;letter-spacing:.14em;color:var(--amarelo)}
+.hud-lv{font-family:var(--f-pixel2);font-size:11px;color:var(--roxo-claro)}
+.hud-lv em{font-style:normal;color:#fff;font-size:15px;display:inline-block}
+.hud-lv em.sobe{animation:lvSobe .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes lvSobe{40%{transform:translateY(-8px) scale(1.5);color:var(--amarelo)}}
+.hud-barra{position:relative;height:12px;border:2px solid var(--roxo-claro);background:#120b20;display:flex;overflow:hidden;box-shadow:0 0 0 2px #120b20,0 0 14px rgba(143,77,255,.35)}
+.hud-barra i{flex:1;border-right:2px solid #120b20;position:relative;z-index:2}
+.hud-barra i:last-child{border:0}
+.hud-xp{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--roxo),var(--amarelo));transition:width .4s ease-out}
+.hud-xp::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.65) 50%,transparent 70%);background-size:200% 100%;animation:brilhoXp 2s linear infinite}
+@keyframes brilhoXp{from{background-position:150% 0}to{background-position:-50% 0}}
+.hud-info{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--apagado);letter-spacing:.06em}
+.hud-info em{font-style:normal;color:var(--branco)}
+.hud-up{position:absolute;right:0;top:100%;margin-top:6px;background:var(--amarelo);color:#16101f;font-family:var(--f-pixel);font-weight:700;font-size:14px;padding:3px 9px;box-shadow:3px 3px 0 #000;
+  opacity:0;transform:translateY(-6px) scale(.6);pointer-events:none}
+.hud-up.on{animation:lvUp 1.6s ease forwards}
+@keyframes lvUp{0%{opacity:0;transform:translateY(-6px) scale(.6) rotate(0)}15%{opacity:1;transform:translateY(0) scale(1.1) rotate(-4deg)}75%{opacity:1;transform:translateY(0) scale(1) rotate(-4deg)}100%{opacity:0;transform:translateY(8px) scale(.9) rotate(-4deg)}}
+.nav-xp-mob{display:none}
+@media (max-width:900px){
+  .hud{display:none}
+  .menu-rpg ul{gap:16px;font-size:14px}
+  .menu-rpg .cursor{display:none}
+  .nav-xp-mob{display:block;position:absolute;left:0;bottom:0;height:3px;width:0;background:linear-gradient(90deg,var(--roxo),var(--amarelo));box-shadow:0 0 8px rgba(255,210,58,.7)}
+  .hero .wrap{padding-top:70px}
+}
+@media (max-width:420px){ .nav-l{gap:16px}.menu-rpg ul{gap:12px;font-size:13px} .logo{font-size:24px} }
+/* faixas sempre andando, uma para cada lado */
+.faixa-trilho{animation:faixaEsq 30s linear infinite!important}
+.f-roxa .faixa-trilho{animation:faixaDir 36s linear infinite!important}
+@keyframes faixaEsq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes faixaDir{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 </style>
 </head>
 <body>
@@ -838,36 +966,52 @@ a{color:inherit;text-decoration:none}
 
 <canvas id="universo" aria-hidden="true"></canvas>
 <div class="universo-dica" aria-hidden="true">mova o mouse · clique no céu</div>
+<svg class="trilha-mundo" id="trilhaMundo" aria-hidden="true">
+  <defs>
+    <mask id="tmMask" maskUnits="userSpaceOnUse"><path id="tmMaskPath" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/></mask>
+    <radialGradient id="tmBrilho"><stop offset="0" stop-color="#ffd23a" stop-opacity=".9"/><stop offset=".4" stop-color="#ffd23a" stop-opacity=".35"/><stop offset="1" stop-color="#8f4dff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path class="tm-base" id="tmBase"/>
+  <path class="tm-viva" id="tmViva" mask="url(#tmMask)"/>
+  <g id="tmMarcos"></g>
+  <g class="tm-viajante" id="tmViajante">
+    <circle r="26" fill="url(#tmBrilho)"/>
+    <path class="tm-estrela" d="M0-11 3-3 11 0 3 3 0 11-3 3-11 0-3-3z"/>
+  </g>
+</svg>
 
 <!-- ======================= NAV ======================= -->
-<header class="nav">
+<header class="nav" id="nav">
   <div class="wrap">
     <div class="nav-l">
-      <a href="#topo" class="logo">IC</a>
-      <ul>
-        <li><a href="#althea">Projetos</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
+      <a href="#topo" class="logo" aria-label="Itallo Cunha, voltar ao topo"><span class="logo-txt" data-t="IC">IC</span><svg class="logo-estrela" viewBox="0 0 24 24"><use href="#star"/></svg></a>
+      <nav class="menu-rpg" aria-label="Menu principal">
+        <ul>
+          <li><a href="#althea" data-sec="althea"><span class="cursor">▶</span>Projetos</a></li>
+          <li><a href="#portfolio" data-sec="portfolio"><span class="cursor">▶</span>Portfólio</a></li>
+          <li><a href="#sobre" data-sec="sobre"><span class="cursor">▶</span>Sobre</a></li>
+          <li><a href="#contato" data-sec="contato"><span class="cursor">▶</span>Contato</a></li>
+        </ul>
+        <span class="menu-marca" id="menuMarca" aria-hidden="true"></span>
+      </nav>
     </div>
-    <div class="coord">
-      <svg class="star" style="left:-46px;top:4px"><use href="#star"/></svg>
-      <b>CRIADOR MULTICLASSE</b>
-      <span>-26.9906° S</span>
-      <span>-48.6348° W</span>
-      <svg class="star" style="right:-40px;top:36px;animation-delay:-1.4s"><use href="#star"/></svg>
+    <div class="hud" aria-hidden="true">
+      <div class="hud-topo"><b>CRIADOR MULTICLASSE</b><span class="hud-lv">LV <em id="hudLv">1</em></span></div>
+      <div class="hud-barra"><span class="hud-xp" id="hudXp"></span><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hud-info"><span id="hudFase">FASE 00 · INÍCIO</span><span><em id="hudPct">0</em> XP</span></div>
+      <span class="hud-up" id="hudUp">LEVEL UP!</span>
     </div>
   </div>
+  <span class="nav-xp-mob" id="navXpMob" aria-hidden="true"></span>
 </header>
 
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="topo">
   <div class="wrap">
     <!-- fundo: cidade/noite (opcional) -->
-    <div class="lua"></div>
+    <div class="lua" data-prof="-1.2"></div>
 
-    <h2 class="titulo-italo rough dyn-letras" aria-label="Itallo">ITALLO</h2>
+    <h2 class="titulo-italo rough dyn-letras" data-prof="0.6" aria-label="Itallo">ITALLO</h2>
 
     <!-- personagem sentado (PNG com fundo transparente) -->
     <div class="hero-personagem avatar" id="avatar" tabindex="0" role="button" aria-label="Itallo Cunha. Clique para trocar de pose">
@@ -881,8 +1025,10 @@ a{color:inherit;text-decoration:none}
       <span class="avatar-dica">▸ clique em mim</span>
     </div>
 
-    <span class="player" id="player">PLAYER 01</span>
-    <div class="cunha dyn-scramble">CUNHA</div>
+    <div class="orbita" id="orbita" aria-hidden="true"><span class="orb-item" data-nome="desenho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 19l1.5-5L16 4.5l3.5 3.5L10 17.5z"/><path d="M14 6.5l3.5 3.5"/></svg></span><span class="orb-item roxo" data-nome="jogos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M7 8h10c3 0 4.5 3 5 7s-.5 5-2 5c-2 0-3-3-4.5-3h-7C7 17 6 20 4 20c-1.5 0-2.5-1-2-5s2-7 5-7z"/><path d="M7 11v4M5 13h4"/></svg></span><span class="orb-item" data-nome="código"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg></span><span class="orb-item roxo" data-nome="3D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="orb-item" data-nome="pixel art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 8h2V6h4v2h4V6h4v2h2v5h-2v2h-2v2h-2v2h-4v-2H8v-2H6v-2H4z"/></svg></span><span class="orb-item roxo" data-nome="aulas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 3 9 3 12 0v-5"/></svg></span></div>
+
+    <span class="player" id="player" data-prof="-2">PLAYER 01</span>
+    <div class="cunha dyn-scramble" data-prof="-1.4">CUNHA</div>
 
     <div class="hero-txt">
       <h1>Design, jogos e conhecimento<br>em constante criação.</h1>
@@ -891,14 +1037,25 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
-    <p class="mao n1">Arte<br>jogos<br>ideias<br>pessoas<br>sempre</p>
-    <p class="mao n2">Aqui<br>também<br>se cria<br>o amanhã<br>☺</p>
+    <p class="mao n1" data-prof="1.6">Arte<br>jogos<br>ideias<br>pessoas<br>sempre</p>
+    <p class="mao n2" data-prof="-1.8">Aqui<br>também<br>se cria<br>o amanhã<br>☺</p>
 
     <svg class="star" style="left:48%;top:6%"><use href="#star"/></svg>
     <svg class="star p" style="left:56%;top:18%;animation-delay:-.8s"><use href="#star"/></svg>
     <svg class="star p roxa" style="right:6%;top:24%;animation-delay:-2s"><use href="#star"/></svg>
     <svg class="star" style="right:20%;bottom:32%;animation-delay:-1.2s"><use href="#star"/></svg>
-    <svg class="trilha" viewBox="0 0 800 120" preserveAspectRatio="none"><path d="M0 110 C120 60 200 100 300 70 S480 60 560 40 S700 20 800 0"/></svg>
+
+    <div class="selo-giro" data-prof="-1" aria-hidden="true">
+      <svg viewBox="0 0 140 140"><defs><path id="seloCirc" d="M70 70 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0"/></defs>
+        <text><textPath href="#seloCirc">criador multiclasse ✦ arte ✦ jogos ✦ ensino ✦ </textPath></text></svg>
+      <span class="selo-giro-centro">▶</span>
+    </div>
+    <svg class="rabisco-hero r1" viewBox="0 0 120 60" aria-hidden="true"><path d="M5 40 C25 5 45 55 65 25 S100 10 115 30"/></svg>
+    <svg class="rabisco-hero r2" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6v14M30 40v14M6 30h14M40 30h14M13 13l9 9M38 38l9 9M47 13l-9 9M22 38l-9 9"/></svg>
+  </div>
+  <div class="faixas" aria-hidden="true">
+    <div class="faixa f-roxa"><div class="faixa-trilho"><span>FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ </span><span>FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ </span></div></div>
+    <div class="faixa f-ouro"><div class="faixa-trilho"><span>GAME DESIGN ✦ ILUSTRAÇÃO ✦ PIXEL ART ✦ MODELAGEM 3D ✦ DESIGN GRÁFICO ✦ AULAS ✦ </span><span>GAME DESIGN ✦ ILUSTRAÇÃO ✦ PIXEL ART ✦ MODELAGEM 3D ✦ DESIGN GRÁFICO ✦ AULAS ✦ </span></div></div>
   </div>
 </section>
 
@@ -1778,6 +1935,121 @@ const els=[...m.querySelectorAll('[data-z]')];
 m.addEventListener('mousemove',e=>{const r=m.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
 els.forEach(el=>{const z=+el.dataset.z;el.style.setProperty('--mx',(x*z*10).toFixed(1)+'px');el.style.setProperty('--my',(y*z*10).toFixed(1)+'px')})});
 m.addEventListener('mouseleave',()=>els.forEach(el=>{el.style.setProperty('--mx','0px');el.style.setProperty('--my','0px')}));})();
+</script>
+
+<script>
+(()=>{
+const calmo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ---------- parallax do hero ---------- */
+const hero=document.getElementById('topo');
+const camadas=[...hero.querySelectorAll('[data-prof]')];
+if(!calmo && matchMedia('(hover:hover)').matches){
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    camadas.forEach(el=>{const k=+el.dataset.prof*14;el.style.setProperty('--px',(x*k).toFixed(1)+'px');el.style.setProperty('--py',(y*k).toFixed(1)+'px')})});
+  hero.addEventListener('pointerleave',()=>camadas.forEach(el=>{el.style.setProperty('--px','0px');el.style.setProperty('--py','0px')}));
+}
+/* ---------- habilidades orbitando ---------- */
+const orb=document.getElementById('orbita');
+if(orb){
+  const itens=[...orb.children], av=document.getElementById('avatar');
+  let ang=0, vel=.0045, alvo=.0045, visivel=true;
+  av&&av.addEventListener('pointerenter',()=>alvo=.016); av&&av.addEventListener('pointerleave',()=>alvo=.0045);
+  orb.addEventListener('pointerenter',()=>alvo=.0012); orb.addEventListener('pointerleave',()=>alvo=.0045);
+  new IntersectionObserver(es=>visivel=es[0].isIntersecting).observe(hero);
+  const passo=()=>{ if(visivel){ vel+=(alvo-vel)*.05; ang+=calmo?0:vel;
+    const W=orb.clientWidth,H=orb.clientHeight,rx=W*.62,ry=H*.11,cx=W*.5,cy=H*.6,inc=-.12;
+    itens.forEach((it,i)=>{const a=ang+i*Math.PI*2/itens.length,ex=Math.cos(a)*rx,ey=Math.sin(a)*ry;
+      const x=cx+ex*Math.cos(inc)-ey*Math.sin(inc), y=cy+ex*Math.sin(inc)+ey*Math.cos(inc), f=Math.sin(a);
+      it.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(.78+.3*(f+1)/2).toFixed(3)})`;
+      it.style.zIndex=f>0?6:2; it.style.opacity=(.55+.45*(f+1)/2).toFixed(2);});
+  } requestAnimationFrame(passo); };
+  passo();
+}
+/* ---------- trilha do começo ao fim da página ---------- */
+const svg=document.getElementById('trilhaMundo'); if(!svg) return;
+const base=document.getElementById('tmBase'),viva=document.getElementById('tmViva'),mask=document.getElementById('tmMaskPath'),
+      marcosG=document.getElementById('tmMarcos'),viaj=document.getElementById('tmViajante');
+const fases=[['sobre','SOBRE'],['althea','ALTHEA'],['projeto','O COPO'],['portfolio','PORTFÓLIO'],['aulas','AULAS'],['contato','CONTATO']];
+let amostras=[],L=0,marcos=[],atual=0,alvoLen=0;
+const NS='http://www.w3.org/2000/svg';
+function caminho(pts){let d=`M${pts[0][0]} ${pts[0][1]}`;
+  for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+    d+=` C${(p1[0]+(p2[0]-p0[0])/6).toFixed(1)} ${(p1[1]+(p2[1]-p0[1])/6).toFixed(1)} ${(p2[0]-(p3[0]-p1[0])/6).toFixed(1)} ${(p2[1]-(p3[1]-p1[1])/6).toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;}
+  return d;}
+function monta(){
+  const W=document.documentElement.clientWidth, H=document.documentElement.scrollHeight;
+  svg.style.height=H+'px'; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const gut=Math.max(0,(W-1440)/2)+(W<720?14:48), m=Math.max(8,gut*.5), Esq=m, Dir=W-m;
+  const topo=el=>el.getBoundingClientRect().top+scrollY, alt=el=>el.offsetHeight;
+  const btn=hero.querySelector('.hero-txt .btn'), b=btn.getBoundingClientRect();
+  const pts=[[b.right+scrollX+18,b.top+scrollY+b.height/2]];
+  const hb=topo(hero)+alt(hero);
+  pts.push([W*.46,hb-40],[W*.78,hb-10]);
+  let lado=1; marcos=[];
+  fases.forEach(([id,nome],k)=>{const el=document.getElementById(id); if(!el) return;
+    const t=topo(el), h=alt(el), X=lado?Dir:Esq, Xo=lado?Esq:Dir;
+    if(k>0){ pts.push([Xo+(lado?1:-1)*m*.6,t-70],[W*.5,t-14]); }
+    else { pts.push([X-(lado?1:-1)*m*.3,t+10]); }
+    pts.push([X,t+90]);
+    marcos.push({x:X,y:t+90,nome:`${String(k+1).padStart(2,'0')} · ${nome}`,lado});
+    const n=Math.max(1,Math.floor((h-260)/340));
+    for(let j=1;j<=n;j++) pts.push([X+(j%2?-1:1)*(lado?1:-1)*m*.45,t+90+(h-200)*j/(n+1)]);
+    pts.push([X,t+h-110]);
+    lado=1-lado;});
+  const rod=document.querySelector('.rodape'); if(rod){ pts.push([W*.5,topo(rod)+30]); }
+  const d=caminho(pts); base.setAttribute('d',d); viva.setAttribute('d',d); mask.setAttribute('d',d);
+  L=base.getTotalLength(); mask.style.strokeDasharray=`${L} ${L}`;
+  amostras=[]; for(let l=0;l<=L;l+=16){const q=base.getPointAtLength(l);amostras.push([l,q.y,q.x]);}
+  marcosG.innerHTML='';
+  marcos.forEach(mk=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','tm-marco');g.setAttribute('transform',`translate(${mk.x} ${mk.y})`);
+    g.innerHTML=`<circle class="tm-anel" r="8"/><rect x="-7" y="-7" width="14" height="14" transform="rotate(45)"/><text x="${mk.lado?-16:16}" y="4" text-anchor="${mk.lado?'end':'start'}">${mk.nome}</text>`;
+    marcosG.appendChild(g); mk.g=g; mk.len=(amostras.find(a=>Math.abs(a[1]-mk.y)<12&&Math.abs(a[2]-mk.x)<12)||[0])[0];});
+  calc(); atual=calmo?alvoLen:Math.min(atual,alvoLen);
+}
+function calc(){ const y=scrollY+innerHeight*.62; let len=L;
+  for(const a of amostras){ if(a[1]>=y){len=a[0];break;} }
+  alvoLen=Math.max(0,len); }
+function anima(){ atual+=(alvoLen-atual)*(calmo?1:.08);
+  if(L){ mask.style.strokeDashoffset=(L-atual).toFixed(1);
+    const q=base.getPointAtLength(Math.max(0,atual)); viaj.setAttribute('transform',`translate(${q.x.toFixed(1)} ${q.y.toFixed(1)})`);
+    marcos.forEach(mk=>mk.g&&mk.g.classList.toggle('ok',atual>=mk.len-4)); }
+  requestAnimationFrame(anima); }
+addEventListener('scroll',calc,{passive:true});
+let to; const refaz=()=>{clearTimeout(to);to=setTimeout(monta,150)};
+addEventListener('resize',refaz); addEventListener('load',monta);
+new ResizeObserver(refaz).observe(document.body);
+monta(); anima();
+})();
+</script>
+
+<script>
+(()=>{
+const nav=document.getElementById('nav'); if(!nav) return;
+const links=[...nav.querySelectorAll('.menu-rpg a')], marca=document.getElementById('menuMarca');
+const xp=document.getElementById('hudXp'), mob=document.getElementById('navXpMob'), lvEl=document.getElementById('hudLv'),
+      fase=document.getElementById('hudFase'), pct=document.getElementById('hudPct'), up=document.getElementById('hudUp');
+const fases=[['topo','INÍCIO'],['sobre','SOBRE'],['althea','ALTHEA'],['projeto','O COPO'],['portfolio','PORTFÓLIO'],['aulas','AULAS'],['contato','CONTATO']]
+  .map(([id,n])=>[document.getElementById(id),n]).filter(f=>f[0]);
+let lvAtual=1, travaHover=null;
+function marcar(a){ if(!a){marca.classList.remove('on');return;}
+  const r=a.getBoundingClientRect(), pr=marca.parentElement.getBoundingClientRect();
+  marca.style.left=(r.left-pr.left)+'px'; marca.style.width=r.width+'px'; marca.classList.add('on'); }
+function tick(){
+  const y=scrollY, max=document.documentElement.scrollHeight-innerHeight, p=max>0?Math.min(1,y/max):0;
+  nav.classList.toggle('rolou',y>40);
+  xp.style.width=(p*100).toFixed(1)+'%'; if(mob) mob.style.width=(p*100).toFixed(1)+'%';
+  pct.textContent=Math.round(p*9999);
+  let k=0; const ref=y+innerHeight*.4; fases.forEach((f,i)=>{ if(f[0].getBoundingClientRect().top+y<=ref) k=i; });
+  fase.textContent=`FASE ${String(k).padStart(2,'0')} · ${fases[k][1]}`;
+  const lv=k+1; if(lv!==lvAtual){ lvEl.textContent=lv; lvEl.classList.remove('sobe'); void lvEl.offsetWidth; lvEl.classList.add('sobe');
+    if(lv>lvAtual){ up.classList.remove('on'); void up.offsetWidth; up.classList.add('on'); } lvAtual=lv; }
+  const id=fases[k][0].id; let ativo=null;
+  links.forEach(a=>{ const on=a.dataset.sec===id || (id==='projeto'&&a.dataset.sec==='althea') || (id==='aulas'&&a.dataset.sec==='portfolio'); a.classList.toggle('ativo',on); if(on) ativo=a; });
+  if(!travaHover) marcar(ativo);
+}
+links.forEach(a=>{ a.addEventListener('pointerenter',()=>{travaHover=a;marcar(a)}); a.addEventListener('pointerleave',()=>{travaHover=null;tick()}); });
+addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick); addEventListener('load',tick); tick();
+})();
 </script>
 </body>
 </html>
