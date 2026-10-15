@@ -949,6 +949,113 @@ a{color:inherit;text-decoration:none}
 .f-roxa .faixa-trilho{animation:faixaDir 36s linear infinite!important}
 @keyframes faixaEsq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes faixaDir{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* ===== O COPO NÃO PAROU (impacto) ===== */
+.cp{padding:130px 0 90px;background:#070203;color:#e8d9cf;--lx:70%;--ly:40%}
+.cp::before{display:none}
+.cp .cp-fundo{position:absolute;inset:-4%;z-index:0;overflow:hidden}
+.cp .cp-fundo img{width:100%;height:100%;object-fit:cover;opacity:.16;filter:blur(3px) saturate(1.3);animation:cpKen 26s ease-in-out infinite alternate}
+@keyframes cpKen{from{transform:scale(1.05)}to{transform:scale(1.18) translate(-2%,1%)}}
+.cp-sigilo-bg{position:absolute;right:-6%;top:50%;width:min(900px,70vw);transform:translateY(-50%);z-index:0;opacity:.32;mix-blend-mode:screen;pointer-events:none;animation:cpSigilo 9s ease-in-out infinite}
+@keyframes cpSigilo{0%,100%{opacity:.22;transform:translateY(-50%) scale(1) rotate(0)}50%{opacity:.45;transform:translateY(-50%) scale(1.06) rotate(2deg)}}
+.cp-brasas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.cp-lanterna{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(circle 340px at var(--lx) var(--ly),rgba(120,0,10,.08) 0,rgba(4,1,2,.5) 55%,rgba(3,0,1,.9) 100%);animation:cpPisca 7s steps(1) infinite}
+@keyframes cpPisca{0%,100%{opacity:1}31%{opacity:.75}32%{opacity:1}33%{opacity:.6}34%{opacity:1}71%{opacity:.85}72%{opacity:1}}
+.cp-grao{position:absolute;inset:-50%;z-index:2;pointer-events:none;opacity:.12;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:cpGrao .6s steps(4) infinite}
+@keyframes cpGrao{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-2%)}75%{transform:translate(-2%,-4%)}100%{transform:translate(0,0)}}
+.cp .cp-wrap{position:relative;z-index:3;display:block;min-height:0}
+.cp-topo{display:grid;grid-template-columns:minmax(380px,560px) 1fr;gap:40px;align-items:center}
+.cp-arquivo{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;color:rgba(232,217,207,.6);border:1px solid rgba(227,38,44,.4);padding:6px 10px}
+.cp-arquivo b{color:var(--vermelho);font-weight:400;animation:cpPiscaTxt 1.6s steps(1) infinite}
+@keyframes cpPiscaTxt{50%{opacity:.2}}
+.cp h2.cp-logo-wrap{margin:8px 0 6px;white-space:normal;animation:none;font-size:0;line-height:0;text-shadow:none}
+.cp-logo{width:100%;height:auto;max-width:560px;margin-left:-30px;animation:cpLogo 6s infinite}
+@keyframes cpLogo{0%,100%{filter:none;transform:none}
+  46%{filter:none;transform:none}47%{filter:drop-shadow(-5px 0 0 rgba(227,38,44,.8)) drop-shadow(5px 0 0 rgba(60,220,255,.35));transform:translate(3px,-1px) skewX(-2deg)}
+  48%{filter:brightness(.5);transform:translate(-2px,1px)}49%{filter:none;transform:none}
+  80%{filter:brightness(1)}81%{filter:brightness(.35)}82%{filter:brightness(1.15)}83%{filter:none}}
+.cp .cp-lead{font-size:17px;line-height:1.55;max-width:470px;margin:0 0 20px;color:#e8d9cf}
+.cp-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.cp-chips li{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border:1px solid rgba(227,38,44,.55);color:#f1d7cc;background:rgba(227,38,44,.08)}
+.cp-acoes{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.cp .cp-btn{background:var(--vermelho);color:#fff;box-shadow:0 0 0 0 rgba(227,38,44,.6);animation:cpBtn 2.4s ease-out infinite}
+.cp .cp-btn:hover{background:#ff3b40}
+@keyframes cpBtn{0%{box-shadow:0 0 0 0 rgba(227,38,44,.6)}70%{box-shadow:0 0 0 16px rgba(227,38,44,0)}100%{box-shadow:0 0 0 0 rgba(227,38,44,0)}}
+.cp-status{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,217,207,.7);display:inline-flex;align-items:center;gap:8px}
+.cp-status i{width:8px;height:8px;border-radius:50%;background:var(--vermelho);box-shadow:0 0 10px var(--vermelho);animation:cpPiscaTxt 1.2s steps(1) infinite}
+
+.cp-palco{position:relative;height:660px}
+.cp-halo{position:absolute;left:50%;top:50%;width:620px;height:620px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(227,38,44,.45),rgba(120,0,10,.2) 45%,transparent 70%);animation:cpHalo 3.2s ease-in-out infinite}
+@keyframes cpHalo{50%{transform:translate(-50%,-50%) scale(1.1);opacity:.7}}
+[data-p]{translate:var(--px,0) var(--py,0);transition:translate .6s cubic-bezier(.2,.7,.2,1)}
+.cp-mock{position:absolute;left:50%;top:50%;width:min(650px,100%);height:auto;max-width:none;margin:0;transform:translate(-44%,-50%);z-index:3;
+  filter:drop-shadow(0 40px 50px rgba(0,0,0,.8)) drop-shadow(0 0 30px rgba(227,38,44,.35));animation:cpFlutua 6s ease-in-out infinite}
+@keyframes cpFlutua{50%{transform:translate(-44%,-53%) rotate(-.6deg)}}
+.cp-poster{position:absolute;left:0;top:10px;width:220px;margin:0;z-index:2;transform:rotate(-9deg);border:6px solid #e8d9cf;box-shadow:0 24px 40px rgba(0,0,0,.7);transition:transform .4s cubic-bezier(.3,1.4,.5,1)}
+.cp-poster img{display:block;width:100%}
+.cp-poster:hover{transform:rotate(-3deg) scale(1.06);z-index:5}
+.cp-aviso{position:absolute;left:-30px;bottom:30px;width:300px;margin:0;z-index:4;transform-origin:50% 0;animation:cpBalanca 4.5s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7))}
+.cp-aviso img{display:block;width:100%}
+.cp-pino{position:absolute;left:50%;top:-6px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff6b6f,#8a0d12);z-index:2;box-shadow:0 3px 4px rgba(0,0,0,.6)}
+@keyframes cpBalanca{0%,100%{transform:rotate(5deg)}50%{transform:rotate(1deg)}}
+.cp-nota{position:absolute;right:2%;top:16px;z-index:5;font-family:var(--f-mao);font-size:24px;line-height:1.05;color:var(--vermelho);transform:rotate(8deg);text-shadow:0 0 14px rgba(227,38,44,.6);animation:cpPisca 5s steps(1) infinite}
+
+.cp-baixo{display:grid;grid-template-columns:1.15fr 1fr;gap:60px;margin-top:70px;align-items:start}
+.cp-sub{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.24em;color:var(--vermelho);margin-bottom:18px}
+.cp-env-fila{display:flex;gap:14px;perspective:700px}
+.cp-env{position:relative;flex:1;aspect-ratio:.72;background:#d6c4a2;background-image:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 50%),radial-gradient(circle at 70% 85%,rgba(120,40,20,.25),transparent 55%);
+  box-shadow:0 14px 26px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.3,1.4,.5,1);transform:rotate(calc((var(--forca) - .5) * 6deg));overflow:hidden;cursor:default}
+.cp-env:nth-child(odd){transform:rotate(-2deg)}
+.cp-env:hover{transform:translateY(-10px) rotate(0) scale(1.05);z-index:2}
+.cp-env-aba{position:absolute;left:0;right:0;top:0;height:38%;background:#c9b48f;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .45s ease;z-index:3;box-shadow:inset 0 -2px 0 rgba(0,0,0,.1)}
+.cp-env:hover .cp-env-aba{transform:rotateX(180deg)}
+.cp-env-num{position:absolute;left:0;right:0;top:40%;text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:34px;color:#2a1410;z-index:2}
+.cp-env-sig{position:absolute;left:10%;bottom:6%;width:80%;opacity:var(--forca);mix-blend-mode:multiply;filter:saturate(1.4) contrast(1.2);z-index:1}
+.cp-env-lacre{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) rotate(-12deg) scale(.6);font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a50f15;border:2px solid #a50f15;padding:3px 6px;opacity:0;transition:.3s .15s;z-index:4}
+.cp-env:hover .cp-env-lacre{opacity:.9;transform:translate(-50%,-50%) rotate(-12deg) scale(1)}
+.cp .cp-env-leg{font-size:14px;color:rgba(232,217,207,.7);margin-top:18px;max-width:520px}
+.cp-ficha{list-style:none;display:grid;gap:18px}
+.cp-ficha li{display:flex;gap:16px;padding-bottom:16px;border-bottom:1px dashed rgba(227,38,44,.3)}
+.cp-ficha b{font-family:var(--f-mono);font-size:13px;color:var(--vermelho);padding-top:2px}
+.cp-ficha span{font-size:14px;color:rgba(232,217,207,.72);line-height:1.5}
+.cp-ficha strong{display:block;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:20px;color:#f1e4da;margin-bottom:2px;letter-spacing:.02em}
+
+.cp-ouija{position:relative;margin-top:70px;padding:26px 30px 22px;border:1px solid rgba(227,38,44,.3);background:linear-gradient(rgba(30,8,10,.75),rgba(10,2,3,.75));display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.cp-oj-sim,.cp-oj-nao{font-family:Georgia,serif;font-size:22px;letter-spacing:.15em;color:rgba(232,217,207,.5)}
+.cp-oj-letras{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 0}
+.cp-oj-letras span{font-family:Georgia,'Times New Roman',serif;font-size:26px;width:3.6%;min-width:22px;text-align:center;color:rgba(232,217,207,.45);transition:color .3s,text-shadow .3s}
+.cp-oj-letras span.on{color:#fff;text-shadow:0 0 12px var(--vermelho),0 0 26px var(--vermelho)}
+.cp-oj-copo{position:absolute;left:0;top:0;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;pointer-events:none;
+  border:2px solid rgba(255,255,255,.55);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.35),rgba(255,255,255,.05) 45%,rgba(227,38,44,.15) 70%);box-shadow:0 0 18px rgba(227,38,44,.45),inset 0 0 10px rgba(255,255,255,.2);
+  transition:transform 1s cubic-bezier(.5,0,.3,1)}
+.cp-oj-msg{grid-column:1/-1;font-family:var(--f-mono);font-size:14px;letter-spacing:.35em;color:var(--vermelho);min-height:20px}
+.cp-oj-msg i{font-style:normal;animation:cpPiscaTxt 1s steps(1) infinite}
+
+@media (max-width:1100px){
+  .cp-topo{grid-template-columns:1fr}
+  .cp-palco{height:600px;max-width:640px;width:100%;margin:0 auto}
+  .cp-baixo{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:720px){
+  .cp{padding:90px 0 70px}
+  .cp-logo{margin-left:-14px}
+  .cp-palco{height:440px}
+  .cp-mock{width:92%;transform:translate(-46%,-50%)}
+  @keyframes cpFlutua{50%{transform:translate(-46%,-53%)}}
+  .cp-poster{width:120px;top:0;left:-6px;border-width:4px}
+  .cp-aviso{width:170px;left:-10px;bottom:0}
+  .cp-nota{font-size:18px}
+  .cp-halo{width:380px;height:380px}
+  .cp-env-fila{gap:8px}
+  .cp-env-num{font-size:24px}
+  .cp-ouija{grid-template-columns:1fr;padding:20px 16px;gap:12px}
+  .cp-oj-sim,.cp-oj-nao{display:none}
+  .cp-oj-letras span{font-size:19px;width:7.6%;min-width:0}
+  .cp-oj-copo{width:38px;height:38px;margin:-19px 0 0 -19px}
+}
 </style>
 </head>
 <body>
@@ -1205,19 +1312,57 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ======================= OUTRO PROJETO: O COPO ======================= -->
-<section class="copo torn-y" id="projeto">
-  <div class="slot copo-fundo" data-label="O%20copo%20n%C3%A3o%20parou/img/corredor.webp"><img src="O%20copo%20n%C3%A3o%20parou/img/corredor.webp" alt="" loading="lazy"></div>
-  <span class="olho" style="left:31%;top:150px"></span>
-  <div class="wrap">
-    <div class="rv">
-      <span class="selo">PROJETO AUTORAL</span>
-      <h2 class="rough">O Copo<span>Não Parou</span></h2>
-      <p>Jogo físico de investigação e terror sobrenatural. Uma investigação paranormal em cinco envelopes, com documentos, provas e arquivos digitais para o grupo desvendar junto.</p>
-      <a href="O%20copo%20n%C3%A3o%20parou/index.html" class="btn">Conhecer o projeto <svg><use href="#seta"/></svg></a>
+<section class="copo cp torn-y" id="projeto">
+  <div class="cp-fundo" aria-hidden="true"><img src="assets/copo/poster.webp" alt="" loading="lazy"></div>
+  <img class="cp-sigilo-bg" src="assets/copo/sigilo.webp" alt="" aria-hidden="true" loading="lazy">
+  <canvas class="cp-brasas" id="cpBrasas" aria-hidden="true"></canvas>
+  <div class="cp-lanterna" id="cpLanterna" aria-hidden="true"></div>
+  <div class="cp-grao" aria-hidden="true"></div>
+
+  <div class="wrap cp-wrap">
+    <div class="cp-topo">
+      <div class="cp-texto rv">
+        <span class="cp-arquivo">ARQUIVO LIMIAR · CASO LIM-0716 · <b>CONFIDENCIAL</b></span>
+        <h2 class="cp-logo-wrap"><img class="cp-logo" src="assets/copo/logo.webp" alt="O Copo Não Parou" width="1118" height="1024" loading="lazy"></h2>
+        <p class="cp-lead">Um jogo físico de investigação e terror sobrenatural. Uma brincadeira do copo terminou com alguém desaparecido, e nenhum corpo foi encontrado. Agora o caso está na mesa do seu grupo.</p>
+        <ul class="cp-chips">
+          <li>5 envelopes</li><li>provas físicas</li><li>áudios e vídeos</li><li>dossiê da LIMIAR</li>
+        </ul>
+        <div class="cp-acoes">
+          <a href="O%20copo%20n%C3%A3o%20parou/index.html" class="btn cp-btn">Abrir o caso <svg><use href="#seta"/></svg></a>
+          <span class="cp-status"><i></i>Lançamento em breve</span>
+        </div>
+      </div>
+
+      <div class="cp-palco rv" id="cpPalco">
+        <div class="cp-halo"></div>
+        <figure class="cp-poster" data-p="1.6"><img src="assets/copo/poster.webp" alt="Pôster do jogo: Não terminou aqui." loading="lazy"></figure>
+        <img class="cp-mock" data-p="-1" src="assets/copo/mockup.webp" alt="Kit do jogo O Copo Não Parou: caixa, copo, cinco envelopes, fotos, mapa da casa e arquivos digitais no notebook e no celular" width="1000" height="1111" loading="lazy">
+        <figure class="cp-aviso" data-p="2.2"><i class="cp-pino"></i><img src="assets/copo/aviso.webp" alt="Documento do jogo: aviso para não usar o tabuleiro Ouija" loading="lazy"></figure>
+        <span class="cp-nota">não toque<br>no copo.</span>
+      </div>
     </div>
-    <div class="copo-col rv">
-      <div class="slot copo-kit" data-label="O%20copo%20n%C3%A3o%20parou/img/kit.webp"><img src="O%20copo%20n%C3%A3o%20parou/img/kit.webp" alt="Kit do jogo O Copo Não Parou: caixa, envelopes, documentos e arquivos digitais" loading="lazy" width="1312" height="1001"></div>
-      <div class="nota-papel">Algumas<br>verdades<br>não deveriam<br>ser descobertas.</div>
+
+    <div class="cp-baixo">
+      <div class="cp-envs rv">
+        <span class="cp-sub">COMO O CASO SE ABRE</span>
+        <div class="cp-env-fila"><div class="cp-env" style="--forca:0.12"><span class="cp-env-aba"></span><span class="cp-env-num">1</span><img class="cp-env-sig" src="assets/copo/sigilo.webp" alt="" loading="lazy"><span class="cp-env-lacre">lacrado</span></div><div class="cp-env" style="--forca:0.3"><span class="cp-env-aba"></span><span class="cp-env-num">2</span><img class="cp-env-sig" src="assets/copo/sigilo.webp" alt="" loading="lazy"><span class="cp-env-lacre">lacrado</span></div><div class="cp-env" style="--forca:0.5"><span class="cp-env-aba"></span><span class="cp-env-num">3</span><img class="cp-env-sig" src="assets/copo/sigilo.webp" alt="" loading="lazy"><span class="cp-env-lacre">lacrado</span></div><div class="cp-env" style="--forca:0.75"><span class="cp-env-aba"></span><span class="cp-env-num">4</span><img class="cp-env-sig" src="assets/copo/sigilo.webp" alt="" loading="lazy"><span class="cp-env-lacre">lacrado</span></div><div class="cp-env" style="--forca:1"><span class="cp-env-aba"></span><span class="cp-env-num">5</span><img class="cp-env-sig" src="assets/copo/sigilo.webp" alt="" loading="lazy"><span class="cp-env-lacre">lacrado</span></div></div>
+        <p class="cp-env-leg">Os envelopes são abertos em ordem. A cada um, o símbolo da entidade aparece mais forte, até não dar mais para ignorar.</p>
+      </div>
+      <ul class="cp-ficha rv">
+        <li><b>01</b><span><strong>Desaparecimento sem corpo</strong>Nada de cena de crime pronta. O grupo monta a história a partir do que sobrou.</span></li>
+        <li><b>02</b><span><strong>Provas para tocar</strong>Documentos, fotos, mapa da casa, recortes e anotações para espalhar na mesa.</span></li>
+        <li><b>03</b><span><strong>Arquivos digitais</strong>Áudios e vídeos que tocam no celular ou no computador durante a investigação.</span></li>
+        <li><b>04</b><span><strong>Dossiê da LIMIAR</strong>Material à parte com lendas, outros casos do jogo do copo e a análise da entidade.</span></li>
+      </ul>
+    </div>
+
+    <div class="cp-ouija rv" id="cpOuija" aria-hidden="true">
+      <span class="cp-oj-sim">SIM</span>
+      <div class="cp-oj-letras" id="cpLetras"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span></div>
+      <span class="cp-oj-nao">NÃO</span>
+      <span class="cp-oj-copo" id="cpCopo"></span>
+      <div class="cp-oj-msg">› <span id="cpMsg"></span><i>▌</i></div>
     </div>
   </div>
 </section>
@@ -2049,6 +2194,54 @@ function tick(){
 }
 links.forEach(a=>{ a.addEventListener('pointerenter',()=>{travaHover=a;marcar(a)}); a.addEventListener('pointerleave',()=>{travaHover=null;tick()}); });
 addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick); addEventListener('load',tick); tick();
+})();
+</script>
+
+<script>
+(()=>{
+const sec=document.getElementById('projeto'); if(!sec) return;
+const calmo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let visivel=false; new IntersectionObserver(es=>visivel=es[0].isIntersecting,{rootMargin:'100px'}).observe(sec);
+/* lanterna + parallax */
+const lan=document.getElementById('cpLanterna'), camadas=[...sec.querySelectorAll('[data-p]')];
+let lx=.7,ly=.4,tx=.7,ty=.4,auto=0;
+sec.addEventListener('pointermove',e=>{const r=sec.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;auto=performance.now()+2500;
+  const x=tx-.5,y=ty-.5; camadas.forEach(el=>{const k=+el.dataset.p*14;el.style.setProperty('--px',(x*k).toFixed(1)+'px');el.style.setProperty('--py',(y*k).toFixed(1)+'px')});});
+/* brasas */
+const cv=document.getElementById('cpBrasas'),cx=cv.getContext('2d'); let W=0,H=0,dpr=Math.min(2,devicePixelRatio||1); const bs=[];
+function tam(){W=sec.offsetWidth;H=sec.offsetHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+tam(); addEventListener('resize',tam);
+for(let i=0;i<70;i++) bs.push({x:Math.random(),y:Math.random(),v:.0006+Math.random()*.0016,r:.6+Math.random()*2.2,o:Math.random()*6.28,a:.2+Math.random()*.6});
+function quadro(t){
+  if(visivel){
+    if(performance.now()>auto){ tx=.62+Math.sin(t/2600)*.22; ty=.42+Math.cos(t/3300)*.2; }
+    lx+=(tx-lx)*.08; ly+=(ty-ly)*.08; lan.style.setProperty('--lx',(lx*100).toFixed(2)+'%'); lan.style.setProperty('--ly',(ly*100).toFixed(2)+'%');
+    cx.clearRect(0,0,W,H);
+    if(!calmo) bs.forEach(b=>{b.y-=b.v;b.o+=.02;if(b.y<-.02){b.y=1.02;b.x=Math.random()}
+      const x=b.x*W+Math.sin(b.o)*14,y=b.y*H;cx.beginPath();cx.arc(x,y,b.r,0,6.28);
+      cx.fillStyle=`rgba(${200+Math.random()*55|0},${30+Math.random()*40|0},30,${b.a*(.6+.4*Math.sin(b.o*3))})`;cx.shadowBlur=10;cx.shadowColor='rgba(227,38,44,.9)';cx.fill();});
+  }
+  requestAnimationFrame(quadro);
+}
+requestAnimationFrame(quadro);
+/* o copo se mexe sozinho */
+const box=document.getElementById('cpOuija'),letras=[...document.querySelectorAll('#cpLetras span')],copo=document.getElementById('cpCopo'),msg=document.getElementById('cpMsg');
+const frases=['NAO PAROU','ELA ESTA AQUI','ABRA O ENVELOPE','LIMIAR'];
+let fi=0,ci=0;
+function vaiPara(el){const r=box.getBoundingClientRect(),q=el.getBoundingClientRect();copo.style.transform=`translate(${(q.left-r.left+q.width/2).toFixed(1)}px,${(q.top-r.top+q.height/2).toFixed(1)}px)`;}
+function passo(){
+  if(!visivel){setTimeout(passo,600);return;}
+  const f=frases[fi];
+  if(ci===0) msg.textContent='';
+  if(ci<f.length){const c=f[ci++];
+    if(c===' '){msg.textContent+=' ';setTimeout(passo,500);return;}
+    const el=letras[c.charCodeAt(0)-65]; letras.forEach(l=>l.classList.remove('on'));
+    vaiPara(el); setTimeout(()=>{el.classList.add('on');msg.textContent+=c;},700);
+    setTimeout(passo,calmo?900:1300);
+  } else { ci=0; fi=(fi+1)%frases.length; setTimeout(()=>{letras.forEach(l=>l.classList.remove('on'));passo()},2600); }
+}
+setTimeout(()=>{vaiPara(letras[13]);passo()},800);
+addEventListener('resize',()=>{const on=letras.find(l=>l.classList.contains('on'));if(on)vaiPara(on)});
 })();
 </script>
 </body>
