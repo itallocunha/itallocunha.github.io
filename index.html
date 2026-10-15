@@ -744,6 +744,83 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){
   .orbe,.orbe .esfera::after,.orbes-mapa .rota,.selo-ouro i,.status::before{animation:none!important}
 }
+
+/* ===== SOBRE: mesa do artista ===== */
+.sobre{padding:40px 0 60px}
+.sobre .wrap{grid-template-columns:minmax(420px,500px) 1fr 300px;gap:40px}
+.mural{position:relative;height:570px}
+.mural .rabiscos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
+.mural .rabiscos path{stroke:var(--amarelo);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.4s ease}
+.mural .rabiscos .r-espiral{stroke:var(--roxo-claro)}
+.mural .rabiscos .r-estrela{fill:rgba(255,210,58,.15)}
+.mural.in .rabiscos path{stroke-dashoffset:0}
+.mural.in .rabiscos path:nth-child(n+3){transition-delay:.5s}
+.mural.in .rabiscos path:nth-child(n+5){transition-delay:.9s}
+.polaroid{position:absolute;display:block;background:var(--papel);padding:10px 10px 0;box-shadow:0 18px 34px rgba(0,0,0,.6),0 2px 0 rgba(0,0,0,.2);
+  transform:translate(var(--mx,0),var(--my,0)) rotate(var(--r));transition:transform .35s cubic-bezier(.3,1.4,.5,1),box-shadow .35s;z-index:2;will-change:transform}
+.polaroid .foto{display:block;overflow:hidden;background:#1a1226;aspect-ratio:4/5}
+.polaroid img{width:100%;height:100%;object-fit:cover;transform:scale(var(--zoom,1));transform-origin:var(--o,50% 50%);transition:transform .6s ease,filter .4s;filter:saturate(.9)}
+.polaroid .leg{display:block;font-family:var(--f-mao);font-size:22px;line-height:1;color:#2a2036;text-align:center;padding:9px 0 11px;text-transform:lowercase}
+.polaroid .fita{top:-11px;left:50%;margin-left:-35px;transform:rotate(var(--fr,-4deg))}
+.polaroid:hover,.polaroid:focus-visible{transform:translate(var(--mx,0),var(--my,0)) rotate(0) scale(1.08);z-index:6;box-shadow:0 28px 50px rgba(0,0,0,.7),0 0 0 3px var(--amarelo)}
+.polaroid:hover img,.polaroid:focus-visible img{transform:scale(calc(var(--zoom,1) * 1.12));filter:saturate(1.15)}
+.p1{left:0;top:34px;width:165px;--r:-7deg}
+.p1 img{object-position:62% 45%;--zoom:1.15;--o:55% 40%}
+.p2{left:188px;top:0;width:160px;--r:5deg;--fr:6deg}
+.p2 img{--zoom:2.5;--o:50% 15%}
+.p3{left:26px;top:300px;width:160px;--r:4deg;--fr:-8deg}
+.p3 img{--zoom:1.55;--o:62% 52%}
+.p4{left:218px;top:272px;width:165px;--r:-4deg;--fr:3deg}
+.p4 img{--zoom:2;--o:50% 36%}
+.postit{position:absolute;right:4px;top:96px;width:130px;padding:12px 12px 14px;background:#ffd23a;color:#2a1a00;z-index:3;
+  transform:translate(var(--mx,0),var(--my,0)) rotate(8deg);box-shadow:0 12px 22px rgba(0,0,0,.5);
+  clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,0 100%)}
+.postit::after{content:"";position:absolute;right:0;bottom:0;width:12%;height:12%;background:linear-gradient(135deg,#c9a12a 50%,transparent 50%)}
+.postit-tit{display:block;font-family:var(--f-pixel2);font-size:11px;letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase}
+.postit code{font-family:var(--f-mono);font-size:12px;line-height:1.45}
+.selo-carimbo{position:absolute;right:6px;bottom:70px;width:86px;height:86px;border-radius:50%;border:3px double var(--roxo-claro);color:var(--roxo-claro);
+  display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--f-pixel2);font-size:11px;line-height:1.3;text-transform:uppercase;
+  transform:rotate(-14deg);opacity:.75;z-index:1;mix-blend-mode:screen}
+.mural .m-a{left:0;top:-6px;transform:rotate(-4deg);font-size:19px;z-index:5;text-shadow:0 2px 6px #000}
+.mural .m-b{right:0;top:530px;transform:rotate(-3deg);font-size:21px;z-index:5;text-shadow:0 2px 6px #000}
+
+.sobre-meio{position:relative}
+.sobre-titulo .sublinha{display:block;width:min(300px,90%);height:22px;margin-top:6px}
+.sobre-titulo .sublinha path{fill:none;stroke:var(--amarelo);stroke-width:3;stroke-linecap:round;stroke-dasharray:320;stroke-dashoffset:320;transition:stroke-dashoffset 1s .5s ease}
+.sobre-titulo .sublinha path+path{stroke-width:2;transition-delay:.9s}
+.sobre-titulo.in .sublinha path{stroke-dashoffset:0}
+.sobre-meio .sobre-txt{margin-top:26px;max-width:440px}
+.sobre-txt mark{background:linear-gradient(transparent 58%,rgba(143,77,255,.55) 58%,rgba(143,77,255,.55) 92%,transparent 92%);color:inherit;padding:0 2px}
+.sobre-fazeres{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sobre-fazeres li{font-family:var(--f-mao);font-size:17px;color:var(--branco);padding:3px 12px;border:1.5px solid rgba(185,139,255,.6);border-radius:14px 6px 12px 8px;transition:transform .2s,background .2s,color .2s}
+.sobre-fazeres li:nth-child(odd){transform:rotate(-2deg)}
+.sobre-fazeres li:nth-child(even){transform:rotate(2deg)}
+.sobre-fazeres li:hover{background:var(--amarelo);color:#16101f;border-color:var(--amarelo);transform:rotate(0) scale(1.08)}
+
+.retrato-moldura{position:absolute;left:50%;top:40px;width:210px;height:330px;margin-left:-105px;border:2px dashed rgba(255,210,58,.45);border-radius:110px 110px 14px 14px;
+  background:radial-gradient(circle at 50% 35%,rgba(143,77,255,.35),transparent 70%);transform:rotate(-3deg)}
+.retrato-fig{z-index:1}
+
+@media (max-width:1180px){
+  .sobre .wrap{grid-template-columns:minmax(380px,460px) 1fr;row-gap:30px}
+  .sobre .retrato{grid-column:1/-1;justify-self:center}
+}
+@media (max-width:820px){
+  .sobre .wrap{grid-template-columns:1fr}
+  .mural{width:100%;max-width:440px;margin:0 auto;height:600px}
+  .p1{left:0;top:30px;width:46%}.p2{left:auto;right:0;top:4px;width:44%}
+  .p3{left:2%;top:318px;width:44%}.p4{left:auto;right:0;top:296px;width:46%}
+  .postit{right:auto;left:calc(50% - 52px);top:236px;width:104px;padding:9px 9px 11px}
+  .postit code{font-size:11px}
+  .mural .m-a{left:0;top:-8px;font-size:17px}.mural .m-b{right:0;top:560px;font-size:18px}
+  .selo-carimbo{display:none}
+  .mural .rabiscos{display:none}
+  .polaroid .leg{font-size:19px;padding:7px 0 9px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mural .rabiscos path,.sobre-titulo .sublinha path{stroke-dashoffset:0;transition:none}
+  .polaroid,.postit{transition:none}
+}
 </style>
 </head>
 <body>
@@ -829,29 +906,66 @@ a{color:inherit;text-decoration:none}
 <section class="sobre" id="sobre">
   <svg class="trilha" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M560 60 C700 10 900 40 1050 20"/><path d="M0 115 C200 110 300 90 420 112 S700 120 900 100"/></svg>
   <div class="wrap">
-    <div class="icones rv">
-      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M10 38l3-11L33 7l8 8-20 20-11 3z"/><path d="M29 11l8 8M13 27l8 8"/></svg>DESENHO</div>
-      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14 5 24l10 10M33 14l10 10-10 10M28 9l-8 30"/></svg>CÓDIGO</div>
-      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M14 14h20c6 0 9 6 10 14s-1 10-4 10c-4 0-6-6-9-6H17c-3 0-5 6-9 6-3 0-5-2-4-10s4-14 10-14z" fill="#b98bff" fill-opacity=".55"/><path d="M14 21v8M10 25h8" stroke-linecap="round"/><circle cx="32" cy="23" r="1.6" fill="currentColor"/><circle cx="36" cy="27" r="1.6" fill="currentColor"/></svg>JOGOS</div>
-      <div class="ic-card papel"><i class="pino"></i><i class="pino"></i>
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M24 5 41 14v20L24 43 7 34V14z"/><path d="M7 14l17 9 17-9M24 23v20"/></svg>IDEIAS</div>
+    <div class="mural rv" id="mural">
+      <svg class="rabiscos" viewBox="0 0 500 560" fill="none" aria-hidden="true">
+        <path class="r-seta" d="M118 14 C150 4 172 14 176 36"/>
+        <path class="r-seta" d="M166 30l10 8 6-12"/>
+        <path class="r-espiral" d="M420 268 c10 -8 22 0 16 10 c-6 10 -24 6 -22 -8 c2 -16 30 -18 34 0"/>
+        <path class="r-estrela" d="M470 330l6 15 16 1-12 10 4 16-14-9-14 9 4-16-12-10 16-1z"/>
+        <path class="r-seta" d="M400 540 C360 556 320 552 296 536"/>
+        <path class="r-seta" d="M306 530l-12 6 12 8"/>
+      </svg>
+
+      <a class="polaroid p1" href="ilustracao.html" data-z="1.4">
+        <i class="fita"></i>
+        <span class="foto"><img src="assets/_web/ilustracao/criacao-de-personagem/ilustracao-1-thallhassa.webp" alt="Ilustração autoral de personagem" loading="lazy"></span>
+        <span class="leg">desenho</span>
+      </a>
+      <a class="polaroid p2" href="jogos.html" data-z="2">
+        <i class="fita"></i>
+        <span class="foto"><img src="assets/_web/jogos/chocotopia/chocotopia-1.webp" alt="Arte do jogo Chocotopia" loading="lazy"></span>
+        <span class="leg">jogos</span>
+      </a>
+      <a class="polaroid p3" href="modelagem-3d.html" data-z="1">
+        <i class="fita"></i>
+        <span class="foto"><img src="assets/_web/modelagem-3d/memoria-16-bit/controle-1.webp" alt="Controle 16-bit modelado em 3D" loading="lazy"></span>
+        <span class="leg">3D</span>
+      </a>
+      <a class="polaroid p4" href="design-grafico.html" data-z="1.7">
+        <i class="fita"></i>
+        <span class="foto"><img src="assets/_web/design-grafico/braza-identidade-visual/braza-1.webp" alt="Identidade visual Braza" loading="lazy"></span>
+        <span class="leg">design</span>
+      </a>
+
+      <div class="postit" data-z="2.4">
+        <span class="postit-tit">código</span>
+        <code>if (ideia) {<br>&nbsp;&nbsp;criar();<br>&nbsp;&nbsp;ensinar();<br>}</code>
+      </div>
+
+      <span class="selo-carimbo">feito<br>à mão</span>
+      <p class="mao m-a">de um rabisco...</p>
+      <p class="mao amarela m-b">...vira jogo!</p>
     </div>
 
-    <div class="sobre-titulo rv">
-      <span class="rotulo">Sobre</span>
-      <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
-      <h2 class="rough-forte dyn-palavras"><em>Ideias</em> <span>em</span><br><span>movimento</span></h2>
-    </div>
+    <div class="sobre-meio">
+      <div class="sobre-titulo rv">
+        <span class="rotulo">Sobre</span>
+        <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
+        <h2 class="rough-forte dyn-palavras"><em>Ideias</em> <span>em</span><br><span>movimento</span></h2>
+        <svg class="sublinha" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C60 6 120 20 180 10 S270 6 296 14"/><path d="M30 21 C100 14 180 22 260 16"/></svg>
+      </div>
 
-    <div class="sobre-txt rv">
-      <p class="lead">Conecto arte, tecnologia e ensino para criar experiências visuais e interativas.</p>
-      <p>Sou Itallo Cunha, um criativo movido por jogos, design e pelo desejo de compartilhar conhecimento. Aqui você encontra um pouco da minha jornada e tudo o que gosto de criar, explorar e ensinar.</p>
+      <div class="sobre-txt rv">
+        <p class="lead">Conecto <mark>arte</mark>, <mark>tecnologia</mark> e <mark>ensino</mark> para criar experiências visuais e interativas.</p>
+        <p>Sou Itallo Cunha, um criativo movido por jogos, design e pelo desejo de compartilhar conhecimento. Aqui você encontra um pouco da minha jornada e tudo o que gosto de criar, explorar e ensinar.</p>
+        <ul class="sobre-fazeres">
+          <li>desenho</li><li>pixel art</li><li>3D</li><li>game design</li><li>código</li><li>aulas</li>
+        </ul>
+      </div>
     </div>
 
     <div class="retrato rv">
+      <div class="retrato-moldura" aria-hidden="true"></div>
       <div class="retrato-fig" id="retrato">
         <img src="assets/itallo-apresentando.webp" alt="Ilustração de Itallo Cunha apontando para o texto" width="529" height="1100" loading="lazy">
         <span class="retrato-fala">Prazer, Itallo!</span>
@@ -1656,6 +1770,14 @@ document.querySelectorAll('.card').forEach(card=>{
   mapa.addEventListener('pointerdown',()=>{atual=-1;});
   ativar(0,false);
 })();
+</script>
+
+<script>
+(()=>{const m=document.getElementById('mural');if(!m||matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(hover: none)').matches)return;
+const els=[...m.querySelectorAll('[data-z]')];
+m.addEventListener('mousemove',e=>{const r=m.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+els.forEach(el=>{const z=+el.dataset.z;el.style.setProperty('--mx',(x*z*10).toFixed(1)+'px');el.style.setProperty('--my',(y*z*10).toFixed(1)+'px')})});
+m.addEventListener('mouseleave',()=>els.forEach(el=>{el.style.setProperty('--mx','0px');el.style.setProperty('--my','0px')}));})();
 </script>
 </body>
 </html>
