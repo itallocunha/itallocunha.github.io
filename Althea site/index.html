@@ -105,7 +105,7 @@
     background:rgba(14,11,23,.8); border:1px solid var(--line);
     border-radius:999px; padding:6px 8px 6px 18px; backdrop-filter:blur(10px); max-width:100%;
   }
-  .chapter-nav__brand{height:18px; width:auto; display:block; flex-shrink:0; opacity:.9;}
+  .chapter-nav__brand{height:30px; width:auto; display:block; flex-shrink:0; opacity:.9;}
   .chapter-nav__chapters{display:flex; gap:6px;}
   .chapter-pill{
     font-size:12px; letter-spacing:.04em; text-decoration:none; color:var(--text-muted);
@@ -549,7 +549,7 @@
 
 <header class="chapter-nav" id="chapterNav">
   <div class="chapter-nav__inner">
-    <img class="chapter-nav__brand" src="wordmark.png" alt="ALTHEA">
+    <img class="chapter-nav__brand" src="logo-althea.webp" alt="ALTHEA">
     <nav class="chapter-nav__chapters">
       <a href="#pagina-1" class="chapter-pill active" data-chapter="pagina-1">Cap. 1 · Amostra</a>
       <a href="#pagina-2" class="chapter-pill" data-chapter="pagina-2">Cap. 2 · Orbe 1</a>
@@ -572,7 +572,7 @@
     </div>
     <canvas class="hero__embers" id="embers" aria-hidden="true"></canvas>
     <div class="hero__content wrap">
-      <img class="hero__logo" src="wordmark.png" alt="ALTHEA, uma aventura de autoconhecimento">
+      <img class="hero__logo" src="logo-althea.webp" alt="ALTHEA, uma aventura de autoconhecimento">
       <p class="eyebrow">Teste das Orbes · Capítulo 1</p>
       <h1 data-kinetic>Você já fez uns 20 testes de personalidade. <span class="accent">Nenhum te fez virar o personagem.</span></h1>
       <p class="lead">ALTHEA é a primeira jornada de autoconhecimento que você <em>joga</em>, não que você preenche. Cinco Orbes, um mundo cada, e uma ficha de personagem que evolui junto com o que você descobre sobre si.</p>
@@ -650,39 +650,39 @@
       <p class="chamber__hint">arraste para girar · toque numa orbe</p>
       <div class="chamber__fallback">
         <div class="fallback-grid">
-          <img src="orb-gold.png" alt="Orbe dourada"><img src="orb-blue.png" alt="Orbe azul"><img src="orb-red.png" alt="Orbe vermelha"><img src="orb-green.png" alt="Orbe verde"><img src="orb-purple.png" alt="Orbe violeta">
+          <img src="orb-blue.png" alt="Orbe azul"><img src="orb-green.png" alt="Orbe verde"><img src="orb-purple.png" alt="Orbe roxa"><img src="orb-red.png" alt="Orbe vermelha"><img src="orb-gold.png" alt="Orbe dourada">
         </div>
       </div>
     </div>
 
     <div class="orb-bar">
       <button type="button" class="orb-btn is-active" data-orb aria-pressed="true"
-        data-num="01" data-title="Orbe Dourada" data-art="scene-gold.jpg"
+        data-num="01" data-title="Orbe Azul" data-art="scene-blue.jpg"
         data-text="Cada Orbe abre com um convite, não com um questionário. Você entra no mundo, entende o que ele quer de você e escolhe como atravessar.">
-        <img src="orb-gold.png" alt="">Dourada</button>
-      <button type="button" class="orb-btn" data-orb aria-pressed="false"
-        data-num="02" data-title="Orbe Azul" data-art="scene-blue.jpg"
-        data-text="São 10 desafios por Orbe. Nenhum deles tem resposta certa, e todos têm consequência na sua ficha.">
         <img src="orb-blue.png" alt="">Azul</button>
       <button type="button" class="orb-btn" data-orb aria-pressed="false"
-        data-num="03" data-title="Orbe Vermelha" data-art="scene-red.jpg"
-        data-text="As escolhas que você faz sob pressão pesam diferente das que você faz com calma. O jogo registra as duas.">
-        <img src="orb-red.png" alt="">Vermelha</button>
-      <button type="button" class="orb-btn" data-orb aria-pressed="false"
-        data-num="04" data-title="Orbe Verde" data-art="scene-green.jpg"
-        data-text="No fim de cada Orbe sua ficha muda de verdade: atributos sobem, cartas novas entram no grimório, medalhas entram no álbum.">
+        data-num="02" data-title="Orbe Verde" data-art="scene-green.jpg"
+        data-text="São 10 desafios por Orbe. Nenhum deles tem resposta certa, e todos têm consequência na sua ficha.">
         <img src="orb-green.png" alt="">Verde</button>
       <button type="button" class="orb-btn" data-orb aria-pressed="false"
-        data-num="05" data-title="Orbe Violeta" data-art="scene-purple.jpg"
+        data-num="03" data-title="Orbe Roxa" data-art="scene-purple.jpg"
+        data-text="As escolhas que você faz sob pressão pesam diferente das que você faz com calma. O jogo registra as duas.">
+        <img src="orb-purple.png" alt="">Roxa</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="04" data-title="Orbe Vermelha" data-art="scene-red.jpg"
+        data-text="No fim de cada Orbe sua ficha muda de verdade: atributos sobem, cartas novas entram no grimório, medalhas entram no álbum.">
+        <img src="orb-red.png" alt="">Vermelha</button>
+      <button type="button" class="orb-btn" data-orb aria-pressed="false"
+        data-num="05" data-title="Orbe Dourada" data-art="scene-gold.jpg"
         data-text="Cinco Orbes, 50 desafios. No fim, o personagem que ficou registrado na ficha é uma leitura sua, construída por você.">
-        <img src="orb-purple.png" alt="">Violeta</button>
+        <img src="orb-gold.png" alt="">Dourada</button>
     </div>
 
     <div class="orb-panel">
-      <figure class="orb-panel__art"><img id="orbArt" src="scene-gold.jpg" alt="Arte oficial da Orbe selecionada"></figure>
+      <figure class="orb-panel__art"><img id="orbArt" src="scene-blue.jpg" alt="Arte oficial da Orbe selecionada"></figure>
       <div>
         <span class="orb-panel__num num" id="orbNum">01</span>
-        <h3 class="orb-panel__title" id="orbTitle">Orbe Dourada</h3>
+        <h3 class="orb-panel__title" id="orbTitle">Orbe Azul</h3>
         <p class="orb-panel__text" id="orbText">Cada Orbe abre com um convite, não com um questionário. Você entra no mundo, entende o que ele quer de você e escolhe como atravessar.</p>
       </div>
     </div>
@@ -749,7 +749,7 @@
         <p>R$5 é um valor simbólico, não é o preço do produto pronto: é o preço de entrar agora, ajudar a moldar o jogo com o seu olhar, e travar um valor que não volta quando o lançamento completo acontecer.</p>
       </div>
       <figure class="split__media r r-right">
-        <img src="scene-purple.jpg" alt="Personagem de ALTHEA conjurando uma orbe violeta, arte oficial" loading="lazy">
+        <img src="scene-purple.jpg" alt="Personagem de ALTHEA conjurando uma orbe roxa, arte oficial" loading="lazy">
       </figure>
     </div>
   </section>

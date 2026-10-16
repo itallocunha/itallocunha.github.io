@@ -662,6 +662,10 @@ a{color:inherit;text-decoration:none}
 .althea h2{font-family:var(--f-pixel);font-weight:700;color:var(--branco);font-size:clamp(64px,8vw,128px);line-height:.9;letter-spacing:.04em;
   text-shadow:0 0 34px rgba(143,77,255,.75),4px 4px 0 var(--roxo-escuro);margin-bottom:6px}
 .althea h2 b{color:var(--amarelo);font-weight:700}
+.althea h2.althea-logo{text-shadow:none;margin:0 0 4px;line-height:0}
+.althea-logo img{width:min(100%,560px);height:auto;filter:drop-shadow(0 10px 34px rgba(255,170,40,.38));animation:flutua-logo 6s ease-in-out infinite}
+@keyframes flutua-logo{50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.althea-logo img{animation:none}}
 .althea .sub{font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);font-size:24px;letter-spacing:.04em;margin-bottom:22px}
 .althea .lead{font-size:18px;color:var(--branco);max-width:520px;margin-bottom:14px}
 .althea .txt{max-width:520px;margin-bottom:26px}
@@ -1250,7 +1254,7 @@ a{color:inherit;text-decoration:none}
     <div class="topo">
       <div class="rv">
         <span class="selo-ouro"><i></i>MEU MAIOR PROJETO</span>
-        <h2>ALTH<b>E</b>A</h2>
+        <h2 class="althea-logo"><img src="Althea%20site/logo-althea.webp" width="1500" height="558" alt="ALTHEA, uma aventura de autoconhecimento"></h2>
         <p class="sub">A jornada das Orbes</p>
         <p class="lead">Um RPG de autoconhecimento. Em vez de derrotar monstros, você encara desafios sobre si mesmo, e o seu personagem cresce junto com você.</p>
         <p class="txt">Cada Orbe é uma região do mundo de ALTHEA, com dez desafios para completar. Ao terminar uma Orbe, sua ficha sobe de nível, você distribui pontos de atributo e ganha itens, cartas e medalhas para a sua coleção.</p>
@@ -1273,15 +1277,15 @@ a{color:inherit;text-decoration:none}
             <path class="rota" d="M12 66 C 22 44, 30 40, 34 46 S 46 66, 54 54 S 62 22, 70 30 S 86 20, 88 12" vector-effect="non-scaling-stroke"/>
             <path class="rota-feita" id="rotaFeita" d="M12 66 C 22 44, 30 40, 34 46 S 46 66, 54 54 S 62 22, 70 30 S 86 20, 88 12" vector-effect="non-scaling-stroke"/>
           </svg>
-          <button class="orbe ativa" style="left:10%;top:80%;--h:45;--t:84px" data-i="0" aria-label="Orbe Dourada"><span class="esfera"><img src="Althea%20site/orb-gold.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">I</span><span class="nome">DOURADA</span></button>
-          <button class="orbe" style="left:28%;top:52%;--h:210;--t:88px;--d:-1s" data-i="1" aria-label="Orbe Azul"><span class="esfera"><img src="Althea%20site/orb-blue.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">II</span><span class="nome">AZUL</span></button>
-          <button class="orbe" style="left:45%;top:72%;--h:8;--t:92px;--d:-2s" data-i="2" aria-label="Orbe Vermelha"><span class="esfera"><img src="Althea%20site/orb-red.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">III</span><span class="nome">VERMELHA</span></button>
-          <button class="orbe" style="left:56%;top:30%;--h:130;--t:96px;--d:-3s" data-i="3" aria-label="Orbe Verde"><span class="esfera"><img src="Althea%20site/orb-green.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">IV</span><span class="nome">VERDE</span></button>
-          <button class="orbe" style="left:84%;top:12%;--h:275;--t:104px;--d:-4s" data-i="4" aria-label="Orbe Violeta"><span class="esfera"><img src="Althea%20site/orb-purple.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">V</span><span class="nome">VIOLETA</span></button>
+          <button class="orbe ativa" style="left:10%;top:80%;--h:210;--t:84px" data-i="0" aria-label="Orbe Azul"><span class="esfera"><img src="Althea%20site/orb-blue.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">I</span><span class="nome">AZUL</span></button>
+          <button class="orbe" style="left:28%;top:52%;--h:130;--t:88px;--d:-1s" data-i="1" aria-label="Orbe Verde"><span class="esfera"><img src="Althea%20site/orb-green.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">II</span><span class="nome">VERDE</span></button>
+          <button class="orbe" style="left:45%;top:72%;--h:275;--t:92px;--d:-2s" data-i="2" aria-label="Orbe Roxa"><span class="esfera"><img src="Althea%20site/orb-purple.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">III</span><span class="nome">ROXA</span></button>
+          <button class="orbe" style="left:56%;top:30%;--h:8;--t:96px;--d:-3s" data-i="3" aria-label="Orbe Vermelha"><span class="esfera"><img src="Althea%20site/orb-red.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">IV</span><span class="nome">VERMELHA</span></button>
+          <button class="orbe" style="left:84%;top:12%;--h:45;--t:104px;--d:-4s" data-i="4" aria-label="Orbe Dourada"><span class="esfera"><img src="Althea%20site/orb-gold.png" alt="" width="300" height="300" loading="lazy"></span><span class="num">V</span><span class="nome">DOURADA</span></button>
         </div>
         <div class="ficha-orbe" aria-live="polite">
-          <img class="ficha-cena" id="fichaCena" src="Althea%20site/scene-gold.jpg" alt="" width="1000" height="562" loading="lazy">
-          <small id="fichaRotulo">ORBE I · DOURADA</small>
+          <img class="ficha-cena" id="fichaCena" src="Althea%20site/scene-blue.jpg" alt="" width="1000" height="562" loading="lazy">
+          <small id="fichaRotulo">ORBE I · AZUL · NÍVEL 1</small>
           <strong id="fichaTitulo">O começo da trilha</strong>
           <p id="fichaTexto">Os primeiros dez desafios. Aqui o viajante cria a ficha e descobre por onde quer começar.</p>
           <div class="barra-xp"><i id="fichaBarra"></i></div>
@@ -2010,8 +2014,8 @@ document.querySelectorAll('.card').forEach(card=>{
     ['A última Orbe','Os dez desafios finais. O personagem chega ao nível 5, junto com quem jogou.']
   ];
   const romano=['I','II','III','IV','V'];
-  const cores=['Dourada','Azul','Vermelha','Verde','Violeta'];
-  const cenas=['gold','blue','red','green','purple'];
+  const cores=['Azul','Verde','Roxa','Vermelha','Dourada'];
+  const cenas=['blue','green','purple','red','gold'];
   cenas.forEach(c=>{const im=new Image(); im.src=`Althea%20site/scene-${c}.jpg`;});
   // vídeo de fundo: versão leve no celular, só toca quando a seção aparece
   const vid=document.querySelector('.althea-video');
