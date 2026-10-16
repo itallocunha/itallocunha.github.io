@@ -133,7 +133,7 @@ function lbMostrar(){
   lbImg.src = url(it.src); lbImg.alt = legendaDe(it,lbI); pixelar(lbImg, it, 640);
   lb.querySelector('.legenda').textContent = legendaDe(it,lbI);
   lb.querySelector('.contador').textContent = `${dois(lbI+1)} / ${dois(lista.length)}`;
-  lb.querySelector('.orig').href = url(it.original);
+  lb.querySelector('.orig').href = url(location.protocol==='file:'&&it.original?it.original:it.src);
   [lista[lbI+1],lista[lbI-1]].forEach(n=>{ if(n){ const im=new Image(); im.src=url(n.src);} });
 }
 function lbAbrir(grupo,i,cb){ lbGrupo=grupo; lbI=i; aoFechar=cb||null; lbMostrar(); lb.classList.add('aberto'); document.body.style.overflow='hidden'; lb.querySelector('.fechar').focus(); }
@@ -198,7 +198,7 @@ document.querySelectorAll('.carrossel').forEach(car=>{
     fila.scrollLeft = m.offsetLeft - fila.clientWidth/2 + m.clientWidth/2;
     car.querySelector('.contador').textContent = `${dois(i+1)} / ${dois(lista.length)}`;
     car.querySelector('.legenda').textContent = legendaDe(lista[i],i);
-    car.querySelector('.orig').href = url(lista[i].original);
+    car.querySelector('.orig').href = url(location.protocol==='file:'&&lista[i].original?lista[i].original:lista[i].src);
   }
   car.querySelector('.seta.ant').onclick = ()=>ir(atual-1);
   car.querySelector('.seta.prox').onclick = ()=>ir(atual+1);
