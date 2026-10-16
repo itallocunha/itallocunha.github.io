@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23050403'/%3E%3Ccircle cx='20' cy='20' r='17' fill='none' stroke='%23ece6d8' stroke-width='2'/%3E%3Cpath d='M13 31V17a7 7 0 0 1 14 0v14' fill='none' stroke='%23ece6d8' stroke-width='2'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261016-art">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"O Copo Não Parou","description":"Jogo de investigação paranormal em cinco envelopes, para 3 a 6 jogadores. Kit digital para imprimir.","image":"img/og.jpg","brand":{"@type":"Brand","name":"LIMIAR"}}
 </script>
@@ -26,30 +26,30 @@
 <body class="locked">
 
 <!-- ================= ABERTURA ================= -->
-<div id="intro" role="dialog" aria-modal="true" aria-label="Abertura: o jogo do copo">
+<div id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introDescription">
+  <div class="intro-room" aria-hidden="true"></div>
   <div class="intro-vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
-  <div class="intro-hud">
-    <div class="intro-case">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
-      <span>LIMIAR<br>Caso LIM-0716</span>
+  <header class="intro-hud">
+    <div class="intro-case"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg><span>LIMIAR<small>Arquivo LIM-0716</small></span></div>
+    <div class="intro-ctrl"><button type="button" id="introSound" aria-pressed="false">Ativar som <span aria-hidden="true">◌</span></button><button type="button" id="introSkip">Ir para o site <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <div class="intro-composition">
+    <div class="intro-copy">
+      <p class="intro-label"><span></span> Uma investigação paranormal</p>
+      <h2 id="introTitle">A sessão<br><em>não acabou.</em></h2>
+      <p class="intro-description" id="introDescription">Cinco amigas. Um copo. Um lugar vazio.<br>Há coisas que não ficam no passado.</p>
+      <div class="intro-prompt" id="introPrompt"><button type="button" id="introEnter"><span>Entrar na sessão</span><span aria-hidden="true">↗</span></button><p>O Copo Não Parou · Um jogo da LIMIAR</p></div>
     </div>
-    <div class="intro-right">
-      <span class="tc"><i class="rec"></i><span id="tc">16.07.2016 01:04:12</span></span>
-      <div class="intro-ctrl">
-        <button type="button" id="introSound" aria-pressed="false">Som desligado</button>
-        <button type="button" id="introSkip">Pular</button>
-      </div>
+    <div class="ritual-scene" aria-hidden="true">
+      <div class="ritual-orbit"></div><span class="ritual-index">05</span>
+      <div class="ritual-photo"><img src="img/doc-fotos.webp" width="1000" height="1500" alt=""><span>Julho, 2016. Antes do silêncio.</span></div>
+      <div class="ritual-board"><img src="img/doc-tabuleiro.webp" width="1000" height="708" alt=""><div class="ritual-glass"><i></i></div></div>
+      <span class="ritual-note">ninguém disse<br>adeus.</span>
+      <span class="ritual-tag">01 / Vestígios de uma sessão</span>
     </div>
   </div>
-  <div class="intro-words" id="introWords" aria-live="polite"></div>
-  <svg id="introBoard" viewBox="0 0 600 600" role="img" aria-label="Vista de cima de um tabuleiro de jogo do copo iluminado por cinco velas. Um copo se move sozinho entre as letras."></svg>
-  <div class="intro-sub" id="introSub" aria-live="polite"></div>
-  <div class="intro-prompt" id="introPrompt">
-    <p>Tem um lugar vazio no círculo.</p>
-    <button type="button" id="introEnter">Colocar o dedo no copo</button>
-  </div>
-  <div class="intro-flash" id="introFlash" aria-hidden="true"></div>
+  <footer class="intro-footer"><span><i class="rec"></i> 16.07.2016 <b id="tc">01:04:12</b></span><p id="introSub" aria-live="polite">Quatro levantaram. Uma ficou.</p><span class="intro-folio">O início é só uma pista.</span></footer>
 </div>
 
 <!-- símbolo LIMIAR reutilizável -->
@@ -67,39 +67,44 @@
     <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
     <span>LIMIAR <em>· LIM-0716</em></span>
   </a>
-  <nav class="nav-links" aria-label="Seções">
+  <nav class="nav-links" id="sectionNav" aria-label="Seções">
     <a href="#caso">O caso</a>
     <a href="#como">Como funciona</a>
     <a href="#envelopes">Envelopes</a>
     <a href="#evidencias">Evidências</a>
     <a href="#faq">Dúvidas</a>
   </nav>
-  <a class="btn btn-sm" href="#comprar">Abrir o caso</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="sectionNav" aria-label="Abrir menu de seções"><span></span><span></span></button>
+  <a class="btn btn-sm nav-cta" href="#comprar">Abrir o caso</a>
+  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 </header>
 
 <main id="topo">
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="h1">
-  <div class="hero-art">
-    <img src="img/logo.webp" width="1600" height="900" alt="O Copo Não Parou — título com um copo de vidro rachado e sangue escorrendo entre as letras. LIMIAR, caso LIM-0716." fetchpriority="high">
-  </div>
-  <div class="hero-body">
-    <h1 id="h1" class="sr">O Copo Não Parou</h1>
-    <p class="hero-kicker">Uma investigação paranormal em cinco envelopes.</p>
-    <p class="hero-lede">Apaguem a luz. Acendam cinco velas. Vocês têm uma noite para entender o que aconteceu naquele quarto — e fechar a sessão.</p>
-    <div class="hero-cta">
-      <a class="btn btn-lg" href="#comprar">Abrir o caso <span class="btn-price">· R$ <b data-price>29,90</b></span></a>
-      <a class="btn btn-ghost btn-lg" href="#kit">Ver o que vem no kit</a>
+  <div class="hero-atmosphere" aria-hidden="true"></div>
+  <div class="hero-layout wrap">
+    <div class="hero-content">
+      <p class="eyebrow hero-eyebrow">LIMIAR apresenta <span>caso nº 0716</span></p>
+      <div class="hero-art"><img src="img/logo.webp" width="1600" height="900" alt="O Copo Não Parou — um copo rachado entre letras marcadas de sangue" fetchpriority="high"></div>
+      <h1 id="h1" class="sr" tabindex="-1">O Copo Não Parou</h1>
+      <p class="hero-kicker">Cinco envelopes.<br>Uma noite para <em>fechar a sessão.</em></p>
+      <p class="hero-lede">Um jogo de investigação paranormal para reunir os amigos, cruzar pistas e descobrir o que ficou naquele quarto.</p>
+      <div class="hero-cta"><a class="btn btn-lg" href="#comprar">Abrir o caso <span aria-hidden="true">↗</span></a><a class="hero-text-link" href="#caso">Consultar o dossiê <span aria-hidden="true">↓</span></a></div>
     </div>
-    <ul class="chips" aria-label="Resumo do jogo">
-      <li><b>3 a 6</b> jogadores + anfitrião</li>
-      <li><b>2h a 2h30</b> de investigação</li>
-      <li><b>16+</b></li>
-      <li><b>Kit digital</b> para imprimir</li>
-    </ul>
-    <p class="hero-hand" aria-hidden="true">Não terminou aqui.</p>
+    <div class="evidence-desk">
+      <span class="desk-orbit" aria-hidden="true"></span><span class="desk-annotation" aria-hidden="true">todas lembram.<br>nenhuma conta igual.</span>
+      <span class="desk-back-sheet" aria-hidden="true"></span>
+      <div class="evidence-viewer" role="tabpanel" id="evidencePanel" aria-labelledby="evidenceTab0">
+        <button type="button" class="evidence-preview" id="evidencePreview" aria-label="Ampliar boletim de ocorrência"><span class="evidence-tape" aria-hidden="true"></span><img id="evidenceImage" src="img/doc-bo.webp" width="1000" height="1413" alt="Boletim de ocorrência do desaparecimento"><span class="preview-hint">Examinar evidência <b aria-hidden="true">↗</b></span></button>
+      </div>
+      <div class="evidence-caption"><span id="evidenceNumber">Evidência 01</span><p id="evidenceCaption">O registro de uma ausência.</p></div>
+      <div class="evidence-tabs" role="tablist" aria-label="Prévia das evidências"><button type="button" role="tab" id="evidenceTab0" aria-selected="true" aria-controls="evidencePanel" data-evidence="0">01 <span>O registro</span></button><button type="button" role="tab" id="evidenceTab1" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="1">02 <span>O tabuleiro</span></button><button type="button" role="tab" id="evidenceTab2" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="2">03 <span>As fotos</span></button></div>
+    </div>
   </div>
+  <div class="hero-facts wrap"><div><b>03—06</b><span>jogadores + anfitrião</span></div><div><b>2h—2h30</b><span>de investigação</span></div><div><b>05 envelopes</b><span>uma história em fragmentos</span></div><div><b>Imprima & jogue</b><span>kit digital · 16+</span></div></div>
+  <a class="hero-scroll" href="#caso"><span>O que aconteceu naquela noite?</span><span aria-hidden="true">↓</span></a>
 </section>
 
 <!-- ================= O CASO (dossiê em papel) ================= -->
@@ -113,6 +118,7 @@
       <div class="timbre-case">Caso LIM-0716<br><span class="stamp">Confidencial</span></div>
     </header>
 
+    <p class="chapter-label reveal">01 / O desaparecimento</p>
     <h2 id="casoT" class="paper-title reveal">Quatro levantaram.</h2>
     <p class="lede reveal">Na madrugada de 16 de julho de 2016, Camila Rocha Vieira, 14 anos, desapareceu dentro da própria casa durante uma festa do pijama. As amigas jogavam o jogo do copo.</p>
     <p class="reveal">A polícia arquivou o caso em 2017. A LIMIAR não. O dossiê reúne depoimentos que não batem entre si, <span class="tj" style="width:6em" role="img" aria-label="trecho tarjado"></span> e um tabuleiro que <span class="tj" style="width:9em" role="img" aria-label="trecho tarjado"></span>.</p>
@@ -151,9 +157,9 @@
 
 <!-- ================= COMO FUNCIONA ================= -->
 <section class="how" id="como" aria-labelledby="comoT">
-  <div class="wrap narrow">
-    <p class="eyebrow">Como funciona</p>
-    <h2 id="comoT" class="h2 reveal">A noite, em ordem.</h2>
+  <div class="wrap how-layout">
+    <div class="how-heading"><p class="eyebrow">Como funciona</p>
+    <h2 id="comoT" class="h2 reveal">A noite,<br><em>em ordem.</em></h2><p class="sub reveal">Prepare a mesa. Reúna o grupo.<br>O resto está nos envelopes.</p><a href="#envelopes" class="hero-text-link">Conhecer os envelopes <span aria-hidden="true">↗</span></a></div>
     <ol class="steps">
       <li class="reveal"><span class="n">01</span><div><h3>Imprima e monte</h3><p>O guia de produção diz o que imprimir, em que papel e como montar cada envelope. É o único trabalho antes da noite começar.</p></div></li>
       <li class="reveal"><span class="n">02</span><div><h3>Escolha o anfitrião</h3><p>Uma pessoa prepara o kit e conhece a solução. Ela não joga: cuida das velas, observa e conduz a noite. Todo o resto do grupo chega sem saber de nada.</p></div></li>
@@ -168,9 +174,10 @@
 <section class="envs" id="envelopes" aria-labelledby="envT">
   <div class="wrap">
     <p class="eyebrow">Os cinco envelopes</p>
-    <h2 id="envT" class="h2 reveal">Não abram antes da hora.</h2>
+    <h2 id="envT" class="h2 reveal">Não abram<br><em>antes da hora.</em></h2>
     <p class="sub reveal">Cada envelope tem seus próprios documentos, e nenhum deles conta a história inteira sozinho.</p>
   </div>
+  <div class="rail-controls wrap"><span>01 — 05 / Siga a ordem dos envelopes</span><div><button type="button" data-rail="envelopes" data-direction="-1" aria-label="Envelopes anteriores">←</button><button type="button" data-rail="envelopes" data-direction="1" aria-label="Próximos envelopes">→</button></div></div>
   <div class="env-rail" tabindex="0" aria-label="Os cinco envelopes do caso (role para o lado)">
     <article class="env reveal"><img src="img/cover-1.webp" width="720" height="1019" loading="lazy" alt="Capa do Envelope 1, A Festa do Pijama, com carimbo Confidencial"><div><span class="env-n">Envelope 1</span><h3>A Festa do Pijama</h3><p>A carta de convocação, o protocolo da sessão e os primeiros registros daquela noite.</p></div></article>
     <article class="env reveal"><img src="img/cover-2.webp" width="720" height="1018" loading="lazy" alt="Capa do envelope As Quatro, com carimbo Confidencial"><div><span class="env-n">Envelope 2</span><h3>As Quatro</h3><p>Quatro depoimentos sobre a mesma noite. Cada uma lembra de um jeito. Comparem.</p></div></article>
@@ -197,18 +204,19 @@
     <h2 id="evT" class="h2 reveal">Documentos de verdade.<br><span class="dim">Cada um vem de um lugar diferente.</span></h2>
     <p class="sub reveal">Boletim de ocorrência, jornal, hospital, celular, rede social, relatório da LIMIAR. Toque para ler. Nada aqui entrega a solução.</p>
   </div>
-  <div class="gallery" id="gallery" role="list">
-    <button type="button" class="doc" role="listitem" data-src="img/doc-carta.webp" data-cap="Carta de convocação — Envelope 1"><img src="img/doc-carta.webp" width="1000" height="1413" loading="lazy" alt="Carta de convocação da LIMIAR aos agentes"><span>Carta de convocação</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-bo.webp" data-cap="Boletim de ocorrência — Envelope 1"><img src="img/doc-bo.webp" width="1000" height="1413" loading="lazy" alt="Boletim de ocorrência da polícia de Vila Real"><span>Boletim de ocorrência</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-jornal.webp" data-cap="Jornal de Vila Real"><img src="img/doc-jornal.webp" width="1000" height="1413" loading="lazy" alt="Recorte do Jornal de Vila Real: Adolescente some dentro de casa durante festa do pijama"><span>Jornal de Vila Real</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-mensagens.webp" data-cap="Mensagens recuperadas — Envelope 1"><img src="img/doc-mensagens.webp" width="1000" height="1413" loading="lazy" alt="Capturas de tela de conversas de celular recuperadas"><span>Mensagens recuperadas</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-pulso.webp" data-cap="Prints de rede social"><img src="img/doc-pulso.webp" width="1000" height="1413" loading="lazy" alt="Prints de uma rede social com comentários sobre o caso"><span>A internet opina</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-protocolo.webp" data-cap="Protocolo 7: Sessão Aberta — Envelope 1"><img src="img/doc-protocolo.webp" width="1000" height="1413" loading="lazy" alt="Protocolo 7: Sessão Aberta, regras numeradas sobre fundo escuro"><span>Protocolo 7</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-sensores.webp" data-cap="Relatório de sensores — Envelope 1"><img src="img/doc-sensores.webp" width="1000" height="1413" loading="lazy" alt="Relatório de sensores com tabela de eventos anômalos"><span>Relatório de sensores</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-prontuario.webp" data-cap="Prontuário do pronto-socorro — Envelope 3"><img src="img/doc-prontuario.webp" width="1000" height="1413" loading="lazy" alt="Ficha de atendimento do Hospital Municipal de Vila Real"><span>Prontuário</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-fotos.webp" data-cap="Fotografias cedidas pelas famílias — Dossiê de campo"><img src="img/doc-fotos.webp" width="1000" height="1500" loading="lazy" alt="Fotografias antigas coladas com fita: uma casa, meninas em festa, um quarto"><span>Fotografias</span></button>
-    <button type="button" class="doc" role="listitem" data-src="img/doc-registros.webp" data-cap="Registros avulsos sobre o jogo do copo — Dossiê de campo"><img src="img/doc-registros.webp" width="1000" height="1416" loading="lazy" alt="Registros avulsos sobre casos anteriores do jogo do copo"><span>Registros avulsos</span></button>
-    <button type="button" class="doc doc-wide" role="listitem" data-src="img/doc-tabuleiro.webp" data-cap="O tabuleiro — Envelope 5"><img src="img/doc-tabuleiro.webp" width="1000" height="708" loading="lazy" alt="Tabuleiro do jogo do copo com letras, números, SIM, NÃO, OLÁ e ADEUS, manchado de sangue"><span>O tabuleiro</span></button>
+  <div class="rail-controls wrap"><span>Arquivo de evidências / Toque para ampliar</span><div><button type="button" data-rail="evidencias" data-direction="-1" aria-label="Evidências anteriores">←</button><button type="button" data-rail="evidencias" data-direction="1" aria-label="Próximas evidências">→</button></div></div>
+  <div class="gallery" id="gallery" aria-label="Documentos do caso">
+    <button type="button" class="doc" data-src="img/doc-carta.webp" data-cap="Carta de convocação — Envelope 1"><img src="img/doc-carta.webp" width="1000" height="1413" loading="lazy" alt="Carta de convocação da LIMIAR aos agentes"><span>Carta de convocação</span></button>
+    <button type="button" class="doc" data-src="img/doc-bo.webp" data-cap="Boletim de ocorrência — Envelope 1"><img src="img/doc-bo.webp" width="1000" height="1413" loading="lazy" alt="Boletim de ocorrência da polícia de Vila Real"><span>Boletim de ocorrência</span></button>
+    <button type="button" class="doc" data-src="img/doc-jornal.webp" data-cap="Jornal de Vila Real"><img src="img/doc-jornal.webp" width="1000" height="1413" loading="lazy" alt="Recorte do Jornal de Vila Real: Adolescente some dentro de casa durante festa do pijama"><span>Jornal de Vila Real</span></button>
+    <button type="button" class="doc" data-src="img/doc-mensagens.webp" data-cap="Mensagens recuperadas — Envelope 1"><img src="img/doc-mensagens.webp" width="1000" height="1413" loading="lazy" alt="Capturas de tela de conversas de celular recuperadas"><span>Mensagens recuperadas</span></button>
+    <button type="button" class="doc" data-src="img/doc-pulso.webp" data-cap="Prints de rede social"><img src="img/doc-pulso.webp" width="1000" height="1413" loading="lazy" alt="Prints de uma rede social com comentários sobre o caso"><span>A internet opina</span></button>
+    <button type="button" class="doc" data-src="img/doc-protocolo.webp" data-cap="Protocolo 7: Sessão Aberta — Envelope 1"><img src="img/doc-protocolo.webp" width="1000" height="1413" loading="lazy" alt="Protocolo 7: Sessão Aberta, regras numeradas sobre fundo escuro"><span>Protocolo 7</span></button>
+    <button type="button" class="doc" data-src="img/doc-sensores.webp" data-cap="Relatório de sensores — Envelope 1"><img src="img/doc-sensores.webp" width="1000" height="1413" loading="lazy" alt="Relatório de sensores com tabela de eventos anômalos"><span>Relatório de sensores</span></button>
+    <button type="button" class="doc" data-src="img/doc-prontuario.webp" data-cap="Prontuário do pronto-socorro — Envelope 3"><img src="img/doc-prontuario.webp" width="1000" height="1413" loading="lazy" alt="Ficha de atendimento do Hospital Municipal de Vila Real"><span>Prontuário</span></button>
+    <button type="button" class="doc" data-src="img/doc-fotos.webp" data-cap="Fotografias cedidas pelas famílias — Dossiê de campo"><img src="img/doc-fotos.webp" width="1000" height="1500" loading="lazy" alt="Fotografias antigas coladas com fita: uma casa, meninas em festa, um quarto"><span>Fotografias</span></button>
+    <button type="button" class="doc" data-src="img/doc-registros.webp" data-cap="Registros avulsos sobre o jogo do copo — Dossiê de campo"><img src="img/doc-registros.webp" width="1000" height="1416" loading="lazy" alt="Registros avulsos sobre casos anteriores do jogo do copo"><span>Registros avulsos</span></button>
+    <button type="button" class="doc doc-wide" data-src="img/doc-tabuleiro.webp" data-cap="O tabuleiro — Envelope 5"><img src="img/doc-tabuleiro.webp" width="1000" height="708" loading="lazy" alt="Tabuleiro do jogo do copo com letras, números, SIM, NÃO, OLÁ e ADEUS, manchado de sangue"><span>O tabuleiro</span></button>
   </div>
 </section>
 
@@ -299,6 +307,7 @@
     <p class="foot-links">
       <a id="footMail" href="#" hidden>Contato</a>
       <a id="footIg" href="#" hidden target="_blank" rel="noopener">Instagram</a>
+      <a href="../index.html">Portfólio de Itallo Cunha ↗</a>
       <a id="replay" href="#topo">Rever a abertura</a>
     </p>
     <p class="foot-copy">© 2026 O Copo Não Parou</p>
@@ -320,6 +329,6 @@
 </div>
 
 <script src="js/config.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261016-art"></script>
 </body>
 </html>
