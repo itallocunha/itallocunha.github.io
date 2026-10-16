@@ -133,7 +133,7 @@
   } else { rev.forEach(function (n) { n.classList.add("in"); }); }
 
   /* =============== LIGHTBOX =============== */
-  var docs = $$("#gallery .doc");
+  var docs = $$("#gallery .doc, [data-art-preview]");
   var lb = $("#lb"), lbImg = $("#lbImg"), lbCap = $("#lbCap"), cur = -1, opener = null;
   function openLb(i) {
     cur = (i + docs.length) % docs.length;

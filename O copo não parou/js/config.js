@@ -2,16 +2,15 @@
    CONFIGURAÇÃO DE VENDA — edite só aqui.
    ------------------------------------------------------------------ */
 window.SITE = {
-  // Preço exibido (sem "R$"). O valor 29,90 veio da página de teste da sua
-  // amiga — CONFIRME antes de publicar.
-  price: "29,90",
+  // Preço do kit digital completo, definido pelo autor.
+  price: "50,00",
 
   // Link do checkout (Hotmart, Kiwify, Eduzz, Mercado Pago, Stripe...).
   // Enquanto estiver vazio, o botão de compra mostra "Vendas abrem em breve".
   checkoutUrl: "",
 
   // Linha exibida sob o preço.
-  priceNote: "Pagamento único · entrega digital",
+  priceNote: "Pagamento único · arquivos digitais",
 
   // E-mail de contato/suporte (opcional). Vazio = não aparece no rodapé.
   contactEmail: "",
