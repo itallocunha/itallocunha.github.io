@@ -3,14 +3,14 @@
    ------------------------------------------------------------------ */
 window.SITE = {
   // Preço do kit digital completo, definido pelo autor.
-  price: "50,00",
+  price: "49,90",
 
   // Link do checkout (Hotmart, Kiwify, Eduzz, Mercado Pago, Stripe...).
   // Enquanto estiver vazio, o botão de compra mostra "Vendas abrem em breve".
   checkoutUrl: "",
 
   // Linha exibida sob o preço.
-  priceNote: "Pagamento único · arquivos digitais",
+  priceNote: "Pagamento único · sem assinatura",
 
   // E-mail de contato/suporte (opcional). Vazio = não aparece no rodapé.
   contactEmail: "",

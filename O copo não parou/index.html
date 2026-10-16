@@ -15,18 +15,18 @@
 <link rel="preload" as="image" href="../assets/copo/logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Courier+Prime:wght@400;700&family=IM+Fell+English:ital@0;1&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23050403'/%3E%3Ccircle cx='20' cy='20' r='17' fill='none' stroke='%23ece6d8' stroke-width='2'/%3E%3Cpath d='M13 31V17a7 7 0 0 1 14 0v14' fill='none' stroke='%23ece6d8' stroke-width='2'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/style.css?v=20261016-kit50">
+<link rel="stylesheet" href="css/style.css?v=20261016-clareza4">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"O Copo Não Parou","description":"Jogo de investigação paranormal em cinco envelopes, para 3 a 6 jogadores. Kit digital para imprimir.","image":"https://itallocunha.github.io/assets/copo/logo.webp","brand":{"@type":"Brand","name":"LIMIAR"}}
 </script>
 <noscript><style>#intro{display:none!important}body.locked{overflow:auto!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
-<body class="locked">
 
+<body>
 <!-- ================= ABERTURA ================= -->
-<div id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introDescription">
+<div id="intro" hidden role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introDescription">
   <div class="intro-room" aria-hidden="true"></div>
   <div class="intro-vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -59,266 +59,76 @@
   </defs>
 </svg>
 
-<a class="skip" href="#caso">Ir para o conteúdo</a>
 
-<!-- ================= NAV ================= -->
+<a class="skip" href="#caso">Ir para o conteúdo</a>
 <header class="nav" id="nav">
-  <a class="nav-brand" href="#topo" aria-label="O Copo Não Parou — topo">
-    <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
-    <span>LIMIAR <em>· LIM-0716</em></span>
-  </a>
-  <nav class="nav-links" id="sectionNav" aria-label="Seções">
-    <a href="#caso">O caso</a>
-    <a href="#como">Como funciona</a>
-    <a href="#envelopes">Envelopes</a>
-    <a href="#evidencias">Evidências</a>
-    <a href="#faq">Dúvidas</a>
-  </nav>
+  <a class="nav-brand" href="#topo" aria-label="O Copo Não Parou — início"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg><span>LIMIAR <em>· LIM-0716</em></span></a>
+  <nav class="nav-links" id="sectionNav" aria-label="Seções do site"><a href="#caso">O jogo</a><a href="#kit">O kit</a><a href="#como">Como jogar</a><a href="#comprar">O valor</a><a href="#faq">Dúvidas</a></nav>
   <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="sectionNav" aria-label="Abrir menu de seções"><span></span><span></span></button>
-  <a class="btn btn-sm nav-cta" href="#comprar">Abrir o caso</a>
+  <a class="btn btn-sm nav-cta" href="#comprar">Quero jogar <span aria-hidden="true">↗</span></a>
   <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
 </header>
-
 <main id="topo">
-
-<!-- ================= HERO ================= -->
-<section class="hero hero-v3" aria-labelledby="h1">
+<section class="hero" aria-labelledby="h1">
   <div class="hero-atmosphere" aria-hidden="true"></div>
-  <div class="hero-layout wrap">
-    <div class="hero-brand"><img src="../assets/copo/logo.webp" width="1113" height="1024" alt="O Copo Não Parou — logo do jogo, com letras desgastadas e um rosto em vermelho" fetchpriority="high"><h1 id="h1" class="sr" tabindex="-1">O Copo Não Parou</h1><span class="brand-caption" aria-hidden="true">Uma história que não ficou no passado.</span></div>
-    <div class="hero-content hero-pitch">
-      <p class="eyebrow hero-eyebrow">LIMIAR apresenta <span>caso nº 0716</span></p>
-      <p class="hero-kicker">A próxima pista<br><em>está na sua mesa.</em></p>
-      <p class="hero-lede">Cinco envelopes. Depoimentos que não se encaixam. Um desaparecimento que a polícia não conseguiu explicar. Reúna os amigos e investigue o que ficou naquele quarto.</p>
-      <div class="hero-value"><span>O kit digital completo</span><strong>R$ <b data-price>50,00</b></strong><small>Pagamento único · para imprimir e jogar</small></div>
-      <div class="hero-cta"><a class="btn btn-lg" href="#comprar">Quero abrir o caso <span aria-hidden="true">↗</span></a><a class="hero-text-link" href="#kit">O que me espera? <span aria-hidden="true">↓</span></a></div>
+  <div class="hero-layout wide-wrap">
+    <div class="hero-brand">
+      <h1 class="sr" id="h1" tabindex="-1">O Copo Não Parou</h1>
+      <button class="logo-art" id="hauntLogo" type="button" aria-label="O Copo Não Parou: revelar as marcas na logo" aria-describedby="logoHint"><img class="logo-main" src="../assets/copo/logo.webp" width="1113" height="1024" alt="Logo do jogo O Copo Não Parou, com um rosto em vermelho e letras desgastadas" fetchpriority="high"><span class="logo-echo echo-one" aria-hidden="true"></span><span class="logo-echo echo-two" aria-hidden="true"></span><img class="brand-sigil" src="../assets/copo/sigilo.webp" width="1024" height="1536" alt="" aria-hidden="true"><span class="brand-scratches" aria-hidden="true"></span><span class="brand-particles" id="brandParticles" aria-hidden="true"></span></button>
+      <p class="brand-hint" id="logoHint"><span aria-hidden="true">✧</span> Toque na logo. Há marcas nela.</p><span id="brandStatus" class="sr" role="status"></span>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">Um jogo de investigação paranormal</p>
+      <h2 class="hero-kicker">A noite de jogos<br><em>ficou mais sombria.</em></h2>
+      <p class="hero-lede">Reúna os amigos, espalhe as pistas na mesa e descubra o que aconteceu em um quarto onde alguém desapareceu.</p>
+      <a class="btn btn-lg" href="#caso">Descobrir o jogo <span aria-hidden="true">↓</span></a>
+      <a class="hero-text-link" href="#comprar">Já quero ver o kit e o valor <span aria-hidden="true">↗</span></a>
+      <div class="hero-controls"><a class="scene-link" href="?intro=1">Ver a abertura</a><button type="button" id="motionToggle" aria-pressed="true">Pausar efeitos</button></div>
     </div>
   </div>
-  <div class="hero-facts wrap"><div><b>03—06</b><span>jogadores + anfitrião</span></div><div><b>2h—2h30</b><span>de investigação</span></div><div><b>05 envelopes</b><span>uma história em fragmentos</span></div><div><b>Imprima & jogue</b><span>kit digital · 16+</span></div></div>
-  <a class="hero-scroll" href="#caso"><span>O que aconteceu naquela noite?</span><span aria-hidden="true">↓</span></a>
+  <div class="hero-trail wrap" aria-hidden="true"><span>Investigue.</span><i></i><span>Conecte.</span><i></i><span>Decida.</span></div>
 </section>
 
-<!-- ================= O CASO (dossiê em papel) ================= -->
 <section class="paper" id="caso" aria-labelledby="casoT">
-  <div class="paper-in">
-    <header class="timbre">
-      <div class="org">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
-        <div><b>LIMIAR</b><span>Núcleo de Investigação de Fenômenos Anômalos</span></div>
-      </div>
-      <div class="timbre-case">Caso LIM-0716<br><span class="stamp">Confidencial</span></div>
-    </header>
-
-    <p class="chapter-label reveal">01 / O desaparecimento</p>
-    <h2 id="casoT" class="paper-title reveal">Quatro levantaram.</h2>
-    <p class="lede reveal">Na madrugada de 16 de julho de 2016, Camila Rocha Vieira, 14 anos, desapareceu dentro da própria casa durante uma festa do pijama. As amigas jogavam o jogo do copo.</p>
-    <p class="reveal">A polícia arquivou o caso em 2017. A LIMIAR não. O dossiê reúne depoimentos que não batem entre si, <span class="tj" style="width:6em" role="img" aria-label="trecho tarjado"></span> e um tabuleiro que <span class="tj" style="width:9em" role="img" aria-label="trecho tarjado"></span>.</p>
-    <p class="reveal">Agora ele está com vocês. Ninguém precisa acreditar em nada. Só precisam <em>ler com atenção</em> — e decidir quem vai ocupar o lugar vazio no círculo.</p>
-
-    <dl class="ficha reveal">
-      <div><dt>Quem joga</dt><dd>3 a 6 agentes. Mais um anfitrião, que conhece a solução e não joga.</dd></div>
-      <div><dt>Duração</dt><dd>2h a 2h30, com o cronômetro correndo.</dd></div>
-      <div><dt>Idade</dt><dd>16 anos ou mais.</dd></div>
-      <div><dt>Formato</dt><dd>Kit digital: cinco envelopes, dossiê e materiais para imprimir em casa ou na gráfica.</dd></div>
-    </dl>
+  <div class="paper-in wrap">
+    <div class="case-heading"><p class="eyebrow">O caso que vai parar na sua mesa</p><h2 id="casoT">Cinco amigas.<br>Um quarto.<br><em>Um lugar vazio.</em></h2><div class="case-stamp" aria-hidden="true">Caso não encerrado</div></div>
+    <div class="case-story"><p class="case-lede">Durante uma festa do pijama, Camila desapareceu. As amigas estavam jogando o jogo do copo.</p><p>A polícia arquivou o caso. Mas os depoimentos não contam a mesma história — e os registros daquela noite ainda estão aqui.</p><p><strong>Vocês entram como investigadores.</strong> A missão é conectar as pistas e decidir como fechar a sessão.</p><details class="case-file"><summary>Abrir um trecho do dossiê <span aria-hidden="true">+</span></summary><div><p><b>LIMIAR · Arquivo LIM-0716</b></p><p>16 de julho de 2016. Camila Rocha Vieira, 14 anos, desaparece dentro da própria casa. O dossiê reúne versões conflitantes, mensagens e registros do quarto. Nenhuma peça conta a história inteira.</p></div></details></div>
   </div>
 </section>
 
-<!-- ================= O KIT ================= -->
-<section class="kit kit-v3" id="kit" aria-labelledby="kitT">
-  <div class="wrap kit-heading"><p class="eyebrow">Por dentro do caso</p><h2 id="kitT" class="h2 reveal">A resposta não vem pronta.<br><em>As pistas, sim.</em></h2><p class="sub reveal">Não é uma história para assistir. É um arquivo para espalhar na mesa, desconfiar de cada detalhe e montar com as próprias mãos.</p></div>
-  <div class="wrap kit-showcase">
-    <figure class="kit-display reveal"><span class="kit-number" aria-hidden="true">05</span><button class="art-zoom" type="button" data-art-preview data-src="../assets/copo/mockup.webp" data-cap="Mockup completo do jogo" aria-label="Ampliar mockup completo do jogo"><img src="../assets/copo/mockup.webp" width="1000" height="1111" loading="lazy" alt="Mockup completo de O Copo Não Parou: cinco envelopes numerados, documentos, fotografias, planta da casa, copo e áudios e vídeos apresentados em telas"><span class="art-zoom-hint">Ver de perto <b aria-hidden="true">↗</b></span></button><figcaption>Kit digital para imprimir · representação ilustrativa da montagem</figcaption></figure>
-    <div class="kit-discovery">
-      <article class="kit-chapter reveal"><span>01 / Abra o primeiro envelope</span><h3>Uma pista nunca<br>vem sozinha.</h3><p>Cartas, boletim de ocorrência, mensagens recuperadas e depoimentos contraditórios. Leiam, comparem versões e percebam o que ninguém está dizendo.</p></article>
-      <article class="kit-chapter reveal"><span>02 / Escute com atenção</span><h3>Nem tudo está<br>escrito no papel.</h3><p>Áudios e vídeos originais entram na investigação. O ambiente sonoro acompanha a partida e transforma o silêncio da sala em parte da experiência.</p></article>
-      <article class="kit-chapter reveal"><span>03 / Junte o que sobrou</span><h3>Reconstruam a noite.<br>Fechem a sessão.</h3><p>Plantas, fotografias, tabuleiro e cartões de verificação conectam os fragmentos. A cada envelope, uma nova maneira de olhar para o mesmo caso.</p></article>
-    </div>
+<section class="sample" id="evidencias" aria-labelledby="sampleT">
+  <div class="wrap sample-layout"><div class="sample-copy"><p class="eyebrow">Uma amostra real do jogo</p><h2 class="h2" id="sampleT">Antes de montar<br>uma teoria,<br><em>examine uma prova.</em></h2><p>Toque nas opções para trocar o documento. Amplie a imagem e veja o tipo de material que o seu grupo vai investigar.</p><p class="sample-note">Esta prévia não revela a solução.</p><a class="hero-text-link" href="#kit">O que mais vem no jogo? <span aria-hidden="true">↓</span></a></div>
+    <div class="evidence-desk"><span class="desk-annotation" aria-hidden="true">o detalhe muda tudo.</span><span class="desk-back-sheet" aria-hidden="true"></span><div class="evidence-viewer" role="tabpanel" id="evidencePanel" aria-labelledby="evidenceTab0"><button type="button" class="evidence-preview" id="evidencePreview" aria-label="Ampliar boletim de ocorrência"><span class="evidence-tape" aria-hidden="true"></span><img id="evidenceImage" src="img/doc-bo.webp" width="1000" height="1413" loading="lazy" alt="Boletim de ocorrência do desaparecimento"><span class="preview-hint">Examinar de perto <b aria-hidden="true">↗</b></span></button></div><p class="evidence-caption" id="evidenceCaption">O registro de uma ausência.</p><div class="evidence-tabs" role="tablist" aria-label="Amostras do jogo"><button type="button" role="tab" id="evidenceTab0" aria-selected="true" aria-controls="evidencePanel" data-evidence="0">O registro</button><button type="button" role="tab" id="evidenceTab1" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="1">O tabuleiro</button><button type="button" role="tab" id="evidenceTab2" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="2">As fotos</button></div></div>
   </div>
-  <div class="wrap kit-inventory reveal"><p class="eyebrow">Tudo isto faz parte do kit</p><dl><div><dt>5 envelopes digitais</dt><dd>Cinco etapas para avançar na investigação, na ordem certa.</dd></div><div><dt>Dossiê de campo</dt><dd>Registros, fotografias e contexto para entrar no universo da LIMIAR.</dd></div><div><dt>Pasta da Consultora</dt><dd>Fichas de consulta e cartões da médium para acompanhar o grupo.</dd></div><div><dt>Documentos e materiais de jogo</dt><dd>Depoimentos, mensagens, plantas, tabuleiro e cartões de verificação.</dd></div><div><dt>Áudios e vídeos originais</dt><dd>Registros para investigar e áudio ambiente para montar o clima.</dd></div><div><dt>Manual do anfitrião + guia de produção</dt><dd>Como imprimir, montar os materiais e conduzir a noite.</dd></div></dl></div>
-  <div class="wrap kit-value reveal"><div><span>O arquivo completo, por</span><strong>R$ <b data-price>50,00</b></strong></div><p>Uma noite inteira de investigação para o seu grupo.<small>Arquivos digitais. Impressão e materiais físicos à parte.</small></p><a class="hero-text-link" href="#comprar">Ver o kit completo e o valor <span aria-hidden="true">↗</span></a></div>
 </section>
 
-<!-- ================= COMO FUNCIONA ================= -->
+<section class="kit" id="kit" aria-labelledby="kitT">
+  <div class="wrap section-heading"><p class="eyebrow">O que você recebe</p><h2 class="h2 reveal" id="kitT">Um arquivo completo.<br><em>Uma noite para desvendar.</em></h2><p class="sub reveal">Os materiais se conectam ao longo da partida. Descubra como cada parte entra na investigação.</p></div>
+  <div class="wrap kit-showcase"><figure class="kit-display reveal"><button class="art-zoom" type="button" data-art-preview data-src="../assets/copo/mockup.webp" data-cap="Mockup completo do jogo" aria-label="Ampliar mockup completo do jogo"><img src="../assets/copo/mockup.webp" width="1000" height="1111" loading="lazy" alt="Mockup do kit com os cinco envelopes, documentos, fotos, plantas e conteúdo em áudio e vídeo"><span class="art-zoom-hint">Ampliar o kit <b aria-hidden="true">↗</b></span></button><figcaption>Você recebe arquivos digitais. A imagem ilustra os materiais depois de montados.</figcaption></figure>
+    <div class="kit-discovery"><div class="kit-tabs" role="tablist" aria-label="Explorar o conteúdo do kit"><button type="button" role="tab" id="kitTab0" aria-selected="true" aria-controls="kitPanel" data-kit="0">Ler</button><button type="button" role="tab" id="kitTab1" aria-selected="false" aria-controls="kitPanel" tabindex="-1" data-kit="1">Ouvir e ver</button><button type="button" role="tab" id="kitTab2" aria-selected="false" aria-controls="kitPanel" tabindex="-1" data-kit="2">Conectar</button></div><div id="kitPanel" class="kit-panel" role="tabpanel" aria-labelledby="kitTab0"><span id="kitChapter" class="eyebrow">Documentos e depoimentos</span><h3 id="kitPanelTitle">O que uma versão<br>deixa de fora?</h3><p id="kitPanelText">Cartas, boletim de ocorrência, mensagens recuperadas e depoimentos. Leiam as versões e descubram quais detalhes não se encaixam.</p></div><details class="kit-inventory" id="kitCompleto"><summary>Ver a lista completa do kit <span aria-hidden="true">+</span></summary><ul><li>Cinco envelopes digitais, prontos para imprimir.</li><li>Dossiê de campo e Pasta da Consultora.</li><li>Documentos, fotografias, plantas e mapas.</li><li>Áudios e vídeos originais, incluindo áudio ambiente.</li><li>Tabuleiro, fichas de consulta e cartões de verificação.</li><li>Manual do anfitrião e guia de produção.</li></ul></details><a class="btn btn-ghost" href="#comprar">Quero essa noite para o meu grupo <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>
+
 <section class="how" id="como" aria-labelledby="comoT">
-  <div class="wrap how-layout">
-    <div class="how-heading"><p class="eyebrow">Como funciona</p>
-    <h2 id="comoT" class="h2 reveal">A noite,<br><em>em ordem.</em></h2><p class="sub reveal">Prepare a mesa. Reúna o grupo.<br>O resto está nos envelopes.</p><a href="#envelopes" class="hero-text-link">Conhecer os envelopes <span aria-hidden="true">↗</span></a></div>
-    <ol class="steps">
-      <li class="reveal"><span class="n">01</span><div><h3>Imprima e monte</h3><p>O guia de produção diz o que imprimir, em que papel e como montar cada envelope. É o único trabalho antes da noite começar.</p></div></li>
-      <li class="reveal"><span class="n">02</span><div><h3>Escolha o anfitrião</h3><p>Uma pessoa prepara o kit e conhece a solução. Ela não joga: cuida das velas, observa e conduz a noite. Todo o resto do grupo chega sem saber de nada.</p></div></li>
-      <li class="reveal"><span class="n">03</span><div><h3>Apaguem a luz</h3><p>Cinco velas no centro. Um lugar vazio marcado no círculo. Áudio ambiente ligado.</p></div></li>
-      <li class="reveal"><span class="n">04</span><div><h3>Leiam o protocolo e disparem o cronômetro</h3><p>O anfitrião entrega o primeiro envelope e diz uma única frase. A partir daí, o grupo segue o protocolo da LIMIAR — ou não.</p></div></li>
-      <li class="reveal"><span class="n">05</span><div><h3>Cruzem, consultem, fechem a sessão</h3><p>Cada envelope puxa o fio um pouco mais. Ao fim de cada etapa, uma consulta com a médium. No final, uma decisão que o grupo precisa tomar junto.</p></div></li>
-    </ol>
-  </div>
+  <div class="wrap"><div class="section-heading"><p class="eyebrow">Como jogar</p><h2 id="comoT" class="h2 reveal">Você prepara a mesa.<br><em>O jogo conduz o mistério.</em></h2></div><ol class="steps"><li class="reveal"><span class="step-number">01</span><h3>Prepare o caso</h3><p>Uma pessoa será o anfitrião: imprime os arquivos, monta os envelopes e conhece a solução. Ela conduz a partida e não joga como investigadora.</p></li><li class="reveal"><span class="step-number">02</span><h3>Reúna os investigadores</h3><p>O restante do grupo chega sem conhecer o caso. Vocês recebem as primeiras pistas e começam a comparar versões.</p></li><li class="reveal"><span class="step-number">03</span><h3>Avancem juntos</h3><p>Abram os envelopes na ordem, consultem os registros e tomem as decisões do grupo até o fechamento da sessão.</p></li></ol><div class="game-facts reveal"><div><b>3 a 6</b><span>jogadores + um anfitrião</span></div><div><b>2h a 2h30</b><span>de investigação</span></div><div><b>16 anos ou mais</b><span>terror e tema sobrenatural</span></div></div><p class="prepare-note">Você precisa imprimir e montar o kit antes da partida. <a href="#materiais">Veja os materiais necessários.</a></p></div>
 </section>
 
-<!-- ================= ENVELOPES ================= -->
-<section class="envs" id="envelopes" aria-labelledby="envT">
-  <div class="wrap">
-    <p class="eyebrow">Os cinco envelopes</p>
-    <h2 id="envT" class="h2 reveal">Não abram<br><em>antes da hora.</em></h2>
-    <p class="sub reveal">Cada envelope tem seus próprios documentos, e nenhum deles conta a história inteira sozinho.</p>
+<section class="envs" id="envelopes" aria-labelledby="envT"><div class="wrap section-heading"><p class="eyebrow">Cinco etapas. Uma mesma noite.</p><h2 id="envT" class="h2 reveal">Cada envelope muda<br><em>a sua próxima pergunta.</em></h2><p class="sub reveal">Você começa com uma convocação. O que vem depois depende de como o grupo conecta o que encontra.</p></div><div class="rail-controls wrap"><span>Explore os cinco envelopes</span><div><button type="button" data-rail="envelopes" data-direction="-1" aria-label="Envelopes anteriores">←</button><button type="button" data-rail="envelopes" data-direction="1" aria-label="Próximos envelopes">→</button></div></div><div class="env-rail" tabindex="0" aria-label="Os cinco envelopes do jogo, role para explorar">
+    <article class="env reveal"><img src="img/cover-1.webp" width="720" height="1019" loading="lazy" alt="Capa do primeiro envelope"><span>Envelope 1</span><h3>A Festa do Pijama</h3><p>O caso chega às suas mãos.</p></article><article class="env reveal"><img src="img/cover-2.webp" width="720" height="1018" loading="lazy" alt="Capa do segundo envelope"><span>Envelope 2</span><h3>As Quatro</h3><p>As versões começam a divergir.</p></article><article class="env reveal"><img src="img/cover-3.webp" width="720" height="1018" loading="lazy" alt="Capa do terceiro envelope"><span>Envelope 3</span><h3>O Círculo</h3><p>Olhem de novo para o quarto.</p></article><article class="env reveal"><img src="img/cover-4.webp" width="720" height="1019" loading="lazy" alt="Capa do quarto envelope"><span>Envelope 4</span><h3>A Planta da Casa</h3><p>Um detalhe muda a perspectiva.</p></article><article class="env reveal"><img src="img/cover-5.webp" width="720" height="1018" loading="lazy" alt="Capa do quinto envelope"><span>Envelope 5</span><h3>O Fechamento</h3><p>Chegou a hora de decidir.</p></article>
   </div>
-  <div class="rail-controls wrap"><span>01 — 05 / Siga a ordem dos envelopes</span><div><button type="button" data-rail="envelopes" data-direction="-1" aria-label="Envelopes anteriores">←</button><button type="button" data-rail="envelopes" data-direction="1" aria-label="Próximos envelopes">→</button></div></div>
-  <div class="env-rail" tabindex="0" aria-label="Os cinco envelopes do caso (role para o lado)">
-    <article class="env reveal"><img src="img/cover-1.webp" width="720" height="1019" loading="lazy" alt="Capa do Envelope 1, A Festa do Pijama, com carimbo Confidencial"><div><span class="env-n">Envelope 1</span><h3>A Festa do Pijama</h3><p>Uma convocação, um protocolo e os primeiros registros. O suficiente para perceber que este caso não deveria ter sido arquivado.</p></div></article>
-    <article class="env reveal"><img src="img/cover-2.webp" width="720" height="1018" loading="lazy" alt="Capa do envelope As Quatro, com carimbo Confidencial"><div><span class="env-n">Envelope 2</span><h3>As Quatro</h3><p>Quatro depoimentos. Uma mesma noite. Comparem as versões e decidam em quais lembranças vocês conseguem confiar.</p></div></article>
-    <article class="env reveal"><img src="img/cover-3.webp" width="720" height="1018" loading="lazy" alt="Capa escura do envelope O Círculo, com símbolos riscados em vermelho"><div><span class="env-n">Envelope 3</span><h3>O Círculo</h3><p>O vídeo da sessão, a reconstrução do quarto e os registros médicos. O que vocês leram ganha outra dimensão.</p></div></article>
-    <article class="env reveal"><img src="img/cover-4.webp" width="720" height="1019" loading="lazy" alt="Capa do envelope A Planta da Casa, manchada e com símbolos"><div><span class="env-n">Envelope 4</span><h3>A Planta da Casa</h3><p>A planta da casa muda a perspectiva da investigação. Voltem aos detalhes: o que parecia não importar?</p></div></article>
-    <article class="env reveal"><img src="img/cover-5.webp" width="720" height="1018" loading="lazy" alt="Capa do envelope O Fechamento, coberta de sangue e símbolos rituais"><div><span class="env-n">Envelope 5</span><h3>O Fechamento</h3><p>As pistas precisam se encontrar. A decisão é do grupo — assim como a responsabilidade de fechar a sessão.</p></div></article>
-  </div>
-  <div class="wrap">
-    <aside class="dossie reveal">
-      <img src="img/cover-dossie.webp" width="720" height="1019" loading="lazy" alt="Capa do Dossiê de campo da LIMIAR">
-      <div>
-        <span class="env-n">Também incluído</span>
-        <h3>Dossiê de campo + Pasta da Consultora</h3>
-        <p>O dossiê ambienta o grupo antes do primeiro envelope: registros avulsos sobre o jogo do copo, fotografias cedidas pelas famílias, evidências indiretas. A Pasta da Consultora traz as fichas de consulta e os cartões da médium, que acompanham o grupo do começo ao fim.</p>
-      </div>
-    </aside>
-
-    <aside class="envelope-cover reveal" aria-labelledby="coverT">
-      <figure><button class="art-zoom" type="button" data-art-preview data-src="../assets/copo/poster.webp" data-cap="Arte de capa de um dos envelopes" aria-label="Ampliar arte de capa de um dos envelopes"><img src="../assets/copo/poster.webp" width="700" height="989" loading="lazy" alt="Arte de capa de um dos envelopes: O Copo Não Parou, com um rosto vermelho e a frase Não terminou aqui"><span class="art-zoom-hint">Ver de perto <b aria-hidden="true">↗</b></span></button><figcaption>Arte de capa de um dos envelopes · LIM-0716</figcaption></figure>
-      <div><p class="eyebrow">O primeiro arrepio vem antes de abrir</p><h3 id="coverT">Algumas coisas<br><em>atravessam o papel.</em></h3><p>Cada envelope marca uma nova etapa da investigação. A arte prepara o clima; os documentos, áudios e detalhes escondidos fazem vocês questionarem o que acabaram de descobrir.</p><p class="cover-hand" aria-hidden="true">não terminou aqui.</p><a class="hero-text-link" href="#comprar">Levar o caso para a minha mesa <span aria-hidden="true">↗</span></a></div>
-    </aside>
-</div>
+  <div class="wrap"><aside class="cover-story reveal"><figure><button type="button" class="art-zoom" data-art-preview data-src="../assets/copo/poster.webp" data-cap="Arte de capa de um dos envelopes" aria-label="Ampliar arte de capa de um dos envelopes"><img src="../assets/copo/poster.webp" width="700" height="989" loading="lazy" alt="Arte de capa do jogo com um rosto vermelho e a frase Não terminou aqui"><span class="art-zoom-hint">Ver a capa <b aria-hidden="true">↗</b></span></button><figcaption>Uma das artes de capa do jogo.</figcaption></figure><div><p class="eyebrow">Reconheceu o seu grupo?</p><h3>Para quem termina um filme<br><em>e ainda discute a teoria.</em></h3><p>Se vocês gostam de mistérios, de procurar detalhes e de discordar sobre quem está dizendo a verdade, esta é uma noite para colocar isso em jogo.</p><a class="btn" href="#comprar">Quero investigar com meus amigos <span aria-hidden="true">↗</span></a></div></aside></div>
 </section>
 
-<!-- ================= EVIDÊNCIAS ================= -->
-<section class="evid" id="evidencias" aria-labelledby="evT">
-  <div class="wrap">
-    <p class="eyebrow">Evidências</p>
-    <h2 id="evT" class="h2 reveal">Documentos de verdade.<br><span class="dim">Cada um vem de um lugar diferente.</span></h2>
-    <p class="sub reveal">Boletim de ocorrência, jornal, hospital, celular, rede social, relatório da LIMIAR. Toque para ler. Nada aqui entrega a solução.</p>
-  </div>
-  <div class="wrap archive-preview"><div class="archive-copy reveal"><p class="eyebrow">O arquivo não fecha sozinho</p><h3>Examine uma prova.<br><em>Depois, desconfie dela.</em></h3><p>Um registro oficial. Um objeto que ficou no quarto. Fotografias de antes do desaparecimento. Mude a evidência e amplie para ver de perto.</p></div>
-    <div class="evidence-desk">
-      <span class="desk-orbit" aria-hidden="true"></span><span class="desk-annotation" aria-hidden="true">todas lembram.<br>nenhuma conta igual.</span>
-      <span class="desk-back-sheet" aria-hidden="true"></span>
-      <div class="evidence-viewer" role="tabpanel" id="evidencePanel" aria-labelledby="evidenceTab0">
-        <button type="button" class="evidence-preview" id="evidencePreview" aria-label="Ampliar boletim de ocorrência"><span class="evidence-tape" aria-hidden="true"></span><img id="evidenceImage" src="img/doc-bo.webp" width="1000" height="1413" alt="Boletim de ocorrência do desaparecimento"><span class="preview-hint">Examinar evidência <b aria-hidden="true">↗</b></span></button>
-      </div>
-      <div class="evidence-caption"><span id="evidenceNumber">Evidência 01</span><p id="evidenceCaption">O registro de uma ausência.</p></div>
-      <div class="evidence-tabs" role="tablist" aria-label="Prévia das evidências"><button type="button" role="tab" id="evidenceTab0" aria-selected="true" aria-controls="evidencePanel" data-evidence="0">01 <span>O registro</span></button><button type="button" role="tab" id="evidenceTab1" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="1">02 <span>O tabuleiro</span></button><button type="button" role="tab" id="evidenceTab2" aria-selected="false" aria-controls="evidencePanel" tabindex="-1" data-evidence="2">03 <span>As fotos</span></button></div>
-    </div>
-</div>
-  <div class="rail-controls wrap"><span>Arquivo de evidências / Toque para ampliar</span><div><button type="button" data-rail="evidencias" data-direction="-1" aria-label="Evidências anteriores">←</button><button type="button" data-rail="evidencias" data-direction="1" aria-label="Próximas evidências">→</button></div></div>
-  <div class="gallery" id="gallery" aria-label="Documentos do caso">
-    <button type="button" class="doc" data-src="img/doc-carta.webp" data-cap="Carta de convocação — Envelope 1"><img src="img/doc-carta.webp" width="1000" height="1413" loading="lazy" alt="Carta de convocação da LIMIAR aos agentes"><span>Carta de convocação</span></button>
-    <button type="button" class="doc" data-src="img/doc-bo.webp" data-cap="Boletim de ocorrência — Envelope 1"><img src="img/doc-bo.webp" width="1000" height="1413" loading="lazy" alt="Boletim de ocorrência da polícia de Vila Real"><span>Boletim de ocorrência</span></button>
-    <button type="button" class="doc" data-src="img/doc-jornal.webp" data-cap="Jornal de Vila Real"><img src="img/doc-jornal.webp" width="1000" height="1413" loading="lazy" alt="Recorte do Jornal de Vila Real: Adolescente some dentro de casa durante festa do pijama"><span>Jornal de Vila Real</span></button>
-    <button type="button" class="doc" data-src="img/doc-mensagens.webp" data-cap="Mensagens recuperadas — Envelope 1"><img src="img/doc-mensagens.webp" width="1000" height="1413" loading="lazy" alt="Capturas de tela de conversas de celular recuperadas"><span>Mensagens recuperadas</span></button>
-    <button type="button" class="doc" data-src="img/doc-pulso.webp" data-cap="Prints de rede social"><img src="img/doc-pulso.webp" width="1000" height="1413" loading="lazy" alt="Prints de uma rede social com comentários sobre o caso"><span>A internet opina</span></button>
-    <button type="button" class="doc" data-src="img/doc-protocolo.webp" data-cap="Protocolo 7: Sessão Aberta — Envelope 1"><img src="img/doc-protocolo.webp" width="1000" height="1413" loading="lazy" alt="Protocolo 7: Sessão Aberta, regras numeradas sobre fundo escuro"><span>Protocolo 7</span></button>
-    <button type="button" class="doc" data-src="img/doc-sensores.webp" data-cap="Relatório de sensores — Envelope 1"><img src="img/doc-sensores.webp" width="1000" height="1413" loading="lazy" alt="Relatório de sensores com tabela de eventos anômalos"><span>Relatório de sensores</span></button>
-    <button type="button" class="doc" data-src="img/doc-prontuario.webp" data-cap="Prontuário do pronto-socorro — Envelope 3"><img src="img/doc-prontuario.webp" width="1000" height="1413" loading="lazy" alt="Ficha de atendimento do Hospital Municipal de Vila Real"><span>Prontuário</span></button>
-    <button type="button" class="doc" data-src="img/doc-fotos.webp" data-cap="Fotografias cedidas pelas famílias — Dossiê de campo"><img src="img/doc-fotos.webp" width="1000" height="1500" loading="lazy" alt="Fotografias antigas coladas com fita: uma casa, meninas em festa, um quarto"><span>Fotografias</span></button>
-    <button type="button" class="doc" data-src="img/doc-registros.webp" data-cap="Registros avulsos sobre o jogo do copo — Dossiê de campo"><img src="img/doc-registros.webp" width="1000" height="1416" loading="lazy" alt="Registros avulsos sobre casos anteriores do jogo do copo"><span>Registros avulsos</span></button>
-    <button type="button" class="doc doc-wide" data-src="img/doc-tabuleiro.webp" data-cap="O tabuleiro — Envelope 5"><img src="img/doc-tabuleiro.webp" width="1000" height="708" loading="lazy" alt="Tabuleiro do jogo do copo com letras, números, SIM, NÃO, OLÁ e ADEUS, manchado de sangue"><span>O tabuleiro</span></button>
-  </div>
-</section>
+<section class="warning-scene" aria-labelledby="warningT"><div class="wrap warning-layout"><div class="warning-copy reveal"><p class="eyebrow">Um aviso entre os registros</p><h2 id="warningT">Era só um copo.<br><em>Até deixar de ser.</em></h2><p>O próximo arquivo está esperando.<br>Seu grupo vai abrir?</p><p class="sample-note">Arte de ambientação. Sem revelar a solução.</p></div><figure class="warning-document reveal"><button type="button" class="art-zoom" data-art-preview data-src="../assets/copo/aviso.webp" data-cap="Aviso da LIMIAR" aria-label="Ampliar aviso da LIMIAR"><img src="../assets/copo/aviso.webp" width="900" height="580" loading="lazy" alt="Aviso ficcional da LIMIAR: Não use o tabuleiro Ouija"><span class="art-zoom-hint">Ler o aviso <b aria-hidden="true">↗</b></span></button></figure></div></section>
 
-<!-- ================= PARA QUEM É ================= -->
-<section class="who" aria-labelledby="whoT">
-  <div class="wrap">
-    <p class="eyebrow">Para quem é</p>
-    <h2 id="whoT" class="h2 reveal">Uma noite que o grupo não esquece.</h2>
-    <div class="cols">
-      <div class="col reveal"><h3>Noite de amigos</h3><p>Três a seis pessoas ao redor de uma mesa, luz apagada, ninguém olhando o celular. Melhor que um filme: vocês estão dentro dele.</p></div>
-      <div class="col reveal"><h3>Quem ama um bom mistério</h3><p>Depoimentos que se contradizem, pistas escondidas em detalhes, teorias discutidas em voz baixa. Raciocínio e clima, não só susto.</p></div>
-      <div class="col reveal"><h3>Quem gosta de ser anfitrião</h3><p>Você prepara, acende as velas e assiste ao grupo tropeçar, desconfiar e acertar. É quase tão bom quanto jogar.</p></div>
-    </div>
-    <p class="note reveal"><b>Aviso de conteúdo.</b> Ficção com tema sobrenatural, desaparecimento de uma adolescente e manchas de sangue nos documentos. Indicado para maiores de 16 anos.</p>
-  </div>
-</section>
+<section class="offer" id="comprar" aria-labelledby="offerT"><img class="offer-sigil" src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt="" aria-hidden="true"><div class="wrap offer-layout"><div class="offer-story"><p class="eyebrow">Dê um mistério ao próximo encontro</p><h2 id="offerT" class="h2 reveal">Seu grupo.<br>Uma mesa.<br><em>Um caso em aberto.</em></h2><p class="offer-lede">Em vez de só acompanhar a história, vocês passam a investigar o que aconteceu nela.</p><div class="share-calculator"><h3>Quanto fica para cada jogador?</h3><p>Escolha quantas pessoas vão dividir o valor do kit.</p><div class="share-options" role="group" aria-label="Jogadores que dividem o valor"><button type="button" data-players="3" aria-pressed="false">3</button><button type="button" data-players="4" aria-pressed="false">4</button><button type="button" data-players="5" aria-pressed="false">5</button><button type="button" data-players="6" aria-pressed="true">6</button></div><output id="shareResult" aria-live="polite">Cerca de <strong id="shareValue">R$ 8,32</strong> por jogador</output><p class="share-note">Divisão do preço entre <span id="shareCount">6</span> jogadores. O anfitrião é uma pessoa a mais. Impressão e materiais não entram neste cálculo.</p></div></div><div class="ticket reveal"><span class="ticket-case">LIMIAR · Caso LIM-0716</span><h3>O Copo Não Parou</h3><p class="ticket-format-label">Kit digital completo</p><div class="ticket-price"><small>R$</small><span data-price>49,90</span></div><p class="ticket-note" data-price-note>Pagamento único · sem assinatura</p><ul class="ticket-list"><li>Cinco etapas de investigação.</li><li>Arquivos de jogo, áudios e vídeos.</li><li>Manual para preparar e conduzir a partida.</li></ul><a class="ticket-details" href="#kitCompleto">Conferir tudo que está incluído <span aria-hidden="true">↗</span></a><a class="btn btn-lg btn-block" id="btnBuy" href="#comprar">Quero o kit completo</a><p class="ticket-fine" id="buyFine"></p><p class="ticket-format">Você recebe arquivos para imprimir e montar. Não há envio de caixa ou objetos físicos.</p><a class="ticket-details" href="#materiais">O que preciso ter em casa? <span aria-hidden="true">↓</span></a></div></div></section>
 
-<!-- ================= O QUE PRECISA ================= -->
-<section class="need" aria-labelledby="needT">
-  <div class="wrap narrow">
-    <p class="eyebrow">Antes de comprar</p>
-    <h2 id="needT" class="h2 reveal">O que você vai precisar ter em casa.</h2>
-    <ul class="checks reveal">
-      <li><b>Impressora e papel A4</b><span>Sulfite branco para os documentos; papel mais grosso (120–180 g) para cartões e tabuleiro. Sem impressora, qualquer gráfica rápida resolve.</span></li>
-      <li><b>Caneta UV e lanterna de luz negra</b><span>Algumas pistas só aparecem sob luz ultravioleta (395 nm).</span></li>
-      <li><b>Cinco velas</b><span>De cera ou LED. Elas marcam o tempo e o clima da noite.</span></li>
-      <li><b>Um copo de vidro liso</b><span>Simples, sem estampa. Ele só aparece no fim.</span></li>
-      <li><b>Envelopes pardos, tesoura, fita crepe, caneta preta e grampeador</b><span>Para montar o kit conforme o guia de produção.</span></li>
-      <li><b>Cronômetro e caixa de som</b><span>O áudio ambiente já vem incluído nos arquivos.</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= AVISO DA LIMIAR ================= -->
-<section class="warning-scene" aria-labelledby="warningT">
-  <div class="wrap warning-layout"><div class="warning-copy reveal"><p class="eyebrow">Um aviso no meio do arquivo</p><h2 id="warningT">Vocês foram<br><em>avisados.</em></h2><p>É só um tabuleiro.<br>É só um copo.<br>Era isso que elas pensavam.</p><span class="warning-note">Documento de ambientação do jogo · sem revelar a solução</span></div><figure class="warning-document reveal"><button class="art-zoom" type="button" data-art-preview data-src="../assets/copo/aviso.webp" data-cap="Aviso da LIMIAR" aria-label="Ampliar aviso da limiar"><img src="../assets/copo/aviso.webp" width="900" height="580" loading="lazy" alt="Aviso ficcional da LIMIAR: Não use o tabuleiro Ouija. Deixe onde está e entre em contato com a LIMIAR imediatamente."><span class="art-zoom-hint">Ver de perto <b aria-hidden="true">↗</b></span></button><figcaption>Encontrado entre os registros da LIMIAR.</figcaption></figure></div>
-</section>
-
-<!-- ================= OFERTA ================= -->
-<section class="offer offer-v3" id="comprar" aria-labelledby="offerT">
-  <img class="offer-sigil" src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt="" aria-hidden="true">
-  <div class="wrap offer-layout">
-    <div class="offer-story"><p class="eyebrow">Leve a investigação para casa</p><h2 id="offerT" class="h2 reveal">O próximo encontro<br>do grupo tem<br><em>um caso em aberto.</em></h2><p class="offer-lede reveal">Por R$ <span data-price>50,00</span>, vocês recebem o kit digital completo para transformar uma mesa em uma investigação paranormal.</p><div class="offer-promises reveal"><p><b>Uma história para desvendar juntos.</b><span>De 3 a 6 jogadores, mais um anfitrião. Entre 2h e 2h30 cruzando pistas, defendendo teorias e tomando decisões.</span></p><p><b>A tensão está nos detalhes.</b><span>Documentos, áudios, vídeos e materiais de jogo que se conectam ao longo de cinco envelopes.</span></p><p><b>Você monta a noite. O guia acompanha.</b><span>Manual do anfitrião e instruções de produção para preparar os arquivos antes de receber o grupo.</span></p></div><p class="offer-hand" aria-hidden="true">tem um lugar vazio no círculo.</p></div>
-    <div class="ticket reveal"><span class="stamp stamp-float">Caso aberto</span><p class="ticket-label">O Copo Não Parou · Kit completo</p><div class="ticket-price"><small>R$</small><span data-price>50,00</span></div><p class="ticket-note" data-price-note>Pagamento único · arquivos digitais</p><p class="ticket-intro">Tudo para montar o caso.<br><em>A solução fica por conta de vocês.</em></p><ul class="ticket-list"><li><b>5 envelopes digitais</b><span>Uma investigação em cinco etapas.</span></li><li><b>Dossiê + Pasta da Consultora</b><span>Contexto, registros e fichas de consulta.</span></li><li><b>Documentos, fotos e plantas</b><span>As peças para reconstruir aquela noite.</span></li><li><b>Áudios e vídeos originais</b><span>Inclui o áudio ambiente da partida.</span></li><li><b>Tabuleiro e cartões de verificação</b><span>Materiais que acompanham a investigação.</span></li><li><b>Manual + guia de produção</b><span>Da impressão à condução do jogo.</span></li></ul><a class="btn btn-lg btn-block" id="btnBuy" href="#comprar">Quero abrir o caso</a><p class="ticket-fine" id="buyFine"></p><p class="ticket-format">Produto digital. Não há envio de caixa ou objetos físicos. Impressão, caneta UV, lanterna e demais materiais são providenciados pelo grupo.</p><a class="ticket-materials" href="#needT">Ver os materiais necessários <span aria-hidden="true">↗</span></a></div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="faq" id="faq" aria-labelledby="faqT">
-  <div class="wrap narrow">
-    <p class="eyebrow">Dúvidas</p>
-    <h2 id="faqT" class="h2 reveal">Perguntas frequentes</h2>
-    <details><summary>Recebo uma caixa física?</summary><p>Não. O produto é 100% digital: você recebe os arquivos e imprime em casa ou numa gráfica. O guia de produção mostra o papel certo para cada peça e como montar os envelopes.</p></details>
-    <details><summary>Quantas pessoas precisam jogar?</summary><p>O jogo foi desenhado para 3 a 6 jogadores, mais um anfitrião que prepara a noite e não joga. Para uma pessoa sozinha, a experiência não funciona como projetada.</p></details>
-    <details><summary>Quanto tempo dura?</summary><p>Entre 2h e 2h30, com o cronômetro correndo. Reserve também um tempo antes para imprimir e montar o kit.</p></details>
-    <details><summary>Preciso saber jogar o jogo do copo?</summary><p>Não. Tudo o que você precisa saber está no manual. O tabuleiro e o copo fazem parte do kit e entram em cena no momento certo.</p></details>
-    <details><summary>Dá muito medo?</summary><p>É um jogo de atmosfera, dedução e tensão, não de sustos repentinos. Ainda assim, o tema é pesado: sobrenatural, desaparecimento de uma adolescente e sangue nos documentos. Indicado para maiores de 16 anos.</p></details>
-    <details><summary>Posso jogar de novo depois?</summary><p>Quem já resolveu o caso não joga outra vez, porque já conhece a solução. Mas você pode reimprimir o kit e ser o anfitrião para outro grupo quantas vezes quiser.</p></details>
-    <details><summary>Como acesso os áudios e vídeos?</summary><p>Eles fazem parte dos arquivos do kit e são acionados durante a partida, conforme as instruções do manual.</p></details>
-    <details><summary>Preciso comprar caneta UV e lanterna?</summary><p>Sim, elas fazem parte dos materiais que você precisa ter em casa, e são baratas em lojas de papelaria e de eletrônicos. A lista completa está em “O que você vai precisar ter em casa”.</p></details>
-  </div>
-</section>
-
-<!-- ================= FECHO ================= -->
-<section class="final" aria-label="Chamada final">
-  <p class="final-hand">Você tem certeza de que terminou?</p>
-  <a class="btn btn-lg" href="#comprar">Abrir o caso</a>
-</section>
-
+<section class="faq" id="faq" aria-labelledby="faqT"><div class="wrap narrow"><p class="eyebrow">Antes de decidir</p><h2 id="faqT" class="h2 reveal">Tire a dúvida.<br><em>Depois, abra o caso.</em></h2><details><summary>Como recebo e preparo o jogo? <span aria-hidden="true">+</span></summary><div><p>O produto é digital. Você recebe os arquivos do kit e imprime em casa ou em uma gráfica. O guia de produção explica como organizar os documentos e montar os envelopes antes da partida.</p></div></details><details id="materiais"><summary>Quais materiais preciso ter em casa? <span aria-hidden="true">+</span></summary><div><ul><li>Impressora ou gráfica e papel A4. Cartões e tabuleiro usam papel mais grosso, de 120 a 180 g.</li><li>Caneta UV e lanterna de luz negra de 395 nm.</li><li>Cinco velas de cera ou LED e um copo de vidro liso.</li><li>Envelopes pardos, tesoura, fita crepe, caneta preta e grampeador.</li><li>Cronômetro e uma caixa de som para o áudio ambiente.</li></ul><p>Esses materiais físicos não estão incluídos no preço do kit digital.</p></div></details><details><summary>Precisa de alguém para conduzir? <span aria-hidden="true">+</span></summary><div><p>Sim. Um anfitrião prepara os materiais e conhece a solução. Ele conduz a noite e não participa como investigador. O grupo de jogadores entra sem saber o desfecho.</p></div></details><details><summary>É terror de susto ou de investigação? <span aria-hidden="true">+</span></summary><div><p>O foco é a atmosfera, a dedução e a tensão. É uma obra de ficção com tema sobrenatural, desaparecimento de uma adolescente e imagens com sangue. Indicado para maiores de 16 anos.</p><p>Os efeitos visuais do site podem ser pausados no início da página.</p></div></details><details><summary>Posso usar o kit com outro grupo? <span aria-hidden="true">+</span></summary><div><p>Quem já resolveu o caso conhece a solução e não deve jogar novamente como investigador. Você pode reimprimir os arquivos e conduzir a experiência como anfitrião para outro grupo.</p></div></details></div></section>
+<section class="final"><div class="wrap"><p>Já pensou em quem vai sentar nessa mesa?</p><a class="btn btn-lg" href="#comprar">Ver o kit e o valor <span aria-hidden="true">↗</span></a></div></section>
 </main>
-
-<footer class="foot">
-  <div class="foot-in">
-    <div class="foot-brand"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg><span>LIMIAR</span></div>
-    <p class="foot-motto">In limine vigilamus.</p>
-    <details class="hidden-sigil"><summary><img src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt=""><span>Uma marca fora do protocolo.</span><span class="sigil-plus" aria-hidden="true">+</span></summary><div class="sigil-discovery"><img src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt="Sigilo vermelho com círculos, riscos e uma figura de chifres"><p>Você encontrou o que não constava no relatório.<em>Agora tente não pensar nisso quando apagar a luz.</em></p><small>Detalhe de ambientação · não revela a solução.</small></div></details>
-    <p class="foot-legal">O Copo Não Parou é uma obra de ficção. Nomes, lugares e eventos são fictícios. Para maiores de 16 anos. Jogue por sua conta e risco; não substitui acompanhamento profissional.</p>
-    <p class="foot-links">
-      <a id="footMail" href="#" hidden>Contato</a>
-      <a id="footIg" href="#" hidden target="_blank" rel="noopener">Instagram</a>
-      <a href="../index.html">Portfólio de Itallo Cunha ↗</a>
-      <a id="replay" href="#topo">Rever a abertura</a>
-    </p>
-    <p class="foot-copy">© 2026 O Copo Não Parou</p>
-  </div>
-</footer>
-
-<!-- barra de compra (mobile) -->
-<div class="sticky" id="sticky" aria-hidden="true">
-  <span>R$ <b data-price>50,00</b> · Kit digital</span>
-  <a class="btn btn-sm" href="#comprar" tabindex="-1">Abrir o caso</a>
-</div>
-
-<!-- lightbox -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada" hidden>
-  <button type="button" class="lb-x" id="lbClose" aria-label="Fechar">×</button>
-  <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Imagem anterior">‹</button>
-  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
-  <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Próxima imagem">›</button>
-</div>
-
-<script src="js/config.js?v=20261016-kit50"></script>
-<script src="js/main.js?v=20261016-kit50"></script>
+<footer class="foot"><div class="foot-in"><div class="foot-brand"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg><span>LIMIAR</span></div><details class="hidden-sigil"><summary><img src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt=""><span>Uma marca fora do protocolo.</span><b aria-hidden="true">+</b></summary><div class="sigil-discovery"><img src="../assets/copo/sigilo.webp" width="1024" height="1536" loading="lazy" alt="Sigilo vermelho com círculos, riscos e uma figura de chifres"><p>Você encontrou o que não constava no relatório.</p><em>Agora tente não pensar nisso quando apagar a luz.</em><small>Detalhe de ambientação. Sem pistas da solução.</small></div></details><p class="foot-legal">O Copo Não Parou é uma obra de ficção. Nomes, lugares e eventos são fictícios. Indicado para maiores de 16 anos.</p><p class="foot-links"><a id="footMail" href="#" hidden>Contato</a><a id="footIg" href="#" hidden target="_blank" rel="noopener">Instagram</a><a href="../index.html">Portfólio de Itallo Cunha ↗</a><a id="replay" href="?intro=1">Ver a abertura</a></p><p class="foot-copy">© 2026 O Copo Não Parou</p></div></footer>
+<div class="sticky" id="sticky" aria-hidden="true"><span><b>Kit completo</b><strong>R$ <span data-price>49,90</span></strong></span><a class="btn btn-sm" href="#comprar" tabindex="-1">Ver a oferta <span aria-hidden="true">↗</span></a></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada" hidden><button type="button" class="lb-x" id="lbClose" aria-label="Fechar">×</button><button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Imagem anterior">‹</button><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure><button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Próxima imagem">›</button></div>
+<script src="js/config.js?v=20261016-clareza4"></script><script src="js/main.js?v=20261016-clareza4"></script>
 </body>
 </html>
