@@ -1,0 +1,2 @@
+Coloque aqui as imagens e vídeos de Level Design (prefira .webp ou .jpg leves, vídeos curtos em .mp4).
+Depois liste cada arquivo em ../conteudo.js, no campo 'midia'.

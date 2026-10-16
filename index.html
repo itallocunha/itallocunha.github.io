@@ -275,9 +275,13 @@ a{color:inherit;text-decoration:none}
 /* rede de ferramentas */
 .rede svg.linhas{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .rede svg.linhas line{stroke:var(--roxo);stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:.85}
-.no{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--branco);white-space:nowrap;z-index:2;transition:transform .2s}
+.no{position:absolute;cursor:pointer;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--branco);white-space:nowrap;z-index:2;transition:transform .2s}
 .no:hover{transform:translate(-50%,-50%) scale(1.12)}
-.no .slot{width:40px;height:40px}
+.no .slot{width:64px;height:64px}
+.no .slot img{image-rendering:pixelated;transition:transform .25s}
+.no:hover .slot img{transform:scale(1.15) rotate(-5deg)}
+.no span{font-family:var(--f-cond);font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:14px;transition:color .2s}
+.no:hover span{color:var(--amarelo)}
 .no .slot:not(.empty){filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 
 /* ============================================================
@@ -429,7 +433,7 @@ a{color:inherit;text-decoration:none}
   .multi-titulo .mp{font-size:8vw;bottom:-36px;left:34%}
   .multi-titulo .em-modo{font-size:16px;left:12%}
   .multi .mao,.globo{display:none}
-  .no{font-size:11px}.no .slot{width:32px;height:32px}
+  .no{font-size:11px}.no .slot{width:46px;height:46px}.no span{font-size:11px}
   .copo .wrap{grid-template-columns:1fr}
   .copo-col{height:320px}
   .bora .juntos{margin-left:0;white-space:normal;font-size:12vw}
@@ -1519,23 +1523,23 @@ roxo e amarelo
 
     <div class="inv-cab rv">
       <span class="rotulo">Inventário de ferramentas</span>
-      <span class="inv-dica">toque em um card ▸</span>
+      <span class="inv-dica">toque em um card para abrir a página ▸</span>
     </div>
 
     <div class="cards">
-      <button class="card" type="button" data-tipo="python"><img src="assets/cards/python.png" width="637" height="359" alt="Python: fundamentos da programação com exemplos práticos. Variáveis, condições e laços, lógica." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="pixel"><img src="assets/cards/pixel.png" width="599" height="359" alt="Pixel Art: criação de imagens em pixels. Paletas, personagens, cenários." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="level"><img src="assets/cards/level.png" width="636" height="359" alt="Level Design: construir fases e organizar desafios. Fluxo de jogo, progressão, desafios." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="gdevelop"><img src="assets/cards/gdevelop.png" width="637" height="371" alt="GDevelop: jogos com eventos e lógica visual. Eventos, interações, prototipagem." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="unity"><img src="assets/cards/unity.png" width="599" height="370" alt="Unity: criação de jogos, cenas, objetos e comportamentos. Cenas, objetos, mecânicas." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="godot"><img src="assets/cards/godot.png" width="636" height="370" alt="Godot: jogos com cenas e nós. Cenas e nós, lógica, interações." loading="lazy"></button>
+      <a class="card" href="aulas/python/index.html" data-tipo="python"><img src="assets/cards/python.png" width="637" height="359" alt="Python: fundamentos da programação com exemplos práticos. Variáveis, condições e laços, lógica." loading="lazy"></a>
+      <a class="card" href="aulas/pixel-art/index.html" data-tipo="pixel"><img src="assets/cards/pixel.png" width="599" height="359" alt="Pixel Art: criação de imagens em pixels. Paletas, personagens, cenários." loading="lazy"></a>
+      <a class="card" href="aulas/level-design/index.html" data-tipo="level"><img src="assets/cards/level.png" width="636" height="359" alt="Level Design: construir fases e organizar desafios. Fluxo de jogo, progressão, desafios." loading="lazy"></a>
+      <a class="card" href="aulas/gdevelop/index.html" data-tipo="gdevelop"><img src="assets/cards/gdevelop.png" width="637" height="371" alt="GDevelop: jogos com eventos e lógica visual. Eventos, interações, prototipagem." loading="lazy"></a>
+      <a class="card" href="aulas/unity/index.html" data-tipo="unity"><img src="assets/cards/unity.png" width="599" height="370" alt="Unity: criação de jogos, cenas, objetos e comportamentos. Cenas, objetos, mecânicas." loading="lazy"></a>
+      <a class="card" href="aulas/godot/index.html" data-tipo="godot"><img src="assets/cards/godot.png" width="636" height="370" alt="Godot: jogos com cenas e nós. Cenas e nós, lógica, interações." loading="lazy"></a>
     </div>
     <div class="cards duplas">
-      <button class="card" type="button" data-tipo="scratch"><img src="assets/cards/scratch.png" width="820" height="355" alt="Scratch: programação em blocos com jogos, animações e projetos interativos." loading="lazy"></button>
-      <button class="card" type="button" data-tipo="canva"><img src="assets/cards/canva.png" width="820" height="353" alt="Canva: artes gráficas e comunicação visual. Composição, apresentações, materiais gráficos." loading="lazy"></button>
+      <a class="card" href="aulas/scratch/index.html" data-tipo="scratch"><img src="assets/cards/scratch.png" width="820" height="355" alt="Scratch: programação em blocos com jogos, animações e projetos interativos." loading="lazy"></a>
+      <a class="card" href="aulas/canva/index.html" data-tipo="canva"><img src="assets/cards/canva.png" width="820" height="353" alt="Canva: artes gráficas e comunicação visual. Composição, apresentações, materiais gráficos." loading="lazy"></a>
     </div>
     <div class="cards ia">
-      <button class="card" type="button" data-tipo="ia"><img src="assets/cards/ia.png" width="1600" height="569" alt="Inteligência Artificial: criação assistida por IA. Engenharia de prompt, vídeos e personagens, sites, aplicativos, sons e músicas." loading="lazy"></button>
+      <a class="card" href="aulas/ia/index.html" data-tipo="ia"><img src="assets/cards/ia.png" width="1600" height="569" alt="Inteligência Artificial: criação assistida por IA. Engenharia de prompt, vídeos e personagens, sites, aplicativos, sons e músicas." loading="lazy"></a>
     </div>
 
     <p class="mao n4">Ideias<br>ganham<br>mais sentido<br>quando<br>compartilhadas.</p>
@@ -1600,8 +1604,8 @@ function prepararSlot(slot){
 /* ---------- 2. Rede de ferramentas (usada no item 07 e na seção multiplayer) ---------- */
 const FERRAMENTAS = {
   python:  {nome:'Python',       sigla:'Py'},
-  pixel:   {nome:'Pixel Art',    sigla:'PX'},
-  level:   {nome:'Level Design', sigla:'LD'},
+  pixel:   {nome:'Pixel Art',    sigla:'PX', pasta:'pixel-art'},
+  level:   {nome:'Level Design', sigla:'LD', pasta:'level-design'},
   gdevelop:{nome:'GDevelop',     sigla:'GD'},
   unity:   {nome:'Unity',        sigla:'U'},
   godot:   {nome:'Godot',        sigla:'Gd'},
@@ -1634,8 +1638,9 @@ function montarRede(el){
   el.appendChild(svg);
   Object.entries(cfg.nos).forEach(([id,[x,y]])=>{
     const f = FERRAMENTAS[id];
-    const no = document.createElement('div');
+    const no = document.createElement('a');
     no.className = 'no'; no.style.left = x+'%'; no.style.top = y+'%';
+    no.href = 'aulas/'+(f.pasta||id)+'/index.html'; no.title = 'Abrir a página de '+f.nome;
     no.innerHTML = `<div class="slot icone" data-sigla="${f.sigla}"><img src="assets/icones/${id}.png" alt=""></div><span>${f.nome}</span>`;
     el.appendChild(no);
   });
@@ -1987,6 +1992,7 @@ document.querySelectorAll('.card').forEach(card=>{
     }
     const t=document.createElement('span'); t.className='xp'; t.textContent=XP[card.dataset.tipo]||'+1 XP';
     t.style.left=cx+'px'; t.style.top=(cy-20)+'px'; card.appendChild(t); setTimeout(()=>t.remove(),950);
+    if(card.href && !(e.ctrlKey||e.metaKey||e.shiftKey||e.button)){ e.preventDefault(); setTimeout(()=>{location.href=card.href},420); }
   });
 });
 </script>
