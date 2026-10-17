@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Itallo Cunha · Criador Multiclasse</title>
-<meta name="description" content="Design, jogos e conhecimento em constante criação. Game Designer, Designer Gráfico e Instrutor.">
+<title>Itallo Cunha · Game Designer e Educador</title>
+<meta name="description" content="Itallo Cunha, game designer e educador de tecnologia em Balneário Camboriú, SC. RPG autoral, jogos de tabuleiro, pixel art e aulas de programação e IA. Disponível para trabalho remoto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Creepster&family=Gochi+Hand&family=Oswald:wght@500;600;700&family=Pixelify+Sans:wght@600;700&family=Rubik:wght@400;500;600&family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1064,6 +1064,33 @@ a{color:inherit;text-decoration:none}
   .cp-oj-letras span{font-size:19px;width:7.6%;min-width:0}
   .cp-oj-copo{width:38px;height:38px;margin:-19px 0 0 -19px}
 }
+
+/* ===== HERO: texto de apresentação ===== */
+.hero-txt{max-width:340px;bottom:10.5%}
+.hero .rabisco-hero.r1{display:none}
+.hero-kicker{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-claro);margin-bottom:10px}
+.hero-txt h1{font-size:clamp(26px,2.4vw,36px)!important;font-weight:700!important;line-height:1.08!important;margin-bottom:12px!important}
+.hero-txt .hero-lead{font-size:14.5px;line-height:1.45;color:#d9d0ec;margin-bottom:12px}
+.hero-disp{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#baf5cf;background:rgba(40,160,90,.14);border:1px solid rgba(110,230,160,.45);padding:6px 12px;border-radius:99px;margin-bottom:18px}
+.hero-disp i{width:8px;height:8px;border-radius:50%;background:#5ef2a0;box-shadow:0 0 0 0 rgba(94,242,160,.7);animation:dispPulso 2s infinite}
+@keyframes dispPulso{70%{box-shadow:0 0 0 9px rgba(94,242,160,0)}100%{box-shadow:0 0 0 0 rgba(94,242,160,0)}}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.btn-ghost{background:transparent!important;color:var(--branco)!important;border:2px solid var(--amarelo);box-shadow:3px 3px 0 #000;padding:8px 16px!important}
+.hero-fatos{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 14px;justify-content:start;padding-top:14px;border-top:1px dashed rgba(143,77,255,.55)}
+.hero-fatos li{display:flex;align-items:baseline;gap:8px}
+.hero-fatos b{font-family:var(--f-pixel);font-size:19px;white-space:nowrap;color:var(--amarelo);font-weight:700;line-height:1}
+.hero-fatos span{font-size:11px;line-height:1.25;color:var(--apagado)}
+.nav-cv-a{background:var(--amarelo);color:#16101f!important;font-weight:700;padding:6px 12px!important;border-radius:3px;box-shadow:2px 2px 0 #000;gap:6px}
+.nav-cv-a svg{width:14px;height:14px}
+.nav-cv-a:hover{transform:translate(-1px,-1px)!important;box-shadow:3px 3px 0 #000}
+@media (max-width:900px){
+  .hero-txt{max-width:none;bottom:auto}
+  .hero-fatos{grid-template-columns:repeat(2,1fr)}
+  .hero-fatos li{max-width:none}
+  .menu-rpg ul{gap:12px!important;font-size:13px!important;align-items:center}
+  .nav-cv-a{padding:5px 9px!important}
+}
+@media (max-width:420px){ .menu-rpg ul{gap:9px!important;font-size:12px!important} .nav-cv-a svg{display:none} }
 </style>
 </head>
 <body>
@@ -1106,6 +1133,7 @@ a{color:inherit;text-decoration:none}
           <li><a href="#portfolio" data-sec="portfolio"><span class="cursor">▶</span>Portfólio</a></li>
           <li><a href="#sobre" data-sec="sobre"><span class="cursor">▶</span>Sobre</a></li>
           <li><a href="#contato" data-sec="contato"><span class="cursor">▶</span>Contato</a></li>
+          <li class="nav-cv"><a class="nav-cv-a" href="assets/curriculo-itallo-cunha.pdf" download>Currículo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></a></li>
         </ul>
         <span class="menu-marca" id="menuMarca" aria-hidden="true"></span>
       </nav>
@@ -1146,9 +1174,20 @@ a{color:inherit;text-decoration:none}
     <div class="cunha dyn-scramble" data-prof="-1.4">CUNHA</div>
 
     <div class="hero-txt">
-      <h1>Design, jogos e conhecimento<br>em constante criação.</h1>
-      <p>Game Designer · Designer Gráfico · Instrutor</p>
-      <a href="#portfolio" class="btn">Explorar meu universo <svg><use href="#seta"/></svg></a>
+      <span class="hero-kicker">Balneário Camboriú, SC</span>
+      <h1>Game designer e educador</h1>
+      <p class="hero-lead">Crio jogos, sistemas e narrativas. Ensino programação, pixel art e IA para jovens. Cursando Design de Jogos.</p>
+      <span class="hero-disp"><i aria-hidden="true"></i>Disponível para trabalho remoto</span>
+      <div class="hero-btns">
+        <a href="#althea" class="btn">Ver projetos <svg><use href="#seta"/></svg></a>
+        <a href="assets/curriculo-itallo-cunha.pdf" class="btn btn-ghost" download>Baixar currículo</a>
+      </div>
+      <ul class="hero-fatos" aria-label="Resumo">
+        <li><b>2024</b><span>Super Geeks, instrutor</span></li>
+        <li><b>3</b><span>game jams</span></li>
+        <li><b>7º</b><span>período, UNIVALI</span></li>
+        <li><b>ES·EN</b><span>espanhol fluente</span></li>
+      </ul>
     </div>
 
     <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
@@ -2136,7 +2175,7 @@ function monta(){
   svg.style.height=H+'px'; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   const gut=Math.max(0,(W-1440)/2)+(W<720?14:48), m=Math.max(8,gut*.5), Esq=m, Dir=W-m;
   const topo=el=>el.getBoundingClientRect().top+scrollY, alt=el=>el.offsetHeight;
-  const btn=hero.querySelector('.hero-txt .btn'), b=btn.getBoundingClientRect();
+  const btn=hero.querySelector('.hero-txt .hero-btns .btn:last-child'), b=btn.getBoundingClientRect();
   const pts=[[b.right+scrollX+18,b.top+scrollY+b.height/2]];
   const hb=topo(hero)+alt(hero);
   pts.push([W*.46,hb-40],[W*.78,hb-10]);
@@ -2180,7 +2219,7 @@ monta(); anima();
 <script>
 (()=>{
 const nav=document.getElementById('nav'); if(!nav) return;
-const links=[...nav.querySelectorAll('.menu-rpg a')], marca=document.getElementById('menuMarca');
+const links=[...nav.querySelectorAll('.menu-rpg a:not(.nav-cv-a)')], marca=document.getElementById('menuMarca');
 const xp=document.getElementById('hudXp'), mob=document.getElementById('navXpMob'), lvEl=document.getElementById('hudLv'),
       fase=document.getElementById('hudFase'), pct=document.getElementById('hudPct'), up=document.getElementById('hudUp');
 const fases=[['topo','INÍCIO'],['sobre','SOBRE'],['althea','ALTHEA'],['projeto','O COPO'],['portfolio','PORTFÓLIO'],['aulas','AULAS'],['contato','CONTATO']]
