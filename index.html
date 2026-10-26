@@ -1092,6 +1092,10 @@ a{color:inherit;text-decoration:none}
   .nav-cv-a{padding:5px 9px!important}
 }
 @media (max-width:420px){ .menu-rpg ul{gap:9px!important;font-size:12px!important} .nav-cv-a svg{display:none} }
+
+/* espaços de imagem ainda sem arte: não mostrar caixa tracejada para o visitante */
+.item .midia .slot.empty,.i07-dir .slot.empty,.cena .slot.empty{background:none;border:0}
+.item .midia .slot.empty::after,.i07-dir .slot.empty::after,.cena .slot.empty::after{content:none}
 </style>
 </head>
 <body>
@@ -1448,7 +1452,7 @@ a{color:inherit;text-decoration:none}
           <p>Identidade visual, cartazes, editoriais e projetos criativos para diferentes contextos.</p>
           <a href="design-grafico.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
-        <div class="midia"><div class="slot" data-label="assets/port-02-design.png"><img src="assets/port-02-design.png" alt="Cartazes e peças de design gráfico"></div></div>
+        <div class="midia"><div class="slot" data-label="assets/port-02-design.webp"><img src="assets/port-02-design.webp" alt="Colagem de design gráfico: marcas BRAZA e KAIA, camisetas e copos"></div></div>
         <p class="mao">Conceito<br>tipografia<br>cor<br>comunicação</p>
       </article>
 
@@ -1474,7 +1478,7 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="midia">
           <svg class="eixos" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 40V8M20 40l30 8M20 40 6 52"/><text x="16" y="6" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Y</text><text x="52" y="52" font-size="8" fill="currentColor" stroke="none" font-family="monospace">X</text><text x="2" y="58" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Z</text></svg>
-          <div class="slot" data-label="assets/port-04-3d.png"><img src="assets/port-04-3d.png" alt="Baú modelado em 3D e wireframe"></div>
+          <div class="slot" data-label="assets/port-04-3d.webp"><img src="assets/port-04-3d.webp" alt="Colagem de modelos 3D: naves, controle retrô, demônio e cubo"></div>
         </div>
         <p class="mao">Do<br>conceito<br>ao modelo</p>
       </article>
@@ -1488,7 +1492,7 @@ a{color:inherit;text-decoration:none}
           <a href="ia.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="midia">
-          <div class="slot" data-label="assets/port-05-ia.png"><img src="assets/port-05-ia.png" alt="Colagem surrealista feita com IA"></div>
+          <div class="slot" data-label="assets/port-05-ia.webp"><img src="assets/port-05-ia.webp" alt="Colagem de arte feita com IA: retrato estilizado, áudio e editor de vídeo"></div>
           <div class="prompt"><div class="barra"><i></i><i></i><i></i></div><pre>// prompt:
 um mundo imaginário
 em estilo colagem
@@ -1508,7 +1512,7 @@ roxo e amarelo
           <a href="jogos.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="midia">
-          <div class="slot" data-label="assets/port-06-jogos.png"><img src="assets/port-06-jogos.png" alt="Cena de jogo em pixel art" style="image-rendering:pixelated"></div>
+          <div class="slot" data-label="assets/port-06-jogos.webp"><img src="assets/port-06-jogos.webp" alt="Colagem de criaturas e personagens de jogos"></div>
           <div class="mapa">MAPA DO NÍVEL
             <svg viewBox="0 0 130 50" fill="none" stroke="#f4effb" stroke-width="1.2"><path d="M4 8h30v14h20V6h30v20h-18v18H40V30H4zM84 26h20v-16h20v34H66"/></svg>
           </div>
