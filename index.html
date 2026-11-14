@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itallo Cunha · Game Designer e Educador</title>
+<meta name="theme-color" content="#0d0915">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Itallo Cunha · Game Designer e Educador">
+<meta property="og:description" content="Itallo Cunha, game designer e educador de tecnologia em Balneário Camboriú, SC. RPG autoral, jogos de tabuleiro, pixel art e aulas de programação e IA. Disponível para trabalho remoto.">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0915'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='700' font-size='17' fill='%238f4dff'%3EIC%3C/text%3E%3C/svg%3E">
+
 <meta name="description" content="Itallo Cunha, game designer e educador de tecnologia em Balneário Camboriú, SC. RPG autoral, jogos de tabuleiro, pixel art e aulas de programação e IA. Disponível para trabalho remoto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -346,6 +353,53 @@ a{color:inherit;text-decoration:none}
 .bora .party{position:relative;display:inline-block;font-size:28px;transform:rotate(-8deg);margin:-10px 0 0 2%}
 .cursor-px{position:absolute;width:30px;color:var(--amarelo)}
 .cena{position:relative;height:300px;margin-top:10px}
+/* ---- mini-jogo Infinity Run ---- */
+.cena.jogo{height:auto;aspect-ratio:16/10;max-width:860px;margin-top:26px;border:3px solid var(--roxo);background:#0d0915;overflow:hidden;
+  box-shadow:6px 6px 0 rgba(0,0,0,.65),0 0 44px rgba(143,77,255,.28);container-type:inline-size;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;outline:none}
+.cena.jogo:focus-visible{outline:3px solid var(--amarelo);outline-offset:4px}
+.cena.jogo.jogando:focus-visible{outline:none}
+.jogo canvas{display:block;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pixelated}
+.jogo.jogando canvas{touch-action:none;cursor:pointer}
+.jogo::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);opacity:.5}
+.jogo-hud{position:absolute;inset:0 0 auto 0;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:2.4cqw 2.6cqw;z-index:3;pointer-events:none;
+  font-family:var(--f-pixel2);font-size:clamp(9px,2.5cqw,15px);letter-spacing:.06em;color:var(--branco);text-shadow:2px 2px 0 #000}
+.jogo-placar{display:flex;flex-direction:column;gap:.35em}
+.jogo-placar b{color:var(--amarelo);font-weight:700;margin-left:.4em}
+.jogo-placar span:nth-child(2){color:var(--roxo-claro);font-size:.82em}
+.jogo-placar span:nth-child(2) b{color:var(--roxo-claro)}
+.jogo-btns{display:flex;gap:6px;pointer-events:auto}
+.jogo-ic{width:clamp(26px,6.4cqw,38px);height:clamp(26px,6.4cqw,38px);padding:0;display:grid;place-items:center;cursor:pointer;color:var(--amarelo);
+  background:rgba(13,9,21,.78);border:2px solid var(--amarelo);box-shadow:3px 3px 0 #000;transition:transform .08s,background .15s}
+.jogo-ic svg{width:58%;height:58%;fill:currentColor}
+.jogo-ic:hover:not(:disabled){background:var(--amarelo);color:#16101f}
+.jogo-ic:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+.jogo-ic:focus-visible{outline:3px solid var(--branco);outline-offset:2px}
+.jogo-ic:disabled{opacity:.35;cursor:default}
+.jogo-ic .i-play,.jogo-ic .i-mudo{display:none}
+.jogo.pausado .jogo-ic .i-pausa{display:none}.jogo.pausado .jogo-ic .i-play{display:block}
+.jogo.mudo .i-onda{display:none}.jogo.mudo .i-mudo{display:block}
+.jogo-tela{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2cqw;padding:12% 7% 6%;text-align:center;
+  background:radial-gradient(ellipse at 50% 55%,rgba(13,9,21,.55),rgba(13,9,21,.86))}
+.jogo-tela[hidden]{display:none}
+.jogo-titulo{font-family:var(--f-pixel);font-weight:700;font-size:clamp(24px,9.4cqw,66px);line-height:.95;letter-spacing:.02em;color:var(--amarelo);
+  text-shadow:3px 3px 0 #000,0 0 28px rgba(255,210,58,.45)}
+.t-inicio .jogo-titulo{color:var(--roxo-claro);text-shadow:3px 3px 0 #000,0 0 30px rgba(143,77,255,.7)}
+.t-fim .jogo-titulo{color:#ff4d6d;text-shadow:3px 3px 0 #000,0 0 30px rgba(255,77,109,.5)}
+.t-recorde .jogo-sub{color:var(--amarelo)}
+.jogo-sub{font-family:var(--f-mono);font-size:clamp(10px,2.6cqw,15px);line-height:1.45;color:var(--branco);max-width:34ch;min-height:1em}
+.jogo-dica{font-family:var(--f-pixel2);font-size:clamp(8px,1.9cqw,11px);letter-spacing:.08em;color:var(--roxo-claro);line-height:1.6}
+.jogo-play{display:inline-flex;align-items:center;gap:.7em;cursor:pointer;font-family:var(--f-pixel);font-weight:700;font-size:clamp(15px,4.6cqw,28px);letter-spacing:.08em;text-transform:uppercase;
+  color:#16101f;background:var(--amarelo);border:3px solid #000;padding:.5em 1.15em .45em;margin-top:.5cqw;
+  box-shadow:5px 5px 0 #000,inset 0 -4px 0 rgba(0,0,0,.2),inset 0 3px 0 rgba(255,255,255,.55);transition:transform .08s,box-shadow .08s,background .15s}
+.jogo-play svg{width:.78em;height:1em;fill:currentColor}
+.jogo-play:hover{background:#ffe27a;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #000,inset 0 -4px 0 rgba(0,0,0,.2),inset 0 3px 0 rgba(255,255,255,.55)}
+.jogo-play:active{transform:translate(4px,4px);box-shadow:1px 1px 0 #000,inset 0 -4px 0 rgba(0,0,0,.2)}
+.jogo-play:focus-visible{outline:3px solid var(--branco);outline-offset:4px}
+@media (prefers-reduced-motion:no-preference){
+  .t-inicio .jogo-play{animation:jogoPulso 1.3s steps(2) infinite}
+  @keyframes jogoPulso{50%{box-shadow:5px 5px 0 #000,0 0 0 5px rgba(255,210,58,.35),inset 0 -4px 0 rgba(0,0,0,.2),inset 0 3px 0 rgba(255,255,255,.55)}}
+}
+@media (max-width:720px){.cena.jogo{margin-top:34px;box-shadow:4px 4px 0 rgba(0,0,0,.65),0 0 30px rgba(143,77,255,.25)}.jogo-dica{display:none}.jogo-tela{padding:14% 6% 5%}}
 .cena .slot{width:100%;height:100%}
 .cena .slot img{object-fit:cover;object-position:center 40%;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent)}
 .fala{
@@ -367,6 +421,7 @@ a{color:inherit;text-decoration:none}
 .redes{display:flex;gap:40px;margin-top:30px}
 .redes a{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--branco);border-bottom:1px solid var(--branco);padding-bottom:2px}
 .redes a:hover{color:var(--amarelo);border-color:var(--amarelo)}
+.redes a[hidden]{display:none}
 .redes svg{width:20px;height:20px}
 .form-ok{font-family:var(--f-mono);font-size:13px;color:var(--amarelo);min-height:18px}
 
@@ -437,7 +492,7 @@ a{color:inherit;text-decoration:none}
   .copo .wrap{grid-template-columns:1fr}
   .copo-col{height:320px}
   .bora .juntos{margin-left:0;white-space:normal;font-size:12vw}
-  .bora .titulo-pixel{font-size:18vw}
+  .bora .titulo-pixel{font-size:15vw;white-space:nowrap}
   .fala{left:auto;right:6%}
   .redes{gap:20px;flex-wrap:wrap}
   .rodape .wrap{flex-wrap:wrap;gap:10px 20px}
@@ -1601,11 +1656,26 @@ roxo e amarelo
       <h2 class="titulo-pixel rough dyn-letras" aria-label="Bora criar">BORA CRIAR</h2>
       <p class="juntos dyn-scramble">ALGO JUNTOS?</p>
       <p class="mao amarela party">Vamos formar<br>uma party?</p>
-      <svg class="cursor-px" viewBox="0 0 16 20" style="left:22%;top:calc(100% - 320px)"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
       <svg class="cursor-px" viewBox="0 0 16 20" style="right:4%;top:110px;width:26px"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
-      <div class="cena">
-        <div class="slot" data-label="assets/contato-cena.png  (personagem no pôr do sol)"><img src="assets/contato-cena.png" alt="Itallo sentado observando a cidade ao entardecer"></div>
-        <a href="#contato-form" class="fala">Pergunte<br>sobre o Itallo :)</a>
+      <div class="cena jogo" id="jogo" tabindex="-1">
+        <canvas id="jogoTela" width="320" height="200" role="img" aria-label="Mini-jogo Infinity Run: um corredor em pixel art pulando bugs e coletando estrelas numa cidade ao entardecer. Use espaço, seta para cima ou toque para pular."></canvas>
+        <div class="jogo-hud">
+          <div class="jogo-placar"><span>PONTOS <b id="jPts">00000</b></span><span>RECORDE <b id="jHi">00000</b></span></div>
+          <div class="jogo-btns">
+            <button type="button" class="jogo-ic" id="jPause" aria-label="Pausar o jogo" disabled>
+              <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><g class="i-pausa"><rect x="1" y="1" width="2" height="6"/><rect x="5" y="1" width="2" height="6"/></g><path class="i-play" d="M2 1h1v6H2zM3 2h1v4H3zM4 3h1v2H4z"/></svg>
+            </button>
+            <button type="button" class="jogo-ic" id="jSom" aria-label="Desligar o som" aria-pressed="false">
+              <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 3h2V2h1V1h1v6H3V6H2V5H0z"/><g class="i-onda"><rect x="5" y="3" width="1" height="2"/><rect x="6" y="2" width="1" height="4"/></g><g class="i-mudo"><rect x="5" y="2" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/></g></svg>
+            </button>
+          </div>
+        </div>
+        <div class="jogo-tela" id="jTela" aria-live="polite">
+          <p class="jogo-titulo" id="jTitulo">INFINITY RUN</p>
+          <p class="jogo-sub" id="jSub"></p>
+          <button type="button" class="jogo-play" id="jPlay"><svg viewBox="0 0 7 9" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h2v9H0zM2 1h2v7H2zM4 2h2v5H4zM6 3h1v3H6z"/></svg><span id="jPlayTxt">JOGAR</span></button>
+          <p class="jogo-dica" id="jDica"></p>
+        </div>
       </div>
     </div>
 
@@ -1621,14 +1691,16 @@ roxo e amarelo
       <div class="redes">
         <a href="https://linkedin.com/in/itallo-cunha" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3zm4 7v8h2.5v-8zm1.25-4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8zM11 10v8h2.5v-4.2c0-1.1.6-1.8 1.5-1.8s1.4.6 1.4 1.8V18H19v-4.8c0-2.4-1.2-3.4-3-3.4-1.2 0-2 .6-2.5 1.2V10z"/></svg>LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener">
+        <a href="#" target="_blank" rel="noopener" hidden data-pendente="Behance: troque # pelo seu link e remova o atributo hidden">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3zm3 5v8h4.2c1.8 0 2.8-.9 2.8-2.3 0-1-.6-1.7-1.4-1.9.6-.3 1-.9 1-1.6C12.6 8.8 11.7 8 10 8zm1.8 1.4h1.9c.7 0 1 .3 1 .9s-.4.9-1 .9H7.8zm0 3.1h2.1c.8 0 1.2.4 1.2 1s-.4 1-1.2 1H7.8zM14 9v1h4V9zm2.1 2c-1.7 0-2.6 1.2-2.6 2.6 0 1.6 1 2.6 2.7 2.6 1.3 0 2.1-.6 2.4-1.6h-1.4c-.2.4-.5.6-1 .6-.7 0-1.1-.4-1.2-1.2h3.7c.2-1.8-.8-3-2.6-3zm0 1.1c.6 0 1 .4 1 1h-2.1c.1-.6.5-1 1.1-1z"/></svg>Behance</a>
-        <a href="#" target="_blank" rel="noopener">
+        <a href="https://github.com/itallocunha" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
       </div>
     </form>
   </div>
 </section>
+
+<script src="assets/infinity-run.js" defer></script>
 
 <footer class="rodape">
   <div class="wrap">

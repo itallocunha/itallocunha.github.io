@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="ALTHEA: uma aventura de autoconhecimento gamificado. Amostra por R$5 e Orbe 1 completa.">
 <title>ALTHEA: Jornada Interior</title>
+<meta name="theme-color" content="#0d0915">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ALTHEA: Jornada Interior">
+<meta property="og:description" content="ALTHEA: uma aventura de autoconhecimento gamificado. Amostra por R$5 e Orbe 1 completa.">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0915'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='700' font-size='17' fill='%238f4dff'%3EIC%3C/text%3E%3C/svg%3E">
+
 <style>
   :root{
     --bg:#0e0b17;
@@ -458,6 +465,18 @@
   }
   .site-footer__content{position:relative; z-index:1; font-size:12.5px; color:var(--text-muted);}
   .site-footer__content p{margin:0;}
+  /* HERO no celular: o video e 16:9 e a tela e vertical. Em vez de cortar e ampliar
+     (efeito "esticado"), o video ocupa uma faixa no topo, na proporcao certa,
+     e se dissolve no fundo escuro; o texto fica logo abaixo. Vale tambem para tablet em pe. */
+  @media (max-width:759px), (max-width:1100px) and (orientation:portrait){
+    .hero{min-height:0; justify-content:flex-start; padding-block:calc(100vw * .5625 - 56px) var(--space-5); background:var(--bg);}
+    .hero__bg{bottom:auto; height:calc(100vw * .5625 + 90px); background:none;
+      -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%); mask-image:linear-gradient(180deg,#000 62%,transparent 100%);}
+    .hero__video{transform:none !important; animation:none !important; object-position:center center;}
+    .hero__scrim{background:linear-gradient(180deg, rgba(8,6,15,.55) 0%, rgba(8,6,15,0) 22%, rgba(8,6,15,0) 55%, var(--bg) 100%);}
+    .hero__embers{height:calc(100vw * .5625 + 90px); bottom:auto;}
+    .scroll-cue{display:none;}
+  }
   @media (max-width:759px){
     .site-footer{min-height:min(52vh,430px); padding-block:var(--space-5) var(--space-3);}
     .site-footer__bg video{object-fit:contain; object-position:center 44%;}
