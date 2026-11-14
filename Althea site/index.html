@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script src="../assets/movimento.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="ALTHEA: uma aventura de autoconhecimento gamificado. Amostra por R$5 e Orbe 1 completa.">
 <title>ALTHEA: Jornada Interior</title>
@@ -524,7 +525,7 @@
   .offer-card > *{position:relative; z-index:1;}
 
   /* ---------- reveals e parallax: esses sim respeitam a preferencia ---------- */
-  @media (prefers-reduced-motion:no-preference){
+  
     body.js-reveal .r{
       opacity:0; transition:opacity .75s var(--ease-out), transform .75s var(--ease-out);
       transition-delay:calc(var(--i,0) * 90ms);
@@ -539,11 +540,9 @@
     }
     .hero__video{animation:heroDrift 28s var(--ease-soft) infinite alternate;}
     @keyframes heroDrift{from{transform:scale(1.04);} to{transform:scale(1.14);}}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .hero__logo,.hero h1,.hero .eyebrow,.hero .lead,.hero .cta,.scroll-cue,.word{animation:none;}
-    .hero__video{transform:scale(1.06);}
-  }
+  
+  html.calmo .hero__logo,html.calmo .hero h1,html.calmo .hero .eyebrow,html.calmo .hero .lead,html.calmo .hero .cta,html.calmo .scroll-cue,html.calmo .word{animation:none;}
+html.calmo .hero__video{transform:scale(1.06);}
 
   /* ---------- botao de pausa da esteira ---------- */
   .ticker__pause{
@@ -1015,7 +1014,7 @@
 <script>
 (function(){
   try{
-    var reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var reduced = !!(true && !!window.__calmo);
     var fine = !!(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
     document.body.classList.add('js-reveal','js-nav');
     var hasIO = 'IntersectionObserver' in window;

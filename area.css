@@ -186,7 +186,9 @@ svg.ico{width:16px;height:16px;flex:none}
   .prox-areas{grid-template-columns:1fr}
   .prox-areas a.dir{text-align:left}
 }
-@media (prefers-reduced-motion:reduce){.hero h1 .l{opacity:1}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+html.calmo .hero h1 .l{opacity:1}
+html.calmo *{animation:none!important;transition:none!important}
+html.calmo .rv{opacity:1;transform:none}
 
 /* sprites pequenos ampliados sem borrar */
 img.pixel{image-rendering:pixelated;image-rendering:crisp-edges}

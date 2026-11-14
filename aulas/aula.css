@@ -111,4 +111,4 @@
   .diario{padding-left:28px}
   .post::before{left:-28px}
 }
-@media (prefers-reduced-motion:reduce){.icone-palco img,.icone-palco::before,.icone-palco i{animation:none}}
+html.calmo .icone-palco img,html.calmo .icone-palco::before,html.calmo .icone-palco i{animation:none}

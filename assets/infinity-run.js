@@ -13,7 +13,7 @@ const ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
 const W = 320, H = 200, GY = 166, PX = 48;          // largura, altura, topo do chão, x do jogador
-const REDUCED = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+const REDUCED = !!window.__calmo;
 const $ = id => document.getElementById(id);
 const el = {
   pts:$('jPts'), hi:$('jHi'), tela:$('jTela'), titulo:$('jTitulo'), sub:$('jSub'), dica:$('jDica'),

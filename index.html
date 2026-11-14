@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script src="assets/movimento.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itallo Cunha · Game Designer e Educador</title>
 <meta name="theme-color" content="#0d0915">
@@ -73,8 +74,8 @@ a{color:inherit;text-decoration:none}
 /* ---------- utilitários ---------- */
 .rough{filter:url(#rough)}
 .rough-forte{filter:url(#rough-forte)}
-.mao{font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);line-height:1.12;font-size:20px;letter-spacing:.02em;position:absolute;pointer-events:none}
-.mao.amarela{color:var(--amarelo)}
+
+
 .rotulo{font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-claro)}
 .btn{
   display:inline-flex;align-items:center;gap:10px;background:var(--amarelo);color:#16101f;
@@ -113,8 +114,8 @@ a{color:inherit;text-decoration:none}
   content:attr(data-label);font-family:var(--f-mono);font-size:12px;color:var(--roxo-claro);
   background:rgba(13,9,21,.85);padding:4px 8px;border-radius:3px;text-align:center;max-width:90%;
 }
-.hero-fundo.empty,.copo-fundo.empty{border:0;background:none;align-items:flex-end;justify-content:flex-end;padding:10px}
-.hero-fundo.empty::after,.copo-fundo.empty::after{opacity:.7}
+.copo-fundo.empty{border:0;background:none;align-items:flex-end;justify-content:flex-end;padding:10px}
+.copo-fundo.empty::after{opacity:.7}
 .slot.icone.empty{border-radius:12px;border-width:1.5px}
 .slot.icone.empty::after{content:attr(data-sigla);font-family:var(--f-pixel2);font-size:13px;background:none;padding:0}
 
@@ -144,9 +145,9 @@ a{color:inherit;text-decoration:none}
 ============================================================ */
 .hero{position:relative;margin-top:-70px}
 .hero .wrap{height:clamp(640px,62vw,900px)}
-.hero-fundo{position:absolute;inset:0;z-index:0;opacity:.95}
-.hero-fundo.empty{inset:auto 48px 20px auto;opacity:1}
-.hero-fundo img{object-fit:cover}
+
+
+
 .lua{position:absolute;right:10.5%;top:16%;width:62px;height:62px;border-radius:50%;
   box-shadow:inset -14px 6px 0 0 #a77bf2;transform:rotate(-20deg);opacity:.95;filter:drop-shadow(0 0 18px rgba(185,139,255,.6))}
 .titulo-italo{
@@ -155,8 +156,8 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(150px,22vw,330px);line-height:.8;letter-spacing:-.045em;
   text-shadow:0 0 60px rgba(143,77,255,.35);
 }
-.hero-personagem{position:absolute;z-index:3;left:34%;top:4%;width:37%;height:78%}
-.hero-personagem img{object-position:bottom center}
+
+
 .cunha{
   position:absolute;z-index:4;right:11%;top:38%;
   font-family:var(--f-pixel);font-weight:700;color:var(--branco);
@@ -171,10 +172,10 @@ a{color:inherit;text-decoration:none}
 .hero-txt{position:absolute;z-index:6;left:48px;bottom:13%;max-width:420px}
 .hero-txt h1{font-family:var(--f-corpo);font-weight:600;font-size:clamp(18px,1.6vw,23px);line-height:1.25;color:var(--branco);margin-bottom:10px}
 .hero-txt p{font-size:15px;color:var(--apagado);margin-bottom:22px;letter-spacing:.01em}
-.hero .mao.n1{left:4.5%;top:16%;transform:rotate(-14deg);font-size:19px}
-.hero .mao.n2{right:2%;top:19%;transform:rotate(6deg);font-size:19px}
-.hero .coroa{left:4%;top:12%;transform:rotate(-12deg)}
-.hero .trilha{left:30%;bottom:6%;width:60%;height:18%}
+
+
+
+
 
 /* ============================================================
    SOBRE
@@ -203,11 +204,11 @@ a{color:inherit;text-decoration:none}
 .sobre-titulo .coroa{left:150px;top:-14px;width:30px}
 .sobre-txt .lead{color:var(--branco);font-size:17px;line-height:1.4;margin-bottom:18px;font-weight:500}
 .sobre-txt p{font-size:14px;color:var(--apagado)}
-.retrato{position:relative;width:230px;transform:rotate(3deg)}
-.retrato .slot{aspect-ratio:4/5;width:100%}
-.retrato .slot:not(.empty){background:var(--papel);padding:10px}
-.retrato .slot img{object-fit:cover;filter:grayscale(1) contrast(1.1)}
-.sobre .mao.n3{left:250px;top:0;transform:rotate(-8deg);font-size:18px;white-space:nowrap}
+
+
+
+
+
 .sobre .trilha{left:0;top:-30px;width:100%;height:120px}
 
 /* ============================================================
@@ -262,12 +263,8 @@ a{color:inherit;text-decoration:none}
 /* item 07: largura total */
 .i07{grid-column:1/-1;grid-template-columns:230px 1fr 290px;min-height:300px;margin-top:20px}
 .i07 .rede-wrap{position:relative;height:220px}
-.balao{
-  position:absolute;left:0;top:4px;z-index:3;background:var(--amarelo);color:#16101f;
-  font-family:var(--f-cond);font-weight:600;font-size:20px;line-height:1.1;padding:10px 16px;transform:rotate(-4deg);
-  box-shadow:4px 4px 0 #000;
-}
-.balao::after{content:"";position:absolute;left:24px;bottom:-14px;border:8px solid transparent;border-top-color:var(--amarelo);border-left-color:var(--amarelo)}
+
+
 .i07 .rede{position:absolute;left:150px;right:0;top:0;bottom:0}
 .i07-dir{position:relative;height:260px}
 .nota-papel{
@@ -316,8 +313,8 @@ a{color:inherit;text-decoration:none}
 .ia-box::after{right:0;border-left:0}
 .ia-box h3{font-family:var(--f-cond);font-weight:600;color:var(--amarelo);font-size:clamp(30px,2.8vw,40px);line-height:1.05;text-transform:uppercase;margin-bottom:12px}
 .ia-box p{font-size:13px;color:var(--texto);line-height:1.6}
-.multi .mao.n4{left:3%;bottom:40px;transform:rotate(-10deg)}
-.multi .mao.n5{right:3%;top:20px;transform:rotate(-8deg);text-align:center}
+
+
 .globo{position:absolute;right:16%;top:40px;width:110px;color:var(--roxo);opacity:.9}
 .multi .trilha{left:15%;top:-10px;width:80%;height:120px}
 
@@ -358,6 +355,10 @@ a{color:inherit;text-decoration:none}
   box-shadow:6px 6px 0 rgba(0,0,0,.65),0 0 44px rgba(143,77,255,.28);container-type:inline-size;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;outline:none}
 .cena.jogo:focus-visible{outline:3px solid var(--amarelo);outline-offset:4px}
 .cena.jogo.jogando:focus-visible{outline:none}
+.calmo-btn{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--apagado);background:none;border:1px solid #4a3a66;padding:6px 10px;cursor:pointer;margin-left:auto}
+.calmo-btn:hover,.calmo-btn[aria-pressed="true"]{color:var(--amarelo);border-color:var(--amarelo)}
+.rodape .calmo-btn+.feito{margin-left:20px}
+html.calmo *,html.calmo *::before,html.calmo *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 .jogo canvas{display:block;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pixelated}
 .jogo.jogando canvas{touch-action:none;cursor:pointer}
 .jogo::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);opacity:.5}
@@ -395,10 +396,10 @@ a{color:inherit;text-decoration:none}
 .jogo-play:hover{background:#ffe27a;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #000,inset 0 -4px 0 rgba(0,0,0,.2),inset 0 3px 0 rgba(255,255,255,.55)}
 .jogo-play:active{transform:translate(4px,4px);box-shadow:1px 1px 0 #000,inset 0 -4px 0 rgba(0,0,0,.2)}
 .jogo-play:focus-visible{outline:3px solid var(--branco);outline-offset:4px}
-@media (prefers-reduced-motion:no-preference){
+
   .t-inicio .jogo-play{animation:jogoPulso 1.3s steps(2) infinite}
   @keyframes jogoPulso{50%{box-shadow:5px 5px 0 #000,0 0 0 5px rgba(255,210,58,.35),inset 0 -4px 0 rgba(0,0,0,.2),inset 0 3px 0 rgba(255,255,255,.55)}}
-}
+
 @media (max-width:720px){.cena.jogo{margin-top:34px;box-shadow:4px 4px 0 rgba(0,0,0,.65),0 0 30px rgba(143,77,255,.25)}.jogo-dica{display:none}.jogo-tela{padding:14% 6% 5%}}
 .cena .slot{width:100%;height:100%}
 .cena .slot img{object-fit:cover;object-position:center 40%;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 80%,transparent)}
@@ -442,7 +443,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:1100px){
   .wrap{padding:0 28px}
   .sobre .wrap{grid-template-columns:1fr 1fr;row-gap:40px}
-  .retrato{justify-self:center}
+  
   .grade{grid-template-columns:1fr}
   .i02,.i04,.i06{margin-top:0}
   .i07{grid-template-columns:230px 1fr}
@@ -463,15 +464,15 @@ a{color:inherit;text-decoration:none}
   .port .titulo-pixel{font-size:16vw}
   .i07 .trilha{display:none}
   .bora .party{margin-top:14px;font-size:24px}
-  .hero-personagem{position:relative;left:0;top:0;width:100%;height:380px;margin-top:-60px}
-  .hero .hero-fundo{display:none!important}
+  
+  
   .player{position:relative;right:auto;top:auto;align-self:flex-end;margin-top:-30px}
   .cunha{position:relative;right:auto;top:auto;align-self:flex-end;font-size:19vw;margin-top:6px}
   .hero-txt{position:relative;left:0;bottom:auto;margin-top:28px}
-  .hero .mao,.hero .coroa,.hero .trilha,.lua{display:none}
+  .lua{display:none}
   .sobre .wrap{grid-template-columns:1fr}
   .icones{max-width:300px}
-  .sobre .mao.n3{display:none}
+  
   .port-cab .rotulo{position:static;display:block;text-align:left;margin-bottom:10px}
   .port-cab .mao{display:none}
   .item,.i07{grid-template-columns:1fr;min-height:0}
@@ -480,14 +481,14 @@ a{color:inherit;text-decoration:none}
   .prompt{left:0;bottom:-30px}
   .mapa{display:none}
   .i07 .rede-wrap{height:auto;display:flex;flex-direction:column;gap:20px}
-  .balao{position:relative;align-self:flex-start}
+  
   .i07 .rede,.multi .rede{position:relative;left:0;height:240px}
   .i07-dir{height:300px}
   .multi-titulo{margin-left:0}
   .multi-titulo .titulo-pixel{font-size:13vw}
   .multi-titulo .mp{font-size:8vw;bottom:-36px;left:34%}
   .multi-titulo .em-modo{font-size:16px;left:12%}
-  .multi .mao,.globo{display:none}
+  .globo{display:none}
   .no{font-size:11px}.no .slot{width:46px;height:46px}.no span{font-size:11px}
   .copo .wrap{grid-template-columns:1fr}
   .copo-col{height:320px}
@@ -498,10 +499,8 @@ a{color:inherit;text-decoration:none}
   .rodape .wrap{flex-wrap:wrap;gap:10px 20px}
   .rodape .feito{margin-left:0}
 }
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv{opacity:1;transform:none}
-}
+html.calmo *{animation:none!important;transition:none!important}
+html.calmo .rv{opacity:1;transform:none}
 
 /* ---------- MULTIPLAYER v2: título em imagem, textos e cards ---------- */
 .multi{padding:30px 0 90px}
@@ -551,8 +550,8 @@ a{color:inherit;text-decoration:none}
 @keyframes explode{to{transform:translate(var(--dx),var(--dy)) rotate(90deg);opacity:0}}
 .xp{position:absolute;z-index:6;pointer-events:none;font-family:var(--f-pixel);font-weight:700;font-size:20px;color:var(--amarelo);text-shadow:2px 2px 0 #000;animation:sobe .9s ease-out forwards;white-space:nowrap}
 @keyframes sobe{from{transform:translate(-50%,0)}to{transform:translate(-50%,-60px);opacity:0}}
-.multi .mao.n4{left:0;bottom:120px;width:150px}
-@media (max-width:1560px){.multi .mao.n4{display:none}}
+
+
 
 @media (max-width:1100px){
   .mt-intro{grid-template-columns:1fr;padding-right:0;gap:30px}
@@ -565,7 +564,7 @@ a{color:inherit;text-decoration:none}
   .mt-txt .lead{font-size:18px}
   .inv-dica{font-size:13px}
 }
-@media (prefers-reduced-motion:reduce){.card{opacity:1;translate:none;scale:none}}
+html.calmo .card{opacity:1;translate:none;scale:none}
 
 /* ============================================================
    UNIVERSO, AVATAR E TÍTULOS DINÂMICOS
@@ -577,48 +576,37 @@ a{color:inherit;text-decoration:none}
 .universo-dica.some{opacity:0}
 
 /* avatar do hero */
-.hero-personagem.avatar{left:27%;top:2%;width:35%;height:82%;cursor:pointer;perspective:900px;outline:none;-webkit-tap-highlight-color:transparent}
-.avatar-aura{position:absolute;left:50%;top:55%;width:85%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(circle,rgba(143,77,255,.55),rgba(143,77,255,.15) 45%,transparent 70%);filter:blur(10px);
-  animation:aura 4s ease-in-out infinite;transition:opacity .4s;pointer-events:none}
+
+
 @keyframes aura{50%{transform:translate(-50%,-50%) scale(1.12);opacity:.75}}
-.avatar:hover .avatar-aura,.avatar:focus-visible .avatar-aura{background:radial-gradient(circle,rgba(185,139,255,.75),rgba(255,210,58,.18) 45%,transparent 70%)}
-.avatar-tilt{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out;
-  transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) translate3d(var(--tx,0px),var(--ty,0px),0)}
-.avatar-float{position:absolute;inset:0;animation:flutuaAvatar 5.5s ease-in-out infinite}
-@keyframes flutuaAvatar{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.pose{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom center;opacity:0;
-  transform:scale(.86) translateY(30px);filter:brightness(4) saturate(0) blur(4px);
-  transition:opacity .35s ease,transform .6s cubic-bezier(.3,1.6,.5,1),filter .5s ease;pointer-events:none;user-select:none}
-.pose.ativa{opacity:1;transform:none;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55)) drop-shadow(0 0 0 transparent)}
-.avatar:hover .pose.ativa{filter:drop-shadow(0 24px 30px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(185,139,255,.7))}
-.avatar.troca .avatar-float{animation:squash .5s cubic-bezier(.3,1.6,.5,1)}
-@keyframes squash{0%{transform:scale(1)}30%{transform:scale(1.08,.9)}60%{transform:scale(.95,1.06) translateY(-14px)}100%{transform:scale(1)}}
-.avatar-sombra{position:absolute;left:50%;bottom:-6px;width:55%;height:26px;transform:translateX(-50%);border-radius:50%;
-  background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);animation:sombra 5.5s ease-in-out infinite;pointer-events:none}
+
+
+
+
+
+
+
+
+
+
 @keyframes sombra{50%{transform:translateX(-50%) scale(.85);opacity:.7}}
-.avatar-fala{position:absolute;left:58%;top:2%;z-index:6;background:var(--branco);color:var(--roxo-escuro);font-weight:600;font-size:14px;
-  padding:9px 14px;border-radius:16px;box-shadow:3px 3px 0 #000;white-space:nowrap;pointer-events:none;
-  opacity:0;transform:scale(.6) translateY(10px);transform-origin:left bottom;transition:opacity .2s,transform .35s cubic-bezier(.3,1.7,.5,1)}
-.avatar-fala::after{content:"";position:absolute;left:14px;bottom:-9px;border:6px solid transparent;border-top-color:var(--branco);border-left-color:var(--branco)}
-.avatar-fala.on{opacity:1;transform:none}
-.avatar-dica{position:absolute;right:4%;bottom:16%;z-index:6;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:#16101f;background:var(--amarelo);padding:4px 8px;box-shadow:2px 2px 0 #000;animation:pisca 1.2s steps(1) infinite;pointer-events:none;transition:opacity .4s}
-.avatar.usado .avatar-dica{opacity:0;animation:none}
+
+
+
+
+
 
 /* retrato do sobre */
-.retrato{transform:none;width:260px}
-.retrato-fig{position:relative;height:430px;cursor:pointer}
-.retrato-fig img{height:100%;width:auto;margin:0 auto;transform:scaleX(-1);transform-origin:center;
-  filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));animation:flutuaEsp 6s ease-in-out infinite;transition:filter .3s}
+
+
+
 @keyframes flutuaEsp{0%,100%{transform:scaleX(-1) translateY(0)}50%{transform:scaleX(-1) translateY(-12px)}}
-.retrato-fig:hover img{filter:drop-shadow(0 18px 24px rgba(0,0,0,.55)) drop-shadow(0 0 16px rgba(185,139,255,.7))}
-.retrato-fig.pula img{animation:pulinho .6s cubic-bezier(.3,1.6,.5,1)}
-@keyframes pulinho{40%{transform:scaleX(-1) translateY(-26px) rotate(-4deg)}}
-.retrato-fala{position:absolute;left:-30px;top:6%;background:var(--amarelo);color:#16101f;font-family:var(--f-cond);font-weight:600;font-size:18px;
-  padding:6px 12px;box-shadow:3px 3px 0 #000;transform:rotate(-5deg) scale(0);transform-origin:right bottom;transition:transform .35s cubic-bezier(.3,1.7,.5,1);white-space:nowrap}
-.retrato-fig:hover .retrato-fala,.retrato-fig.pula .retrato-fala{transform:rotate(-5deg) scale(1)}
-.sobre .mao.n3{left:240px}
+
+
+
+
+
+
 
 /* títulos dinâmicos */
 .dyn-letras{cursor:default;user-select:none}
@@ -642,21 +630,19 @@ a{color:inherit;text-decoration:none}
 .dyn-palavras:hover span:first-of-type{transform:rotate(5deg) translateY(-6px)}
 .dyn-palavras:hover span:last-of-type{transform:skewX(-8deg) translateX(8px)}
 .player{transition:background .2s}
-.player.start{background:var(--roxo);color:#fff}
+
 
 @media (max-width:720px){
-  .hero-personagem.avatar{position:relative;left:0;top:0;width:100%;height:420px;margin-top:-50px}
-  .avatar-dica{right:6%;bottom:10%}
-  .avatar-fala{left:auto;right:4%;top:0;font-size:12px;transform-origin:right bottom}
-  .avatar-fala::after{left:auto;right:14px;border-left-color:transparent;border-right-color:var(--branco)}
+  
+  
+  
+  
   .universo-dica{display:none}
-  .retrato{width:100%}
-  .retrato-fig{height:380px}
-  .retrato-fala{left:4%}
+  
+  
+  
 }
-@media (prefers-reduced-motion:reduce){
-  .avatar-float,.avatar-aura,.avatar-sombra,.retrato-fig img{animation:none!important}
-}
+
 
 /* ---------- títulos com animação contínua ---------- */
 /* títulos grandes em pixel: onda que percorre as letras + brilho + falha (glitch) de vez em quando */
@@ -694,9 +680,7 @@ a{color:inherit;text-decoration:none}
 .mt-titulo{overflow:visible}
 .mt-titulo img{animation:flutua 6s ease-in-out infinite,brilhoImg 5s ease-in-out infinite}
 @keyframes brilhoImg{0%,75%,100%{filter:drop-shadow(0 10px 30px rgba(143,77,255,.35))}85%{filter:drop-shadow(0 10px 30px rgba(143,77,255,.35)) drop-shadow(0 0 22px rgba(255,210,58,.6)) brightness(1.15)}}
-@media (prefers-reduced-motion:reduce){
-  .dyn-letras.vivo .l,.cunha.dyn-scramble,.juntos.dyn-scramble,.item-txt .num,.copo h2,.mt-titulo img{animation:none!important}
-}
+html.calmo .dyn-letras.vivo .l,html.calmo .cunha.dyn-scramble,html.calmo .juntos.dyn-scramble,html.calmo .item-txt .num,html.calmo .copo h2,html.calmo .mt-titulo img{animation:none!important}
 
 /* ============================================================
    MEU MAIOR PROJETO: ALTHEA
@@ -720,7 +704,7 @@ a{color:inherit;text-decoration:none}
 .althea h2.althea-logo{text-shadow:none;margin:0 0 4px;line-height:0}
 .althea-logo img{width:min(100%,560px);height:auto;filter:drop-shadow(0 10px 34px rgba(255,170,40,.38));animation:flutua-logo 6s ease-in-out infinite}
 @keyframes flutua-logo{50%{transform:translateY(-8px)}}
-@media (prefers-reduced-motion:reduce){.althea-logo img{animation:none}}
+html.calmo .althea-logo img{animation:none}
 .althea .sub{font-family:var(--f-mao);text-transform:uppercase;color:var(--roxo-claro);font-size:24px;letter-spacing:.04em;margin-bottom:22px}
 .althea .lead{font-size:18px;color:var(--branco);max-width:520px;margin-bottom:14px}
 .althea .txt{max-width:520px;margin-bottom:26px}
@@ -804,9 +788,7 @@ a{color:inherit;text-decoration:none}
   .mapa-wrap{display:flex;flex-direction:column}
   .althea-cartas{grid-template-columns:1fr;margin-top:46px}
 }
-@media (prefers-reduced-motion:reduce){
-  .orbe,.orbe .esfera::after,.orbes-mapa .rota,.selo-ouro i,.status::before{animation:none!important}
-}
+html.calmo .orbe,html.calmo .orbe .esfera::after,html.calmo .orbes-mapa .rota,html.calmo .selo-ouro i,html.calmo .status::before{animation:none!important}
 
 /* ===== SOBRE: mesa do artista ===== */
 .sobre{padding:40px 0 60px}
@@ -860,9 +842,8 @@ a{color:inherit;text-decoration:none}
 .sobre-fazeres li:nth-child(even){transform:rotate(2deg)}
 .sobre-fazeres li:hover{background:var(--amarelo);color:#16101f;border-color:var(--amarelo);transform:rotate(0) scale(1.08)}
 
-.retrato-moldura{position:absolute;left:50%;top:40px;width:210px;height:330px;margin-left:-105px;border:2px dashed rgba(255,210,58,.45);border-radius:110px 110px 14px 14px;
-  background:radial-gradient(circle at 50% 35%,rgba(143,77,255,.35),transparent 70%);transform:rotate(-3deg)}
-.retrato-fig{z-index:1}
+
+
 
 @media (max-width:1180px){
   .sobre .wrap{grid-template-columns:minmax(380px,460px) 1fr;row-gap:30px}
@@ -880,31 +861,26 @@ a{color:inherit;text-decoration:none}
   .mural .rabiscos{display:none}
   .polaroid .leg{font-size:19px;padding:7px 0 9px}
 }
-@media (prefers-reduced-motion:reduce){
-  .mural .rabiscos path,.sobre-titulo .sublinha path{stroke-dashoffset:0;transition:none}
-  .polaroid,.postit{transition:none}
-}
+html.calmo .mural .rabiscos path,html.calmo .sobre-titulo .sublinha path{stroke-dashoffset:0;transition:none}
+html.calmo .polaroid,html.calmo .postit{transition:none}
 
 /* ===== HERO vivo ===== */
 .trilha{display:none!important}
 .hero{overflow:visible}
 [data-prof]{translate:var(--px,0) var(--py,0);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
-.orbita{position:absolute;left:27%;top:2%;width:35%;height:82%;pointer-events:none}
-.orb-item{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:#1a1030;border:2px solid var(--amarelo);color:var(--amarelo);box-shadow:0 0 0 4px rgba(255,210,58,.12),0 8px 20px rgba(0,0,0,.5);pointer-events:auto;cursor:default;will-change:transform}
-.orb-item.roxo{border-color:var(--roxo-claro);color:var(--roxo-claro);box-shadow:0 0 0 4px rgba(143,77,255,.18),0 8px 20px rgba(0,0,0,.5)}
-.orb-item svg{width:22px;height:22px}
-.orb-item::after{content:attr(data-nome);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) scale(.8);opacity:0;white-space:nowrap;
-  background:var(--amarelo);color:#16101f;font-family:var(--f-pixel2);font-size:10px;padding:4px 7px;transition:.2s;pointer-events:none}
-.orb-item:hover::after{opacity:1;transform:translateX(-50%) scale(1)}
-.orb-item:hover{background:var(--amarelo);color:#16101f}
-.orb-item.roxo:hover{background:var(--roxo);color:#fff}
-.selo-giro{position:absolute;right:5%;bottom:13%;width:140px;height:140px;z-index:5}
-.selo-giro svg{width:100%;height:100%;animation:giraSelo 16s linear infinite;overflow:visible}
-.selo-giro text{font-family:var(--f-pixel2);font-size:11.5px;letter-spacing:.14em;fill:var(--amarelo);text-transform:uppercase}
-.selo-giro-centro{position:absolute;inset:38px;border-radius:50%;background:var(--roxo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;
-  box-shadow:0 0 30px rgba(143,77,255,.7);animation:pulsaSelo 2.4s ease-in-out infinite}
-@keyframes giraSelo{to{transform:rotate(360deg)}}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes pulsaSelo{50%{transform:scale(1.1)}}
 .rabisco-hero{position:absolute;fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:2}
 .rabisco-hero path{stroke-dasharray:200;stroke-dashoffset:200;animation:rabiscaHero 6s ease-in-out infinite}
@@ -939,15 +915,13 @@ a{color:inherit;text-decoration:none}
 @keyframes tmAnel{0%{opacity:.9;r:8}100%{opacity:0;r:34}}
 @media (max-width:1000px){ .tm-marco text{display:none} }
 @media (max-width:860px){
-  .orbita,.selo-giro,.rabisco-hero{display:none}
+  .rabisco-hero{display:none}
   .faixas{margin-top:-10px;height:80px}
   .faixa span{font-size:15px}
   .tm-base,.tm-viva{stroke-width:1.6}
 }
-@media (prefers-reduced-motion:reduce){
-  .faixa-trilho,.selo-giro svg,.rabisco-hero path,.tm-viva,.tm-estrela{animation:none!important}
-  .rabisco-hero path{stroke-dashoffset:0}
-}
+html.calmo .faixa-trilho,html.calmo .rabisco-hero path,html.calmo .tm-viva,html.calmo .tm-estrela{animation:none!important}
+html.calmo .rabisco-hero path{stroke-dashoffset:0}
 
 /* ===== HEADER HUD ===== */
 .nav{position:fixed;left:0;right:0;top:0;z-index:50;padding:18px 0 14px;transition:padding .35s,background .35s,box-shadow .35s;background:linear-gradient(rgba(10,6,20,.55),transparent)}
@@ -1122,7 +1096,7 @@ a{color:inherit;text-decoration:none}
 
 /* ===== HERO: texto de apresentação ===== */
 .hero-txt{max-width:340px;bottom:9%}
-.hero .rabisco-hero.r1{display:none}
+
 .hero-kicker{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-claro);margin-bottom:10px}
 .hero-txt h1{font-size:clamp(26px,2.4vw,36px)!important;font-weight:700!important;line-height:1.08!important;margin-bottom:12px!important}
 .hero-txt .hero-lead{max-width:300px;font-size:14.5px;line-height:1.45;color:#d9d0ec;margin-bottom:20px}
@@ -1151,6 +1125,52 @@ a{color:inherit;text-decoration:none}
 /* espaços de imagem ainda sem arte: não mostrar caixa tracejada para o visitante */
 .item .midia .slot.empty,.i07-dir .slot.empty,.cena .slot.empty{background:none;border:0}
 .item .midia .slot.empty::after,.i07-dir .slot.empty::after,.cena .slot.empty::after{content:none}
+
+
+/* ============================================================
+   HERO sem ilustração: nome grande, cartão de informações e faixa de números
+============================================================ */
+.hero{margin-top:0;padding-top:0}
+.hero .hero-in{height:auto;min-height:clamp(560px,calc(100svh - 120px),780px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);
+  grid-template-areas:"nome texto" "fatos fatos";align-items:center;column-gap:56px;row-gap:36px;padding-top:132px;padding-bottom:104px;display:grid;flex-direction:initial}
+.hero-nome{grid-area:nome;position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start}
+.hero .titulo-italo{position:relative;left:auto;top:auto;font-size:clamp(110px,15.5vw,250px);line-height:.8;letter-spacing:-.045em;margin:0}
+.hero .cunha{position:relative;right:auto;top:auto;font-size:clamp(70px,10vw,160px);margin:.08em 0 0 .6em}
+.hero .player{position:relative;right:auto;top:auto;margin:0 0 20px .2em;align-self:flex-start}
+.hero .hero-txt{grid-area:texto;position:relative;left:auto;bottom:auto;max-width:none;z-index:3;padding:32px 34px 34px;
+  border:2px solid rgba(143,77,255,.6);background:linear-gradient(160deg,rgba(28,17,52,.88),rgba(13,9,21,.82));
+  box-shadow:8px 8px 0 rgba(0,0,0,.5),0 0 44px rgba(143,77,255,.2)}
+.hero .hero-txt::before,.hero .hero-txt::after{content:"";position:absolute;width:10px;height:10px;background:var(--amarelo)}
+.hero .hero-txt::before{left:-6px;top:-6px}.hero .hero-txt::after{right:-6px;bottom:-6px}
+.hero .hero-txt h1{font-size:clamp(28px,2.7vw,42px)!important;line-height:1.08!important;margin-bottom:14px!important}
+.hero .hero-txt .hero-lead{max-width:none;font-size:16px;line-height:1.6;margin-bottom:20px}
+.hero .hero-disp{margin-bottom:24px}
+.hero .hero-btns{margin-bottom:0}
+.hero .hero-fatos{grid-area:fatos;position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0;
+  border:2px solid rgba(143,77,255,.45);border-top-style:solid;background:rgba(13,9,21,.62)}
+.hero .hero-fatos li{padding:20px 26px;border-left:1px solid rgba(143,77,255,.35);gap:10px;max-width:none}
+.hero .hero-fatos li:first-child{border-left:0}
+.hero .hero-fatos b{font-size:clamp(26px,2.7vw,40px)}
+.hero .hero-fatos span{font-size:13px;line-height:1.35;color:var(--texto)}
+@media (max-width:1000px){
+  .hero .hero-in{grid-template-columns:minmax(0,1fr);grid-template-areas:"nome" "texto" "fatos";min-height:0;padding-top:108px;padding-bottom:70px;row-gap:30px}
+  .hero .titulo-italo{font-size:clamp(96px,24vw,230px)}
+  .hero .cunha{font-size:clamp(64px,16vw,150px)}
+}
+@media (max-width:720px){
+  .hero .hero-in{padding-top:92px;padding-bottom:56px;row-gap:26px}
+  .hero .hero-txt{padding:24px 22px 26px;box-shadow:5px 5px 0 rgba(0,0,0,.5)}
+  .hero .hero-txt .hero-lead{font-size:15px}
+  .hero .hero-fatos{grid-template-columns:repeat(2,1fr)}
+  .hero .hero-fatos li{padding:16px 18px}
+  .hero .hero-fatos li:nth-child(odd){border-left:0}
+  .hero .hero-fatos li:nth-child(n+3){border-top:1px solid rgba(143,77,255,.35)}
+}
+/* sobre: sem o retrato, o texto ganha espaço */
+@media (min-width:1101px){.sobre .wrap{grid-template-columns:minmax(420px,520px) minmax(0,560px);justify-content:center;gap:56px 88px}}
+/* tipografia: a fonte manuscrita fica só nos objetos de papel (polaroids) */
+.althea .sub{font-family:var(--f-cond);letter-spacing:.14em;font-size:18px}
+.sobre-fazeres li{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -1199,7 +1219,7 @@ a{color:inherit;text-decoration:none}
       </nav>
     </div>
     <div class="hud" aria-hidden="true">
-      <div class="hud-topo"><b>CRIADOR MULTICLASSE</b><span class="hud-lv">LV <em id="hudLv">1</em></span></div>
+      <div class="hud-topo"><b>PROGRESSO</b><span class="hud-lv">LV <em id="hudLv">1</em></span></div>
       <div class="hud-barra"><span class="hud-xp" id="hudXp"></span><i></i><i></i><i></i><i></i><i></i></div>
       <div class="hud-info"><span id="hudFase">FASE 00 · INÍCIO</span><span><em id="hudPct">0</em> XP</span></div>
       <span class="hud-up" id="hudUp">LEVEL UP!</span>
@@ -1210,28 +1230,14 @@ a{color:inherit;text-decoration:none}
 
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="topo">
-  <div class="wrap">
-    <!-- fundo: cidade/noite (opcional) -->
+  <div class="wrap hero-in">
     <div class="lua" data-prof="-1.2"></div>
 
-    <h2 class="titulo-italo rough dyn-letras" data-prof="0.6" aria-label="Itallo">ITALLO</h2>
-
-    <!-- personagem sentado (PNG com fundo transparente) -->
-    <div class="hero-personagem avatar" id="avatar" tabindex="0" role="button" aria-label="Itallo Cunha. Clique para trocar de pose">
-      <div class="avatar-aura"></div>
-      <div class="avatar-tilt"><div class="avatar-float">
-        <img class="pose ativa" src="assets/itallo-sentado.webp" alt="Ilustração de Itallo Cunha sentado" width="724" height="1100">
-        <img class="pose" src="assets/itallo-apresentando.webp" alt="" width="529" height="1100">
-      </div></div>
-      <div class="avatar-sombra"></div>
-      <span class="avatar-fala" aria-live="polite"></span>
-      <span class="avatar-dica">▸ clique em mim</span>
+    <div class="hero-nome">
+      <span class="player" id="player" data-prof="-2">PLAYER 01</span>
+      <h2 class="titulo-italo rough dyn-letras" data-prof="0.6" aria-label="Itallo">ITALLO</h2>
+      <div class="cunha dyn-scramble" data-prof="-1.4">CUNHA</div>
     </div>
-
-    <div class="orbita" id="orbita" aria-hidden="true"><span class="orb-item" data-nome="desenho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 19l1.5-5L16 4.5l3.5 3.5L10 17.5z"/><path d="M14 6.5l3.5 3.5"/></svg></span><span class="orb-item roxo" data-nome="jogos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M7 8h10c3 0 4.5 3 5 7s-.5 5-2 5c-2 0-3-3-4.5-3h-7C7 17 6 20 4 20c-1.5 0-2.5-1-2-5s2-7 5-7z"/><path d="M7 11v4M5 13h4"/></svg></span><span class="orb-item" data-nome="código"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg></span><span class="orb-item roxo" data-nome="3D"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="orb-item" data-nome="pixel art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 8h2V6h4v2h4V6h4v2h2v5h-2v2h-2v2h-2v2h-4v-2H8v-2H6v-2H4z"/></svg></span><span class="orb-item roxo" data-nome="aulas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 3 9 3 12 0v-5"/></svg></span></div>
-
-    <span class="player" id="player" data-prof="-2">PLAYER 01</span>
-    <div class="cunha dyn-scramble" data-prof="-1.4">CUNHA</div>
 
     <div class="hero-txt">
       <span class="hero-kicker">Balneário Camboriú, SC</span>
@@ -1242,33 +1248,22 @@ a{color:inherit;text-decoration:none}
         <a href="#althea" class="btn">Ver projetos <svg><use href="#seta"/></svg></a>
         <a href="assets/curriculo-itallo-cunha.pdf" class="btn btn-ghost" download>Baixar currículo</a>
       </div>
-      <ul class="hero-fatos" aria-label="Resumo">
-        <li><b>4+</b><span>game jams</span></li>
-        <li><b>10+</b><span>anos em criação visual</span></li>
-        <li><b>7º</b><span>período, UNIVALI</span></li>
-        <li><b>ES·EN</b><span>espanhol fluente</span></li>
-      </ul>
     </div>
 
-    <svg class="coroa" viewBox="0 0 40 28"><use href="#coroa"/></svg>
-    <p class="mao n1" data-prof="1.6">Arte<br>jogos<br>ideias<br>pessoas<br>sempre</p>
-    <p class="mao n2" data-prof="-1.8">Aqui<br>também<br>se cria<br>o amanhã<br>☺</p>
+    <ul class="hero-fatos" aria-label="Resumo">
+      <li><b>4+</b><span>game jams</span></li>
+      <li><b>10+</b><span>anos em criação visual</span></li>
+      <li><b>7º</b><span>período de Design de Jogos, UNIVALI</span></li>
+      <li><b>ES · EN</b><span>espanhol fluente, inglês</span></li>
+    </ul>
 
     <svg class="star" style="left:48%;top:6%"><use href="#star"/></svg>
     <svg class="star p" style="left:56%;top:18%;animation-delay:-.8s"><use href="#star"/></svg>
     <svg class="star p roxa" style="right:6%;top:24%;animation-delay:-2s"><use href="#star"/></svg>
-    <svg class="star" style="right:20%;bottom:32%;animation-delay:-1.2s"><use href="#star"/></svg>
-
-    <div class="selo-giro" data-prof="-1" aria-hidden="true">
-      <svg viewBox="0 0 140 140"><defs><path id="seloCirc" d="M70 70 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0"/></defs>
-        <text><textPath href="#seloCirc">criador multiclasse ✦ arte ✦ jogos ✦ ensino ✦ </textPath></text></svg>
-      <span class="selo-giro-centro">▶</span>
-    </div>
-    <svg class="rabisco-hero r1" viewBox="0 0 120 60" aria-hidden="true"><path d="M5 40 C25 5 45 55 65 25 S100 10 115 30"/></svg>
     <svg class="rabisco-hero r2" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6v14M30 40v14M6 30h14M40 30h14M13 13l9 9M38 38l9 9M47 13l-9 9M22 38l-9 9"/></svg>
   </div>
   <div class="faixas" aria-hidden="true">
-    <div class="faixa f-roxa"><div class="faixa-trilho"><span>FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ </span><span>FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ FASE 01 ✦ JOGADOR PRONTO ✦ APERTE START ✦ </span></div></div>
+    <div class="faixa f-roxa"><div class="faixa-trilho"><span>JOGOS ✦ ARTE ✦ AULAS ✦ BALNEÁRIO CAMBORIÚ ✦ TRABALHO REMOTO ✦ JOGOS ✦ ARTE ✦ AULAS ✦ BALNEÁRIO CAMBORIÚ ✦ TRABALHO REMOTO ✦ </span><span>JOGOS ✦ ARTE ✦ AULAS ✦ BALNEÁRIO CAMBORIÚ ✦ TRABALHO REMOTO ✦ JOGOS ✦ ARTE ✦ AULAS ✦ BALNEÁRIO CAMBORIÚ ✦ TRABALHO REMOTO ✦ </span></div></div>
     <div class="faixa f-ouro"><div class="faixa-trilho"><span>GAME DESIGN ✦ ILUSTRAÇÃO ✦ PIXEL ART ✦ MODELAGEM 3D ✦ DESIGN GRÁFICO ✦ AULAS ✦ </span><span>GAME DESIGN ✦ ILUSTRAÇÃO ✦ PIXEL ART ✦ MODELAGEM 3D ✦ DESIGN GRÁFICO ✦ AULAS ✦ </span></div></div>
   </div>
 </section>
@@ -1313,10 +1308,7 @@ a{color:inherit;text-decoration:none}
         <code>if (ideia) {<br>&nbsp;&nbsp;criar();<br>&nbsp;&nbsp;ensinar();<br>}</code>
       </div>
 
-      <span class="selo-carimbo">feito<br>à mão</span>
-      <p class="mao m-a">de um rabisco...</p>
-      <p class="mao amarela m-b">...vira jogo!</p>
-    </div>
+          </div>
 
     <div class="sobre-meio">
       <div class="sobre-titulo rv">
@@ -1333,15 +1325,6 @@ a{color:inherit;text-decoration:none}
           <li>desenho</li><li>pixel art</li><li>3D</li><li>game design</li><li>código</li><li>aulas</li>
         </ul>
       </div>
-    </div>
-
-    <div class="retrato rv">
-      <div class="retrato-moldura" aria-hidden="true"></div>
-      <div class="retrato-fig" id="retrato">
-        <img src="assets/itallo-apresentando.webp" alt="Ilustração de Itallo Cunha apontando para o texto" width="529" height="1100" loading="lazy">
-        <span class="retrato-fala">Prazer, Itallo!</span>
-      </div>
-      <p class="mao n3">Mesma<br>curiosidade<br>de sempre<br>só que<br>mais longe</p>
     </div>
   </div>
 </section>
@@ -1483,7 +1466,6 @@ a{color:inherit;text-decoration:none}
       <svg class="star" style="left:9%;top:58px"><use href="#star"/></svg>
       <svg class="star p" style="left:12%;top:100px;animation-delay:-1s"><use href="#star"/></svg>
       <h2 class="titulo-pixel rough dyn-letras" aria-label="Portfólio">PORTFÓLIO</h2>
-      <p class="mao">Diferentes<br>disciplinas<br>um mesmo<br>universo</p>
     </div>
 
     <div class="grade">
@@ -1496,7 +1478,6 @@ a{color:inherit;text-decoration:none}
           <a href="ilustracao.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="midia"><div class="slot" data-label="assets/_web/capas/ilustracao.webp"><img src="assets/_web/capas/ilustracao.webp" alt="Colagem de ilustrações: criatura alada, personagem de cabelo vermelho, monstro e figura em chamas" loading="lazy"></div></div>
-        <p class="mao">Personagens<br>contam<br>histórias</p>
       </article>
 
       <!-- 02 -->
@@ -1508,7 +1489,6 @@ a{color:inherit;text-decoration:none}
           <a href="design-grafico.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="midia"><div class="slot" data-label="assets/port-02-design.webp"><img src="assets/port-02-design.webp" alt="Colagem de design gráfico: marcas BRAZA e KAIA, camisetas e copos"></div></div>
-        <p class="mao">Conceito<br>tipografia<br>cor<br>comunicação</p>
       </article>
 
       <!-- 03 -->
@@ -1520,7 +1500,6 @@ a{color:inherit;text-decoration:none}
           <a href="pixel-art.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="midia"><div class="slot" data-label="assets/port-03-pixelart.png"><img src="assets/port-03-pixelart.png" alt="Ilha flutuante e personagens em pixel art" style="image-rendering:pixelated"></div></div>
-        <p class="mao">Pequenos<br>pixels<br>grandes<br>aventuras</p>
       </article>
 
       <!-- 04 -->
@@ -1535,7 +1514,6 @@ a{color:inherit;text-decoration:none}
           <svg class="eixos" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 40V8M20 40l30 8M20 40 6 52"/><text x="16" y="6" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Y</text><text x="52" y="52" font-size="8" fill="currentColor" stroke="none" font-family="monospace">X</text><text x="2" y="58" font-size="8" fill="currentColor" stroke="none" font-family="monospace">Z</text></svg>
           <div class="slot" data-label="assets/port-04-3d.webp"><img src="assets/port-04-3d.webp" alt="Colagem de modelos 3D: naves, controle retrô, demônio e cubo"></div>
         </div>
-        <p class="mao">Do<br>conceito<br>ao modelo</p>
       </article>
 
       <!-- 05 -->
@@ -1555,7 +1533,6 @@ surrealista, com tons
 roxo e amarelo
 --ar 16:9 --v 6 <span class="cursor"></span></pre></div>
         </div>
-        <p class="mao">Mais<br>ferramentas<br>mais<br>possibilidades</p>
       </article>
 
       <!-- 06 -->
@@ -1585,11 +1562,9 @@ roxo e amarelo
           <a href="ensino.html" class="link">Explorar área <svg><use href="#seta"/></svg></a>
         </div>
         <div class="rede-wrap">
-          <div class="balao">Aprender.<br>Criar.<br>Compartilhar.</div>
           <div class="rede" data-rede="ensino"></div>
         </div>
         <div class="i07-dir">
-          <div class="nota-papel papel"><span class="fita"></span>Criatividade<br>também<br>se ensina</div>
           <div class="slot" data-label="assets/port-07-ensino.png"><img src="assets/port-07-ensino.png" alt="Personagem lendo um livro"></div>
         </div>
       </article>
@@ -1621,7 +1596,6 @@ roxo e amarelo
         <li><b>03</b><div><h4>Criar</h4><p>Cada aluno constrói a sua própria versão, do jeito dele.</p></div></li>
         <li><b>04</b><div><h4>Compartilhar</h4><p>Apresentamos, testamos o jogo dos colegas e melhoramos juntos.</p></div></li>
       </ol>
-      <p class="mao n5">Aprender<br>criar<br>colaborar<br>evoluir<br>sempre</p>
     </div>
 
     <div class="inv-cab rv">
@@ -1645,7 +1619,6 @@ roxo e amarelo
       <a class="card" href="aulas/ia/index.html" data-tipo="ia"><img src="assets/cards/ia.png" width="1600" height="569" alt="Inteligência Artificial: criação assistida por IA. Engenharia de prompt, vídeos e personagens, sites, aplicativos, sons e músicas." loading="lazy"></a>
     </div>
 
-    <p class="mao n4">Ideias<br>ganham<br>mais sentido<br>quando<br>compartilhadas.</p>
   </div>
 </section>
 
@@ -1655,7 +1628,6 @@ roxo e amarelo
     <div class="bora rv">
       <h2 class="titulo-pixel rough dyn-letras" aria-label="Bora criar">BORA CRIAR</h2>
       <p class="juntos dyn-scramble">ALGO JUNTOS?</p>
-      <p class="mao amarela party">Vamos formar<br>uma party?</p>
       <svg class="cursor-px" viewBox="0 0 16 20" style="right:4%;top:110px;width:26px"><path fill="currentColor" stroke="#000" d="M1 1v15l4-4 3 7 3-1-3-7h6z"/></svg>
       <div class="cena jogo" id="jogo" tabindex="-1">
         <canvas id="jogoTela" width="320" height="200" role="img" aria-label="Mini-jogo Infinity Run: um corredor em pixel art pulando bugs e coletando estrelas numa cidade ao entardecer. Use espaço, seta para cima ou toque para pular."></canvas>
@@ -1707,6 +1679,7 @@ roxo e amarelo
     <span class="logo">IC</span>
     <span class="nome">Itallo Cunha</span>
     <small>Design, jogos e conhecimento em constante criação.</small>
+    <button type="button" class="calmo-btn" id="calmoBtn" aria-pressed="false">Reduzir animações</button>
     <span class="feito">FEITO COM PIXELS, IDEIAS E CAFÉ <b>&lt;3</b></span>
   </div>
 </footer>
@@ -1794,7 +1767,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 ============================================================ */
 (function(){
   const cv = document.getElementById('universo'), ctx = cv.getContext('2d');
-  const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const calmo = !!window.__calmo;
   const CORES = ['255,255,255','255,255,255','255,255,255','185,139,255','143,77,255','255,210,58'];
   let W=0,H=0,DPR=1, estrelas=[], poeira=[], cadentes=[], ondas=[];
   const mouse={x:-9999,y:-9999,sx:0,sy:0,ativo:false,segurando:false};
@@ -1944,55 +1917,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   if(calmo) addEventListener('scroll',()=>requestAnimationFrame(quadro),{passive:true});
 })();
 
-/* ============================================================
-   AVATAR DO HERO: inclina com o mouse, troca de pose no clique
-============================================================ */
-(function(){
-  const av = document.getElementById('avatar'); if(!av) return;
-  const tilt = av.querySelector('.avatar-tilt'), poses=[...av.querySelectorAll('.pose')], fala=av.querySelector('.avatar-fala');
-  const FALAS = ['Bora criar?','Skin trocada!','+1 XP de criatividade','Player 01 pronto!','Partiu game jam?','Ideia nova desbloqueada'];
-  let pose=0, f=0, timerFala;
-  if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
-    addEventListener('pointermove', e=>{
-      const r=av.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
-      const dx=(e.clientX-cx)/innerWidth, dy=(e.clientY-cy)/innerHeight;
-      tilt.style.setProperty('--ry', (dx*22).toFixed(2)+'deg');
-      tilt.style.setProperty('--rx', (-dy*14).toFixed(2)+'deg');
-      tilt.style.setProperty('--tx', (dx*-18).toFixed(1)+'px');
-      tilt.style.setProperty('--ty', (dy*-10).toFixed(1)+'px');
-    }, {passive:true});
-  }
-  function falar(txt){
-    fala.textContent=txt; fala.classList.add('on');
-    clearTimeout(timerFala); timerFala=setTimeout(()=>fala.classList.remove('on'),1800);
-  }
-  function trocar(e){
-    av.classList.add('usado');
-    poses[pose].classList.remove('ativa'); pose=(pose+1)%poses.length; poses[pose].classList.add('ativa');
-    av.classList.remove('troca'); void av.offsetWidth; av.classList.add('troca');
-    falar(FALAS[f++ % FALAS.length]);
-    const r=av.getBoundingClientRect();
-    const cx = e && e.clientX ? e.clientX-r.left : r.width/2, cy = e && e.clientY ? e.clientY-r.top : r.height/2;
-    for(let i=0;i<22;i++){
-      const p=document.createElement('i'); p.className='px';
-      const a=Math.random()*6.28, d=50+Math.random()*110;
-      p.style.cssText=`left:${cx}px;top:${cy}px;background:${i%3?'var(--amarelo)':'var(--roxo-claro)'};--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px`;
-      av.appendChild(p); setTimeout(()=>p.remove(),750);
-    }
-  }
-  av.addEventListener('click', trocar);
-  av.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); trocar(); } });
-  av.addEventListener('mouseenter', ()=>{ if(!fala.classList.contains('on')) falar('Oi! Clica aqui'); });
-  setTimeout(()=>falar('Bem-vindo ao meu universo!'), 1600);
 
-  const ret = document.getElementById('retrato');
-  if(ret) ret.addEventListener('click', ()=>{
-    const frases=['Prazer, Itallo!','Professor e criador','Bora formar uma party?','Arte + código + jogos'];
-    const b=ret.querySelector('.retrato-fala'); b.textContent=frases[(frases.indexOf(b.textContent)+1)%frases.length];
-    ret.classList.remove('pula'); void ret.offsetWidth; ret.classList.add('pula');
-    setTimeout(()=>ret.classList.remove('pula'),1600);
-  });
-})();
 
 /* ============================================================
    TÍTULOS DINÂMICOS
@@ -2000,7 +1925,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
    scramble: o texto "decodifica" ao aparecer e ao passar o mouse
 ============================================================ */
 (function(){
-  const calmo = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const calmo = !!window.__calmo;
   document.querySelectorAll('.dyn-letras').forEach(t=>{
     const txt = t.textContent; t.textContent='';
     [...txt].forEach((ch,i)=>{
@@ -2055,7 +1980,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 /* ---------- títulos vivos: onda contínua, glitch e scramble automáticos ---------- */
 (function(){
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  if(!!window.__calmo) return;
   // depois da queda das letras, o título entra no modo "vivo"
   document.querySelectorAll('.dyn-letras').forEach(t=>{
     const n=t.querySelectorAll('.l').length;
@@ -2091,7 +2016,7 @@ const ioCards = new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.2});
 document.querySelectorAll('.card').forEach(card=>{
   ioCards.observe(card);
-  if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+  if((matchMedia('(hover:hover)').matches && !window.__calmo)){
     card.addEventListener('pointermove',e=>{
       const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
       card.style.setProperty('--ry',(x*12)+'deg'); card.style.setProperty('--rx',(-y*10)+'deg');
@@ -2137,7 +2062,7 @@ document.querySelectorAll('.card').forEach(card=>{
   const vid=document.querySelector('.althea-video');
   if(vid && !calmoV()){ vid.src=`Althea%20site/hero-${innerWidth<720?640:1280}.mp4`;
     new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?vid.play().catch(()=>{}):vid.pause();}),{threshold:.1}).observe(vid); }
-  function calmoV(){return matchMedia('(prefers-reduced-motion:reduce)').matches;}
+  function calmoV(){return !!window.__calmo;}
   // desenha a trilha passando pelo centro de cada Orbe
   const pts=orbes.map(o=>[parseFloat(o.style.left),parseFloat(o.style.top)*0.82]);
   let d=`M${pts[0][0]} ${pts[0][1]}`;
@@ -2148,7 +2073,7 @@ document.querySelectorAll('.card').forEach(card=>{
   }
   mapa.querySelectorAll('.rota,.rota-feita').forEach(el=>el.setAttribute('d',d));
   let len=0; try{ len=rota.getTotalLength(); }catch(e){}
-  const calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const calmo=!!window.__calmo;
   // proporção do caminho onde cada orbe fica (aproximada pelo ponto mais próximo)
   const pos=orbes.map(o=>{
     if(!len) return 0;
@@ -2201,7 +2126,7 @@ document.querySelectorAll('.card').forEach(card=>{
 </script>
 
 <script>
-(()=>{const m=document.getElementById('mural');if(!m||matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(hover: none)').matches)return;
+(()=>{const m=document.getElementById('mural');if(!m||!!window.__calmo||matchMedia('(hover: none)').matches)return;
 const els=[...m.querySelectorAll('[data-z]')];
 m.addEventListener('mousemove',e=>{const r=m.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
 els.forEach(el=>{const z=+el.dataset.z;el.style.setProperty('--mx',(x*z*10).toFixed(1)+'px');el.style.setProperty('--my',(y*z*10).toFixed(1)+'px')})});
@@ -2210,7 +2135,7 @@ m.addEventListener('mouseleave',()=>els.forEach(el=>{el.style.setProperty('--mx'
 
 <script>
 (()=>{
-const calmo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const calmo=!!window.__calmo;
 /* ---------- parallax do hero ---------- */
 const hero=document.getElementById('topo');
 const camadas=[...hero.querySelectorAll('[data-prof]')];
@@ -2218,23 +2143,6 @@ if(!calmo && matchMedia('(hover:hover)').matches){
   hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     camadas.forEach(el=>{const k=+el.dataset.prof*14;el.style.setProperty('--px',(x*k).toFixed(1)+'px');el.style.setProperty('--py',(y*k).toFixed(1)+'px')})});
   hero.addEventListener('pointerleave',()=>camadas.forEach(el=>{el.style.setProperty('--px','0px');el.style.setProperty('--py','0px')}));
-}
-/* ---------- habilidades orbitando ---------- */
-const orb=document.getElementById('orbita');
-if(orb){
-  const itens=[...orb.children], av=document.getElementById('avatar');
-  let ang=0, vel=.0045, alvo=.0045, visivel=true;
-  av&&av.addEventListener('pointerenter',()=>alvo=.016); av&&av.addEventListener('pointerleave',()=>alvo=.0045);
-  orb.addEventListener('pointerenter',()=>alvo=.0012); orb.addEventListener('pointerleave',()=>alvo=.0045);
-  new IntersectionObserver(es=>visivel=es[0].isIntersecting).observe(hero);
-  const passo=()=>{ if(visivel){ vel+=(alvo-vel)*.05; ang+=calmo?0:vel;
-    const W=orb.clientWidth,H=orb.clientHeight,rx=W*.62,ry=H*.11,cx=W*.5,cy=H*.6,inc=-.12;
-    itens.forEach((it,i)=>{const a=ang+i*Math.PI*2/itens.length,ex=Math.cos(a)*rx,ey=Math.sin(a)*ry;
-      const x=cx+ex*Math.cos(inc)-ey*Math.sin(inc), y=cy+ex*Math.sin(inc)+ey*Math.cos(inc), f=Math.sin(a);
-      it.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${(.78+.3*(f+1)/2).toFixed(3)})`;
-      it.style.zIndex=f>0?6:2; it.style.opacity=(.55+.45*(f+1)/2).toFixed(2);});
-  } requestAnimationFrame(passo); };
-  passo();
 }
 /* ---------- trilha do começo ao fim da página ---------- */
 const svg=document.getElementById('trilhaMundo'); if(!svg) return;
@@ -2326,7 +2234,7 @@ addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick);
 <script>
 (()=>{
 const sec=document.getElementById('projeto'); if(!sec) return;
-const calmo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const calmo=!!window.__calmo;
 let visivel=false; new IntersectionObserver(es=>visivel=es[0].isIntersecting,{rootMargin:'100px'}).observe(sec);
 /* lanterna + parallax */
 const lan=document.getElementById('cpLanterna'), camadas=[...sec.querySelectorAll('[data-p]')];
@@ -2368,6 +2276,13 @@ function passo(){
 }
 setTimeout(()=>{vaiPara(letras[13]);passo()},800);
 addEventListener('resize',()=>{const on=letras.find(l=>l.classList.contains('on'));if(on)vaiPara(on)});
+})();
+</script>
+<script>
+(function(){var b=document.getElementById('calmoBtn');if(!b)return;
+  function pinta(){b.setAttribute('aria-pressed',window.__calmo?'true':'false');b.textContent=window.__calmo?'Animações reduzidas · ativar':'Reduzir animações';}
+  pinta();
+  b.addEventListener('click',function(){try{localStorage.setItem('calmo',window.__calmo?'0':'1');}catch(e){}location.reload();});
 })();
 </script>
 </body>
