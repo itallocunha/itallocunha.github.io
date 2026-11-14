@@ -1169,6 +1169,49 @@ html.calmo .rabisco-hero path{stroke-dashoffset:0}
 /* tipografia: a fonte manuscrita fica só nos objetos de papel (polaroids) */
 .althea .sub{font-family:var(--f-cond);letter-spacing:.14em;font-size:18px}
 .sobre-fazeres li{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ===== ALTHEA O RPG (mini seção entre ALTHEA e O Copo) ===== */
+.arpg{position:relative;padding:110px 0 70px;overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,transparent,rgba(20,51,31,.55) 35%,rgba(20,51,31,.55) 75%,transparent)}
+.arpg-ceu{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 50% 60% at 78% 40%,rgba(63,191,106,.18),transparent 70%),radial-gradient(ellipse 40% 50% at 15% 30%,rgba(143,77,255,.16),transparent 70%)}
+.arpg-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:50px;align-items:center}
+.arpg-selo{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-pixel2);font-size:12px;color:#7ee39c;border:2px solid #3fbf6a;padding:6px 12px;margin-bottom:22px;background:rgba(11,7,22,.5)}
+.arpg-selo i{width:8px;height:8px;background:#3fbf6a;box-shadow:0 0 10px #3fbf6a;animation:arpg-pisca 1.2s steps(1) infinite}
+@keyframes arpg-pisca{50%{opacity:.2}}
+.arpg-titulo{display:flex;align-items:center;gap:18px;margin:0 0 16px}
+.arpg-titulo img{width:104px;height:104px;image-rendering:pixelated;filter:drop-shadow(0 0 24px rgba(255,190,40,.45));animation:flutua-logo 6s ease-in-out infinite}
+.arpg-titulo span{font-family:var(--f-pixel);font-weight:700;color:var(--amarelo);font-size:clamp(54px,6.4vw,92px);line-height:.85;letter-spacing:.02em;text-shadow:0 5px 0 #8a4f00,0 0 40px rgba(255,190,40,.3)}
+.arpg-titulo b{display:block;font-size:.42em;color:var(--branco);letter-spacing:.3em;text-shadow:0 3px 0 #000;margin-top:8px}
+.arpg-faixa{display:inline-block;font-family:var(--f-pixel2);font-size:13px;color:#16101f;background:var(--amarelo);padding:7px 14px;box-shadow:4px 4px 0 #000;margin-bottom:20px}
+.arpg-lead{font-size:17px;color:var(--branco);max-width:520px;margin-bottom:24px}
+.arpg-num{display:grid;grid-template-columns:repeat(4,auto);gap:10px 28px;justify-content:start;margin-bottom:28px}
+.arpg-num div{display:flex;flex-direction:column}
+.arpg-num b{font-family:var(--f-pixel);font-weight:700;font-size:42px;line-height:1;color:var(--amarelo)}
+.arpg-num span{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--roxo-claro);margin-top:6px}
+.arpg-tela{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:22px;align-items:center}
+.arpg-janela{display:block;text-decoration:none;border:3px solid #1a0f2e;box-shadow:0 0 0 3px var(--amarelo),0 0 0 6px #1a0f2e,0 24px 50px rgba(0,0,0,.6);background:#140c26;transform:rotate(-1.5deg);transition:transform .35s}
+.arpg-janela:hover{transform:rotate(0) scale(1.02)}
+.arpg-barra{display:flex;justify-content:space-between;font-family:var(--f-pixel2);font-size:10px;color:var(--amarelo);background:#1a0f2e;padding:7px 10px}
+.arpg-barra i{display:inline-block;width:7px;height:7px;background:#ff5a5a;box-shadow:0 0 8px #ff5a5a;margin-right:6px;animation:arpg-pisca 1s steps(1) infinite}
+.arpg-vista{display:block;height:400px;overflow:hidden}
+.arpg-vista img{width:100%;height:auto;image-rendering:pixelated;animation:arpg-desce 24s ease-in-out infinite alternate}
+@keyframes arpg-desce{to{transform:translateY(calc(-100% + 400px))}}
+.arpg-party p{font-family:var(--f-pixel2);font-size:11px;letter-spacing:.14em;color:var(--roxo-claro);margin:0 0 8px}
+.arpg-fila{display:flex;flex-wrap:wrap;gap:6px 4px;margin-bottom:20px}
+.arpg-fila figure{margin:0;display:flex;flex-direction:column;align-items:center;width:64px}
+.arpg-fila img{height:54px;width:auto;image-rendering:pixelated;animation:arpg-pulo 1.6s ease-in-out infinite;animation-delay:calc(var(--d,0) * 1s)}
+.arpg-fila figure:nth-child(2) img{--d:.2}.arpg-fila figure:nth-child(3) img{--d:.4}.arpg-fila figure:nth-child(4) img{--d:.6}.arpg-fila figure:nth-child(5) img{--d:.8}
+.arpg-fila figure:hover img{transform:scale(1.2)}
+.arpg-fila figcaption{font-family:var(--f-pixel2);font-size:9px;color:var(--branco);margin-top:6px}
+@keyframes arpg-pulo{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.arpg-biomas{margin-top:60px;overflow:hidden;border-top:3px solid #1a0f2e;border-bottom:3px solid #1a0f2e;box-shadow:0 0 0 2px rgba(255,210,58,.5)}
+.arpg-biomas div{display:flex;width:max-content;animation:arpg-rola 50s linear infinite}
+.arpg-biomas img{height:170px;width:auto;image-rendering:pixelated}
+@keyframes arpg-rola{to{transform:translateX(-50%)}}
+html.calmo .arpg *{animation:none!important}
+@media (max-width:1000px){.arpg-grade{grid-template-columns:1fr}.arpg-tela{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.arpg{padding:80px 0 50px}.arpg-tela{grid-template-columns:1fr}.arpg-vista{height:320px}@keyframes arpg-desce{to{transform:translateY(calc(-100% + 320px))}}.arpg-num{grid-template-columns:repeat(2,auto)}.arpg-titulo img{width:72px;height:72px}.arpg-biomas img{height:120px}}
 </style>
 </head>
 <body>
@@ -1414,6 +1457,56 @@ html.calmo .rabisco-hero path{stroke-dashoffset:0}
         <p>O livro que acompanha o jogo, com o Teste das Orbes, raças, classes e o Sistema de Afinidade.</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ======================= ALTHEA O RPG (pixel art) ======================= -->
+<section class="arpg" id="althea-rpg">
+  <div class="arpg-ceu" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="arpg-grade">
+      <div class="arpg-txt rv">
+        <span class="arpg-selo"><i></i>OUTRO JOGO MEU · PIXEL ART</span>
+        <h2 class="arpg-titulo"><img src="assets/althea-rpg/emblema.webp" alt="" width="420" height="420" loading="lazy"><span>ALTHEA<b>O RPG</b></span></h2>
+        <p class="arpg-faixa">SEU COMENTÁRIO VIRA PERSONAGEM</p>
+        <p class="arpg-lead">Um RPG medieval em pixel art feito junto com a comunidade. Quem comenta raça, nome e função ganha um herói no mapa, sobe de nível e enfrenta calabouços. É um projeto diferente da ALTHEA de autoconhecimento.</p>
+        <div class="arpg-num">
+          <div><b>4</b><span>Raças</span></div>
+          <div><b>5</b><span>Classes</span></div>
+          <div><b>5</b><span>Chefões</span></div>
+          <div><b>30</b><span>Níveis</span></div>
+        </div>
+        <div class="althea-acoes">
+          <a href="althea-rpg.html" class="btn">Conhecer o jogo <svg><use href="#seta"/></svg></a>
+          <a href="https://www.instagram.com/althearpggame/" class="link" target="_blank" rel="noopener">@althearpggame <svg><use href="#seta"/></svg></a>
+        </div>
+      </div>
+
+      <div class="arpg-tela rv">
+        <a class="arpg-janela" href="althea-rpg.html" aria-label="Ver a página do ALTHEA O RPG">
+          <span class="arpg-barra"><span><i></i>A VILA AO VIVO</span><span>REINO</span></span>
+          <span class="arpg-vista"><img src="assets/althea-rpg/vila-alta.webp" alt="Vila de ALTHEA O RPG com dezenas de jogadores, casas, muralha e floresta" width="700" height="1150" loading="lazy"></span>
+        </a>
+        <div class="arpg-party">
+          <p>RAÇAS</p>
+          <div class="arpg-fila">
+            <figure><img src="assets/althea-rpg/humano.png" alt="" loading="lazy"><figcaption>Humano</figcaption></figure>
+            <figure><img src="assets/althea-rpg/elfo.png" alt="" loading="lazy"><figcaption>Elfo</figcaption></figure>
+            <figure><img src="assets/althea-rpg/anao.png" alt="" loading="lazy"><figcaption>Anão</figcaption></figure>
+            <figure><img src="assets/althea-rpg/orc.png" alt="" loading="lazy"><figcaption>Orc</figcaption></figure>
+          </div>
+          <p>CLASSES</p>
+          <div class="arpg-fila">
+            <figure><img src="assets/althea-rpg/cavaleiro.png" alt="" loading="lazy"><figcaption>Cavaleiro</figcaption></figure>
+            <figure><img src="assets/althea-rpg/mago.png" alt="" loading="lazy"><figcaption>Mago</figcaption></figure>
+            <figure><img src="assets/althea-rpg/arqueiro.png" alt="" loading="lazy"><figcaption>Arqueiro</figcaption></figure>
+            <figure><img src="assets/althea-rpg/monge.png" alt="" loading="lazy"><figcaption>Monge</figcaption></figure>
+            <figure><img src="assets/althea-rpg/ladino.png" alt="" loading="lazy"><figcaption>Ladino</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="arpg-biomas" aria-hidden="true"><div><img src="assets/althea-rpg/biomas-folha.webp" alt="" loading="lazy"><img src="assets/althea-rpg/biomas-folha.webp" alt="" loading="lazy"><img src="assets/althea-rpg/biomas-folha.webp" alt="" loading="lazy"><img src="assets/althea-rpg/biomas-folha.webp" alt="" loading="lazy"></div></div>
   </div>
 </section>
 
@@ -2230,7 +2323,7 @@ if(orb){
 const svg=document.getElementById('trilhaMundo'); if(!svg) return;
 const base=document.getElementById('tmBase'),viva=document.getElementById('tmViva'),mask=document.getElementById('tmMaskPath'),
       marcosG=document.getElementById('tmMarcos'),viaj=document.getElementById('tmViajante');
-const fases=[['sobre','SOBRE'],['althea','ALTHEA'],['projeto','O COPO'],['portfolio','PORTFÓLIO'],['aulas','AULAS'],['contato','CONTATO']];
+const fases=[['sobre','SOBRE'],['althea','ALTHEA'],['althea-rpg','ALTHEA RPG'],['projeto','O COPO'],['portfolio','PORTFÓLIO'],['aulas','AULAS'],['contato','CONTATO']];
 let amostras=[],L=0,marcos=[],atual=0,alvoLen=0;
 const NS='http://www.w3.org/2000/svg';
 function caminho(pts){let d=`M${pts[0][0]} ${pts[0][1]}`;
