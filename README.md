@@ -32,3 +32,10 @@ As artes originais em alta resolução ficam fora do repositório (veja `.gitign
 1. Coloque as imagens/vídeos em `aulas/<ferramenta>/midia/` (prefira `.webp` ou `.jpg` leves).
 2. Em `aulas/<ferramenta>/conteudo.js`, adicione o arquivo em `midia` e novos textos em `posts`.
 3. Suba para o GitHub incluindo a pasta `midia`. O arquivo `.nojekyll` na raiz precisa continuar lá.
+
+## Adicionar um novo projeto ou continuação
+
+- **Nova área do portfólio** (ex.: um novo tipo de arte): crie o `.html` copiando um existente (`design-grafico.html`), ajuste `data-area`, e cadastre a área em `textos-portfolio.json` + `gerar-galeria.py`. Depois inclua o card correspondente em `index.html` (seção `PORTFÓLIO`).
+- **Projeto próprio com página dedicada** (como `Althea site/` e `O copo não parou/`): crie uma pasta com seu `index.html` e coloque os arquivos dela dentro. Use vídeos de fundo sempre com `poster`, em versão leve para celular (`-640.mp4`) e em `object-fit: cover` apenas quando a proporção da tela combinar com a do vídeo.
+- **Links pendentes**: o link do Behance em `index.html` está oculto (atributo `hidden`). Coloque a URL e remova o atributo.
+- **Imagens ainda faltando**: `assets/port-03-pixelart.png` (card Pixel Art) e `assets/port-07-ensino.png` (card Ensino). Enquanto não existirem, o espaço fica vazio.
