@@ -16,6 +16,7 @@ Site-portfólio de Itallo Cunha: game design, design gráfico, ilustração e en
   - `aulas/<ferramenta>/conteudo.js` · textos, posts do diário e lista de mídia (edite aqui)
   - `aulas/<ferramenta>/midia/` · imagens e vídeos daquela ferramenta
 - `assets/icones/` · ícones em pixel art das ferramentas (usados na landing e nas páginas de aula)
+- `assets/infinity-run.js` · mini-jogo "Infinity Run" da seção de contato (canvas + som sintetizado, sem imagens ou áudios externos; o HTML/CSS dele está em `index.html`, no bloco `#jogo`)
 - `assets/` · imagens do site
 
 ## Atualizar as galerias
