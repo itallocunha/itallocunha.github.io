@@ -222,6 +222,124 @@ a{color:inherit}
 .final .acoes{justify-content:center;margin-top:30px}
 .rodape{border-top:3px solid var(--roxo-escuro);padding:26px 0;font-family:var(--px2);font-size:11px;color:var(--apagado);text-align:center}
 .rodape a{color:var(--ouro)}
+
+/* ===================== ATUALIZAÇÃO 1.84 ===================== */
+.hero-mapa{background-image:url(assets/althea-rpg/v2/mundo.webp)}
+.hero-emblema img{height:auto}
+.numeros{grid-template-columns:repeat(6,1fr)}
+@media(max-width:800px){.numeros{grid-template-columns:repeat(3,1fr)}}
+.desfile img{height:72px}
+.versao{font-family:var(--px2);font-size:11px;color:var(--roxo-claro);margin-top:14px}
+.versao b{color:var(--ouro)}
+
+/* novidade: hack and slash */
+.hs{background:linear-gradient(180deg,transparent,rgba(143,77,255,.10) 30%,rgba(143,77,255,.10) 70%,transparent)}
+.hs-grade{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;margin-top:50px;align-items:center}
+.tela-jogo{overflow:hidden}
+.tela-jogo img{width:100%;image-rendering:pixelated;display:block}
+.tela-jogo .barra{display:flex;justify-content:space-between;font-family:var(--px2);font-size:11px;color:var(--ouro);background:#1a0f2e;padding:8px 12px;border-bottom:3px solid var(--roxo-escuro)}
+.tela-jogo .barra i{display:inline-block;width:8px;height:8px;background:#ff5a5a;box-shadow:0 0 8px #ff5a5a;margin-right:6px;animation:pisca 1s steps(1) infinite}
+.golpes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.golpe{padding:16px 16px 14px}
+.golpe kbd{display:inline-block;font-family:var(--px2);font-size:11px;color:#1a0f2e;background:var(--ouro);padding:3px 7px;box-shadow:2px 2px 0 #000;margin-bottom:8px}
+.golpe h3{font-family:var(--px);font-weight:700;color:var(--branco);font-size:20px;line-height:1.1;margin-bottom:4px}
+.golpe p{font-size:13.5px}
+@media(max-width:900px){.hs-grade{grid-template-columns:1fr}}
+@media(max-width:480px){.golpes{grid-template-columns:1fr}}
+
+/* raças com contagem */
+.racas-grade.onze{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px}
+.racas-grade.onze .raca{padding:18px 14px 16px}
+.racas-grade.onze .pedestal{height:120px}
+.racas-grade.onze .pedestal img{height:104px}
+.racas-grade.onze h3{font-size:24px}
+.racas-grade.onze .poder{margin:8px 0 8px}
+.conta{height:8px;background:#1f1438;border:2px solid #000;position:relative;overflow:hidden;margin-top:6px}
+.conta::after{content:"";position:absolute;inset:0;width:var(--v);background:repeating-linear-gradient(90deg,var(--verde) 0 8px,transparent 8px 10px)}
+.raca .orig{display:block;font-size:12.5px;margin-top:6px;color:var(--apagado)}
+
+/* classes: 18 botões e trilha de evolução */
+.botoes-classe{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:8px}
+.botoes-classe button{width:auto;height:70px}
+.botoes-classe button img{height:46px}
+.evolucao{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:6px;margin:0 0 20px}
+.evolucao div{border:2px solid var(--roxo);background:rgba(143,77,255,.12);padding:8px 8px;text-align:center}
+.evolucao div b{display:block;font-family:var(--px);font-weight:700;color:var(--branco);font-size:16px;line-height:1.1}
+.evolucao div small{font-family:var(--px2);font-size:10px;color:var(--roxo-claro)}
+.evolucao div:last-child{border-color:var(--ouro);background:rgba(255,210,58,.1)}
+.evolucao span{font-family:var(--px2);color:var(--ouro)}
+.ataque{font-family:var(--px2);font-size:12px;color:var(--branco);margin-bottom:12px}
+.ataque b{color:var(--ouro)}
+.habs span.sup{border-color:var(--ouro);color:var(--ouro);background:rgba(255,210,58,.12)}
+.moradores-cls{font-family:var(--px2);font-size:11px;color:var(--verde);margin-top:14px}
+@media(max-width:520px){.evolucao{grid-template-columns:1fr;}.evolucao span{display:none}}
+
+/* mundo novo */
+.mapa-grande{margin-top:50px;overflow:hidden}
+.mapa-grande .vista{height:560px;overflow:hidden;position:relative}
+.mapa-grande .vista img{position:absolute;left:0;top:0;width:150%;max-width:none;height:auto;image-rendering:pixelated;animation:voa 40s ease-in-out infinite alternate}
+@keyframes voa{from{transform:translate(0,0)}to{transform:translate(-33.3%,-10%)}}
+@media(max-width:700px){.mapa-grande .vista{height:340px}.mapa-grande .vista img{width:260%}@keyframes voa{to{transform:translate(-61%,-6%)}}}
+.mundo-grade.dois{grid-template-columns:1fr 1fr}
+.mundo-grade.dois .vista{height:420px}
+.mundo-grade.dois .vista img{height:100%;width:100%;object-fit:cover}
+@media(max-width:760px){.mundo-grade.dois{grid-template-columns:1fr}.mundo-grade.dois .vista{height:300px}}
+.biomas-tab{margin-top:50px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.bioma{padding:16px 14px;border-top:6px solid var(--c)}
+.bioma h3{font-family:var(--px);font-weight:700;color:var(--branco);font-size:19px;line-height:1.1}
+.bioma .cal{font-family:var(--px2);font-size:10px;color:var(--ouro);display:block;margin:6px 0 10px}
+.bioma ul{list-style:none;font-size:13px;line-height:1.5}
+.bioma li::before{content:"▸ ";color:var(--c)}
+.bioma li em{font-style:normal;font-family:var(--px2);font-size:9px;color:var(--roxo-claro)}
+.mais-biomas{margin-top:20px;font-size:14px;text-align:center;color:var(--apagado)}
+@media(max-width:1000px){.biomas-tab{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.biomas-tab{grid-template-columns:1fr}}
+
+/* calabouços */
+.cal-grade{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:50px}
+.cal{grid-column:span 2;overflow:hidden}
+.cal:nth-child(4){grid-column:2 / span 2}
+.cal img{width:100%;aspect-ratio:1240/660;object-fit:cover;image-rendering:pixelated;display:block;transition:transform .5s}
+.cal:hover img{transform:scale(1.06)}
+.cal .info{padding:14px 16px 16px}
+.cal h3{font-family:var(--px);font-weight:700;color:var(--branco);font-size:22px;line-height:1.05}
+.cal .chefe-nome{font-family:var(--px2);font-size:11px;color:var(--ouro);display:block;margin:6px 0 8px}
+.cal p{font-size:13.5px}
+.cal .perigo{display:inline-block;margin-top:10px;font-family:var(--px2);font-size:10px;color:#1a0f2e;background:var(--c,#ff6b6b);padding:3px 8px}
+.salas{margin-top:46px;display:flex;flex-wrap:wrap;justify-content:center;gap:0;font-family:var(--px2);font-size:11px}
+.salas span{background:var(--noite2);border:3px solid #1a0f2e;box-shadow:inset 0 0 0 2px var(--roxo-escuro);padding:10px 12px;color:var(--branco)}
+.salas span:last-child{box-shadow:inset 0 0 0 2px var(--ouro);color:var(--ouro)}
+.salas span+span{margin-left:-3px}
+@media(max-width:1000px){.cal-grade{grid-template-columns:1fr 1fr}.cal,.cal:nth-child(4){grid-column:auto}.cal:last-child{grid-column:1/-1}}
+@media(max-width:600px){.cal-grade{grid-template-columns:1fr}}
+
+/* história */
+.historia-grade{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:40px;margin-top:50px;align-items:start}
+.linha{position:relative;padding-left:28px;border-left:3px dashed var(--roxo-escuro)}
+.dia{position:relative;margin-bottom:22px}
+.dia::before{content:"";position:absolute;left:-37px;top:4px;width:14px;height:14px;background:var(--ouro);box-shadow:0 0 0 3px #1a0f2e}
+.dia b{font-family:var(--px2);font-size:11px;color:#1a0f2e;background:var(--roxo-claro);padding:2px 8px;margin-right:6px}
+.dia h3{display:inline;font-family:var(--px);font-weight:700;color:var(--branco);font-size:20px}
+.dia p{font-size:14.5px;margin-top:6px}
+.capas{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:sticky;top:90px}
+.capas img{width:100%;image-rendering:pixelated}
+.capas figcaption{font-family:var(--px2);font-size:10px;color:var(--ouro);text-align:center;padding:8px 4px}
+.votacao{grid-column:1/-1;padding:20px}
+.votacao h3{font-family:var(--px);font-weight:700;color:var(--ouro);font-size:24px;margin-bottom:10px}
+.votacao ol{list-style:none;display:grid;gap:8px;counter-reset:v}
+.votacao li{counter-increment:v;display:flex;gap:12px;align-items:center;font-size:15px;color:var(--branco)}
+.votacao li::before{content:counter(v);font-family:var(--px);font-weight:700;font-size:20px;color:#1a0f2e;background:var(--ouro);width:32px;height:32px;display:grid;place-items:center;flex:none;box-shadow:3px 3px 0 #000}
+@media(max-width:900px){.historia-grade{grid-template-columns:1fr}.capas{position:static}}
+
+/* próximos passos */
+.proximos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.proximos div{padding:20px}
+.proximos h3{font-family:var(--px);font-weight:700;color:var(--branco);font-size:20px;margin-bottom:6px}
+.proximos small{display:block;font-family:var(--px2);font-size:10px;color:var(--ouro);margin-bottom:6px}
+.proximos p{font-size:14px}
+@media(max-width:900px){.proximos{grid-template-columns:1fr}}
+.galeria.duas{grid-template-columns:1fr 1fr}
+@media(max-width:600px){.galeria.duas{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -232,7 +350,7 @@ a{color:inherit}
     <a class="voltar" href="index.html#althea-rpg">◀ Portfólio</a>
     <a class="marca" href="#inicio"><img class="px" src="assets/althea-rpg/emblema.webp" alt="" width="34" height="34">ALTHEA O RPG</a>
     <nav aria-label="Seções">
-      <a href="#como">Como joga</a><a href="#racas">Raças</a><a href="#classes">Classes</a><a href="#mundo">Mundo</a><a href="#chefoes">Chefões</a><a href="#gameplay">Gameplay</a>
+      <a href="#combate">Combate</a><a href="#racas">Raças</a><a href="#classes">Classes</a><a href="#mundo">Mundo</a><a href="#calaboucos">Calabouços</a><a href="#historia">História</a>
     </nav>
   </div>
 </header>
@@ -243,35 +361,35 @@ a{color:inherit}
   <div class="hero-mapa" aria-hidden="true"></div>
   <div class="wrap">
     <div>
-      <span class="selo"><i></i>EM DESENVOLVIMENTO · PIXEL ART</span>
+      <span class="selo"><i></i>EM DESENVOLVIMENTO · VIRANDO HACK AND SLASH</span>
       <h1 class="titulo" aria-label="ALTHEA">
         <span style="--i:0">A</span><span style="--i:1">L</span><span style="--i:2">T</span><span style="--i:3">H</span><span style="--i:4">E</span><span style="--i:5">A</span>
       </h1>
       <p class="subtitulo">O RPG</p>
       <span class="faixa">SEU COMENTÁRIO VIRA PERSONAGEM</span>
-      <p class="lead">Um RPG medieval em pixel art feito junto com a comunidade. Cada pessoa que comenta ganha um herói no mapa, sobe de nível, enfrenta calabouços e ajuda a decidir o rumo do reino.</p>
+      <p class="lead">Um RPG medieval em pixel art feito junto com a comunidade do Instagram. Quem comenta ganha um herói no mapa, sobe de nível, evolui de classe e entra nos calabouços. Toda a arte é desenhada por código, pixel por pixel.</p>
       <div class="acoes">
-        <a class="btn" href="#gameplay">▶ Ver gameplay</a>
+        <a class="btn" href="#combate">▶ Ver o jogo</a>
         <a class="btn sec" href="https://www.instagram.com/althearpggame/" target="_blank" rel="noopener">@althearpggame</a>
       </div>
+      <p class="versao">VERSÃO <b>1.84</b> · ATUALIZADO EM 16/11/2026</p>
     </div>
     <div class="hero-emblema"><img class="px" src="assets/althea-rpg/emblema.webp" alt="Emblema de ALTHEA O RPG" width="420" height="420"></div>
   </div>
   <div class="desfile" aria-hidden="true">
-    <div class="fila">
-      <img class="px" src="assets/althea-rpg/cavaleiro.png" alt=""><img class="px" src="assets/althea-rpg/mago.png" alt=""><img class="px" src="assets/althea-rpg/arqueiro.png" alt=""><img class="px" src="assets/althea-rpg/monge.png" alt=""><img class="px" src="assets/althea-rpg/ladino.png" alt=""><img class="px" src="assets/althea-rpg/elfo.png" alt=""><img class="px" src="assets/althea-rpg/anao.png" alt=""><img class="px" src="assets/althea-rpg/orc.png" alt="">
-    </div>
+    <div class="fila" id="fila"></div>
     <div class="chao"></div>
   </div>
 </section>
 
 <div class="wrap">
   <div class="numeros rv">
-    <div><b>4</b><span>RAÇAS BASE</span></div>
-    <div><b>5</b><span>CLASSES</span></div>
-    <div><b>30</b><span>NÍVEL MÁXIMO</span></div>
-    <div><b>5</b><span>CHEFÕES</span></div>
+    <div><b>103</b><span>MORADORES</span></div>
+    <div><b>11</b><span>RAÇAS</span></div>
+    <div><b>18</b><span>CLASSES</span></div>
+    <div><b>39</b><span>MONSTROS</span></div>
     <div><b>5</b><span>CALABOUÇOS</span></div>
+    <div><b>15</b><span>DIAS DE HISTÓRIA</span></div>
   </div>
 </div>
 
@@ -281,25 +399,50 @@ a{color:inherit}
     <div class="centro rv">
       <span class="etiqueta">COMO SE JOGA</span>
       <h2 class="h2">Um reino feito por quem comenta</h2>
-      <p class="intro">ALTHEA nasceu como um jogo de comunidade no Instagram. O mesmo motor gera o mapa, as batalhas e os vídeos, e cada vídeo mostra o reino crescendo com os jogadores novos.</p>
+      <p class="intro">ALTHEA nasceu como um jogo de comunidade no Instagram. O mesmo motor gera o mapa, as lutas e os episódios, e cada episódio mostra o reino crescendo com quem chegou.</p>
     </div>
     <div class="passos">
       <article class="passo moldura rv">
         <span class="n">1</span>
         <h3>Comente</h3>
-        <p>A pessoa segue o perfil e comenta a raça, o nome e a função do herói.</p>
-        <div class="balao-coment"><b>@jogador:</b> sou Olivison, elfo mago<span class="cursor"></span></div>
+        <p>A pessoa segue o perfil e comenta nome, raça, classe e função do herói.</p>
+        <div class="balao-coment"><b>@jogador:</b> sou Darus, elfo negro necromante<span class="cursor"></span></div>
       </article>
       <article class="passo moldura rv">
         <span class="n">2</span>
         <h3>Vire morador</h3>
-        <p>O herói aparece no mapa da vila com nome, título e uma história curta. Daí em diante ele trabalha, explora e luta.</p>
+        <p>O herói chega de barco, ganha título e história curta, e passa a morar no mapa. Trabalha, explora, luta e aparece nos episódios.</p>
       </article>
       <article class="passo moldura rv">
         <span class="n">3</span>
         <h3>Decida o rumo</h3>
-        <p>A comunidade vota em raças novas, eventos e expedições. Cada episódio dá XP e os heróis sobem de nível, até o 30.</p>
+        <p>Cada episódio termina com uma votação de três caminhos. O mais votado vira o próximo dia, e o XP dos episódios e do jogo soma no mesmo nível.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- NOVIDADE: HACK AND SLASH -->
+<section class="secao hs" id="combate">
+  <div class="wrap">
+    <div class="rv">
+      <span class="etiqueta">NOVIDADE</span>
+      <h2 class="h2">Agora é hack and slash<small>combate em tempo real, sala por sala</small></h2>
+      <p class="intro">A grande atualização transforma as lutas em ação de verdade: hordas que cercam o herói, golpes com peso e chefões que leem o jogador. Seis das onze fases do plano já estão prontas.</p>
+    </div>
+    <div class="hs-grade">
+      <figure class="tela-jogo moldura rv">
+        <div class="barra"><span><i></i>HORDA · 26 INIMIGOS</span><span>COVIL DO REI GOBLIN</span></div>
+        <img src="assets/althea-rpg/v2/horda.webp" alt="Cavaleiro cercado por uma horda de goblins, esqueletos e slimes dentro do Covil do Rei Goblin" loading="lazy">
+      </figure>
+      <div class="golpes">
+        <div class="golpe moldura rv"><kbd>CLIQUE</kbd><h3>Combo de 3</h3><p>Cada classe tem o seu ataque: espada, adagas, flechas, magia, notas musicais.</p></div>
+        <div class="golpe moldura rv"><kbd>SEGURA</kbd><h3>Golpe pesado</h3><p>Carrega e solta. Quebra a postura dos inimigos blindados.</p></div>
+        <div class="golpe moldura rv"><kbd>ESPAÇO</kbd><h3>Esquiva</h3><p>Escapa do golpe na hora certa. O aviso no chão mostra onde vai cair.</p></div>
+        <div class="golpe moldura rv"><kbd>Q F R V</kbd><h3>Habilidades</h3><p>Quatro normais e uma suprema por classe, com árvore de talentos.</p></div>
+        <div class="golpe moldura rv"><kbd>IMPACTO</kbd><h3>Peso no acerto</h3><p>Pausa curta, recuo, clarão branco e tremor no golpe forte.</p></div>
+        <div class="golpe moldura rv"><kbd>CHEFÃO</kbd><h3>IA com fases</h3><p>Muda de golpe, chama guardas e entra em fúria com pouca vida.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -309,16 +452,11 @@ a{color:inherit}
   <div class="wrap">
     <div class="rv">
       <span class="etiqueta">RAÇAS</span>
-      <h2 class="h2">Quatro raças fundaram a vila</h2>
-      <p class="intro">Cada raça tem um bônus de poder. Quem não escreve a raça no comentário entra como humano.</p>
+      <h2 class="h2">Onze raças no reino</h2>
+      <p class="intro">Quatro raças fundaram a vila. As outras sete entraram a pedido da comunidade. A barra mostra quantos moradores de cada raça vivem hoje em Althea.</p>
     </div>
-    <div class="racas-grade">
-      <article class="raca moldura rv"><div class="pedestal"><img class="px" src="assets/althea-rpg/humano.png" alt="Sprite de humano" loading="lazy"></div><h3>Humano</h3><span class="poder">PODER BASE</span><p>Os adaptáveis. São a maioria em Althea, aprendem rápido e encaram qualquer ofício.</p></article>
-      <article class="raca moldura rv"><div class="pedestal"><img class="px" src="assets/althea-rpg/elfo.png" alt="Sprite de elfo" loading="lazy"></div><h3>Elfo</h3><span class="poder">PODER +8%</span><p>De ouvidos atentos e passo leve, ligados à floresta e à magia antiga.</p></article>
-      <article class="raca moldura rv"><div class="pedestal"><img class="px" src="assets/althea-rpg/anao.png" alt="Sprite de anão" loading="lazy"></div><h3>Anão</h3><span class="poder">PODER +8%</span><p>Teimosos e resistentes, nascidos para a forja, a mina e as muralhas.</p></article>
-      <article class="raca moldura rv"><div class="pedestal"><img class="px" src="assets/althea-rpg/orc.png" alt="Sprite de orc" loading="lazy"></div><h3>Orc</h3><span class="poder">PODER +15%</span><p>A raça mais forte do reino. Linha de frente em toda incursão.</p></article>
-    </div>
-    <p class="mais-racas rv">VOTADAS PELA COMUNIDADE DEPOIS:<br><span>Elfo negro</span><span>Demônio</span><span>Dragão</span><span>Vampiro</span><span>Anjo</span><span>Minotauro</span></p>
+    <div class="racas-grade onze" id="racasGrade"></div>
+    <p class="nota rv" style="text-align:center">Quem pede uma raça que o jogo ainda não tem entra como humano, com a raça original no título ou na história.</p>
   </div>
 </section>
 
@@ -327,25 +465,19 @@ a{color:inherit}
   <div class="wrap">
     <div class="rv">
       <span class="etiqueta">CLASSES</span>
-      <h2 class="h2">Escolha a sua classe</h2>
-      <p class="intro">A função que a pessoa escreve no comentário define a classe. Cada uma tem um papel no grupo e habilidades próprias na batalha.</p>
+      <h2 class="h2">Dezoito classes, três evoluções</h2>
+      <p class="intro">A função escrita no comentário vira a classe. Cada classe evolui duas vezes, no nível 10 e no nível 20, e muda de nome junto.</p>
     </div>
     <div class="selecao">
-      <div class="escolhido moldura rv" id="escolhido"><div class="raios"></div><img class="px" id="clsImg" src="assets/althea-rpg/cavaleiro.png" alt="Cavaleiro"><span class="papel" id="clsPapel">TANQUE</span></div>
+      <div class="escolhido moldura rv" id="escolhido"><div class="raios"></div><img class="px" id="clsImg" src="assets/althea-rpg/v2/classes/knight.png" alt="Cavaleiro"><span class="papel" id="clsPapel">CORPO A CORPO</span></div>
       <div class="ficha rv">
         <h3 id="clsNome">Cavaleiro</h3>
-        <p class="frase" id="clsFrase">O escudo do reino</p>
-        <p id="clsTexto">Armadura, espada e escudo. Encara o perigo de frente e protege quem está atrás dele.</p>
-        <div class="atributos" id="clsAttr"></div>
+        <p class="frase" id="clsFrase">EVOLUÇÃO</p>
+        <div class="evolucao" id="clsEvo"></div>
+        <p class="ataque" id="clsAtaque"></p>
         <div class="habs" id="clsHabs"></div>
-        <div class="botoes-classe" role="group" aria-label="Classes">
-          <button type="button" data-k="cavaleiro" aria-pressed="true" title="Cavaleiro"><img class="px" src="assets/althea-rpg/cavaleiro.png" alt="Cavaleiro"></button>
-          <button type="button" data-k="mago" aria-pressed="false" title="Mago"><img class="px" src="assets/althea-rpg/mago.png" alt="Mago"></button>
-          <button type="button" data-k="arqueiro" aria-pressed="false" title="Arqueiro"><img class="px" src="assets/althea-rpg/arqueiro.png" alt="Arqueiro"></button>
-          <button type="button" data-k="monge" aria-pressed="false" title="Monge"><img class="px" src="assets/althea-rpg/monge.png" alt="Monge"></button>
-          <button type="button" data-k="ladino" aria-pressed="false" title="Ladino"><img class="px" src="assets/althea-rpg/ladino.png" alt="Ladino"></button>
-        </div>
-        <p class="nota">Qualquer outra função vira aldeão. Com o tempo entraram mais classes, como necromante, bárbaro, bardo, alquimista, ferreiro e pirata.</p>
+        <p class="moradores-cls" id="clsMor"></p>
+        <div class="botoes-classe" role="group" aria-label="Classes" id="botoesCls"></div>
       </div>
     </div>
   </div>
@@ -356,26 +488,34 @@ a{color:inherit}
   <div class="wrap">
     <div class="centro rv">
       <span class="etiqueta">O MUNDO</span>
-      <h2 class="h2">O mapa de Althea<small>vila, biomas, ruínas e segredos</small></h2>
-      <p class="intro">A vila fica no centro da ilha, cercada por muralhas, casas e estradas que crescem a cada episódio. Em volta, biomas com calabouços, ruínas e mistérios para descobrir.</p>
+      <h2 class="h2">O mapa de Althea<small>12 biomas, dia e noite, e um círculo que ninguém desenhou</small></h2>
+      <p class="intro">Um continente inteiro com vila, floresta, deserto, pântano, gelo, vulcão, cristais, cerejeiras e mais. Cada bioma tem seus próprios monstros, que nascem conforme o horário: alguns só de dia, outros só de noite, e uns poucos são raros.</p>
     </div>
-    <div class="mundo-grade">
-      <figure class="janela vila moldura rv">
-        <div class="barra"><span><i></i>A VILA AO VIVO</span><span>REINO</span></div>
-        <div class="vista"><img src="assets/althea-rpg/vila-alta.webp" alt="Vila de Althea cheia de jogadores, casas, muralha e floresta" loading="lazy"></div>
-        <figcaption class="legenda"><b>A vila</b>Cada boneco é um jogador de verdade, com nome e nível.</figcaption>
-      </figure>
+    <figure class="janela mapa-grande moldura rv">
+      <div class="barra"><span><i></i>MAPA DO REINO · VISTA DE LONGE</span><span>ZOOM</span></div>
+      <div class="vista"><img src="assets/althea-rpg/v2/mundo.webp" alt="Mapa do continente de Althea visto de longe, com biomas coloridos, rios e nomes dos lugares como Vila de Althea, Covil do Rei Goblin, Forja do Golem e Torre Invertida" loading="lazy"></div>
+      <figcaption class="legenda"><b>O continente</b>Os nomes são lugares de verdade do jogo: a Vila de Althea, a Torre Invertida, o Menir Rúnico, a Estátua que Chora, os covis dos chefões.</figcaption>
+    </figure>
+    <div class="mundo-grade dois">
       <figure class="janela moldura rv">
         <div class="barra"><span>ATLAS DE ALTHEA</span><span>MAPA</span></div>
-        <div class="vista"><img src="assets/althea-rpg/atlas-mapa.webp" alt="Atlas do continente com regiões coloridas e marcadores" loading="lazy"></div>
-        <figcaption class="legenda"><b>O atlas</b>Covis de chefão, sombras, mistérios e estruturas marcados no continente.</figcaption>
+        <div class="vista"><img src="assets/althea-rpg/v2/atlas.webp" alt="Atlas do continente com regiões coloridas e marcadores de lugares" loading="lazy" style="object-fit:contain;background:#c9a96b"></div>
+        <figcaption class="legenda"><b>O atlas</b>Sombras, mistérios, estruturas, covis de chefão e lugares da vila marcados no papel.</figcaption>
       </figure>
       <figure class="janela moldura rv">
-        <div class="barra"><span>MAPA NOVO</span><span>RUÍNAS</span></div>
-        <div class="vista"><img src="assets/althea-rpg/ruinas.webp" alt="Ruínas nos biomas de deserto, vulcão, gelo e pântano" loading="lazy"></div>
-        <figcaption class="legenda"><b>Ruínas e biomas</b>Deserto, vulcão, gelo e pântano, cada um com seus segredos.</figcaption>
+        <div class="barra"><span><i></i>DE PERTO</span><span>FLORESTA E LAVA</span></div>
+        <div class="vista"><img src="assets/althea-rpg/v2/perto.webp" alt="Herói andando na floresta perto de um campo de lava" loading="lazy"></div>
+        <figcaption class="legenda"><b>De perto</b>Com zoom, o mapa mostra cada árvore, pedra e rachadura de lava.</figcaption>
       </figure>
     </div>
+    <div class="biomas-tab">
+      <div class="bioma moldura rv" style="--c:#3fbf6a"><h3>Clareira</h3><span class="cal">COVIL DO REI GOBLIN</span><ul><li>Slime</li><li>Goblin</li><li>Javali <em>DIA</em></li><li>Lobo da Mata <em>NOITE</em></li><li>Aranha da Mata</li></ul></div>
+      <div class="bioma moldura rv" style="--c:#ffbe3c"><h3>Deserto Dourado</h3><span class="cal">TUMBA DO ESCORPIÃO</span><ul><li>Escorpião</li><li>Cobra-da-Areia <em>DIA</em></li><li>Escaravelho Dourado</li><li>Múmia Antiga <em>NOITE</em></li><li>Verme da Areia</li><li>Mímico <em>RARO</em></li></ul></div>
+      <div class="bioma moldura rv" style="--c:#6f9a4a"><h3>Pântano Antigo</h3><span class="cal">RAIZ DO ENT</span><ul><li>Bicho do pântano</li><li>Sapo Gigante</li><li>Sanguessuga Gigante</li><li>Mosquito <em>NOITE</em></li><li>Crocodilo do Brejo <em>DIA</em></li></ul></div>
+      <div class="bioma moldura rv" style="--c:#8cc8ff"><h3>Reino de Gelo</h3><span class="cal">GRUTA DO YETI</span><ul><li>Lobo de gelo</li><li>Espírito de Gelo <em>NOITE</em></li><li>Coruja das Neves</li><li>Golem de Gelo</li><li>Mamute Lanoso <em>DIA</em></li></ul></div>
+      <div class="bioma moldura rv" style="--c:#ff6428"><h3>Vulcão</h3><span class="cal">FORJA DO GOLEM</span><ul><li>Diabrete</li><li>Salamandra de Lava</li><li>Cão Infernal <em>NOITE</em></li><li>Elemental de Magma</li><li>Fênix Menor <em>RARA</em></li></ul></div>
+    </div>
+    <p class="mais-biomas rv">E ainda Canyon, Floresta Cristalina, Cerejeiras, Neon, Luz, Outono e Tundra, cada um com os seus bichos.</p>
   </div>
   <div class="biomas-faixa rv" aria-label="Biomas do jogo">
     <div class="trilho">
@@ -384,43 +524,65 @@ a{color:inherit}
   </div>
 </section>
 
-<!-- CHEFÕES -->
-<section class="secao chefoes" id="chefoes">
+<!-- CALABOUÇOS -->
+<section class="secao chefoes" id="calaboucos">
   <div class="wrap">
     <div class="rv">
-      <span class="etiqueta">CHEFÕES</span>
-      <h2 class="h2">Cinco chefões, cinco calabouços</h2>
-      <p class="intro">Cada bioma esconde um calabouço com um chefão no fim. O grupo entra junto e cada sala é decidida no dado.</p>
+      <span class="etiqueta">CALABOUÇOS</span>
+      <h2 class="h2">Cinco calabouços, cinco chefões</h2>
+      <p class="intro">Os chefões saíram do mapa aberto e agora esperam no fundo dos seus calabouços. Cada um tem sete salas, portas que trancam durante a luta e um chefão em três fases, com um perigo de arena diferente.</p>
     </div>
-    <div class="chefes-grade">
-      <article class="chefe moldura rv" style="--c:rgba(63,191,106,.35)"><div class="covil"><img class="px" src="assets/althea-rpg/rei-goblin.png" alt="Rei Goblin" loading="lazy"></div><h3>Rei Goblin</h3><span class="nv">NV 6 · CLAREIRA</span><div class="hp" style="--hp:100%"></div></article>
-      <article class="chefe moldura rv" style="--c:rgba(255,190,60,.35)"><div class="covil"><img class="px" src="assets/althea-rpg/rei-escorpiao.png" alt="Rei Escorpião" loading="lazy"></div><h3>Rei Escorpião</h3><span class="nv">NV 9 · DOURADO</span><div class="hp" style="--hp:100%"></div></article>
-      <article class="chefe moldura rv" style="--c:rgba(80,140,70,.4)"><div class="covil"><img class="px" src="assets/althea-rpg/ent-pantano.png" alt="Ent do Pântano" loading="lazy"></div><h3>Ent do Pântano</h3><span class="nv">NV 11 · ANTIGO</span><div class="hp" style="--hp:100%"></div></article>
-      <article class="chefe moldura rv" style="--c:rgba(140,200,255,.4)"><div class="covil"><img class="px" src="assets/althea-rpg/yeti.png" alt="Yeti Ancestral" loading="lazy"></div><h3>Yeti Ancestral</h3><span class="nv">NV 13 · GELO</span><div class="hp" style="--hp:100%"></div></article>
-      <article class="chefe moldura rv" style="--c:rgba(255,100,40,.42)"><div class="covil"><img class="px" src="assets/althea-rpg/golem.png" alt="Golem de Lava" loading="lazy"></div><h3>Golem de Lava</h3><span class="nv">NV 16 · VULCÃO</span><div class="hp" style="--hp:100%"></div></article>
+    <div class="salas rv" aria-label="As sete salas de um calabouço"><span>ENTRADA</span><span>HORDA</span><span>HORDA</span><span>HORDA</span><span>EMBOSCADA E BAÚ</span><span>FOGUEIRA</span><span>SALÃO DO CHEFÃO</span></div>
+    <div class="cal-grade">
+      <article class="cal moldura rv" style="--c:#3fbf6a"><img src="assets/althea-rpg/v2/cal-covil-do-rei-goblin.webp" alt="Luta contra o Rei Goblin no Covil" loading="lazy"><div class="info"><h3>Covil do Rei Goblin</h3><span class="chefe-nome">REI GOBLIN · SENHOR DO COVIL</span><p>Caverna na clareira. Na fase 2, a fúria da coroa faz pedras caírem do teto.</p><span class="perigo">PEDRAS DO TETO</span></div></article>
+      <article class="cal moldura rv" style="--c:#ffbe3c"><img src="assets/althea-rpg/v2/cal-tumba-do-escorpiao.webp" alt="Luta contra o Rei Escorpião na Tumba" loading="lazy"><div class="info"><h3>Tumba do Escorpião</h3><span class="chefe-nome">REI ESCORPIÃO · GUARDIÃO DA TUMBA</span><p>No deserto, a areia se levanta e prende quem fica parado.</p><span class="perigo">AREIA MOVEDIÇA</span></div></article>
+      <article class="cal moldura rv" style="--c:#6f9a4a"><img src="assets/althea-rpg/v2/cal-raiz-do-ent.webp" alt="Luta contra o Ent do Pântano na Raiz do Ent" loading="lazy"><div class="info"><h3>Raiz do Ent</h3><span class="chefe-nome">ENT DO PÂNTANO · CORAÇÃO DO PÂNTANO</span><p>Raízes famintas prendem o herói enquanto chovem sementes.</p><span class="perigo">ESPOROS DE VENENO</span></div></article>
+      <article class="cal moldura rv" style="--c:#8cc8ff"><img src="assets/althea-rpg/v2/cal-gruta-do-yeti.webp" alt="Luta contra o Yeti Ancestral na Gruta" loading="lazy"><div class="info"><h3>Gruta do Yeti</h3><span class="chefe-nome">YETI ANCESTRAL · SENHOR DO GELO ETERNO</span><p>Nevasca e avalanche. As estalactites deixam tudo mais lento.</p><span class="perigo">ESTALACTITES</span></div></article>
+      <article class="cal moldura rv" style="--c:#ff6428"><img src="assets/althea-rpg/v2/cal-forja-do-golem.webp" alt="Luta contra o Golem de Lava na Forja" loading="lazy"><div class="info"><h3>Forja do Golem</h3><span class="chefe-nome">GOLEM DE LAVA · CORAÇÃO DA FORJA</span><p>Rios de magma e abalos sísmicos. A lava brota do chão e queima.</p><span class="perigo">LAVA QUE BROTA</span></div></article>
     </div>
-    <p class="d20 rv">O grupo entra. <b>O d20 decide.</b></p>
   </div>
 </section>
 
-<!-- GAMEPLAY -->
-<section class="secao" id="gameplay">
+<!-- HISTÓRIA -->
+<section class="secao" id="historia">
   <div class="wrap">
-    <div class="centro rv">
-      <span class="etiqueta">GAMEPLAY</span>
-      <h2 class="h2">Um pouco do jogo rodando</h2>
-      <p class="intro">Trechos gerados pelo próprio motor do jogo: as cenas de bioma, as lutas contra os chefões e a batalha de ação em tempo real.</p>
+    <div class="rv">
+      <span class="etiqueta">A HISTÓRIA</span>
+      <h2 class="h2">Quinze dias de reino<small>um episódio por dia no Instagram</small></h2>
+      <p class="intro">A história de Althea é escrita junto com quem vota. Alguns momentos que já aconteceram:</p>
     </div>
-    <div class="telas">
-      <figure class="celular rv"><video src="assets/althea-rpg/biomas.mp4" poster="assets/althea-rpg/biomas-poster.jpg" muted loop playsinline preload="none"></video><figcaption>BIOMAS</figcaption></figure>
-      <figure class="celular largo rv"><video src="assets/althea-rpg/batalha.mp4" poster="assets/althea-rpg/batalha-poster.jpg" muted loop playsinline preload="none"></video><figcaption>BATALHA DE AÇÃO · ANTES E DEPOIS</figcaption></figure>
-      <figure class="celular rv"><video src="assets/althea-rpg/chefoes.mp4" poster="assets/althea-rpg/chefoes-poster.jpg" muted loop playsinline preload="none"></video><figcaption>CHEFÕES</figcaption></figure>
+    <div class="historia-grade">
+      <div class="linha rv">
+        <div class="dia"><b>LENDA</b><h3>O Véu da Ignorância</h3><p>Tenebris levou lembranças e nomes. Lumina lutou sete noites e, na oitava, caíram cinco estrelas: os cinco orbes.</p></div>
+        <div class="dia"><b>DIA 1</b><h3>O reino acorda</h3><p>Três pioneiros, uma incursão de slimes e esqueletos e os primeiros nove moradores.</p></div>
+        <div class="dia"><b>DIA 5</b><h3>O barco enorme</h3><p>Vinte e oito moradores chegam de uma vez e o continente ganha biomas novos.</p></div>
+        <div class="dia"><b>DIA 11</b><h3>O Golem cai</h3><p>A Torre Invertida acorda, um feixe de luz fria derruba o Golem de Lava e uma fenda se abre perto da vila.</p></div>
+        <div class="dia"><b>DIA 12</b><h3>A Batalha da Muralha</h3><p>Seis necromantes levantam um exército de mortos, a música do bardo cego devolve a voz do reino e a fenda se fecha.</p></div>
+        <div class="dia"><b>DIA 14</b><h3>O Último Desenho</h3><p>O mapa do porão veio de um reino que apagou. Três reinos seguiram o mesmo círculo e nenhum voltou.</p></div>
+        <div class="dia"><b>DIA 15</b><h3>A Voz do Fundo</h3><p>No fundo do poço, os mortos dos três reinos avisam: não sigam o círculo até o fim. E três vozes vivas pedem ajuda.</p></div>
+      </div>
+      <div class="capas rv">
+        <figure class="moldura"><img src="assets/althea-rpg/v2/dia14.webp" alt="Capa do episódio Dia 14, O Último Desenho" loading="lazy"><figcaption>DIA 14</figcaption></figure>
+        <figure class="moldura"><img src="assets/althea-rpg/v2/dia15.webp" alt="Capa do episódio Dia 15, A Voz do Fundo" loading="lazy"><figcaption>DIA 15</figcaption></figure>
+      </div>
+      <div class="votacao moldura rv">
+        <h3>Votação aberta: o Dia 16</h3>
+        <ol>
+          <li>Descer de novo e seguir as três vozes vivas.</li>
+          <li>Zarpar com o Nox e a Mellyssa até a marca vermelha.</li>
+          <li>Mandar o Wesley e o Dante até um dos reinos que apagaram.</li>
+        </ol>
+      </div>
     </div>
-    <div class="galeria">
-      <figure class="moldura rv"><img src="assets/althea-rpg/bestiario.webp" alt="Tela do bestiário com treze monstros em silhueta" loading="lazy"><figcaption><b>Bestiário.</b> Cada monstro avistado no mapa entra no catálogo. Os que ainda não foram vistos aparecem como sombra.</figcaption></figure>
-      <figure class="moldura rv"><img src="assets/althea-rpg/vila.webp" alt="Vila de Althea vista de perto, com jogadores e balões de fala" loading="lazy"><figcaption><b>O reino de perto.</b> Os heróis conversam, trabalham e reagem ao que acontece na vila.</figcaption></figure>
-      <figure class="moldura larga rv"><img src="assets/althea-rpg/arenas.webp" alt="Arenas da batalha de ação em caverna, vulcão e gelo" loading="lazy"><figcaption><b>Arenas da batalha de ação.</b> Caverna, vulcão e gelo, cada uma com seu clima e seus monstros.</figcaption></figure>
-      <figure class="moldura larga rv"><img src="assets/althea-rpg/estruturas.webp" alt="Interiores: torre dos magos, castelo, casa de treinamento, forja, taverna, igreja e mina" loading="lazy"><figcaption><b>Interiores.</b> Torre dos magos, castelo, forja, taverna, igreja e mina.</figcaption></figure>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="secao" id="galeria" style="padding-top:20px">
+  <div class="wrap">
+    <div class="galeria duas">
+      <figure class="moldura rv"><img src="assets/althea-rpg/vila.webp" alt="Vila de Althea vista de perto, com jogadores e balões de fala" loading="lazy"><figcaption><b>A vila de perto.</b> Os moradores conversam, trabalham e reagem ao que acontece no reino.</figcaption></figure>
+      <figure class="moldura rv"><img src="assets/althea-rpg/estruturas.webp" alt="Interiores: torre dos magos, castelo, casa de treinamento, forja, taverna, igreja e mina" loading="lazy"><figcaption><b>Interiores.</b> Torre dos magos, castelo, forja, taverna, igreja e mina.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -433,10 +595,18 @@ a{color:inherit}
       <h2 class="h2">O que eu faço no projeto</h2>
     </div>
     <div class="bastidores">
-      <div class="moldura rv"><h3>Game design</h3><p>Regras de raças, classes, níveis, XP, calabouços no d20 e batalha de ação com habilidades por classe.</p></div>
-      <div class="moldura rv"><h3>Direção de arte</h3><p>Pixel art de baixa resolução com contorno branco, paleta própria e logotipos do jogo.</p></div>
-      <div class="moldura rv"><h3>Mundo e narrativa</h3><p>Lore do reino, crônica dia a dia e ganchos que a comunidade ajuda a resolver.</p></div>
-      <div class="moldura rv"><h3>Comunidade</h3><p>Perfil no Instagram, vídeos com os jogadores, votações e servidor no Discord.</p></div>
+      <div class="moldura rv"><h3>Game design</h3><p>Raças, classes com evolução, árvore de habilidades, curva de XP, calabouços de sete salas e chefões com fases e IA.</p></div>
+      <div class="moldura rv"><h3>Direção de arte</h3><p>Pixel art de baixa resolução com contorno branco, desenhada por código, e paleta própria para cada bioma.</p></div>
+      <div class="moldura rv"><h3>Mundo e narrativa</h3><p>Lore do reino, crônica dia a dia, votações e pontas soltas que a comunidade ajuda a fechar.</p></div>
+      <div class="moldura rv"><h3>Comunidade</h3><p>Perfil no Instagram, episódios narrados com os jogadores, capas, legendas e servidor no Discord.</p></div>
+    </div>
+    <div class="rv" style="margin-top:70px">
+      <span class="etiqueta">PRÓXIMAS FASES</span>
+    </div>
+    <div class="proximos">
+      <div class="moldura rv"><small>FASE 6</small><h3>Itens, loot e loja</h3><p>Inventário, raridade, ouro, loja e uma curva de XP nova, com festa a cada conquista.</p></div>
+      <div class="moldura rv"><small>NÍVEL 60</small><h3>Mais longe</h3><p>O nível máximo sobe para 60, e ninguém perde o nível que já tem.</p></div>
+      <div class="moldura rv"><small>MAPA</small><h3>Oceano e continente novo</h3><p>Mapa maior, ícones de zoom e um segundo continente do outro lado do mar.</p></div>
     </div>
   </div>
 </section>
@@ -445,7 +615,7 @@ a{color:inherit}
   <div class="wrap rv">
     <img class="emb px" src="assets/althea-rpg/emblema.webp" alt="" width="140" height="140">
     <h2 class="h2">E a sua classe?</h2>
-    <p class="intro" style="margin:18px auto 0">Comente no perfil a raça, o nome e a função do seu herói e entre no reino.</p>
+    <p class="intro" style="margin:18px auto 0">Comente no perfil o nome, a raça, a classe e a função do seu herói e entre no reino.</p>
     <div class="acoes">
       <a class="btn" href="https://www.instagram.com/althearpggame/" target="_blank" rel="noopener">Entrar em Althea</a>
       <a class="btn sec" href="index.html#althea-rpg">Voltar ao portfólio</a>
@@ -464,37 +634,86 @@ tam();addEventListener('resize',tam);
 const calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function q(t){x.clearRect(0,0,W,H);for(const e of est){const a=calmo?.7:.35+.65*Math.abs(Math.sin(t/1000*e.v+e.f));x.fillStyle=e.o?`rgba(255,210,58,${a})`:`rgba(230,220,255,${a})`;x.fillRect(e.x|0,e.y|0,e.s,e.s)}if(!calmo)requestAnimationFrame(q)}requestAnimationFrame(q)})();
 
+/* dados do jogo (versão 1.84) */
+const P='assets/althea-rpg/v2/classes/';
+const G={
+  guerreiro:{at:'Golpe de espada',t:'CORPO A CORPO',h:['Golpe giratório','Investida','Grito de guerra','Muralha','Terremoto']},
+  pirata:{at:'Sabre',t:'CORPO A CORPO',h:['Rajada de pistolas','Abordagem','Rum do capitão','Barril explosivo','Canhonada']},
+  oficio:{at:'Marretada',t:'CORPO A CORPO',h:['Golpe forte','Impulso','Grito de trabalho','Pele de ferro','Martelo do titã']},
+  ladino:{at:'Adagas',t:'CORPO A CORPO',h:['Passo sombrio','Leque de lâminas','Bomba de fumaça','Lâminas venenosas','Dança das sombras']},
+  monge:{at:'Palma sagrada',t:'CORPO A CORPO',h:['Palma do trovão','Meditar','Passo do vento','Onda de luz','Punho do dragão']},
+  mago:{at:'Projétil elemental',t:'À DISTÂNCIA',h:['Explosão elemental','Nova arcana','Salto arcano','Escudo arcano','Tempestade elemental']},
+  feiticeiro:{at:'Magia selvagem',t:'À DISTÂNCIA',h:['Orbe do caos','Corrente de raios','Dreno vital','Pele de pedra','Tempestade selvagem']},
+  necromante:{at:'Caveira sombria',t:'À DISTÂNCIA',h:['Invocar esqueleto','Nuvem de peste','Toque da morte','Armadura de ossos','Esqueleto gigante']},
+  bruxa:{at:'Orbe de veneno',t:'À DISTÂNCIA',h:['Poção explosiva','Maldição','Elixir','Voo da vassoura','Caldeirão fervente']},
+  alquimista:{at:'Frasco alquímico',t:'À DISTÂNCIA',h:['Frasco de ácido','Névoa curativa','Transmutação','Golem de barro','Grande explosão alquímica']},
+  arqueiro:{at:'Flecha',t:'À DISTÂNCIA',h:['Tiro certeiro','Chuva de flechas','Salto para trás','Armadilha de gelo','Rajada de 12 flechas']},
+  bardo:{at:'Notas musicais',t:'À DISTÂNCIA',h:['Canção de cura','Acorde ruidoso','Dança animada','Crescendo','Concerto épico']}
+};
+const CLS=[
+  ['knight','Cavaleiro','guerreiro',['Cavaleiro','Paladino','Guardião Real'],20,'#c83b3b'],
+  ['wizard','Mago','mago',['Mago','Arquimago','Sábio Arcano'],15,'#3d6fd6'],
+  ['ranger','Arqueiro','arqueiro',['Arqueiro','Caçador','Olho de Falcão'],6,'#2f9b5c'],
+  ['monk','Monge','monge',['Monge','Mestre do Punho','Iluminado'],7,'#d9a21e'],
+  ['rogue','Ladino','ladino',['Ladino','Assassino','Sombra Silenciosa'],5,'#7a46c9'],
+  ['necromante','Necromante','necromante',['Necromante','Senhor dos Ossos','Lich'],7,'#4a3a78'],
+  ['feiticeiro','Feiticeiro','feiticeiro',['Feiticeiro','Conjurador','Arauto da Tempestade'],4,'#2bb5a8'],
+  ['barbaro','Bárbaro','guerreiro',['Bárbaro','Berserker','Senhor da Guerra'],6,'#a0522d'],
+  ['bruxa','Bruxa','bruxa',['Bruxa','Bruxa Anciã','Senhora do Sabá'],1,'#7d3fb0'],
+  ['alquimista','Alquimista','alquimista',['Alquimista','Mestre das Poções','Transmutador'],4,'#2f8f6e'],
+  ['bardo','Bardo','bardo',['Bardo','Menestrel','Voz Lendária'],5,'#c2447a'],
+  ['pirata','Pirata','pirata',['Pirata','Corsário','Capitão dos Mares'],5,'#2c5d9b'],
+  ['king','Rei','guerreiro',['Rei','Rei','Rei'],0,'#d6a31e'],
+  ['ferreiro','Ferreiro','oficio',['Ferreiro','Mestre Forjador','Forja Viva'],4,'#b5602a'],
+  ['construtor','Construtor','oficio',['Construtor','Mestre de Obras','Arquiteto Real'],6,'#c48a2b'],
+  ['lenhador','Lenhador','oficio',['Lenhador','Guarda-Florestal','Rachador de Gigantes'],5,'#5e8a2e'],
+  ['minerador','Minerador','oficio',['Minerador','Mestre das Minas','Senhor das Profundezas'],3,'#6b6b8a'],
+  ['villager','Aldeão','oficio',['Aldeão','Miliciano','Herói do Povo'],0,'#8a7a5a']
+];
+const RACAS=[
+  ['Humano','knight',39,'Os adaptáveis, a maior parte do reino.','PODER BASE'],
+  ['Anão','alquimista',12,'Forja, mina e muralha.','PODER +8%'],
+  ['Elfo','wizard',8,'Passo leve e magia antiga.','PODER +8%'],
+  ['Orc','monk',8,'Linha de frente em toda incursão.','PODER +15%'],
+  ['Demônio','necromante',7,'','VOTADA'],
+  ['Minotauro','barbaro',6,'','VOTADA'],
+  ['Anjo','king',6,'','VOTADA'],
+  ['Elfo negro','ranger',6,'','VOTADA'],
+  ['Dragão','feiticeiro',5,'','VOTADA'],
+  ['Vampiro','rogue',5,'','VOTADA'],
+  ['Lobisomem','pirata',1,'','VOTADA']
+];
+
+/* desfile do topo */
+document.getElementById('fila').innerHTML=CLS.map(c=>`<img class="px" src="${P}${c[0]}.png" alt="">`).join('');
+
+/* raças */
+document.getElementById('racasGrade').innerHTML=RACAS.map(r=>`<article class="raca moldura rv"><div class="pedestal"><img class="px" src="${P}${r[1]}.png" alt="Sprite de ${r[0].toLowerCase()}" loading="lazy"></div><h3>${r[0]}</h3><span class="poder">${r[4]}</span><div class="conta" style="--v:${Math.round(r[2]/39*100)}%" title="${r[2]} moradores"></div><span class="orig"><b style="color:var(--branco)">${r[2]}</b> ${r[2]==1?'morador':'moradores'}${r[3]?' · '+r[3]:''}</span></article>`).join('');
+
+/* seleção de classe */
+const $=id=>document.getElementById(id);
+$('botoesCls').innerHTML=CLS.map(c=>`<button type="button" data-k="${c[0]}" aria-pressed="false" title="${c[1]}"><img class="px" src="${P}${c[0]}.png" alt="${c[1]}"></button>`).join('');
+function escolher(k){const c=CLS.find(x=>x[0]===k);if(!c)return;const g=G[c[2]];
+  const img=$('clsImg');img.classList.remove('troca');void img.offsetWidth;img.src=P+k+'.png';img.alt=c[1];img.classList.add('troca');
+  $('escolhido').style.setProperty('--cor',c[5]);$('clsPapel').textContent=g.t;$('clsNome').textContent=c[1];
+  $('clsFrase').textContent=c[0]==='king'?'CLASSE ESPECIAL, NÃO EVOLUI':'EVOLUÇÃO DA CLASSE';
+  const ev=c[3];$('clsEvo').innerHTML=c[0]==='king'?'':`<div><b>${ev[0]}</b><small>NÍVEL 1</small></div><span>▶</span><div><b>${ev[1]}</b><small>NÍVEL 10</small></div><span>▶</span><div><b>${ev[2]}</b><small>NÍVEL 20</small></div>`;
+  $('clsAtaque').innerHTML=`ATAQUE DO CLIQUE: <b>${g.at}</b>`;
+  $('clsHabs').innerHTML=g.h.map((h,i)=>`<span class="${i==4?'sup':''}">${i==4?'★ ':''}${h}</span>`).join('');
+  $('clsMor').textContent=c[4]?`${c[4]} ${c[4]==1?'MORADOR USA':'MORADORES USAM'} ESTA CLASSE`:'NENHUM MORADOR AINDA';
+  document.querySelectorAll('.botoes-classe button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k))}
+document.querySelectorAll('.botoes-classe button').forEach(b=>b.addEventListener('click',()=>escolher(b.dataset.k)));
+escolher('knight');
+
 /* topo e seção ativa */
 const topo=document.getElementById('topo');addEventListener('scroll',()=>topo.classList.toggle('rolou',scrollY>40),{passive:true});
 const links=[...document.querySelectorAll('.topo nav a')];
 const ioSec=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('ativo',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-['como','racas','classes','mundo','chefoes','gameplay'].forEach(id=>{const el=document.getElementById(id);el&&ioSec.observe(el)});
+['combate','racas','classes','mundo','calaboucos','historia'].forEach(id=>{const el=document.getElementById(id);el&&ioSec.observe(el)});
 
 /* aparecer ao rolar */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-/* vídeos tocam só quando aparecem */
-const iv=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload='auto';v.play().catch(()=>{})}else v.pause()}),{threshold:.3});
-document.querySelectorAll('video').forEach(v=>iv.observe(v));
-
-/* tela de seleção de classe */
-const CLS={
-  cavaleiro:{nome:'Cavaleiro',papel:'TANQUE',frase:'O escudo do reino',cor:'#c83b3b',texto:'Armadura, espada e escudo. Encara o perigo de frente e protege quem está atrás dele.',attr:[['VIDA',90,'#3fbf6a'],['FORÇA',70,'#ff6b6b'],['VELOC.',35,'#5ad1ff']],habs:['Provocar','Golpe de escudo','Muralha','Terremoto']},
-  mago:{nome:'Mago',papel:'À DISTÂNCIA',frase:'Domina a magia',cor:'#3d6fd6',texto:'Lança projéteis elementais de longe e muda o elemento no meio da luta. Frágil de perto, devastador em área.',attr:[['VIDA',40,'#3fbf6a'],['MAGIA',95,'#b98bff'],['VELOC.',50,'#5ad1ff']],habs:['Bola de fogo','Nova arcana','Projétil elemental']},
-  arqueiro:{nome:'Arqueiro',papel:'À DISTÂNCIA',frase:'Caça e explora',cor:'#2f9b5c',texto:'O maior alcance do jogo. Acerta de longe, atravessa inimigos em linha e faz mais dano contra chefões.',attr:[['VIDA',55,'#3fbf6a'],['MIRA',95,'#ffd23a'],['VELOC.',75,'#5ad1ff']],habs:['Tiro certeiro','Chuva de flechas','Flecha']},
-  monge:{nome:'Monge',papel:'CURANDEIRO',frase:'Cura e inspira',cor:'#d9a21e',texto:'Mantém o grupo de pé. Cura, protege todo mundo com uma bênção e levanta quem caiu.',attr:[['VIDA',65,'#3fbf6a'],['CURA',95,'#ffd23a'],['VELOC.',55,'#5ad1ff']],habs:['Cura','Bênção','Reviver','Palma sagrada']},
-  ladino:{nome:'Ladino',papel:'RÁPIDO',frase:'Age nas sombras',cor:'#7a46c9',texto:'O mais veloz do grupo. Some e aparece atrás do inimigo, com golpes rápidos de adaga e fuga na fumaça.',attr:[['VIDA',45,'#3fbf6a'],['FORÇA',75,'#ff6b6b'],['VELOC.',95,'#5ad1ff']],habs:['Golpe pelas costas','Bomba de fumaça','Adagas']}
-};
-const $=id=>document.getElementById(id);
-function escolher(k){const c=CLS[k];if(!c)return;
-  const img=$('clsImg');img.classList.remove('troca');void img.offsetWidth;img.src=`assets/althea-rpg/${k}.png`;img.alt=c.nome;img.classList.add('troca');
-  $('escolhido').style.setProperty('--cor',c.cor);$('clsPapel').textContent=c.papel;$('clsNome').textContent=c.nome;$('clsFrase').textContent=c.frase;$('clsTexto').textContent=c.texto;
-  $('clsAttr').innerHTML=c.attr.map(([n,v,cor])=>`<div>${n}<i style="--v:${v}%;--c:${cor}"></i></div>`).join('');
-  $('clsHabs').innerHTML=c.habs.map(h=>`<span>${h}</span>`).join('');
-  document.querySelectorAll('.botoes-classe button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k))}
-document.querySelectorAll('.botoes-classe button').forEach(b=>b.addEventListener('click',()=>escolher(b.dataset.k)));
-escolher('cavaleiro');
 </script>
 </body>
 </html>
